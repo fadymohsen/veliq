@@ -1,0 +1,62 @@
+import { NextResponse } from "next/server";
+import fs from "fs/promises";
+import path from "path";
+
+const DATA_PATH = path.join(process.cwd(), "src/app/data/projects.json");
+
+export async function GET() {
+  const data = await fs.readFile(DATA_PATH, "utf-8");
+  return NextResponse.json(JSON.parse(data));
+}
+
+export async function PUT(req: Request) {
+  const body = await req.json();
+
+  if (!Array.isArray(body)) {
+    return NextResponse.json({ error: "Expected an array of projects" }, { status: 400 });
+  }
+
+  for (const p of body) {
+    if (!p.title || !p.tag || !p.desc || !p.fullDesc) {
+      return NextResponse.json(
+        { error: "Each project must have title, tag, desc, and fullDesc" },
+        { status: 400 }
+      );
+    }
+  }
+
+  const projects = body.map(
+    (p: {
+      slug?: string;
+      bg: string;
+      tag: string;
+      title: string;
+      desc: string;
+      fullDesc: string;
+      gallery: { bg: string; caption: string }[];
+    }) => ({
+      slug:
+        p.slug ||
+        p.title
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, ""),
+      bg: p.bg || "bg-gradient-to-br from-indigo-400 to-blue-500",
+      tag: p.tag,
+      title: p.title,
+      desc: p.desc,
+      fullDesc: p.fullDesc,
+      gallery: Array.isArray(p.gallery)
+        ? p.gallery
+        : [
+            { bg: "bg-gradient-to-br from-slate-300 to-slate-400", caption: "Screenshot 1" },
+            { bg: "bg-gradient-to-br from-slate-400 to-slate-500", caption: "Screenshot 2" },
+            { bg: "bg-gradient-to-br from-slate-300 to-slate-500", caption: "Screenshot 3" },
+            { bg: "bg-gradient-to-br from-slate-400 to-slate-600", caption: "Screenshot 4" },
+          ],
+    })
+  );
+
+  await fs.writeFile(DATA_PATH, JSON.stringify(projects, null, 2) + "\n");
+  return NextResponse.json(projects);
+}
