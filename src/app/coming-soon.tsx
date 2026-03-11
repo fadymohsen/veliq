@@ -6,7 +6,7 @@ export default function ComingSoon() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative flex h-screen flex-col items-center justify-center overflow-hidden bg-[#0a0a14]">
+    <div className="relative flex h-dvh flex-col items-center justify-center overflow-hidden bg-[#0a0a14]">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-indigo-600/15 blur-[120px]" />
@@ -25,7 +25,7 @@ export default function ComingSoon() {
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-2xl px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-2xl px-6 text-center -mt-12">
         {/* Logo */}
         <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
           VELIQ
@@ -35,7 +35,7 @@ export default function ComingSoon() {
         <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
 
         {/* Headline */}
-        <h1 className="mt-5 text-5xl font-extrabold leading-tight tracking-tight text-white md:text-7xl">
+        <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-white md:text-7xl">
           Something{" "}
           <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
             Great
@@ -44,7 +44,7 @@ export default function ComingSoon() {
           Is Coming
         </h1>
 
-        <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-slate-400">
+        <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-slate-400 md:text-lg">
           We&apos;re crafting a new digital experience. Stay tuned — or reach
           out now to get started early.
         </p>
