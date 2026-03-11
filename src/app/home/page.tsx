@@ -3,7 +3,22 @@ import Link from "next/link";
 import fs from "fs/promises";
 import path from "path";
 
-async function getServices() {
+interface Service {
+  id: number;
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+interface Project {
+  slug: string;
+  bg: string;
+  tag: string;
+  title: string;
+  desc: string;
+}
+
+async function getServices(): Promise<Service[]> {
   const data = await fs.readFile(
     path.join(process.cwd(), "src/app/data/services.json"),
     "utf-8"
@@ -11,7 +26,7 @@ async function getServices() {
   return JSON.parse(data);
 }
 
-async function getProjects() {
+async function getProjects(): Promise<Project[]> {
   const data = await fs.readFile(
     path.join(process.cwd(), "src/app/data/projects.json"),
     "utf-8"
