@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "icon": "🖥️",
+    "title": "Website Development",
+    "desc": "Web apps, SaaS platforms, and enterprise systems built with modern technologies for performance and scale."
+  },
+  {
+    "id": 2,
+    "icon": "📱",
+    "title": "Mobile Development",
+    "desc": "Native and cross-platform mobile apps that deliver smooth, intuitive experiences on every device."
+  },
+  {
+    "id": 3,
+    "icon": "🎨",
+    "title": "SEO Setup",
+    "desc": "Research-driven design that delights users and converts visitors into loyal customers."
+  },
+  {
+    "id": 4,
+    "icon": "📈",
+    "title": "Digital Marketing",
+    "desc": "SEO, PPC, social media, and content strategies that drive qualified traffic and measurable ROI."
+  },
+  {
+    "id": 5,
+    "icon": "🔍",
+    "title": "Data & Analytics",
+    "desc": "Turn raw data into actionable insights with dashboards, reporting, and growth analytics."
+  },
+  {
+    "id": 6,
+    "icon": "🚀",
+    "title": "Brand Strategy",
+    "desc": "Build a compelling brand identity and go-to-market strategy that resonates with your audience."
+  }
+]
