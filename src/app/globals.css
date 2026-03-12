@@ -152,7 +152,7 @@ body {
 
 /* Ring animations */
 .loading-ring {
-  animation: loading-ring-fade 1s ease-out 0.3s both;
+  animation: loading-ring-fade 1.2s ease-out 0.5s both;
 }
 @keyframes loading-ring-fade {
   from { opacity: 0; transform: scale(0.6); }
@@ -160,7 +160,7 @@ body {
 }
 
 .loading-ring-spin {
-  animation: loading-ring-fade 1s ease-out 0.3s both, loading-spin 2s linear infinite;
+  animation: loading-ring-fade 1.2s ease-out 0.5s both, loading-spin 3s linear infinite;
 }
 @keyframes loading-spin {
   from { transform: rotate(0deg); }
@@ -169,7 +169,7 @@ body {
 
 /* Inner glow */
 .loading-inner-glow {
-  animation: loading-glow-pulse 2s ease-in-out infinite;
+  animation: loading-glow-pulse 2.5s ease-in-out infinite;
 }
 @keyframes loading-glow-pulse {
   0%, 100% { opacity: 0.3; }
@@ -178,21 +178,21 @@ body {
 
 /* SVG draw animations */
 .loading-hex {
-  animation: loading-draw-hex 1.2s ease-out 0.4s forwards;
+  animation: loading-draw-hex 2s ease-out 0.6s forwards;
 }
 @keyframes loading-draw-hex {
   to { stroke-dashoffset: 0; }
 }
 
 .loading-v-stroke {
-  animation: loading-draw-v 0.8s ease-out 0.8s forwards;
+  animation: loading-draw-v 1.4s ease-out 1.4s forwards;
 }
 @keyframes loading-draw-v {
   to { stroke-dashoffset: 0; }
 }
 
 .loading-dot {
-  animation: loading-dot-appear 0.4s ease-out 1.4s forwards;
+  animation: loading-dot-appear 0.6s ease-out 2.6s forwards;
 }
 @keyframes loading-dot-appear {
   from { opacity: 0; r: 0; }
@@ -200,10 +200,10 @@ body {
 }
 
 .loading-accent-1 {
-  animation: loading-accent-fade 0.4s ease-out 1.6s forwards;
+  animation: loading-accent-fade 0.5s ease-out 2.8s forwards;
 }
 .loading-accent-2 {
-  animation: loading-accent-fade 0.4s ease-out 1.7s forwards;
+  animation: loading-accent-fade 0.5s ease-out 3.0s forwards;
 }
 @keyframes loading-accent-fade {
   from { opacity: 0; }
@@ -212,7 +212,7 @@ body {
 
 /* Text animations */
 .loading-text {
-  animation: loading-text-reveal 0.6s ease-out 1.0s both;
+  animation: loading-text-reveal 0.8s ease-out 1.8s both;
 }
 @keyframes loading-text-reveal {
   from { opacity: 0; transform: translateY(100%); }
@@ -220,7 +220,7 @@ body {
 }
 
 .loading-tagline {
-  animation: loading-tagline-fade 0.5s ease-out 1.4s both;
+  animation: loading-tagline-fade 0.7s ease-out 2.4s both;
 }
 @keyframes loading-tagline-fade {
   from { opacity: 0; letter-spacing: 0.5em; }
@@ -229,12 +229,13 @@ body {
 
 /* Loading bar */
 .loading-bar {
-  animation: loading-bar-fill 2s ease-in-out 0.5s both;
+  animation: loading-bar-fill 3.5s ease-in-out 0.5s both;
 }
 @keyframes loading-bar-fill {
   0% { width: 0%; }
-  30% { width: 40%; }
-  60% { width: 70%; }
+  20% { width: 25%; }
+  45% { width: 50%; }
+  70% { width: 75%; }
   100% { width: 100%; }
 }
 

@@ -7,9 +7,9 @@ export default function LoadingScreen() {
 
   useEffect(() => {
     // Phase 1: Loading animation plays
-    const revealTimer = setTimeout(() => setPhase("reveal"), 2200);
+    const revealTimer = setTimeout(() => setPhase("reveal"), 4000);
     // Phase 2: Slide up and fade out
-    const doneTimer = setTimeout(() => setPhase("done"), 2800);
+    const doneTimer = setTimeout(() => setPhase("done"), 4800);
     return () => {
       clearTimeout(revealTimer);
       clearTimeout(doneTimer);
