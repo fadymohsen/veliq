@@ -17,6 +17,16 @@ interface Project {
   desc: string;
 }
 
+interface Blog {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  readTime: string;
+  bg: string;
+}
+
 async function getServices(): Promise<Service[]> {
   const data = await fs.readFile(
     path.join(process.cwd(), "src/app/data/services.json"),
@@ -33,12 +43,21 @@ async function getProjects(): Promise<Project[]> {
   return JSON.parse(data);
 }
 
+async function getBlogs(): Promise<Blog[]> {
+  const data = await fs.readFile(
+    path.join(process.cwd(), "src/app/data/blogs.json"),
+    "utf-8"
+  );
+  return JSON.parse(data);
+}
+
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const services = await getServices();
   const allProjects = await getProjects();
   const projects = allProjects.slice(0, 6);
+  const blogs = (await getBlogs()).slice(0, 3);
   return (
     <>
       {/* ── Hero ── */}
@@ -138,6 +157,49 @@ export default async function Home() {
               className="inline-block rounded-full border border-slate-300 px-8 py-3.5 text-base font-semibold text-slate-700 hover:border-primary hover:text-primary transition"
             >
               View All Projects &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Blog Preview ── */}
+      <section className="py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-6">
+          <p className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+            From Our Blog
+          </p>
+          <h2 className="mt-2 text-center text-3xl font-bold md:text-4xl">
+            Latest Insights
+          </h2>
+          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {blogs.map((b) => (
+              <Link
+                key={b.slug}
+                href={`/blog/${b.slug}`}
+                className="group overflow-hidden rounded-2xl border border-slate-200 transition hover:shadow-lg"
+              >
+                <div className={`h-48 ${b.bg}`} />
+                <div className="p-6">
+                  <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wider">
+                    <span className="rounded-full bg-primary/10 text-primary px-3 py-1">
+                      {b.category}
+                    </span>
+                    <span className="text-slate-400">{b.readTime}</span>
+                  </div>
+                  <h3 className="mt-3 text-lg font-bold group-hover:text-primary transition leading-snug">
+                    {b.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-600">{b.excerpt}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link
+              href="/blog"
+              className="inline-block rounded-full border border-slate-300 px-8 py-3.5 text-base font-semibold text-slate-700 hover:border-primary hover:text-primary transition"
+            >
+              View All Articles &rarr;
             </Link>
           </div>
         </div>
