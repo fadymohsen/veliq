@@ -2,6 +2,7 @@ import Link from "next/link";
 import fs from "fs/promises";
 import path from "path";
 import ScrollReveal from "./components/scroll-reveal";
+import { ServiceIcon } from "./components/service-icons";
 
 interface Service {
   id: number;
@@ -151,8 +152,8 @@ export default async function Home() {
                   </div>
 
                   <div className="relative z-10">
-                    <div className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl ${s.bg} text-2xl text-white shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl`}>
-                      {s.icon}
+                    <div className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-indigo-400 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-indigo-500/20 group-hover:border-indigo-500/30 group-hover:text-white group-hover:bg-indigo-500/20`}>
+                      <ServiceIcon slug={s.slug} />
                     </div>
                     <h3 className="text-xl font-semibold text-white group-hover:text-indigo-300 transition-colors duration-300">{s.title}</h3>
                     <p className="mt-3 text-slate-500 leading-relaxed text-sm group-hover:text-slate-400 transition-colors duration-300">{s.desc}</p>

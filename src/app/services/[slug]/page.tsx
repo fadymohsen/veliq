@@ -3,6 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 import Link from "next/link";
 import ContactForm from "../../contact-form";
+import { ServiceIcon } from "../../components/service-icons";
 
 interface Highlight {
   label: string;
@@ -102,8 +103,8 @@ export default async function ServicePage({
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             <div className="md:max-w-2xl">
               <div className="flex items-center gap-4 mb-4">
-                <div className={`flex h-16 w-16 items-center justify-center rounded-2xl ${service.bg} text-3xl text-white shadow-lg`}>
-                  {service.icon}
+                <div className={`flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-primary/30 bg-primary/10 text-primary shadow-lg`}>
+                  <ServiceIcon slug={service.slug} />
                 </div>
                 <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
                   {service.title}
@@ -282,8 +283,8 @@ export default async function ServicePage({
                 href={`/services/${s.slug}`}
                 className="group rounded-2xl border border-slate-200 p-6 transition hover:shadow-lg hover:border-primary/40"
               >
-                <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${s.bg} text-2xl text-white`}>
-                  {s.icon}
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 text-primary transition-all duration-300 group-hover:border-primary/40 group-hover:bg-primary/10">
+                  <ServiceIcon slug={s.slug} />
                 </div>
                 <h3 className="text-lg font-semibold group-hover:text-primary transition">
                   {s.title}
