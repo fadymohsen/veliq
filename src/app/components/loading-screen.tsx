@@ -7,9 +7,9 @@ export default function LoadingScreen() {
 
   useEffect(() => {
     // Phase 1: Loading animation plays
-    const revealTimer = setTimeout(() => setPhase("reveal"), 4000);
+    const revealTimer = setTimeout(() => setPhase("reveal"), 5200);
     // Phase 2: Slide up and fade out
-    const doneTimer = setTimeout(() => setPhase("done"), 4800);
+    const doneTimer = setTimeout(() => setPhase("done"), 6000);
     return () => {
       clearTimeout(revealTimer);
       clearTimeout(doneTimer);
@@ -137,10 +137,23 @@ export default function LoadingScreen() {
           </h1>
         </div>
 
-        {/* Tagline */}
-        <p className="loading-tagline mt-3 text-xs font-medium uppercase tracking-[0.25em] text-slate-500">
-          Digital Excellence
-        </p>
+        {/* Tagline — word-by-word reveal */}
+        <div className="mt-4 flex items-center gap-[0.35em] overflow-hidden">
+          {"Precision at the speed of ambition".split(" ").map((word, i) => (
+            <span
+              key={i}
+              className="loading-tagline-word inline-block text-xs font-medium uppercase tracking-[0.15em] text-slate-500"
+              style={{ animationDelay: `${2.6 + i * 0.15}s` }}
+            >
+              {word}
+            </span>
+          ))}
+        </div>
+
+        {/* Gradient underline swoosh */}
+        <div className="mt-3 h-px w-56 overflow-hidden">
+          <div className="loading-tagline-line h-full bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+        </div>
 
         {/* Loading bar */}
         <div className="mt-10 h-[1px] w-48 overflow-hidden rounded-full bg-white/5">
