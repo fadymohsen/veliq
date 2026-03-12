@@ -210,14 +210,26 @@ body {
   to { opacity: 0.6; }
 }
 
-/* Text animations */
+/* Logo text — letter draw animations */
 .loading-text {
-  animation: loading-text-reveal 0.8s ease-out 1.8s both;
+  animation: loading-text-reveal 0.6s ease-out 1.6s both;
 }
 @keyframes loading-text-reveal {
-  from { opacity: 0; transform: translateY(100%); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.loading-letter {
+  animation: loading-letter-draw 0.7s ease-out forwards;
+}
+@keyframes loading-letter-draw {
+  to { stroke-dashoffset: 0; }
+}
+.loading-letter-1 { animation-delay: 1.7s; }
+.loading-letter-2 { animation-delay: 1.9s; }
+.loading-letter-3 { animation-delay: 2.1s; }
+.loading-letter-4 { animation-delay: 2.25s; }
+.loading-letter-5 { animation-delay: 2.4s; }
 
 /* Tagline word-by-word reveal */
 .loading-tagline-word {
