@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/services", label: "Services" },
@@ -51,24 +50,8 @@ const socials = [
 ];
 
 export default function Footer() {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-
-  const dark = isHome;
-  const textMuted = dark ? "text-slate-500" : "text-slate-500";
-  const textDefault = dark ? "text-slate-400" : "text-slate-600";
-  const hoverColor = dark ? "hover:text-white" : "hover:text-slate-900";
-  const socialHover = dark
-    ? "hover:bg-white/10 hover:text-white hover:border-white/20"
-    : "hover:bg-slate-900 hover:text-white hover:border-slate-900";
-  const dividerColor = dark ? "border-white/10" : "border-slate-200";
-
   return (
-    <footer
-      className={`border-t pt-16 pb-8 ${
-        dark ? "border-white/10 bg-[#0a0a14]" : "border-slate-200 bg-slate-50"
-      }`}
-    >
+    <footer className="border-t border-white/10 bg-[#0a0a14] pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-6">
         {/* Top section */}
         <div className="grid gap-12 md:grid-cols-4">
@@ -76,13 +59,11 @@ export default function Footer() {
           <div className="md:col-span-1">
             <Link
               href="/"
-              className={`text-2xl font-bold tracking-tight ${
-                dark ? "text-white" : "text-slate-900"
-              }`}
+              className="text-2xl font-bold tracking-tight text-white"
             >
               VELIQ
             </Link>
-            <p className={`mt-4 text-sm leading-relaxed ${textMuted}`}>
+            <p className="mt-4 text-sm leading-relaxed text-slate-500">
               Software &amp; marketing solutions that drive growth. We design,
               build, and market digital products for ambitious businesses.
             </p>
@@ -93,11 +74,7 @@ export default function Footer() {
                   key={s.name}
                   href={s.href}
                   aria-label={s.name}
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-300 ${
-                    dark
-                      ? "border-white/10 text-slate-500"
-                      : "border-slate-200 text-slate-400"
-                  } ${socialHover}`}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-slate-500 transition-all duration-300 hover:bg-white/10 hover:text-white hover:border-white/20"
                 >
                   {s.icon}
                 </a>
@@ -107,11 +84,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4
-              className={`text-xs font-semibold uppercase tracking-widest ${
-                dark ? "text-slate-400" : "text-slate-900"
-              }`}
-            >
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-400">
               Navigation
             </h4>
             <ul className="mt-4 space-y-3">
@@ -119,7 +92,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`text-sm ${textMuted} ${hoverColor} transition`}
+                    className="text-sm text-slate-500 hover:text-white transition"
                   >
                     {link.label}
                   </Link>
@@ -130,11 +103,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4
-              className={`text-xs font-semibold uppercase tracking-widest ${
-                dark ? "text-slate-400" : "text-slate-900"
-              }`}
-            >
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-400">
               Services
             </h4>
             <ul className="mt-4 space-y-3">
@@ -149,7 +118,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`text-sm ${textMuted} ${hoverColor} transition`}
+                    className="text-sm text-slate-500 hover:text-white transition"
                   >
                     {link.label}
                   </Link>
@@ -160,18 +129,14 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4
-              className={`text-xs font-semibold uppercase tracking-widest ${
-                dark ? "text-slate-400" : "text-slate-900"
-              }`}
-            >
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-400">
               Get in Touch
             </h4>
             <ul className="mt-4 space-y-3">
               <li>
                 <a
                   href="mailto:hello@veliq.com"
-                  className={`text-sm ${textDefault} ${hoverColor} transition`}
+                  className="text-sm text-slate-400 hover:text-white transition"
                 >
                   hello@veliq.com
                 </a>
@@ -179,21 +144,17 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+201234567890"
-                  className={`text-sm ${textDefault} ${hoverColor} transition`}
+                  className="text-sm text-slate-400 hover:text-white transition"
                 >
                   +20 123 456 7890
                 </a>
               </li>
-              <li className={`text-sm ${textMuted}`}>Cairo, Egypt</li>
-              <li className={`text-sm ${textMuted}`}>Sun – Thu, 9AM – 6PM</li>
+              <li className="text-sm text-slate-500">Cairo, Egypt</li>
+              <li className="text-sm text-slate-500">Sun – Thu, 9AM – 6PM</li>
             </ul>
             <Link
               href="/contact"
-              className={`mt-6 inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 ${
-                dark
-                  ? "bg-white text-[#0a0a14] hover:bg-slate-200"
-                  : "bg-slate-900 text-white hover:bg-slate-800"
-              }`}
+              className="mt-6 inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 bg-white text-[#0a0a14] hover:bg-slate-200"
             >
               Start a Project
             </Link>
@@ -201,18 +162,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div
-          className={`mt-14 flex flex-col md:flex-row items-center justify-between gap-4 border-t pt-8 text-xs ${dividerColor} ${textMuted}`}
-        >
+        <div className="mt-14 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-slate-500">
           <p>&copy; {new Date().getFullYear()} VELIQ. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className={`${hoverColor} transition`}>
+            <a href="#" className="hover:text-white transition">
               Privacy Policy
             </a>
-            <a href="#" className={`${hoverColor} transition`}>
+            <a href="#" className="hover:text-white transition">
               Terms of Service
             </a>
-            <a href="#" className={`${hoverColor} transition`}>
+            <a href="#" className="hover:text-white transition">
               Cookies
             </a>
           </div>

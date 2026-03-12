@@ -1,4 +1,5 @@
 import ContactForm from "../contact-form";
+import ScrollReveal from "../components/scroll-reveal";
 
 export const metadata = {
   title: "Contact Us — VELIQ",
@@ -100,18 +101,35 @@ const socials = [
 
 export default function ContactPage() {
   return (
-    <>
+    <div className="bg-[#0a0a14]">
       {/* ── Hero ── */}
       <section className="relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50 via-white to-purple-50" />
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Contact Us
-          </p>
-          <h1 className="mt-3 text-4xl font-extrabold tracking-tight md:text-6xl">
-            Let&apos;s Build Something Great
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 md:text-xl">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-indigo-600/15 blur-[120px] animate-pulse-glow" />
+          <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-purple-600/10 blur-[100px] animate-float-slow" />
+        </div>
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
+          <div className="animate-fade-in-up">
+            <div className="mx-auto mb-6 h-px w-16 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
+            <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
+              Contact Us
+            </p>
+            <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-white md:text-6xl">
+              Let&apos;s Build Something{" "}
+              <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                Great
+              </span>
+            </h1>
+          </div>
+          <p className="animate-fade-in-up delay-200 mx-auto mt-6 max-w-2xl text-lg text-slate-400 md:text-xl">
             Have a project in mind? We&apos;d love to hear about it. Reach out
             and we&apos;ll get back to you within 24 hours.
           </p>
@@ -119,52 +137,59 @@ export default function ContactPage() {
       </section>
 
       {/* ── Contact Info Cards + Form ── */}
-      <section className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="relative py-24 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/3 top-1/4 h-[350px] w-[350px] rounded-full bg-indigo-600/6 blur-[120px]" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
           <div className="grid gap-12 lg:grid-cols-5">
             {/* Left — Contact Info */}
             <div className="lg:col-span-2 space-y-6">
-              <div>
-                <h2 className="text-2xl font-bold md:text-3xl">
+              <ScrollReveal animation="fade-up">
+                <h2 className="text-2xl font-bold md:text-3xl text-white">
                   Get in Touch
                 </h2>
-                <p className="mt-3 text-slate-600 leading-relaxed">
+                <p className="mt-3 text-slate-400 leading-relaxed">
                   Whether you have a question, a project idea, or just want to
                   say hello — we&apos;re here for you.
                 </p>
-              </div>
+              </ScrollReveal>
 
               {/* Info cards */}
               <div className="space-y-4">
-                {contactInfo.map((item) => {
+                {contactInfo.map((item, i) => {
                   const content = (
-                    <div className="flex items-start gap-4 rounded-xl border border-slate-200 p-5 transition hover:shadow-md hover:border-primary/30">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <div className="flex items-start gap-4 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-5 transition-all duration-500 hover:bg-white/[0.08] hover:border-indigo-500/30">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/[0.06] text-indigo-400">
                         {item.icon}
                       </div>
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
                           {item.label}
                         </p>
-                        <p className="mt-1 text-base font-medium text-slate-800">
+                        <p className="mt-1 text-base font-medium text-white">
                           {item.value}
                         </p>
                       </div>
                     </div>
                   );
-                  return item.href ? (
-                    <a key={item.label} href={item.href} className="block">
-                      {content}
-                    </a>
-                  ) : (
-                    <div key={item.label}>{content}</div>
+                  return (
+                    <ScrollReveal key={item.label} animation="slide-left" delay={i * 100}>
+                      {item.href ? (
+                        <a href={item.href} className="block">
+                          {content}
+                        </a>
+                      ) : (
+                        <div>{content}</div>
+                      )}
+                    </ScrollReveal>
                   );
                 })}
               </div>
 
               {/* Social Media */}
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+              <ScrollReveal animation="fade-up" delay={400}>
+                <p className="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-4">
                   Follow Us
                 </p>
                 <div className="flex gap-3">
@@ -173,58 +198,65 @@ export default function ContactPage() {
                       key={s.name}
                       href={s.href}
                       aria-label={s.name}
-                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:bg-primary hover:text-white hover:border-primary hover:shadow-md"
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 text-slate-500 transition-all duration-300 hover:bg-white/10 hover:text-white hover:border-white/20"
                     >
                       {s.icon}
                     </a>
                   ))}
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
 
             {/* Right — Form */}
             <div className="lg:col-span-3">
-              <div className="rounded-2xl border border-slate-200 bg-white p-8 md:p-10 shadow-sm">
-                <h3 className="text-xl font-bold">Send Us a Message</h3>
-                <p className="mt-2 text-sm text-slate-500">
-                  Fill out the form below and we&apos;ll respond as soon as possible.
-                </p>
-                <ContactForm />
-              </div>
+              <ScrollReveal animation="fade-up" delay={200}>
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 md:p-10">
+                  <h3 className="text-xl font-bold text-white">Send Us a Message</h3>
+                  <p className="mt-2 text-sm text-slate-500">
+                    Fill out the form below and we&apos;ll respond as soon as possible.
+                  </p>
+                  <ContactForm />
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ── Divider glow line ── */}
+      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
+
       {/* ── FAQ ── */}
-      <section className="py-24 bg-slate-50">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="text-center mb-14">
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+      <section className="relative py-24 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute right-1/3 top-0 h-[400px] w-[400px] rounded-full bg-purple-600/8 blur-[120px]" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-3xl px-6">
+          <ScrollReveal animation="fade-up" className="text-center mb-14">
+            <p className="text-sm font-semibold uppercase tracking-widest text-purple-400">
               FAQ
             </p>
-            <h2 className="mt-2 text-3xl font-bold md:text-4xl">
+            <h2 className="mt-2 text-3xl font-bold md:text-4xl text-white">
               Common Questions
             </h2>
-          </div>
+          </ScrollReveal>
           <div className="space-y-6">
-            {faqs.map((faq) => (
-              <div
-                key={faq.q}
-                className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8"
-              >
-                <h3 className="text-base font-semibold text-slate-900">
-                  {faq.q}
-                </h3>
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-                  {faq.a}
-                </p>
-              </div>
+            {faqs.map((faq, i) => (
+              <ScrollReveal key={faq.q} animation="fade-up" delay={i * 100}>
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-6 md:p-8 transition-all duration-500 hover:bg-white/[0.06] hover:border-white/15">
+                  <h3 className="text-base font-semibold text-white">
+                    {faq.q}
+                  </h3>
+                  <p className="mt-3 text-sm text-slate-500 leading-relaxed">
+                    {faq.a}
+                  </p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
