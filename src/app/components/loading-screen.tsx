@@ -130,81 +130,11 @@ export default function LoadingScreen() {
           </svg>
         </div>
 
-        {/* VELIQ logo text drawn with SVG */}
+        {/* VELIQ text */}
         <div className="overflow-hidden">
-          <svg
-            className="loading-text h-8 md:h-10"
-            viewBox="0 0 260 44"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient id="text-gradient" x1="0" y1="0" x2="260" y2="44">
-                <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="50%" stopColor="#e0e7ff" />
-                <stop offset="100%" stopColor="#a5b4fc" />
-              </linearGradient>
-            </defs>
-            {/* V */}
-            <path
-              className="loading-letter loading-letter-1"
-              d="M2 4L24 40L46 4"
-              stroke="url(#text-gradient)"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-              strokeDasharray="95"
-              strokeDashoffset="95"
-            />
-            {/* E */}
-            <path
-              className="loading-letter loading-letter-2"
-              d="M72 4H56V40H72M56 22H68"
-              stroke="url(#text-gradient)"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-              strokeDasharray="120"
-              strokeDashoffset="120"
-            />
-            {/* L */}
-            <path
-              className="loading-letter loading-letter-3"
-              d="M84 4V40H104"
-              stroke="url(#text-gradient)"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-              strokeDasharray="56"
-              strokeDashoffset="56"
-            />
-            {/* I */}
-            <path
-              className="loading-letter loading-letter-4"
-              d="M118 4V40"
-              stroke="url(#text-gradient)"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-              fill="none"
-              strokeDasharray="36"
-              strokeDashoffset="36"
-            />
-            {/* Q */}
-            <path
-              className="loading-letter loading-letter-5"
-              d="M155 22C155 12.059 147.941 4 139 4C130.059 4 123 12.059 123 22C123 31.941 130.059 40 139 40C143.5 40 147.5 38 150 35M145 32L157 44"
-              stroke="url(#text-gradient)"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-              strokeDasharray="130"
-              strokeDashoffset="130"
-            />
-          </svg>
+          <h1 className="loading-text text-3xl font-bold tracking-[0.3em] text-white">
+            VELIQ
+          </h1>
         </div>
 
         {/* Tagline — word-by-word reveal */}
