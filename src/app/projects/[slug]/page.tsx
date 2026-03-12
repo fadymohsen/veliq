@@ -61,44 +61,12 @@ export default async function ProjectPage({
 
   return (
     <>
-      {/* ── Navbar ── */}
-      <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link
-            href="/"
-            className="text-2xl font-bold tracking-tight text-primary"
-          >
-            VELIQ
-          </Link>
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-            <Link href="/#services" className="hover:text-primary transition">
-              Services
-            </Link>
-            <Link href="/#about" className="hover:text-primary transition">
-              About
-            </Link>
-            <Link href="/#work" className="hover:text-primary transition">
-              Work
-            </Link>
-            <Link href="/#contact" className="hover:text-primary transition">
-              Contact
-            </Link>
-          </div>
-          <Link
-            href="/#contact"
-            className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white shadow hover:bg-primary-dark transition"
-          >
-            Get in Touch
-          </Link>
-        </nav>
-      </header>
-
       {/* ── Hero ── */}
       <section className="relative pt-28 pb-0">
         <div className={`mx-auto max-w-7xl px-6`}>
           <div className="mb-8">
             <Link
-              href="/#work"
+              href="/projects"
               className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-primary transition"
             >
               &larr; Back to Projects
@@ -199,27 +167,6 @@ export default async function ProjectPage({
           <ContactForm />
         </div>
       </section>
-
-      {/* ── Footer ── */}
-      <footer className="border-t border-slate-200 bg-slate-50 py-12">
-        <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <p>&copy; {new Date().getFullYear()} VELIQ. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-primary transition">
-              Privacy
-            </a>
-            <a href="#" className="hover:text-primary transition">
-              Terms
-            </a>
-            <a href="#" className="hover:text-primary transition">
-              LinkedIn
-            </a>
-            <a href="#" className="hover:text-primary transition">
-              Twitter
-            </a>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }
