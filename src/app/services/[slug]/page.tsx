@@ -103,7 +103,7 @@ export default async function ServicePage({
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             <div className="md:max-w-2xl">
               <div className="flex items-center gap-4 mb-4">
-                <div className={`flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-primary/30 bg-primary/10 text-primary shadow-lg`}>
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-slate-300 bg-white text-slate-900 shadow-lg">
                   <ServiceIcon slug={service.slug} />
                 </div>
                 <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
@@ -283,7 +283,7 @@ export default async function ServicePage({
                 href={`/services/${s.slug}`}
                 className="group rounded-2xl border border-slate-200 p-6 transition hover:shadow-lg hover:border-primary/40"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 text-primary transition-all duration-300 group-hover:border-primary/40 group-hover:bg-primary/10">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 text-slate-900 transition-all duration-300 group-hover:border-slate-400 group-hover:bg-slate-900 group-hover:text-white">
                   <ServiceIcon slug={s.slug} />
                 </div>
                 <h3 className="text-lg font-semibold group-hover:text-primary transition">

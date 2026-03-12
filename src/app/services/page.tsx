@@ -79,7 +79,7 @@ export default async function ServicesPage() {
                 >
                   <div className={`h-2 ${s.bg} transition-all duration-500 group-hover:h-3`} />
                   <div className="p-8">
-                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 text-primary transition-all duration-500 group-hover:border-primary/40 group-hover:bg-primary/10 group-hover:scale-110 group-hover:rotate-3">
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 text-slate-900 transition-all duration-500 group-hover:border-slate-400 group-hover:bg-slate-900 group-hover:text-white group-hover:scale-110 group-hover:rotate-3">
                       <ServiceIcon slug={s.slug} />
                     </div>
                     <h3 className="text-xl font-bold group-hover:text-primary transition-colors duration-300">

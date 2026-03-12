@@ -28,17 +28,17 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         showSolid
-          ? "bg-white/80 backdrop-blur border-b border-slate-200"
-          : "bg-transparent border-b border-transparent"
+          ? "bg-white/60 backdrop-blur-xl backdrop-saturate-150 border-b border-white/20 shadow-lg shadow-black/[0.03]"
+          : "bg-white/[0.03] backdrop-blur-md border-b border-white/[0.06]"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href="/"
           className={`text-2xl font-bold tracking-tight transition-colors duration-300 ${
-            showSolid ? "text-primary" : "text-white"
+            showSolid ? "text-slate-900" : "text-white"
           }`}
         >
           VELIQ
@@ -68,10 +68,10 @@ export default function Navbar() {
         </div>
         <Link
           href="/contact"
-          className={`rounded-full px-5 py-2 text-sm font-semibold shadow transition-all duration-300 ${
+          className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 ${
             showSolid
-              ? "bg-primary text-white hover:bg-primary-dark"
-              : "bg-white text-[#0a0a14] hover:shadow-indigo-500/40 hover:scale-[1.02]"
+              ? "bg-slate-900 text-white hover:bg-slate-800 shadow-sm"
+              : "bg-white/10 text-white border border-white/20 backdrop-blur-sm hover:bg-white/20 hover:border-white/30"
           }`}
         >
           Get in Touch
