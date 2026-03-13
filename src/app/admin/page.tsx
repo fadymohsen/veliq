@@ -72,7 +72,6 @@ export default function AdminDashboard() {
       const data = await res.json();
       if (res.ok) {
         setMessage(`Database seeded! (${data.counts.services} services, ${data.counts.projects} projects, ${data.counts.blogs} blogs)`);
-        // Refresh data
         const [svc, proj] = await Promise.all([
           fetch("/api/services").then((r) => r.json()),
           fetch("/api/projects").then((r) => r.json()),
@@ -250,16 +249,39 @@ export default function AdminDashboard() {
 
   const serviceTitles = services.map((s) => s.title).filter(Boolean);
 
+  // Shared input classes
+  const inputClass =
+    "w-full rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2.5 text-sm text-white placeholder-slate-500 outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 transition";
+  const selectClass =
+    "w-full rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2.5 text-sm text-white outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 transition appearance-none";
+
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="relative min-h-screen bg-[#0a0a14] text-white overflow-hidden">
+      {/* Background glowing orbs */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+        <div className="absolute left-1/4 top-0 h-[600px] w-[600px] rounded-full bg-indigo-600/[0.07] blur-[150px] animate-pulse-glow" />
+        <div className="absolute right-0 top-1/3 h-[500px] w-[500px] rounded-full bg-purple-600/[0.05] blur-[130px] animate-pulse-glow delay-200" />
+        <div className="absolute left-1/2 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-600/[0.06] blur-[120px] animate-pulse-glow delay-500" />
+      </div>
+
+      {/* Grid overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 opacity-[0.015]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
+
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
+      <header className="sticky top-0 z-20 bg-[#0a0a14]/80 backdrop-blur-xl backdrop-saturate-150 border-b border-white/[0.06]">
         <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <a href="/" className="text-2xl font-bold text-primary">
+            <a href="/" className="text-2xl font-bold tracking-tight text-white">
               VELIQ
             </a>
-            <span className="text-sm font-medium text-slate-400 border-l border-slate-200 pl-3">
+            <span className="text-sm font-medium text-slate-500 border-l border-white/10 pl-3">
               Admin Dashboard
             </span>
           </div>
@@ -267,13 +289,13 @@ export default function AdminDashboard() {
             <button
               onClick={seedDatabase}
               disabled={seeding}
-              className="text-xs px-3 py-1.5 rounded-md bg-amber-100 text-amber-700 hover:bg-amber-200 transition font-medium disabled:opacity-50"
+              className="text-xs px-3.5 py-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 hover:bg-amber-500/20 transition font-medium disabled:opacity-50"
             >
               {seeding ? "Seeding..." : "Seed DB"}
             </button>
             <a
               href="/"
-              className="text-sm text-slate-500 hover:text-primary transition"
+              className="text-sm text-slate-400 hover:text-white transition"
             >
               View Site &rarr;
             </a>
@@ -282,14 +304,14 @@ export default function AdminDashboard() {
       </header>
 
       {/* Tabs */}
-      <div className="bg-white border-b border-slate-200">
+      <div className="relative z-10 border-b border-white/[0.06] bg-white/[0.02]">
         <div className="mx-auto max-w-6xl px-6 flex gap-0">
           <button
             onClick={() => { setTab("services"); setMessage(""); }}
             className={`px-5 py-3 text-sm font-medium border-b-2 transition ${
               tab === "services"
-                ? "border-primary text-primary"
-                : "border-transparent text-slate-500 hover:text-slate-700"
+                ? "border-indigo-500 text-white"
+                : "border-transparent text-slate-500 hover:text-slate-300"
             }`}
           >
             Services
@@ -298,8 +320,8 @@ export default function AdminDashboard() {
             onClick={() => { setTab("projects"); setMessage(""); }}
             className={`px-5 py-3 text-sm font-medium border-b-2 transition ${
               tab === "projects"
-                ? "border-primary text-primary"
-                : "border-transparent text-slate-500 hover:text-slate-700"
+                ? "border-indigo-500 text-white"
+                : "border-transparent text-slate-500 hover:text-slate-300"
             }`}
           >
             Projects ({projects.length})
@@ -307,13 +329,13 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      <main className="mx-auto max-w-6xl px-6 py-10">
+      <main className="relative z-10 mx-auto max-w-6xl px-6 py-10">
         {message && (
           <div
-            className={`mb-6 rounded-lg px-4 py-3 text-sm font-medium ${
+            className={`mb-6 rounded-xl px-4 py-3 text-sm font-medium border backdrop-blur-sm ${
               message.startsWith("Error")
-                ? "bg-red-50 text-red-700 border border-red-200"
-                : "bg-green-50 text-green-700 border border-green-200"
+                ? "bg-red-500/10 text-red-400 border-red-500/20"
+                : "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
             }`}
           >
             {message}
@@ -325,7 +347,7 @@ export default function AdminDashboard() {
           <>
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h1 className="text-2xl font-bold text-slate-900">
+                <h1 className="text-2xl font-bold text-white">
                   Manage Services
                 </h1>
                 <p className="text-sm text-slate-500 mt-1">
@@ -335,14 +357,14 @@ export default function AdminDashboard() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={addService}
-                  className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 transition"
+                  className="rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-medium text-slate-300 hover:bg-white/[0.1] hover:text-white transition"
                 >
                   + Add Service
                 </button>
                 <button
                   onClick={saveServices}
                   disabled={savingServices}
-                  className="rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-white shadow hover:bg-primary-dark transition disabled:opacity-50"
+                  className="rounded-xl bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500 transition disabled:opacity-50"
                 >
                   {savingServices ? "Saving..." : "Save Changes"}
                 </button>
@@ -353,22 +375,22 @@ export default function AdminDashboard() {
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm"
+                  className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm p-6 hover:border-white/10 transition"
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-600">
                       Service {index + 1}
                     </span>
                     <button
                       onClick={() => removeService(index)}
-                      className="text-sm text-red-400 hover:text-red-600 transition"
+                      className="text-sm text-red-400/70 hover:text-red-400 transition"
                     >
                       Remove
                     </button>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-[80px_1fr] gap-4">
                     <div>
-                      <label className="block text-xs font-medium text-slate-500 mb-1">
+                      <label className="block text-xs font-medium text-slate-500 mb-1.5">
                         Icon
                       </label>
                       <input
@@ -377,11 +399,11 @@ export default function AdminDashboard() {
                         onChange={(e) =>
                           updateService(index, "icon", e.target.value)
                         }
-                        className="w-full rounded-lg border border-slate-300 px-3 py-2 text-center text-2xl focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                        className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2 text-center text-2xl outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 transition"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-slate-500 mb-1">
+                      <label className="block text-xs font-medium text-slate-500 mb-1.5">
                         Title
                       </label>
                       <input
@@ -390,13 +412,13 @@ export default function AdminDashboard() {
                         onChange={(e) =>
                           updateService(index, "title", e.target.value)
                         }
-                        className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                        className={inputClass}
                         placeholder="Service title"
                       />
                     </div>
                   </div>
                   <div className="mt-4">
-                    <label className="block text-xs font-medium text-slate-500 mb-1">
+                    <label className="block text-xs font-medium text-slate-500 mb-1.5">
                       Description
                     </label>
                     <textarea
@@ -405,7 +427,7 @@ export default function AdminDashboard() {
                         updateService(index, "desc", e.target.value)
                       }
                       rows={2}
-                      className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none"
+                      className={`${inputClass} resize-none`}
                       placeholder="Service description"
                     />
                   </div>
@@ -414,7 +436,7 @@ export default function AdminDashboard() {
             </div>
 
             {services.length === 0 && (
-              <div className="text-center py-16 text-slate-400">
+              <div className="text-center py-16 text-slate-600">
                 <p className="text-lg">No services yet.</p>
                 <p className="text-sm mt-1">
                   Click &quot;+ Add Service&quot; to get started.
@@ -425,23 +447,23 @@ export default function AdminDashboard() {
             {/* Services Live Preview */}
             {services.length > 0 && (
               <div className="mt-12">
-                <h2 className="text-lg font-semibold text-slate-900 mb-4">
+                <h2 className="text-lg font-semibold text-white mb-4">
                   Live Preview
                 </h2>
-                <div className="bg-white rounded-xl border border-slate-200 p-8">
+                <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8">
                   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {services.map((s, i) => (
                       <div
                         key={i}
-                        className="rounded-2xl border border-slate-200 p-6"
+                        className="group rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6 hover:border-indigo-500/20 hover:bg-white/[0.05] transition-all duration-300"
                       >
-                        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-xl">
+                        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-xl">
                           {s.icon}
                         </div>
-                        <h3 className="text-base font-semibold">
+                        <h3 className="text-base font-semibold text-white">
                           {s.title || "Untitled"}
                         </h3>
-                        <p className="mt-2 text-sm text-slate-600">
+                        <p className="mt-2 text-sm text-slate-400">
                           {s.desc || "No description"}
                         </p>
                       </div>
@@ -458,7 +480,7 @@ export default function AdminDashboard() {
           <>
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h1 className="text-2xl font-bold text-slate-900">
+                <h1 className="text-2xl font-bold text-white">
                   Manage Projects
                 </h1>
                 <p className="text-sm text-slate-500 mt-1">
@@ -468,14 +490,14 @@ export default function AdminDashboard() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={addProject}
-                  className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 transition"
+                  className="rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-medium text-slate-300 hover:bg-white/[0.1] hover:text-white transition"
                 >
                   + Add Project
                 </button>
                 <button
                   onClick={saveProjects}
                   disabled={savingProjects}
-                  className="rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-white shadow hover:bg-primary-dark transition disabled:opacity-50"
+                  className="rounded-xl bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500 transition disabled:opacity-50"
                 >
                   {savingProjects ? "Saving..." : "Save Changes"}
                 </button>
@@ -487,20 +509,20 @@ export default function AdminDashboard() {
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden"
+                  className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm overflow-hidden hover:border-white/10 transition"
                 >
                   {/* Project Header (always visible) */}
                   <div
-                    className="flex items-center gap-4 p-5 cursor-pointer hover:bg-slate-50 transition"
+                    className="flex items-center gap-4 p-5 cursor-pointer hover:bg-white/[0.02] transition"
                     onClick={() =>
                       setEditingProject(editingProject === index ? null : index)
                     }
                   >
                     <div
-                      className={`h-12 w-12 rounded-lg shrink-0 ${project.bg}`}
+                      className={`h-12 w-12 rounded-xl shrink-0 ${project.bg}`}
                     />
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-semibold text-slate-900 truncate">
+                      <h3 className="text-sm font-semibold text-white truncate">
                         {project.title || "Untitled Project"}
                       </h3>
                       <p className="text-xs text-slate-500 mt-0.5">
@@ -514,12 +536,12 @@ export default function AdminDashboard() {
                           e.stopPropagation();
                           removeProject(index);
                         }}
-                        className="text-sm text-red-400 hover:text-red-600 transition"
+                        className="text-sm text-red-400/70 hover:text-red-400 transition"
                       >
                         Remove
                       </button>
                       <svg
-                        className={`h-4 w-4 text-slate-400 transition-transform ${
+                        className={`h-4 w-4 text-slate-600 transition-transform ${
                           editingProject === index ? "rotate-180" : ""
                         }`}
                         fill="none"
@@ -538,11 +560,11 @@ export default function AdminDashboard() {
 
                   {/* Expanded Editor */}
                   {editingProject === index && (
-                    <div className="border-t border-slate-200 p-6 space-y-5">
+                    <div className="border-t border-white/[0.06] p-6 space-y-5">
                       {/* Title & Tag */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-medium text-slate-500 mb-1">
+                          <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Project Title
                           </label>
                           <input
@@ -551,12 +573,12 @@ export default function AdminDashboard() {
                             onChange={(e) =>
                               updateProject(index, "title", e.target.value)
                             }
-                            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                            className={inputClass}
                             placeholder="Project title"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-slate-500 mb-1">
+                          <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Service Category (Tag)
                           </label>
                           <select
@@ -564,11 +586,11 @@ export default function AdminDashboard() {
                             onChange={(e) =>
                               updateProject(index, "tag", e.target.value)
                             }
-                            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none bg-white"
+                            className={selectClass}
                           >
-                            <option value="">Select a service...</option>
+                            <option value="" className="bg-[#0a0a14]">Select a service...</option>
                             {serviceTitles.map((t) => (
-                              <option key={t} value={t}>
+                              <option key={t} value={t} className="bg-[#0a0a14]">
                                 {t}
                               </option>
                             ))}
@@ -578,20 +600,20 @@ export default function AdminDashboard() {
 
                       {/* Slug (read-only) */}
                       <div>
-                        <label className="block text-xs font-medium text-slate-500 mb-1">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                           URL Slug
                         </label>
                         <input
                           type="text"
                           value={project.slug}
                           readOnly
-                          className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500"
+                          className="w-full rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-2.5 text-sm text-slate-500"
                         />
                       </div>
 
                       {/* Short Description */}
                       <div>
-                        <label className="block text-xs font-medium text-slate-500 mb-1">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                           Short Description
                         </label>
                         <textarea
@@ -600,14 +622,14 @@ export default function AdminDashboard() {
                             updateProject(index, "desc", e.target.value)
                           }
                           rows={2}
-                          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none"
+                          className={`${inputClass} resize-none`}
                           placeholder="Brief project description for cards..."
                         />
                       </div>
 
                       {/* Full Description */}
                       <div>
-                        <label className="block text-xs font-medium text-slate-500 mb-1">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                           Full Description
                         </label>
                         <textarea
@@ -616,7 +638,7 @@ export default function AdminDashboard() {
                             updateProject(index, "fullDesc", e.target.value)
                           }
                           rows={5}
-                          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none"
+                          className={`${inputClass} resize-none`}
                           placeholder="Detailed project description for the project page..."
                         />
                       </div>
@@ -633,8 +655,8 @@ export default function AdminDashboard() {
                               onClick={() => updateProject(index, "bg", g)}
                               className={`h-8 w-8 rounded-lg ${g} transition ${
                                 project.bg === g
-                                  ? "ring-2 ring-primary ring-offset-2"
-                                  : "hover:ring-2 hover:ring-slate-300 hover:ring-offset-1"
+                                  ? "ring-2 ring-indigo-500 ring-offset-2 ring-offset-[#0a0a14]"
+                                  : "hover:ring-2 hover:ring-white/20 hover:ring-offset-1 hover:ring-offset-[#0a0a14]"
                               }`}
                             />
                           ))}
@@ -649,7 +671,7 @@ export default function AdminDashboard() {
                           </label>
                           <button
                             onClick={() => addGalleryItem(index)}
-                            className="text-xs text-primary hover:text-primary-dark font-medium transition"
+                            className="text-xs text-indigo-400 hover:text-indigo-300 font-medium transition"
                           >
                             + Add Image
                           </button>
@@ -658,10 +680,10 @@ export default function AdminDashboard() {
                           {project.gallery.map((item, gi) => (
                             <div
                               key={gi}
-                              className="flex items-center gap-3 rounded-lg border border-slate-200 p-3"
+                              className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3"
                             >
                               <div
-                                className={`h-10 w-14 rounded shrink-0 ${item.bg}`}
+                                className={`h-10 w-14 rounded-lg shrink-0 ${item.bg}`}
                               />
                               <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
                                 <select
@@ -674,10 +696,10 @@ export default function AdminDashboard() {
                                       e.target.value
                                     )
                                   }
-                                  className="rounded border border-slate-300 px-2 py-1 text-xs focus:border-primary outline-none bg-white"
+                                  className="rounded-lg border border-white/10 bg-white/[0.05] px-2 py-1.5 text-xs text-white outline-none focus:border-indigo-500/50 transition appearance-none"
                                 >
                                   {GRADIENT_OPTIONS.map((g) => (
-                                    <option key={g} value={g}>
+                                    <option key={g} value={g} className="bg-[#0a0a14]">
                                       {g
                                         .replace("bg-gradient-to-br from-", "")
                                         .replace(" to-", " → ")}
@@ -695,13 +717,13 @@ export default function AdminDashboard() {
                                       e.target.value
                                     )
                                   }
-                                  className="rounded border border-slate-300 px-2 py-1 text-xs focus:border-primary outline-none"
+                                  className="rounded-lg border border-white/10 bg-white/[0.05] px-2 py-1.5 text-xs text-white placeholder-slate-600 outline-none focus:border-indigo-500/50 transition"
                                   placeholder="Caption"
                                 />
                               </div>
                               <button
                                 onClick={() => removeGalleryItem(index, gi)}
-                                className="text-xs text-red-400 hover:text-red-600 transition shrink-0"
+                                className="text-xs text-red-400/70 hover:text-red-400 transition shrink-0"
                               >
                                 &times;
                               </button>
@@ -711,20 +733,20 @@ export default function AdminDashboard() {
                       </div>
 
                       {/* Preview */}
-                      <div className="pt-4 border-t border-slate-100">
-                        <p className="text-xs font-medium text-slate-400 mb-3">
+                      <div className="pt-4 border-t border-white/[0.06]">
+                        <p className="text-xs font-medium text-slate-600 mb-3">
                           CARD PREVIEW
                         </p>
-                        <div className="max-w-xs overflow-hidden rounded-2xl border border-slate-200">
+                        <div className="max-w-xs overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03]">
                           <div className={`h-36 ${project.bg}`} />
                           <div className="p-5">
-                            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                            <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400">
                               {project.tag || "Category"}
                             </span>
-                            <h3 className="mt-1.5 text-base font-semibold">
+                            <h3 className="mt-1.5 text-base font-semibold text-white">
                               {project.title || "Untitled"}
                             </h3>
-                            <p className="mt-1.5 text-xs text-slate-600">
+                            <p className="mt-1.5 text-xs text-slate-400">
                               {project.desc || "No description"}
                             </p>
                           </div>
@@ -737,7 +759,7 @@ export default function AdminDashboard() {
             </div>
 
             {projects.length === 0 && (
-              <div className="text-center py-16 text-slate-400">
+              <div className="text-center py-16 text-slate-600">
                 <p className="text-lg">No projects yet.</p>
                 <p className="text-sm mt-1">
                   Click &quot;+ Add Project&quot; to get started.
