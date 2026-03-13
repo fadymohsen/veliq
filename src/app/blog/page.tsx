@@ -1,7 +1,6 @@
 import Link from "next/link";
-import fs from "fs/promises";
-import path from "path";
 import ScrollReveal from "../components/scroll-reveal";
+import { getCollection } from "@/lib/db";
 
 interface Blog {
   slug: string;
@@ -15,11 +14,7 @@ interface Blog {
 }
 
 async function getBlogs(): Promise<Blog[]> {
-  const data = await fs.readFile(
-    path.join(process.cwd(), "src/app/data/blogs.json"),
-    "utf-8"
-  );
-  return JSON.parse(data);
+  return getCollection<Blog>("blogs");
 }
 
 export const dynamic = "force-dynamic";

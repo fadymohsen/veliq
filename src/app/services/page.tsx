@@ -1,8 +1,7 @@
 import Link from "next/link";
-import fs from "fs/promises";
-import path from "path";
 import ScrollReveal from "../components/scroll-reveal";
 import { ServiceIcon } from "../components/service-icons";
+import { getCollection } from "@/lib/db";
 
 interface Highlight {
   label: string;
@@ -30,11 +29,7 @@ interface Service {
 }
 
 async function getServices(): Promise<Service[]> {
-  const data = await fs.readFile(
-    path.join(process.cwd(), "src/app/data/services.json"),
-    "utf-8"
-  );
-  return JSON.parse(data);
+  return getCollection<Service>("services");
 }
 
 export const dynamic = "force-dynamic";

@@ -62,6 +62,31 @@ export default function AdminDashboard() {
   const [savingProjects, setSavingProjects] = useState(false);
   const [message, setMessage] = useState("");
   const [editingProject, setEditingProject] = useState<number | null>(null);
+  const [seeding, setSeeding] = useState(false);
+
+  async function seedDatabase() {
+    setSeeding(true);
+    setMessage("");
+    try {
+      const res = await fetch("/api/seed", { method: "POST" });
+      const data = await res.json();
+      if (res.ok) {
+        setMessage(`Database seeded! (${data.counts.services} services, ${data.counts.projects} projects, ${data.counts.blogs} blogs)`);
+        // Refresh data
+        const [svc, proj] = await Promise.all([
+          fetch("/api/services").then((r) => r.json()),
+          fetch("/api/projects").then((r) => r.json()),
+        ]);
+        setServices(svc);
+        setProjects(proj);
+      } else {
+        setMessage(`Seed error: ${data.error}`);
+      }
+    } catch {
+      setMessage("Failed to seed database.");
+    }
+    setSeeding(false);
+  }
 
   useEffect(() => {
     fetch("/api/services")
@@ -238,12 +263,21 @@ export default function AdminDashboard() {
               Admin Dashboard
             </span>
           </div>
-          <a
-            href="/"
-            className="text-sm text-slate-500 hover:text-primary transition"
-          >
-            View Site &rarr;
-          </a>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={seedDatabase}
+              disabled={seeding}
+              className="text-xs px-3 py-1.5 rounded-md bg-amber-100 text-amber-700 hover:bg-amber-200 transition font-medium disabled:opacity-50"
+            >
+              {seeding ? "Seeding..." : "Seed DB"}
+            </button>
+            <a
+              href="/"
+              className="text-sm text-slate-500 hover:text-primary transition"
+            >
+              View Site &rarr;
+            </a>
+          </div>
         </div>
       </header>
 

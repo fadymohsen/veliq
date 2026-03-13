@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation";
-import fs from "fs/promises";
-import path from "path";
 import Link from "next/link";
 import ContactForm from "../../contact-form";
 import ScrollReveal from "../../components/scroll-reveal";
 import { ServiceIcon } from "../../components/service-icons";
+import { getCollection } from "@/lib/db";
 
 interface Highlight {
   label: string;
@@ -40,19 +39,11 @@ interface Project {
 }
 
 async function getServices(): Promise<Service[]> {
-  const data = await fs.readFile(
-    path.join(process.cwd(), "src/app/data/services.json"),
-    "utf-8"
-  );
-  return JSON.parse(data);
+  return getCollection<Service>("services");
 }
 
 async function getProjects(): Promise<Project[]> {
-  const data = await fs.readFile(
-    path.join(process.cwd(), "src/app/data/projects.json"),
-    "utf-8"
-  );
-  return JSON.parse(data);
+  return getCollection<Project>("projects");
 }
 
 export const dynamic = "force-dynamic";
