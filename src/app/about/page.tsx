@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ScrollReveal from "../components/scroll-reveal";
+import { TeamFull } from "../components/team-section";
 
 export const metadata = {
   title: "About Us — VELIQ",
@@ -286,6 +287,12 @@ export default function AboutPage() {
 
       {/* ── Divider glow line ── */}
       <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
+
+      {/* ── Meet the Team ── */}
+      <TeamFull />
+
+      {/* ── Divider glow line ── */}
+      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
 
       {/* ── Testimonial ── */}
       <section className="relative py-28 overflow-hidden">
