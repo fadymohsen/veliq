@@ -3,6 +3,7 @@ import ScrollReveal from "./components/scroll-reveal";
 import { ServiceIcon } from "./components/service-icons";
 import TrustBar from "./components/trust-bar";
 import { TeamPreview } from "./components/team-section";
+import TestimonialsCarousel from "./components/testimonials-carousel";
 import { getCollection } from "@/lib/db";
 
 interface Service {
@@ -472,30 +473,8 @@ export default async function Home() {
       {/* ── Divider glow line ── */}
       <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
 
-      {/* ── Testimonial ── */}
-      <section className="relative py-28 overflow-hidden">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-purple-600/8 blur-[120px] animate-pulse-glow" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
-          <ScrollReveal animation="scale">
-            <svg className="mx-auto h-12 w-12 text-indigo-500/40" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M11.3 2.6C6.1 5.1 3 9.7 3 15c0 3.3 2.2 6 5 6 2.5 0 4.5-2 4.5-4.5S10.5 12 8 12c-.3 0-.6 0-.9.1C7.7 8.5 9.7 5.8 12.6 4l-1.3-1.4zm10 0C16.1 5.1 13 9.7 13 15c0 3.3 2.2 6 5 6 2.5 0 4.5-2 4.5-4.5S20.5 12 18 12c-.3 0-.6 0-.9.1C17.7 8.5 19.7 5.8 22.6 4l-1.3-1.4z" />
-            </svg>
-          </ScrollReveal>
-          <ScrollReveal animation="fade-up" delay={200}>
-            <blockquote className="mt-8 text-2xl font-medium leading-relaxed md:text-3xl text-white">
-              &ldquo;VELIQ transformed our online presence. Their software expertise
-              paired with sharp marketing strategy doubled our customer
-              acquisition in just six months.&rdquo;
-            </blockquote>
-            <p className="mt-6 text-sm text-slate-500">
-              — Sarah Mitchell, CEO at BrightPath
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
+      {/* ── Testimonials ── */}
+      <TestimonialsCarousel />
 
       {/* ── CTA ── */}
       <section className="relative py-28 overflow-hidden">
