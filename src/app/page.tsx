@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ScrollReveal from "./components/scroll-reveal";
 import { ServiceIcon } from "./components/service-icons";
+import TrustBar from "./components/trust-bar";
 import { getCollection } from "@/lib/db";
 
 interface Service {
@@ -105,6 +106,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── Trust Bar ── */}
+      <TrustBar />
 
       {/* ── Services Preview ── */}
       <section className="relative py-28 overflow-hidden">
