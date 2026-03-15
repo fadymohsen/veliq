@@ -165,15 +165,15 @@ export default function Footer() {
         <div className="mt-14 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-slate-500">
           <p>&copy; {new Date().getFullYear()} VELIQ. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition">
+            <Link href="/privacy" className="hover:text-white transition">
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-white transition">
+            </Link>
+            <Link href="/terms" className="hover:text-white transition">
               Terms of Service
-            </a>
-            <a href="#" className="hover:text-white transition">
+            </Link>
+            <Link href="/cookies" className="hover:text-white transition">
               Cookies
-            </a>
+            </Link>
           </div>
         </div>
       </div>
