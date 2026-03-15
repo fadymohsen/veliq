@@ -48,7 +48,7 @@ export default function AdminLogin() {
         {/* Logo */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold tracking-tight text-white">VELIQ</h1>
-          <p className="mt-2 text-sm text-slate-500">Admin Panel</p>
+          <p className="mt-2 text-sm text-slate-500">Admin Panel Login</p>
         </div>
 
         {/* Login Card */}
