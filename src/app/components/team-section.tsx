@@ -5,32 +5,37 @@ import { teamMembers, type TeamMember } from "./team-data";
 function MemberCard({ member, index, showBio }: { member: TeamMember; index: number; showBio: boolean }) {
   return (
     <ScrollReveal animation="fade-up" delay={index * 100}>
-      <div className="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-6 text-center transition-all duration-500 hover:bg-white/[0.08] hover:border-indigo-500/30 hover:-translate-y-2">
-        {/* Avatar */}
-        <div
-          className={`mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br ${member.gradient} shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl`}
-        >
-          <span className="text-xl font-bold text-white select-none">
-            {member.initials}
-          </span>
+      <div className="group rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-3 sm:p-6 transition-all duration-500 hover:bg-white/[0.08] hover:border-indigo-500/30 hover:-translate-y-2">
+        {/* Mobile: horizontal row / Desktop: vertical centered */}
+        <div className="flex items-center gap-3 sm:flex-col sm:text-center">
+          {/* Avatar */}
+          <div
+            className={`flex-shrink-0 flex h-12 w-12 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gradient-to-br ${member.gradient} shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl`}
+          >
+            <span className="text-sm sm:text-xl font-bold text-white select-none">
+              {member.initials}
+            </span>
+          </div>
+
+          <div className="min-w-0 sm:mt-5">
+            <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-indigo-300 transition-colors duration-300 truncate">
+              {member.name}
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-500 group-hover:text-slate-400 transition-colors duration-300">
+              {member.role}
+            </p>
+          </div>
         </div>
 
-        <h3 className="mt-5 text-base font-bold text-white group-hover:text-indigo-300 transition-colors duration-300">
-          {member.name}
-        </h3>
-        <p className="mt-1 text-sm text-slate-500 group-hover:text-slate-400 transition-colors duration-300">
-          {member.role}
-        </p>
-
-        {/* Bio — only shown in full variant */}
+        {/* Bio — only shown in full variant, hidden on mobile */}
         {showBio && (
-          <p className="mt-3 text-xs text-slate-600 leading-relaxed group-hover:text-slate-500 transition-colors duration-300">
+          <p className="hidden sm:block mt-3 text-xs text-slate-600 leading-relaxed text-center group-hover:text-slate-500 transition-colors duration-300">
             {member.bio}
           </p>
         )}
 
-        {/* Social links */}
-        <div className="mt-4 flex items-center justify-center gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+        {/* Social links — hidden on mobile */}
+        <div className="hidden sm:flex mt-4 items-center justify-center gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
           {member.socials.linkedin && (
             <a
               href={member.socials.linkedin}
@@ -64,27 +69,27 @@ function MemberCard({ member, index, showBio }: { member: TeamMember; index: num
 /** Full team section for the About page — includes bios and heading */
 export function TeamFull() {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-14 sm:py-24 overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-1/3 top-1/4 h-[400px] w-[400px] rounded-full bg-indigo-600/8 blur-[130px]" />
         <div className="absolute left-1/4 bottom-0 h-[250px] w-[250px] rounded-full bg-purple-600/6 blur-[100px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
-        <ScrollReveal animation="fade-up" className="text-center mb-16">
+        <ScrollReveal animation="fade-up" className="text-center mb-8 sm:mb-16">
           <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
             The People Behind VELIQ
           </p>
-          <h2 className="mt-2 text-3xl font-bold md:text-4xl text-white">
+          <h2 className="mt-2 text-2xl sm:text-3xl font-bold md:text-4xl text-white">
             Meet Our Team
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-slate-500">
+          <p className="mx-auto mt-3 sm:mt-4 max-w-2xl text-sm sm:text-base text-slate-500">
             A passionate group of engineers, designers, and strategists committed
             to delivering exceptional digital experiences.
           </p>
         </ScrollReveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-3 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
           {teamMembers.map((member, i) => (
             <MemberCard key={member.name} member={member} index={i} showBio />
           ))}
@@ -97,7 +102,7 @@ export function TeamFull() {
 /** Compact team preview for the Homepage — no bios, with CTA to About */
 export function TeamPreview() {
   return (
-    <section className="relative py-28 overflow-hidden">
+    <section className="relative py-14 sm:py-28 overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[400px] rounded-full bg-indigo-600/8 blur-[120px]" />
       </div>
@@ -107,15 +112,15 @@ export function TeamPreview() {
           <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
             Our Team
           </p>
-          <h2 className="mt-2 text-3xl font-bold md:text-4xl text-white">
+          <h2 className="mt-2 text-2xl sm:text-3xl font-bold md:text-4xl text-white">
             The Minds Behind the Magic
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-slate-500">
+          <p className="mx-auto mt-3 sm:mt-4 max-w-2xl text-sm sm:text-base text-slate-500">
             Meet the talented people who make it all happen.
           </p>
         </ScrollReveal>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-8 sm:mt-16 grid gap-3 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
           {teamMembers.map((member, i) => (
             <MemberCard key={member.name} member={member} index={i} showBio={false} />
           ))}
