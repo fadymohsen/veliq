@@ -35,8 +35,17 @@ export async function generateMetadata({
   const project = projects.find((p) => p.slug === slug);
   if (!project) return { title: "Project Not Found" };
   return {
-    title: `${project.title} — VELIQ`,
+    title: project.title,
     description: project.desc,
+    openGraph: {
+      title: `${project.title} — VELIQ`,
+      description: project.desc,
+      url: `https://veliq.com/projects/${slug}`,
+    },
+    twitter: {
+      title: `${project.title} — VELIQ`,
+      description: project.desc,
+    },
   };
 }
 

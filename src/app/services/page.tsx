@@ -35,9 +35,20 @@ async function getServices(): Promise<Service[]> {
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Our Services — VELIQ",
+  title: "Our Services",
   description:
     "Explore VELIQ's full range of digital services including web development, mobile apps, SEO, marketing, analytics, and brand strategy.",
+  openGraph: {
+    title: "Our Services — VELIQ",
+    description:
+      "Explore VELIQ's full range of digital services including web development, mobile apps, SEO, marketing, analytics, and brand strategy.",
+    url: "https://veliq.com/services",
+  },
+  twitter: {
+    title: "Our Services — VELIQ",
+    description:
+      "Web development, mobile apps, SEO, marketing, analytics, and brand strategy.",
+  },
 };
 
 export default async function ServicesPage() {

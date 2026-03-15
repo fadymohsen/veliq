@@ -17,9 +17,20 @@ async function getProjects(): Promise<Project[]> {
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Our Projects — VELIQ",
+  title: "Our Projects",
   description:
-    "Explore our portfolio of software, marketing, and branding projects.",
+    "Explore our portfolio of software, marketing, and branding projects. Real results for real businesses.",
+  openGraph: {
+    title: "Our Projects — VELIQ",
+    description:
+      "Explore our portfolio of software, marketing, and branding projects.",
+    url: "https://veliq.com/projects",
+  },
+  twitter: {
+    title: "Our Projects — VELIQ",
+    description:
+      "Explore our portfolio of software, marketing, and branding projects.",
+  },
 };
 
 export default async function ProjectsPage() {

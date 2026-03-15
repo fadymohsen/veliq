@@ -4,9 +4,20 @@ import { TeamFull } from "../components/team-section";
 import TestimonialsCarousel from "../components/testimonials-carousel";
 
 export const metadata = {
-  title: "About Us — VELIQ",
+  title: "About Us",
   description:
-    "Learn about VELIQ — a full-service digital partner blending technology and creativity.",
+    "Learn about VELIQ — a full-service digital partner blending technology and creativity. Meet our team, mission, and values.",
+  openGraph: {
+    title: "About Us — VELIQ",
+    description:
+      "Learn about VELIQ — a full-service digital partner blending technology and creativity.",
+    url: "https://veliq.com/about",
+  },
+  twitter: {
+    title: "About Us — VELIQ",
+    description:
+      "Learn about VELIQ — a full-service digital partner blending technology and creativity.",
+  },
 };
 
 const stats = [

@@ -2,9 +2,20 @@ import ContactForm from "../contact-form";
 import ScrollReveal from "../components/scroll-reveal";
 
 export const metadata = {
-  title: "Contact Us — VELIQ",
+  title: "Contact Us",
   description:
-    "Get in touch with VELIQ. Let's discuss your next project.",
+    "Get in touch with VELIQ. Let's discuss your next project. Based in Cairo, Egypt.",
+  openGraph: {
+    title: "Contact Us — VELIQ",
+    description:
+      "Get in touch with VELIQ. Let's discuss your next project.",
+    url: "https://veliq.com/contact",
+  },
+  twitter: {
+    title: "Contact Us — VELIQ",
+    description:
+      "Get in touch with VELIQ. Let's discuss your next project.",
+  },
 };
 
 const contactInfo = [

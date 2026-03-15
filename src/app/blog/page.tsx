@@ -20,9 +20,20 @@ async function getBlogs(): Promise<Blog[]> {
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Blog — VELIQ",
+  title: "Blog",
   description:
     "Insights, tips, and strategies on web development, marketing, SEO, and digital growth from the VELIQ team.",
+  openGraph: {
+    title: "Blog — VELIQ",
+    description:
+      "Insights, tips, and strategies on web development, marketing, SEO, and digital growth.",
+    url: "https://veliq.com/blog",
+  },
+  twitter: {
+    title: "Blog — VELIQ",
+    description:
+      "Insights, tips, and strategies on web development, marketing, SEO, and digital growth.",
+  },
 };
 
 function formatDate(dateStr: string) {

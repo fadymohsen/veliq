@@ -47,6 +47,20 @@ async function getBlogs(): Promise<Blog[]> {
 
 export const dynamic = "force-dynamic";
 
+const homepageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "VELIQ",
+  url: "https://veliq.com",
+  description:
+    "We design, build, and market digital products that help businesses scale.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://veliq.com/blog?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default async function Home() {
   const services = await getServices();
   const allProjects = await getProjects();
@@ -54,6 +68,10 @@ export default async function Home() {
   const blogs = (await getBlogs()).slice(0, 3);
   return (
     <div className="bg-[#0a0a14]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
+      />
       {/* ── Hero ── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Glowing orbs */}

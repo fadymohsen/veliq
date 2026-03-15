@@ -31,8 +31,20 @@ export async function generateMetadata({
   const blog = blogs.find((b) => b.slug === slug);
   if (!blog) return { title: "Post Not Found" };
   return {
-    title: `${blog.title} — VELIQ Blog`,
+    title: blog.title,
     description: blog.excerpt,
+    openGraph: {
+      title: `${blog.title} — VELIQ Blog`,
+      description: blog.excerpt,
+      url: `https://veliq.com/blog/${slug}`,
+      type: "article",
+      publishedTime: blog.date,
+      authors: [blog.author],
+    },
+    twitter: {
+      title: `${blog.title} — VELIQ Blog`,
+      description: blog.excerpt,
+    },
   };
 }
 

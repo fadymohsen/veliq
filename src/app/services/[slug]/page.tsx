@@ -58,8 +58,17 @@ export async function generateMetadata({
   const service = services.find((s) => s.slug === slug);
   if (!service) return { title: "Service Not Found" };
   return {
-    title: `${service.title} — VELIQ`,
+    title: service.title,
     description: service.desc,
+    openGraph: {
+      title: `${service.title} — VELIQ`,
+      description: service.desc,
+      url: `https://veliq.com/services/${slug}`,
+    },
+    twitter: {
+      title: `${service.title} — VELIQ`,
+      description: service.desc,
+    },
   };
 }
 
