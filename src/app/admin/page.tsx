@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface Service {
   id: number;
@@ -87,6 +88,12 @@ export default function AdminDashboard() {
   const [editingProject, setEditingProject] = useState<number | null>(null);
   const [editingBlog, setEditingBlog] = useState<number | null>(null);
   const [seeding, setSeeding] = useState(false);
+  const router = useRouter();
+
+  async function handleLogout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/admin/login");
+  }
 
   async function seedDatabase() {
     setSeeding(true);
@@ -398,6 +405,12 @@ export default function AdminDashboard() {
             >
               View Site &rarr;
             </a>
+            <button
+              onClick={handleLogout}
+              className="text-xs px-3.5 py-1.5 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20 transition font-medium"
+            >
+              Logout
+            </button>
           </div>
         </div>
       </header>
