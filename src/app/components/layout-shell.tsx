@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import LoadingScreen from "./loading-screen";
+import WhatsAppButton from "./whatsapp-button";
 
 export default function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -19,6 +20,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
       <Navbar />
       {children}
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }
