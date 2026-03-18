@@ -139,18 +139,19 @@ export default function SummaryPage() {
 
         {status === "success" ? (
           <div className="mt-16 text-center">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10 ring-1 ring-green-500/20">
-              <svg className="h-8 w-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/10 ring-1 ring-green-500/30">
+              <svg className="h-10 w-10 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="mt-6 text-2xl font-bold text-white">Thank You!</h3>
-            <p className="mt-3 text-sm leading-relaxed text-slate-400">
+            <h3 className="mt-8 text-3xl font-bold text-white">Thank You!</h3>
+            <p className="mt-4 text-sm leading-relaxed text-slate-400">
               We&apos;ve received your request. A member of our team will contact you shortly.
             </p>
+            <div className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
             <button
               onClick={() => router.push("/")}
-              className="mt-8 rounded-lg bg-indigo-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 active:scale-[0.98]"
+              className="mt-6 rounded-lg bg-indigo-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 active:scale-[0.98]"
             >
               Back to Home
             </button>
@@ -163,83 +164,118 @@ export default function SummaryPage() {
               Please review your information before submitting.
             </p>
 
-            <div className="mt-8 space-y-6">
-              {/* Agency section */}
-              <div>
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-medium uppercase tracking-wider text-slate-400">Agency Status</label>
+            <div className="mt-8 space-y-4">
+              {/* Section 1: Agency */}
+              <div className="rounded-xl border border-slate-800 bg-gradient-to-b from-white/[0.03] to-transparent overflow-hidden">
+                <div className="flex items-center justify-between border-b border-slate-800 px-5 py-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-md bg-indigo-500/15">
+                      <svg className="h-3.5 w-3.5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Agency</span>
+                  </div>
                   <button
                     type="button"
                     onClick={() => router.push(`/${plan}`)}
-                    className="text-xs text-indigo-400 hover:text-indigo-300 transition"
+                    className="flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300 transition"
                   >
+                    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
                     Edit
                   </button>
                 </div>
-                <div className="mt-2 rounded-lg border border-slate-800 bg-white/[0.02] px-4 py-3">
-                  <p className="text-sm text-white">
+                <div className="px-5 py-4">
+                  <p className="text-sm font-medium text-white">
                     {agencyData.status === "with" ? "Currently with an agency" : "Looking for an agency"}
                   </p>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
+                  <div className="mt-3 flex flex-wrap gap-1.5">
                     {agencyData.selections.map((s) => (
-                      <span key={s} className="rounded-full bg-slate-800 px-2.5 py-0.5 text-xs text-slate-300">{s}</span>
+                      <span key={s} className="rounded-full bg-slate-800/80 px-3 py-1 text-xs text-slate-300 ring-1 ring-slate-700/50">{s}</span>
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Contact section */}
-              <div>
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-medium uppercase tracking-wider text-slate-400">Contact Details</label>
+              {/* Section 2: Contact */}
+              <div className="rounded-xl border border-slate-800 bg-gradient-to-b from-white/[0.03] to-transparent overflow-hidden">
+                <div className="flex items-center justify-between border-b border-slate-800 px-5 py-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-md bg-indigo-500/15">
+                      <svg className="h-3.5 w-3.5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Contact</span>
+                  </div>
                   <button
                     type="button"
                     onClick={() => router.push(`/${plan}/contact`)}
-                    className="text-xs text-indigo-400 hover:text-indigo-300 transition"
+                    className="flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300 transition"
                   >
+                    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
                     Edit
                   </button>
                 </div>
-                <div className="mt-2 space-y-2">
-                  <div className="flex items-center justify-between rounded-lg border border-slate-800 bg-white/[0.02] px-4 py-3">
+                <div className="divide-y divide-slate-800/60">
+                  <div className="flex items-center justify-between px-5 py-3">
                     <span className="text-xs text-slate-500">Name</span>
-                    <span className="text-sm text-white">{contactData.name}</span>
+                    <span className="text-sm font-medium text-white">{contactData.name}</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg border border-slate-800 bg-white/[0.02] px-4 py-3">
+                  <div className="flex items-center justify-between px-5 py-3">
                     <span className="text-xs text-slate-500">Phone</span>
-                    <span className="text-sm text-white">{contactData.phone}</span>
+                    <span className="text-sm font-medium text-white">{contactData.phone}</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg border border-slate-800 bg-white/[0.02] px-4 py-3">
+                  <div className="flex items-center justify-between px-5 py-3">
                     <span className="text-xs text-slate-500">Email</span>
-                    <span className="text-sm text-white">{contactData.email}</span>
+                    <span className="text-sm font-medium text-white">{contactData.email}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Services section */}
-              <div>
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-medium uppercase tracking-wider text-slate-400">Services</label>
+              {/* Section 3: Services */}
+              <div className="rounded-xl border border-slate-800 bg-gradient-to-b from-white/[0.03] to-transparent overflow-hidden">
+                <div className="flex items-center justify-between border-b border-slate-800 px-5 py-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-md bg-indigo-500/15">
+                      <svg className="h-3.5 w-3.5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                      </svg>
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Services</span>
+                    <span className="rounded-full bg-indigo-500/15 px-2 py-0.5 text-[10px] font-bold text-indigo-400">{services.length}</span>
+                  </div>
                   <button
                     type="button"
                     onClick={() => router.push(`/${plan}/services`)}
-                    className="text-xs text-indigo-400 hover:text-indigo-300 transition"
+                    className="flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300 transition"
                   >
+                    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
                     Edit
                   </button>
                 </div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {services.map((s) => (
-                    <span key={s} className="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-400 ring-1 ring-indigo-500/20">{s}</span>
-                  ))}
+                <div className="px-5 py-4">
+                  <div className="flex flex-wrap gap-2">
+                    {services.map((s) => (
+                      <span key={s} className="inline-flex items-center gap-1.5 rounded-full bg-indigo-500/10 px-3 py-1.5 text-xs font-medium text-indigo-400 ring-1 ring-indigo-500/20">
+                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              {/* Divider */}
-              <div className="h-px bg-slate-800" />
-
               {/* Consent */}
-              <div>
+              <div className="mt-2 rounded-xl border border-slate-800 bg-gradient-to-b from-white/[0.03] to-transparent px-5 py-4">
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
                     type="checkbox"
@@ -254,7 +290,7 @@ export default function SummaryPage() {
                     I agree that a VELIQ representative may contact me via email or phone regarding my inquiry.
                   </span>
                 </label>
-                {consentError && <p className="mt-1.5 text-xs text-red-400">{consentError}</p>}
+                {consentError && <p className="mt-2 text-xs text-red-400">{consentError}</p>}
               </div>
 
               {/* Server error */}
@@ -263,7 +299,7 @@ export default function SummaryPage() {
               )}
 
               {/* Buttons */}
-              <div className="flex gap-3">
+              <div className="flex gap-3 pt-2">
                 <button
                   type="button"
                   onClick={() => router.push(`/${plan}/services`)}
@@ -275,7 +311,7 @@ export default function SummaryPage() {
                   type="button"
                   onClick={handleSubmit}
                   disabled={status === "sending"}
-                  className="flex-1 rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="flex-1 rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition hover:shadow-indigo-500/30 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {status === "sending" ? "Sending..." : "Submit"}
                 </button>
