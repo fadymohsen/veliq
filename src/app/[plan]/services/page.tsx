@@ -122,7 +122,7 @@ export default function ServicesPage() {
   }
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#0a0a14]">
+    <div className="relative flex h-screen flex-col items-center justify-center overflow-hidden bg-[#0a0a14]">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-indigo-600/15 blur-[120px]" />
@@ -140,9 +140,9 @@ export default function ServicesPage() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-lg px-6 py-12">
+      <div className="relative z-10 flex w-full max-w-lg flex-col px-6 py-8 max-h-[calc(100vh-2rem)] overflow-hidden">
         {/* Header */}
-        <div className="mb-8 text-center">
+        <div className="mb-6 shrink-0 text-center">
           <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl">VELIQ</h2>
           <div className="mx-auto mt-3 h-px w-12 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
           <p className="mt-3 text-sm text-slate-400">
@@ -151,7 +151,7 @@ export default function ServicesPage() {
         </div>
 
         {/* Form card */}
-        <div className="rounded-2xl bg-white p-8 shadow-2xl">
+        <div className="rounded-2xl bg-white p-8 shadow-2xl overflow-y-auto">
           {/* Step indicator */}
           <div className="mb-6 flex items-center gap-3">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-600">1</div>
@@ -186,7 +186,7 @@ export default function ServicesPage() {
 
               <form className="mt-6 space-y-4" onSubmit={handleSubmit} noValidate>
                 {/* Services as checkboxes list */}
-                <div className="space-y-1 max-h-64 overflow-y-auto rounded-xl border border-slate-200 p-2">
+                <div className="space-y-1 rounded-xl border border-slate-200 p-2">
                   {SERVICES.map((service) => (
                     <label
                       key={service}
@@ -263,7 +263,7 @@ export default function ServicesPage() {
                     disabled={status === "sending"}
                     className="flex-1 rounded-full bg-[#0a0a14] px-6 py-3 text-sm font-semibold text-white shadow hover:bg-slate-800 transition disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {status === "sending" ? "Sending..." : "Send Message"}
+                    {status === "sending" ? "Sending..." : "Send"}
                   </button>
                 </div>
               </form>
