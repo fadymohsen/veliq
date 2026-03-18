@@ -26,37 +26,31 @@ type FormErrors = {
 
 export default function ComingSoon() {
   const [open, setOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [step, setStep] = useState<1 | 2>(1);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [serverError, setServerError] = useState("");
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [formName, setFormName] = useState("");
+  const [formPhone, setFormPhone] = useState("");
+  const [formEmail, setFormEmail] = useState("");
   const nameRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setServicesOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
-
   // Reset form when popup closes
   useEffect(() => {
     if (!open) {
+      setStep(1);
       setSelectedServices([]);
       setConsent(false);
       setErrors({});
       setStatus("idle");
       setServerError("");
-      setServicesOpen(false);
+      setFormName("");
+      setFormPhone("");
+      setFormEmail("");
     }
   }, [open]);
 
@@ -67,7 +61,7 @@ export default function ComingSoon() {
     setErrors((prev) => ({ ...prev, services: undefined }));
   }
 
-  function validate(): FormErrors {
+  function validateStep1(): FormErrors {
     const errs: FormErrors = {};
     const name = nameRef.current?.value?.trim() ?? "";
     const phone = phoneRef.current?.value?.trim() ?? "";
@@ -76,10 +70,26 @@ export default function ComingSoon() {
     if (!name || name.length < 2) errs.name = "Name is required (min 2 characters).";
     if (!phone || !/^\+?[\d\s\-()]{7,20}$/.test(phone)) errs.phone = "Enter a valid phone number.";
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = "Enter a valid email address.";
-    if (selectedServices.length === 0) errs.services = "Select at least one service.";
-    if (!consent) errs.consent = "You must agree to be contacted.";
 
     return errs;
+  }
+
+  function validate(): FormErrors {
+    const errs: FormErrors = {};
+    if (selectedServices.length === 0) errs.services = "Select at least one service.";
+    if (!consent) errs.consent = "You must agree to be contacted.";
+    return errs;
+  }
+
+  function handleNext() {
+    const errs = validateStep1();
+    setErrors(errs);
+    if (Object.keys(errs).length === 0) {
+      setFormName(nameRef.current!.value.trim());
+      setFormPhone(phoneRef.current!.value.trim());
+      setFormEmail(emailRef.current!.value.trim());
+      setStep(2);
+    }
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -96,9 +106,9 @@ export default function ComingSoon() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: nameRef.current!.value.trim(),
-          phone: phoneRef.current!.value.trim(),
-          email: emailRef.current!.value.trim(),
+          name: formName,
+          phone: formPhone,
+          email: formEmail,
           services: selectedServices,
           consent: true,
         }),
@@ -236,85 +246,94 @@ export default function ComingSoon() {
               </div>
             ) : (
               <>
-                <h3 className="text-2xl font-bold text-slate-900">Contact Us</h3>
-                <p className="mt-2 text-sm text-slate-500">
-                  Tell us about your project and we&apos;ll get back to you within 24 hours.
-                </p>
+                {/* Step indicator */}
+                <div className="mb-6 flex items-center gap-3">
+                  <div className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition ${
+                    step === 1 ? "bg-indigo-600 text-white" : "bg-indigo-100 text-indigo-600"
+                  }`}>1</div>
+                  <div className="h-px flex-1 bg-slate-200" />
+                  <div className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition ${
+                    step === 2 ? "bg-indigo-600 text-white" : "bg-slate-200 text-slate-400"
+                  }`}>2</div>
+                </div>
 
-                <form className="mt-6 space-y-4" onSubmit={handleSubmit} noValidate>
-                  {/* Name */}
-                  <div>
-                    <input
-                      ref={nameRef}
-                      type="text"
-                      placeholder="Name"
-                      onChange={() => setErrors((p) => ({ ...p, name: undefined }))}
-                      className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition ${
-                        errors.name ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500" : "border-slate-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                      }`}
-                    />
-                    {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
-                  </div>
+                {step === 1 ? (
+                  <>
+                    <h3 className="text-2xl font-bold text-slate-900">Contact Us</h3>
+                    <p className="mt-2 text-sm text-slate-500">
+                      Tell us about yourself and we&apos;ll help you pick the right services.
+                    </p>
 
-                  {/* Phone */}
-                  <div>
-                    <input
-                      ref={phoneRef}
-                      type="tel"
-                      placeholder="Phone Number"
-                      onChange={() => setErrors((p) => ({ ...p, phone: undefined }))}
-                      className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition ${
-                        errors.phone ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500" : "border-slate-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                      }`}
-                    />
-                    {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
-                  </div>
+                    <div className="mt-6 space-y-4">
+                      {/* Name */}
+                      <div>
+                        <input
+                          ref={nameRef}
+                          type="text"
+                          placeholder="Name"
+                          defaultValue={formName}
+                          onChange={() => setErrors((p) => ({ ...p, name: undefined }))}
+                          className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition ${
+                            errors.name ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500" : "border-slate-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                          }`}
+                        />
+                        {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                      </div>
 
-                  {/* Email */}
-                  <div>
-                    <input
-                      ref={emailRef}
-                      type="email"
-                      placeholder="Email Address"
-                      onChange={() => setErrors((p) => ({ ...p, email: undefined }))}
-                      className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition ${
-                        errors.email ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500" : "border-slate-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                      }`}
-                    />
-                    {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
-                  </div>
+                      {/* Phone */}
+                      <div>
+                        <input
+                          ref={phoneRef}
+                          type="tel"
+                          placeholder="Phone Number"
+                          defaultValue={formPhone}
+                          onChange={() => setErrors((p) => ({ ...p, phone: undefined }))}
+                          className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition ${
+                            errors.phone ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500" : "border-slate-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                          }`}
+                        />
+                        {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
+                      </div>
 
-                  {/* Services multi-select dropdown */}
-                  <div ref={dropdownRef} className="relative">
-                    <button
-                      type="button"
-                      onClick={() => setServicesOpen((p) => !p)}
-                      className={`flex w-full items-center justify-between rounded-xl border px-4 py-3 text-sm outline-none transition ${
-                        errors.services ? "border-red-400" : "border-slate-300"
-                      } ${servicesOpen ? "ring-1 ring-indigo-500 border-indigo-500" : ""}`}
-                    >
-                      <span className={selectedServices.length > 0 ? "text-slate-900" : "text-slate-400"}>
-                        {selectedServices.length > 0
-                          ? `${selectedServices.length} service${selectedServices.length > 1 ? "s" : ""} selected`
-                          : "Select Services"}
-                      </span>
-                      <svg
-                        className={`h-4 w-4 text-slate-400 transition-transform ${servicesOpen ? "rotate-180" : ""}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
+                      {/* Email */}
+                      <div>
+                        <input
+                          ref={emailRef}
+                          type="email"
+                          placeholder="Email Address"
+                          defaultValue={formEmail}
+                          onChange={() => setErrors((p) => ({ ...p, email: undefined }))}
+                          className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition ${
+                            errors.email ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500" : "border-slate-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                          }`}
+                        />
+                        {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                      </div>
+
+                      {/* Next button */}
+                      <button
+                        type="button"
+                        onClick={handleNext}
+                        className="w-full rounded-full bg-[#0a0a14] px-6 py-3 text-sm font-semibold text-white shadow hover:bg-slate-800 transition"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
+                        Next
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="text-2xl font-bold text-slate-900">Select Services</h3>
+                    <p className="mt-2 text-sm text-slate-500">
+                      Choose the services you&apos;re interested in and we&apos;ll get back to you within 24 hours.
+                    </p>
 
-                    {servicesOpen && (
-                      <div className="absolute left-0 right-0 top-full z-10 mt-1 max-h-52 overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-lg">
+                    <form className="mt-6 space-y-4" onSubmit={handleSubmit} noValidate>
+                      {/* Services as checkboxes list */}
+                      <div className="space-y-2 max-h-60 overflow-y-auto rounded-xl border border-slate-200 p-2">
                         {SERVICES.map((service) => (
                           <label
                             key={service}
-                            className="flex cursor-pointer items-center gap-3 px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition"
+                            className="flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition"
                           >
                             <input
                               type="checkbox"
@@ -326,65 +345,73 @@ export default function ComingSoon() {
                           </label>
                         ))}
                       </div>
-                    )}
+                      {errors.services && <p className="mt-1 text-xs text-red-500">{errors.services}</p>}
 
-                    {errors.services && <p className="mt-1 text-xs text-red-500">{errors.services}</p>}
-                  </div>
+                      {/* Selected services tags */}
+                      {selectedServices.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {selectedServices.map((service) => (
+                            <span
+                              key={service}
+                              className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700"
+                            >
+                              {service}
+                              <button
+                                type="button"
+                                onClick={() => toggleService(service)}
+                                className="ml-0.5 hover:text-indigo-900"
+                              >
+                                &times;
+                              </button>
+                            </span>
+                          ))}
+                        </div>
+                      )}
 
-                  {/* Selected services tags */}
-                  {selectedServices.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {selectedServices.map((service) => (
-                        <span
-                          key={service}
-                          className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700"
+                      {/* Consent checkbox */}
+                      <div>
+                        <label className="flex items-start gap-3 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={consent}
+                            onChange={(e) => {
+                              setConsent(e.target.checked);
+                              setErrors((p) => ({ ...p, consent: undefined }));
+                            }}
+                            className="mt-0.5 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                          />
+                          <span className="text-xs leading-relaxed text-slate-500">
+                            I agree that a VELIQ representative may contact me via email or phone regarding my inquiry.
+                          </span>
+                        </label>
+                        {errors.consent && <p className="mt-1 text-xs text-red-500">{errors.consent}</p>}
+                      </div>
+
+                      {/* Server error */}
+                      {status === "error" && (
+                        <p className="rounded-lg bg-red-50 px-4 py-2.5 text-sm text-red-600">{serverError}</p>
+                      )}
+
+                      {/* Back & Submit buttons */}
+                      <div className="flex gap-3">
+                        <button
+                          type="button"
+                          onClick={() => { setStep(1); setErrors({}); }}
+                          className="flex-1 rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition"
                         >
-                          {service}
-                          <button
-                            type="button"
-                            onClick={() => toggleService(service)}
-                            className="ml-0.5 hover:text-indigo-900"
-                          >
-                            &times;
-                          </button>
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Consent checkbox */}
-                  <div>
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={consent}
-                        onChange={(e) => {
-                          setConsent(e.target.checked);
-                          setErrors((p) => ({ ...p, consent: undefined }));
-                        }}
-                        className="mt-0.5 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                      />
-                      <span className="text-xs leading-relaxed text-slate-500">
-                        I agree that a VELIQ representative may contact me via email or phone regarding my inquiry.
-                      </span>
-                    </label>
-                    {errors.consent && <p className="mt-1 text-xs text-red-500">{errors.consent}</p>}
-                  </div>
-
-                  {/* Server error */}
-                  {status === "error" && (
-                    <p className="rounded-lg bg-red-50 px-4 py-2.5 text-sm text-red-600">{serverError}</p>
-                  )}
-
-                  {/* Submit */}
-                  <button
-                    type="submit"
-                    disabled={status === "sending"}
-                    className="w-full rounded-full bg-[#0a0a14] px-6 py-3 text-sm font-semibold text-white shadow hover:bg-slate-800 transition disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    {status === "sending" ? "Sending..." : "Send Message"}
-                  </button>
-                </form>
+                          Back
+                        </button>
+                        <button
+                          type="submit"
+                          disabled={status === "sending"}
+                          className="flex-1 rounded-full bg-[#0a0a14] px-6 py-3 text-sm font-semibold text-white shadow hover:bg-slate-800 transition disabled:opacity-60 disabled:cursor-not-allowed"
+                        >
+                          {status === "sending" ? "Sending..." : "Send Message"}
+                        </button>
+                      </div>
+                    </form>
+                  </>
+                )}
               </>
             )}
           </div>
