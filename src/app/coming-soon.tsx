@@ -257,6 +257,7 @@ export default function ComingSoon() {
                   }`}>2</div>
                 </div>
 
+                <div className="min-h-[370px] flex flex-col">
                 {step === 1 ? (
                   <>
                     <h3 className="text-2xl font-bold text-slate-900">Contact Us</h3>
@@ -264,7 +265,7 @@ export default function ComingSoon() {
                       Tell us about yourself and we&apos;ll help you pick the right services.
                     </p>
 
-                    <div className="mt-6 space-y-4">
+                    <div className="mt-6 flex flex-1 flex-col space-y-4">
                       {/* Name */}
                       <div>
                         <input
@@ -311,6 +312,7 @@ export default function ComingSoon() {
                       </div>
 
                       {/* Next button */}
+                      <div className="flex-1" />
                       <button
                         type="button"
                         onClick={handleNext}
@@ -327,7 +329,7 @@ export default function ComingSoon() {
                       Choose the services you&apos;re interested in and we&apos;ll get back to you within 24 hours.
                     </p>
 
-                    <form className="mt-6 space-y-4" onSubmit={handleSubmit} noValidate>
+                    <form className="mt-6 flex flex-1 flex-col space-y-4" onSubmit={handleSubmit} noValidate>
                       {/* Services as checkboxes list */}
                       <div className="space-y-2 max-h-60 overflow-y-auto rounded-xl border border-slate-200 p-2">
                         {SERVICES.map((service) => (
@@ -412,6 +414,7 @@ export default function ComingSoon() {
                     </form>
                   </>
                 )}
+                </div>
               </>
             )}
           </div>
