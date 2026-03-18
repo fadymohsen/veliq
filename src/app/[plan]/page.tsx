@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useParams, useRouter, notFound } from "next/navigation";
+import Link from "next/link";
 
 const VALID_PLANS = ["register"] as const;
 
@@ -114,7 +115,7 @@ export default function PlanContactPage() {
       <div className="relative z-10 mx-auto max-w-md px-6 py-16">
         {/* Logo */}
         <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl">VELIQ</h2>
+          <Link href="/" className="text-2xl font-bold tracking-tight text-white md:text-3xl hover:text-slate-200 transition">VELIQ</Link>
           <div className="mx-auto mt-4 h-px w-12 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
         </div>
 
