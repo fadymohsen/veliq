@@ -1,12 +1,4 @@
-"use client";
-
 import Link from "next/link";
-
-const PLANS = [
-  { slug: "simple", label: "Simple" },
-  { slug: "elite", label: "Elite" },
-  { slug: "professional", label: "Professional" },
-] as const;
 
 export default function ComingSoon() {
   return (
@@ -53,31 +45,26 @@ export default function ComingSoon() {
           out now to get started early.
         </p>
 
-        {/* Plan CTAs */}
-        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          {PLANS.map((plan) => (
-            <Link
-              key={plan.slug}
-              href={`/${plan.slug}`}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-semibold text-[#0a0a14] shadow-lg shadow-indigo-500/20 transition hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98] sm:w-auto"
-            >
-              {plan.label}
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
-          ))}
-        </div>
+        {/* CTA */}
+        <Link
+          href="/register"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-semibold text-[#0a0a14] shadow-lg shadow-indigo-500/20 transition hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98]"
+        >
+          Get in Touch
+          <svg
+            className="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </Link>
       </div>
 
       {/* Footer */}

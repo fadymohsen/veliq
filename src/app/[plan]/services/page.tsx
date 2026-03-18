@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useRouter, notFound } from "next/navigation";
 
-const VALID_PLANS = ["simple", "elite", "professional"] as const;
+const VALID_PLANS = ["simple", "elite", "professional", "register"] as const;
 
 const SERVICES = [
   "Website Development",
