@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { useParams, useRouter, notFound } from "next/navigation";
 
-const VALID_PLANS = ["simple", "elite", "professional", "register"] as const;
+const VALID_PLANS = ["register"] as const;
 
 const COUNTRIES = [
   { name: "Egypt", code: "+20", flag: "🇪🇬", minLen: 10, maxLen: 10 },
