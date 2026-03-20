@@ -21,7 +21,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, phone, email, services, consent } = body;
+    const { name, phone, email, services, agencyStatus, agencySelections, consent } = body;
 
     // ── Validation ──
     if (!name || typeof name !== "string" || name.trim().length < 2) {
@@ -48,6 +48,11 @@ export async function POST(req: Request) {
     if (!consent) {
       return NextResponse.json({ error: "You must agree to be contacted." }, { status: 400 });
     }
+
+    const agencyLabel = agencyStatus === "with" ? "Currently with an agency" : "Looking for an agency";
+    const agencyTags = Array.isArray(agencySelections)
+      ? agencySelections.map((s: string) => `<span style="display:inline-block;background:#f1f5f9;color:#475569;font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;margin:4px 4px 4px 0">${s}</span>`).join("")
+      : "";
 
     const serviceTags = services
       .map((s: string) => `<span style="display:inline-block;background:#eef2ff;color:#4338ca;font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;margin:4px 4px 4px 0">${s}</span>`)
@@ -121,6 +126,31 @@ export async function POST(req: Request) {
                       </td>
                       <td style="padding:16px 20px">
                         <a href="mailto:${email.trim()}" style="color:#4338ca;font-size:14px;font-weight:600;text-decoration:none">${email.trim()}</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <!-- Agency -->
+              <tr>
+                <td style="padding:28px 40px 0">
+                  <h2 style="margin:0 0 16px;color:#0f172a;font-size:18px;font-weight:700">Agency Status</h2>
+                  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;border-radius:12px;overflow:hidden">
+                    <tr>
+                      <td style="padding:16px 20px;border-bottom:1px solid #e2e8f0;width:120px">
+                        <span style="color:#64748b;font-size:13px;font-weight:500">Status</span>
+                      </td>
+                      <td style="padding:16px 20px;border-bottom:1px solid #e2e8f0">
+                        <span style="color:#0f172a;font-size:14px;font-weight:600">${agencyLabel}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:16px 20px">
+                        <span style="color:#64748b;font-size:13px;font-weight:500">Details</span>
+                      </td>
+                      <td style="padding:16px 20px">
+                        <div style="padding:4px 0">${agencyTags || '<span style="color:#94a3b8;font-size:13px">None specified</span>'}</div>
                       </td>
                     </tr>
                   </table>
@@ -217,6 +247,15 @@ export async function POST(req: Request) {
                       </tr>
                     </table>
                   </div>
+                </td>
+              </tr>
+
+              <!-- Agency Summary -->
+              <tr>
+                <td style="padding:28px 40px 0">
+                  <h3 style="margin:0 0 12px;color:#0f172a;font-size:15px;font-weight:700">Your agency status</h3>
+                  <p style="margin:0 0 8px;color:#475569;font-size:14px">${agencyLabel}</p>
+                  <div style="padding:4px 0">${agencyTags}</div>
                 </td>
               </tr>
 
