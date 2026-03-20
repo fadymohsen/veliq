@@ -175,7 +175,7 @@ export default function ContactPage() {
                   } ${countryOpen ? "ring-1 ring-indigo-500/40 border-indigo-500" : ""}`}
                 >
                   <span>{selectedCountry.flag}</span>
-                  {selectedCountry.name !== "Egypt" && <span className="text-white font-medium">{selectedCountry.code}</span>}
+                  <span className="text-white font-medium">{selectedCountry.code}</span>
                   <svg
                     className={`h-3.5 w-3.5 text-slate-500 transition-transform ${countryOpen ? "rotate-180" : ""}`}
                     fill="none"
