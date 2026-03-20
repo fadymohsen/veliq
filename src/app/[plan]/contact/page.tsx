@@ -7,7 +7,7 @@ import Link from "next/link";
 const VALID_PLANS = ["register"] as const;
 
 const COUNTRIES = [
-  { name: "Egypt", code: "+20", flag: "\u{1F1EA}\u{1F1EC}", minLen: 10, maxLen: 10 },
+  { name: "Egypt", code: "+20", flag: "\u{1F1EA}\u{1F1EC}", minLen: 11, maxLen: 11 },
   { name: "Saudi Arabia", code: "+966", flag: "\u{1F1F8}\u{1F1E6}", minLen: 9, maxLen: 9 },
   { name: "UAE", code: "+971", flag: "\u{1F1E6}\u{1F1EA}", minLen: 9, maxLen: 9 },
   { name: "Kuwait", code: "+965", flag: "\u{1F1F0}\u{1F1FC}", minLen: 8, maxLen: 8 },
@@ -92,7 +92,7 @@ export default function ContactPage() {
 
     const data = {
       name: nameRef.current!.value.trim(),
-      phone: `${selectedCountry.code} ${phoneRef.current!.value.trim()}`,
+      phone: selectedCountry.name === "Egypt" ? phoneRef.current!.value.trim() : `${selectedCountry.code} ${phoneRef.current!.value.trim()}`,
       email: emailRef.current!.value.trim(),
       plan,
     };
@@ -175,7 +175,7 @@ export default function ContactPage() {
                   } ${countryOpen ? "ring-1 ring-indigo-500/40 border-indigo-500" : ""}`}
                 >
                   <span>{selectedCountry.flag}</span>
-                  <span className="text-white font-medium">{selectedCountry.code}</span>
+                  {selectedCountry.name !== "Egypt" && <span className="text-white font-medium">{selectedCountry.code}</span>}
                   <svg
                     className={`h-3.5 w-3.5 text-slate-500 transition-transform ${countryOpen ? "rotate-180" : ""}`}
                     fill="none"
@@ -214,7 +214,7 @@ export default function ContactPage() {
               <input
                 ref={phoneRef}
                 type="tel"
-                placeholder="Phone number"
+                placeholder={selectedCountry.name === "Egypt" ? "01XXXXXXXXX" : "Phone number"}
                 onChange={() => setErrors((p) => ({ ...p, phone: undefined }))}
                 className={`w-full rounded-lg border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none backdrop-blur-sm transition ${
                   errors.phone
