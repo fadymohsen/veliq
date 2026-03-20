@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 const SERVICES = [
   "Website Development",
@@ -12,70 +13,10 @@ const SERVICES = [
   "Interior Design",
 ] as const;
 
+const ADMIN_EMAIL = "fady.mohsen@veliq.co";
 const SENDER_EMAIL = "fady.mohsen@veliq.co";
 
-async function getAccessToken(): Promise<string> {
-  const tenantId = process.env.AZURE_TENANT_ID!;
-  const clientId = process.env.AZURE_CLIENT_ID!;
-  const clientSecret = process.env.AZURE_CLIENT_SECRET!;
-
-  const res = await fetch(
-    `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        client_id: clientId,
-        client_secret: clientSecret,
-        scope: "https://graph.microsoft.com/.default",
-        grant_type: "client_credentials",
-      }),
-    }
-  );
-
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Failed to get access token: ${err}`);
-  }
-
-  const data = await res.json();
-  return data.access_token;
-}
-
-async function sendMail(
-  accessToken: string,
-  to: string,
-  subject: string,
-  htmlBody: string,
-  replyTo?: string
-) {
-  const message: Record<string, unknown> = {
-    subject,
-    body: { contentType: "HTML", content: htmlBody },
-    toRecipients: [{ emailAddress: { address: to } }],
-  };
-
-  if (replyTo) {
-    message.replyTo = [{ emailAddress: { address: replyTo } }];
-  }
-
-  const res = await fetch(
-    `https://graph.microsoft.com/v1.0/users/${SENDER_EMAIL}/sendMail`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message, saveToSentItems: true }),
-    }
-  );
-
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Failed to send email to ${to}: ${err}`);
-  }
-}
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
@@ -108,9 +49,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "You must agree to be contacted." }, { status: 400 });
     }
 
-    // ── Get Microsoft Graph access token ──
-    const accessToken = await getAccessToken();
-
     const serviceTags = services
       .map((s: string) => `<span style="display:inline-block;background:#eef2ff;color:#4338ca;font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;margin:4px 4px 4px 0">${s}</span>`)
       .join("");
@@ -124,12 +62,15 @@ export async function POST(req: Request) {
       minute: "2-digit",
     });
 
-    // ── Email to VELIQ ──
-    await sendMail(
-      accessToken,
-      SENDER_EMAIL,
-      `New Contact Request from ${name.trim()}`,
-      `
+    // ── Send both emails in parallel ──
+    const [adminResult, clientResult] = await Promise.all([
+      // Email to VELIQ admin
+      resend.emails.send({
+        from: `VELIQ <${SENDER_EMAIL}>`,
+        to: [ADMIN_EMAIL],
+        replyTo: email.trim(),
+        subject: `New Contact Request from ${name.trim()}`,
+        html: `
       <!DOCTYPE html>
       <html>
       <head><meta charset="utf-8"></head>
@@ -214,15 +155,15 @@ export async function POST(req: Request) {
       </body>
       </html>
       `,
-      email.trim()
-    );
+      }),
 
-    // ── Confirmation email to client ──
-    await sendMail(
-      accessToken,
-      email.trim(),
-      "Thank you for contacting VELIQ!",
-      `
+      // Confirmation email to client
+      resend.emails.send({
+        from: `VELIQ <${SENDER_EMAIL}>`,
+        to: [email.trim()],
+        replyTo: ADMIN_EMAIL,
+        subject: "Thank you for contacting VELIQ!",
+        html: `
       <!DOCTYPE html>
       <html>
       <head><meta charset="utf-8"></head>
@@ -316,8 +257,16 @@ export async function POST(req: Request) {
         </table>
       </body>
       </html>
-      `
-    );
+      `,
+      }),
+    ]);
+
+    if (adminResult.error) {
+      throw new Error(`Failed to send admin email: ${adminResult.error.message}`);
+    }
+    if (clientResult.error) {
+      throw new Error(`Failed to send client email: ${clientResult.error.message}`);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
