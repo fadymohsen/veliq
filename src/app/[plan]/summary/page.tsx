@@ -73,8 +73,8 @@ export default function SummaryPage() {
           phone: contactData.phone,
           email: contactData.email,
           services,
-          agencyStatus: agencyData.status,
-          agencySelections: agencyData.selections,
+          agencyStatus: agencyData?.status,
+          agencySelections: agencyData?.selections,
           consent: true,
         }),
       });
