@@ -87,10 +87,10 @@ const supportPlans = [
     priceSuffix: "EGP / month",
     description: "Essentials to keep your website stable and your team unblocked.",
     features: [
-      "Simple bug fixing",
-      "Image & content replacements",
-      "Website monitoring",
-      "Technical consultations",
+      "Simple bug fixing & quick patches",
+      "Image & content edits on request",
+      "Website uptime & health monitoring",
+      "Technical guidance & consultations",
     ],
     disclaimer: null,
     highlighted: false,
@@ -106,10 +106,10 @@ const supportPlans = [
     priceSuffix: "EGP / month",
     description: "Basic Support with developer-level SEO to keep your rankings healthy.",
     features: [
-      "Everything in Basic Support",
-      "Technical SEO audits",
-      "On-page optimization",
-      "Performance & Core Web Vitals",
+      "Everything in Basic Support plan",
+      "Technical SEO audits & reporting",
+      "On-page optimization & corrections",
+      "Core Web Vitals & performance fixes",
     ],
     disclaimer: null,
     highlighted: false,
@@ -125,10 +125,10 @@ const supportPlans = [
     priceSuffix: "EGP / month",
     description: "Everything in Basic, plus hands-on implementation and page building.",
     features: [
-      "Everything in Basic Support",
-      "Implementation of any requirement",
-      "Building new pages",
-      "Priority response & fast-track delivery",
+      "Everything in Basic Support plan",
+      "Full implementation of requirements",
+      "Design & build new website pages",
+      "Priority response & fast delivery",
     ],
     disclaimer: "Does not include website enhancements, optimization, or SEO support.",
     highlighted: true,
@@ -147,7 +147,7 @@ const supportPlans = [
       "Everything in Professional Support",
       "SEO issue fixing & technical fixes",
       "Core Web Vitals & indexing issues",
-      "On-page SEO corrections",
+      "On-page SEO corrections & audits",
     ],
     disclaimer: "Does not include blog creation, SEO enhancements, or new content strategy.",
     highlighted: false,
@@ -419,9 +419,9 @@ export default function PricingPage() {
                 <p className="mt-1 text-sm text-slate-400">{plan.description}</p>
 
                 <div className="mt-5">
-                  <span className="text-2xl font-extrabold text-white">{plan.priceLabel}</span>
+                  <p className="text-2xl font-extrabold text-white">{plan.priceLabel}</p>
                   {plan.priceSuffix && (
-                    <span className="ml-1 text-sm font-medium text-slate-400">{plan.priceSuffix}</span>
+                    <p className="mt-0.5 text-sm font-medium text-slate-400">{plan.priceSuffix}</p>
                   )}
                 </div>
 
