@@ -379,25 +379,49 @@ export default function PricingPage() {
                 <div className="sm:hidden h-px bg-slate-700/50" />
 
                 {/* Right: what's included */}
-                <div className="flex flex-col gap-3 sm:max-w-xs">
+                <div className="flex flex-col gap-4 sm:max-w-sm">
                   <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">What&apos;s Included</p>
-                  <ul className="flex flex-col gap-3">
-                    {[
-                      "Dedicated SEO developer on your project",
-                      "Full website support throughout the engagement",
-                      "Detailed monthly reports",
-                      "Keyword research & strategy",
-                      "On-page & technical SEO implementation",
-                      "Deliverables shared upon project kick-off",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-slate-400">
-                        <svg className="mt-0.5 h-4 w-4 shrink-0 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+
+                  {[
+                    {
+                      label: "Keyword Research & Strategy",
+                      desc: "Primary & long-tail keywords, search intent analysis, competitor keyword gap",
+                    },
+                    {
+                      label: "On-Page SEO",
+                      desc: "Titles, meta descriptions, content structure (H1–H3), internal linking & URL optimization",
+                    },
+                    {
+                      label: "Technical SEO",
+                      desc: "Site speed, Core Web Vitals, mobile-first, crawl errors, sitemap & indexing",
+                    },
+                    {
+                      label: "Off-Page & Backlinks",
+                      desc: "Quality backlink building, guest posting, digital PR & brand authority",
+                    },
+                    {
+                      label: "AI & Answer Optimization",
+                      desc: "GEO & AEO — get found in AI tools, voice search & Google featured snippets",
+                    },
+                    {
+                      label: "Monthly Reports & Analytics",
+                      desc: "GA4, Search Console, keyword rankings & full performance insights every month",
+                    },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-start gap-2.5">
+                      <svg className="mt-0.5 h-4 w-4 shrink-0 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      <div>
+                        <p className="text-sm font-medium text-white">{item.label}</p>
+                        <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+
+                  <p className="mt-1 text-xs text-slate-600 border-t border-slate-800 pt-3">
+                    Tools: SEMrush · Ahrefs · Screaming Frog · GA4 · GSC · Microsoft Clarity · GTM
+                  </p>
                 </div>
               </div>
             </div>
