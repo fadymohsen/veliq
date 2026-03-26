@@ -502,7 +502,6 @@ export default function PricingPage() {
                       <span className="text-4xl font-extrabold text-white">35,000</span>
                       <span className="mb-1 text-base font-medium text-slate-400">EGP</span>
                     </div>
-                    <p className="mt-1 text-sm text-slate-500">for 3 months · per project</p>
                   </div>
 
                   <button
