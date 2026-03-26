@@ -83,7 +83,7 @@ const packages = [
 const supportPlans = [
   {
     name: "Basic Support",
-    priceLabel: "1,000",
+    priceLabel: "500 – 2,000",
     priceSuffix: "EGP / month",
     description: "Essentials to keep your website stable and your team unblocked.",
     features: [
@@ -102,7 +102,7 @@ const supportPlans = [
   },
   {
     name: "Basic Support + SEO",
-    priceLabel: "2,000",
+    priceLabel: "2,000 – 5,000",
     priceSuffix: "EGP / month",
     description: "Basic Support with developer-level SEO to keep your rankings healthy.",
     features: [
@@ -121,7 +121,7 @@ const supportPlans = [
   },
   {
     name: "Professional Support",
-    priceLabel: "3,000 – 5,000",
+    priceLabel: "5,000 – 8,000",
     priceSuffix: "EGP / month",
     description: "Everything in Basic, plus hands-on implementation and page building.",
     features: [
@@ -140,8 +140,8 @@ const supportPlans = [
   },
   {
     name: "Professional + SEO",
-    priceLabel: "Contact us",
-    priceSuffix: "",
+    priceLabel: "8,000 – 12,000",
+    priceSuffix: "EGP / month",
     description: "Everything in Professional, plus SEO issue fixing to keep your rankings healthy.",
     features: [
       "Everything in Professional Support",
