@@ -83,9 +83,16 @@ const packages = [
 const supportPlans = [
   {
     name: "Basic Support",
-    price: 1000,
-    description: "Keep your website running smoothly with regular maintenance and technical support.",
-    features: ["Bug fixes & updates", "Performance monitoring", "Monthly backups", "Technical support"],
+    priceLabel: "1,000",
+    priceSuffix: "EGP / month",
+    description: "Essentials to keep your website stable and your team unblocked.",
+    features: [
+      "Simple bug fixing",
+      "Image & content replacements",
+      "Website monitoring",
+      "Technical consultations",
+    ],
+    disclaimer: null,
     highlighted: false,
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -94,11 +101,36 @@ const supportPlans = [
     ),
   },
   {
-    name: "Basic Support + SEO",
-    price: 2000,
-    description: "Everything in Basic Support, plus developer-level SEO to grow your organic traffic.",
-    features: ["Everything in Basic Support", "Technical SEO audits", "On-page optimization", "Performance & Core Web Vitals"],
+    name: "Professional Support",
+    priceLabel: "3,000 – 5,000",
+    priceSuffix: "EGP / month",
+    description: "Everything in Basic, plus hands-on implementation and page building.",
+    features: [
+      "Everything in Basic Support",
+      "Implementation of any requirement",
+      "Building new pages",
+    ],
+    disclaimer: "Does not include website enhancements, optimization, or SEO support.",
     highlighted: true,
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+      </svg>
+    ),
+  },
+  {
+    name: "Professional + SEO",
+    priceLabel: "Contact us",
+    priceSuffix: "",
+    description: "Everything in Professional, plus SEO issue fixing to keep your rankings healthy.",
+    features: [
+      "Everything in Professional Support",
+      "SEO issue fixing & technical fixes",
+      "Core Web Vitals & indexing issues",
+      "On-page SEO corrections",
+    ],
+    disclaimer: "Does not include blog creation, SEO enhancements, or new content strategy.",
+    highlighted: false,
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
@@ -341,7 +373,7 @@ export default function PricingPage() {
             <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 sm:max-w-2xl sm:mx-auto">
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {supportPlans.map((plan) => (
               <div
                 key={plan.name}
@@ -354,7 +386,7 @@ export default function PricingPage() {
                 {plan.highlighted && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="rounded-full bg-indigo-600 px-4 py-1 text-xs font-semibold text-white shadow-lg shadow-indigo-500/30">
-                      Recommended
+                      Most Popular
                     </span>
                   </div>
                 )}
@@ -367,13 +399,15 @@ export default function PricingPage() {
                 <p className="mt-1 text-sm text-slate-400">{plan.description}</p>
 
                 <div className="mt-5">
-                  <span className="text-3xl font-extrabold text-white">{plan.price.toLocaleString()}</span>
-                  <span className="ml-1 text-base font-medium text-slate-400">EGP / month</span>
+                  <span className="text-2xl font-extrabold text-white">{plan.priceLabel}</span>
+                  {plan.priceSuffix && (
+                    <span className="ml-1 text-sm font-medium text-slate-400">{plan.priceSuffix}</span>
+                  )}
                 </div>
 
                 <div className="my-5 h-px bg-slate-700/50" />
 
-                <ul className="flex flex-col gap-2.5">
+                <ul className="flex flex-col gap-2.5 flex-1">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-slate-400">
                       <svg className="mt-0.5 h-4 w-4 shrink-0 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -384,9 +418,15 @@ export default function PricingPage() {
                   ))}
                 </ul>
 
+                {plan.disclaimer && (
+                  <p className="mt-4 text-xs text-slate-600 leading-relaxed border-t border-slate-800 pt-3">
+                    * {plan.disclaimer}
+                  </p>
+                )}
+
                 <button
                   onClick={() => openModal(`${plan.name} — Monthly Support`)}
-                  className={`mt-6 block w-full rounded-xl py-2.5 text-center text-sm font-semibold transition-all duration-200 active:scale-[0.98] ${
+                  className={`mt-5 block w-full rounded-xl py-2.5 text-center text-sm font-semibold transition-all duration-200 active:scale-[0.98] ${
                     plan.highlighted
                       ? "bg-indigo-600 text-white hover:bg-indigo-500 shadow-lg shadow-indigo-500/20"
                       : "border border-slate-700 text-slate-300 hover:border-slate-500 hover:text-white"
