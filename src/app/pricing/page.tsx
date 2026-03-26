@@ -101,6 +101,25 @@ const supportPlans = [
     ),
   },
   {
+    name: "Basic Support + SEO",
+    priceLabel: "2,000",
+    priceSuffix: "EGP / month",
+    description: "Basic Support with developer-level SEO to keep your rankings healthy.",
+    features: [
+      "Everything in Basic Support",
+      "Technical SEO audits",
+      "On-page optimization",
+      "Performance & Core Web Vitals",
+    ],
+    disclaimer: null,
+    highlighted: false,
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+      </svg>
+    ),
+  },
+  {
     name: "Professional Support",
     priceLabel: "3,000 – 5,000",
     priceSuffix: "EGP / month",
@@ -109,6 +128,7 @@ const supportPlans = [
       "Everything in Basic Support",
       "Implementation of any requirement",
       "Building new pages",
+      "Priority response & fast-track delivery",
     ],
     disclaimer: "Does not include website enhancements, optimization, or SEO support.",
     highlighted: true,
@@ -373,7 +393,7 @@ export default function PricingPage() {
             <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {supportPlans.map((plan) => (
               <div
                 key={plan.name}
