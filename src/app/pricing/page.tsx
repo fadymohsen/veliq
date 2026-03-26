@@ -1,7 +1,25 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
+
+const COUNTRIES = [
+  { name: "Egypt", code: "+20", flag: "🇪🇬", minLen: 11, maxLen: 11 },
+  { name: "Saudi Arabia", code: "+966", flag: "🇸🇦", minLen: 9, maxLen: 9 },
+  { name: "UAE", code: "+971", flag: "🇦🇪", minLen: 9, maxLen: 9 },
+  { name: "Kuwait", code: "+965", flag: "🇰🇼", minLen: 8, maxLen: 8 },
+  { name: "Qatar", code: "+974", flag: "🇶🇦", minLen: 8, maxLen: 8 },
+  { name: "Bahrain", code: "+973", flag: "🇧🇭", minLen: 8, maxLen: 8 },
+  { name: "Oman", code: "+968", flag: "🇴🇲", minLen: 8, maxLen: 8 },
+  { name: "Jordan", code: "+962", flag: "🇯🇴", minLen: 9, maxLen: 9 },
+  { name: "Lebanon", code: "+961", flag: "🇱🇧", minLen: 7, maxLen: 8 },
+  { name: "Iraq", code: "+964", flag: "🇮🇶", minLen: 10, maxLen: 10 },
+  { name: "Morocco", code: "+212", flag: "🇲🇦", minLen: 9, maxLen: 9 },
+  { name: "United States", code: "+1", flag: "🇺🇸", minLen: 10, maxLen: 10 },
+  { name: "United Kingdom", code: "+44", flag: "🇬🇧", minLen: 10, maxLen: 10 },
+  { name: "Turkey", code: "+90", flag: "🇹🇷", minLen: 10, maxLen: 10 },
+];
+
+type Country = (typeof COUNTRIES)[number];
 
 const packages = [
   {
@@ -68,6 +86,7 @@ const supportPlans = [
     price: 1000,
     description: "Keep your website running smoothly with regular maintenance and technical support.",
     features: ["Bug fixes & updates", "Performance monitoring", "Monthly backups", "Technical support"],
+    highlighted: false,
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
@@ -90,6 +109,87 @@ const supportPlans = [
 
 export default function PricingPage() {
   const [withHosting, setWithHosting] = useState(false);
+
+  // Modal
+  const [modalService, setModalService] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [form, setForm] = useState({ name: "", agencyName: "", phone: "", email: "" });
+  const [selectedCountry, setSelectedCountry] = useState<Country>(COUNTRIES[0]);
+  const [countryOpen, setCountryOpen] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  function openModal(service: string) {
+    setModalService(service);
+    setForm({ name: "", agencyName: "", phone: "", email: "" });
+    setSelectedCountry(COUNTRIES[0]);
+    setErrors({});
+    setSubmitted(false);
+    setModalOpen(true);
+  }
+
+  function closeModal() {
+    setModalOpen(false);
+  }
+
+  useEffect(() => {
+    function handleOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setCountryOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, []);
+
+  // Prevent body scroll when modal open
+  useEffect(() => {
+    document.body.style.overflow = modalOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [modalOpen]);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const newErrors: Record<string, string> = {};
+
+    if (!form.name.trim() || form.name.trim().length < 2) newErrors.name = "Name is required (min 2 characters).";
+    if (!form.phone.trim() || form.phone.trim().length < selectedCountry.minLen) {
+      newErrors.phone = `Enter a valid ${selectedCountry.minLen}-digit number.`;
+    }
+    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email = "Enter a valid email address.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setSubmitting(true);
+    setErrors({});
+    try {
+      const res = await fetch("/api/pricing-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          agencyName: form.agencyName.trim() || null,
+          phone: `${selectedCountry.code} ${form.phone.trim()}`,
+          email: form.email.trim(),
+          service: modalService,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      setSubmitted(true);
+    } catch (err) {
+      setErrors({ submit: err instanceof Error ? err.message : "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#0a0a14]">
@@ -124,8 +224,6 @@ export default function PricingPage() {
           <p className="mx-auto mt-4 max-w-xl text-lg text-slate-400">
             Choose the package that fits your needs. All prices are in Egyptian Pounds (EGP).
           </p>
-
-          {/* Divider */}
           <div className="mx-auto mt-6 h-px w-20 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
         </div>
 
@@ -159,6 +257,7 @@ export default function PricingPage() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {packages.map((pkg) => {
             const price = withHosting ? pkg.priceWith : pkg.priceWithout;
+            const serviceLabel = `${pkg.name} — ${withHosting ? "With Domain & Hosting" : "Without Domain & Hosting"}`;
             return (
               <div
                 key={pkg.name}
@@ -176,20 +275,13 @@ export default function PricingPage() {
                   </div>
                 )}
 
-                {/* Icon */}
-                <div
-                  className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${
-                    pkg.popular ? "bg-indigo-500/20 text-indigo-400" : "bg-white/5 text-slate-400"
-                  }`}
-                >
+                <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${pkg.popular ? "bg-indigo-500/20 text-indigo-400" : "bg-white/5 text-slate-400"}`}>
                   {pkg.icon}
                 </div>
 
-                {/* Name */}
                 <h3 className="text-base font-bold text-white">{pkg.name}</h3>
                 <p className="mt-0.5 text-xs text-slate-500">{pkg.subtitle}</p>
 
-                {/* Price */}
                 <div className="mt-4">
                   <p className="text-2xl font-extrabold text-white">
                     {price.min.toLocaleString()}
@@ -198,7 +290,6 @@ export default function PricingPage() {
                   <p className="text-xs text-slate-500">EGP</p>
                 </div>
 
-                {/* Delivery */}
                 <div className="mt-3 flex items-center gap-1.5">
                   <svg className="h-4 w-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -206,10 +297,8 @@ export default function PricingPage() {
                   <span className="text-sm text-slate-400">Delivery: <span className="text-white font-medium">{pkg.delivery}</span></span>
                 </div>
 
-                {/* Divider */}
                 <div className="my-5 h-px bg-slate-700/50" />
 
-                {/* Features */}
                 <ul className="flex flex-col gap-2.5">
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-slate-400">
@@ -221,17 +310,16 @@ export default function PricingPage() {
                   ))}
                 </ul>
 
-                {/* CTA */}
-                <Link
-                  href="/register"
-                  className={`mt-6 block rounded-xl py-2.5 text-center text-sm font-semibold transition-all duration-200 active:scale-[0.98] ${
+                <button
+                  onClick={() => openModal(serviceLabel)}
+                  className={`mt-6 block w-full rounded-xl py-2.5 text-center text-sm font-semibold transition-all duration-200 active:scale-[0.98] ${
                     pkg.popular
                       ? "bg-indigo-600 text-white hover:bg-indigo-500 shadow-lg shadow-indigo-500/20"
                       : "border border-slate-700 text-slate-300 hover:border-slate-500 hover:text-white"
                   }`}
                 >
                   Get Started
-                </Link>
+                </button>
               </div>
             );
           })}
@@ -271,12 +359,7 @@ export default function PricingPage() {
                   </div>
                 )}
 
-                {/* Icon */}
-                <div
-                  className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${
-                    plan.highlighted ? "bg-indigo-500/20 text-indigo-400" : "bg-white/5 text-slate-400"
-                  }`}
-                >
+                <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${plan.highlighted ? "bg-indigo-500/20 text-indigo-400" : "bg-white/5 text-slate-400"}`}>
                   {plan.icon}
                 </div>
 
@@ -301,16 +384,16 @@ export default function PricingPage() {
                   ))}
                 </ul>
 
-                <Link
-                  href="/register"
-                  className={`mt-6 block rounded-xl py-2.5 text-center text-sm font-semibold transition-all duration-200 active:scale-[0.98] ${
+                <button
+                  onClick={() => openModal(`${plan.name} — Monthly Support`)}
+                  className={`mt-6 block w-full rounded-xl py-2.5 text-center text-sm font-semibold transition-all duration-200 active:scale-[0.98] ${
                     plan.highlighted
                       ? "bg-indigo-600 text-white hover:bg-indigo-500 shadow-lg shadow-indigo-500/20"
                       : "border border-slate-700 text-slate-300 hover:border-slate-500 hover:text-white"
                   }`}
                 >
                   Get Started
-                </Link>
+                </button>
               </div>
             ))}
           </div>
@@ -334,7 +417,6 @@ export default function PricingPage() {
 
           <div className="mt-10 mx-auto max-w-2xl">
             <div className="relative rounded-2xl border border-indigo-500/40 bg-indigo-600/5 p-8 shadow-xl shadow-indigo-500/5">
-              {/* Top badge */}
               <div className="absolute -top-3 left-8">
                 <span className="rounded-full bg-indigo-600 px-4 py-1 text-xs font-semibold text-white shadow-lg shadow-indigo-500/30">
                   Per Website / Project
@@ -342,7 +424,7 @@ export default function PricingPage() {
               </div>
 
               <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
-                {/* Left: icon + name + price */}
+                {/* Left */}
                 <div className="flex flex-col gap-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-400">
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -363,50 +445,31 @@ export default function PricingPage() {
                     <p className="mt-1 text-sm text-slate-500">for 3 months · per project</p>
                   </div>
 
-                  <Link
-                    href="/register"
+                  <button
+                    onClick={() => openModal("SEO Package — 3-Month Engagement")}
                     className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all hover:bg-indigo-500 active:scale-[0.98]"
                   >
                     Get Started
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </Link>
+                  </button>
                 </div>
 
-                {/* Divider */}
                 <div className="hidden sm:block w-px self-stretch bg-slate-700/50" />
                 <div className="sm:hidden h-px bg-slate-700/50" />
 
-                {/* Right: what's included */}
+                {/* Right */}
                 <div className="flex flex-col gap-4 sm:max-w-sm">
                   <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">What&apos;s Included</p>
 
                   {[
-                    {
-                      label: "Keyword Research & Strategy",
-                      desc: "Primary & long-tail keywords, search intent analysis, competitor keyword gap",
-                    },
-                    {
-                      label: "On-Page SEO",
-                      desc: "Titles, meta descriptions, content structure (H1–H3), internal linking & URL optimization",
-                    },
-                    {
-                      label: "Technical SEO",
-                      desc: "Site speed, Core Web Vitals, mobile-first, crawl errors, sitemap & indexing",
-                    },
-                    {
-                      label: "Off-Page & Backlinks",
-                      desc: "Quality backlink building, guest posting, digital PR & brand authority",
-                    },
-                    {
-                      label: "AI & Answer Optimization",
-                      desc: "GEO & AEO — get found in AI tools, voice search & Google featured snippets",
-                    },
-                    {
-                      label: "Monthly Reports & Analytics",
-                      desc: "GA4, Search Console, keyword rankings & full performance insights every month",
-                    },
+                    { label: "Keyword Research & Strategy", desc: "Primary & long-tail keywords, search intent analysis, competitor keyword gap" },
+                    { label: "On-Page SEO", desc: "Titles, meta descriptions, content structure (H1–H3), internal linking & URL optimization" },
+                    { label: "Technical SEO", desc: "Site speed, Core Web Vitals, mobile-first, crawl errors, sitemap & indexing" },
+                    { label: "Off-Page & Backlinks", desc: "Quality backlink building, guest posting, digital PR & brand authority" },
+                    { label: "AI & Answer Optimization", desc: "GEO & AEO — get found in AI tools, voice search & Google featured snippets" },
+                    { label: "Monthly Reports & Analytics", desc: "GA4, Search Console, keyword rankings & full performance insights every month" },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-2.5">
                       <svg className="mt-0.5 h-4 w-4 shrink-0 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -431,9 +494,12 @@ export default function PricingPage() {
         {/* Footer note */}
         <p className="mt-16 text-center text-sm text-slate-600">
           Have a custom project in mind?{" "}
-          <Link href="/register" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+          <button
+            onClick={() => openModal("Custom Project")}
+            className="text-indigo-400 hover:text-indigo-300 transition-colors"
+          >
             Get in touch
-          </Link>{" "}
+          </button>{" "}
           and we&apos;ll figure it out together.
         </p>
       </div>
@@ -442,6 +508,195 @@ export default function PricingPage() {
       <p className="pb-6 text-center text-xs text-slate-700">
         &copy; {new Date().getFullYear()} VELIQ. All rights reserved.
       </p>
+
+      {/* ── Modal ── */}
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={closeModal}
+          />
+
+          {/* Card */}
+          <div className="relative w-full max-w-md rounded-2xl border border-slate-700/60 bg-[#0d0d1a] shadow-2xl">
+            {/* Close */}
+            <button
+              onClick={closeModal}
+              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-white/5 hover:text-white transition-colors"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div className="p-8">
+              {submitted ? (
+                /* ── Success state ── */
+                <div className="flex flex-col items-center gap-4 py-6 text-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-indigo-600/20">
+                    <svg className="h-8 w-8 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-white">You&apos;re all set!</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">
+                    Thanks for reaching out. We&apos;ve received your request for{" "}
+                    <span className="text-indigo-400 font-medium">{modalService}</span> and will get back to you within 24 hours.
+                  </p>
+                  <p className="text-xs text-slate-600">Check your inbox — a confirmation email is on its way.</p>
+                  <button
+                    onClick={closeModal}
+                    className="mt-2 rounded-xl bg-indigo-600 px-8 py-2.5 text-sm font-semibold text-white hover:bg-indigo-500 transition-colors"
+                  >
+                    Done
+                  </button>
+                </div>
+              ) : (
+                /* ── Form ── */
+                <>
+                  <div className="mb-6">
+                    <h2 className="text-xl font-bold text-white">Get Started</h2>
+                    <p className="mt-1 text-sm text-slate-400">
+                      Interested in{" "}
+                      <span className="text-indigo-400 font-medium">{modalService}</span>
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
+                    {/* Name */}
+                    <div>
+                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        Full Name <span className="text-indigo-400">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        placeholder="John Doe"
+                        className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-indigo-500 ${
+                          errors.name ? "border-red-500/60" : "border-slate-700/60"
+                        }`}
+                      />
+                      {errors.name && <p className="mt-1.5 text-xs text-red-400">{errors.name}</p>}
+                    </div>
+
+                    {/* Agency Name */}
+                    <div>
+                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        Agency Name <span className="text-slate-600">(Optional)</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={form.agencyName}
+                        onChange={(e) => setForm({ ...form, agencyName: e.target.value })}
+                        placeholder="Your agency or company"
+                        className="w-full rounded-xl border border-slate-700/60 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-indigo-500"
+                      />
+                    </div>
+
+                    {/* Phone */}
+                    <div>
+                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        Phone Number <span className="text-indigo-400">*</span>
+                      </label>
+                      <div className="flex gap-2">
+                        {/* Country dropdown */}
+                        <div className="relative" ref={dropdownRef}>
+                          <button
+                            type="button"
+                            onClick={() => setCountryOpen(!countryOpen)}
+                            className="flex h-full items-center gap-2 rounded-xl border border-slate-700/60 bg-white/5 px-3 py-3 text-sm text-white transition-colors hover:border-slate-600 focus:border-indigo-500 focus:outline-none"
+                          >
+                            <span className="text-base">{selectedCountry.flag}</span>
+                            <span className="text-slate-400 text-xs">{selectedCountry.code}</span>
+                            <svg className="h-3.5 w-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </button>
+
+                          {countryOpen && (
+                            <div className="absolute left-0 top-full z-50 mt-1 max-h-56 w-52 overflow-y-auto rounded-xl border border-slate-700/60 bg-[#0d0d1a] shadow-2xl">
+                              {COUNTRIES.map((c) => (
+                                <button
+                                  key={`${c.name}-${c.code}`}
+                                  type="button"
+                                  onClick={() => { setSelectedCountry(c); setCountryOpen(false); setForm((f) => ({ ...f, phone: "" })); }}
+                                  className={`flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-white/5 ${selectedCountry.name === c.name ? "text-indigo-400" : "text-slate-300"}`}
+                                >
+                                  <span>{c.flag}</span>
+                                  <span className="flex-1 truncate">{c.name}</span>
+                                  <span className="text-xs text-slate-500">{c.code}</span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Number input */}
+                        <input
+                          type="tel"
+                          value={form.phone}
+                          onChange={(e) => {
+                            const val = e.target.value.replace(/\D/g, "");
+                            if (val.length <= selectedCountry.maxLen) setForm({ ...form, phone: val });
+                          }}
+                          placeholder={"0".repeat(selectedCountry.minLen)}
+                          className={`flex-1 rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-indigo-500 ${
+                            errors.phone ? "border-red-500/60" : "border-slate-700/60"
+                          }`}
+                        />
+                      </div>
+                      {errors.phone && <p className="mt-1.5 text-xs text-red-400">{errors.phone}</p>}
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        Email Address <span className="text-indigo-400">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        placeholder="you@example.com"
+                        className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-indigo-500 ${
+                          errors.email ? "border-red-500/60" : "border-slate-700/60"
+                        }`}
+                      />
+                      {errors.email && <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>}
+                    </div>
+
+                    {errors.submit && (
+                      <p className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+                        {errors.submit}
+                      </p>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all hover:bg-indigo-500 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {submitting ? (
+                        <>
+                          <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        "Send Request"
+                      )}
+                    </button>
+                  </form>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
