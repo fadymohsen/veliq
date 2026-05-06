@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ScrollReveal from "../components/scroll-reveal";
-import { TeamFull } from "../components/team-section";
+import AnimatedCounter from "../components/animated-counter";
 import TestimonialsCarousel from "../components/testimonials-carousel";
 
 export const metadata = {
@@ -21,10 +21,10 @@ export const metadata = {
 };
 
 const stats = [
-  { value: "120+", label: "Projects Delivered" },
-  { value: "40+", label: "Happy Clients" },
-  { value: "15+", label: "Team Members" },
-  { value: "99%", label: "Client Satisfaction" },
+  { end: 10, suffix: "+", label: "Projects Delivered" },
+  { end: 30, suffix: "+", label: "Happy Clients" },
+  { end: 100, suffix: "%", label: "Satisfaction" },
+  { end: 10, suffix: "+", label: "Team Members" },
 ];
 
 const values = [
@@ -155,7 +155,7 @@ export default function AboutPage() {
               <ScrollReveal key={s.label} animation="scale" delay={i * 100}>
                 <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 text-center transition-all duration-500 hover:bg-white/[0.08] hover:border-indigo-500/30">
                   <p className="text-4xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                    {s.value}
+                    <AnimatedCounter end={s.end} suffix={s.suffix} />
                   </p>
                   <p className="mt-2 text-sm text-slate-500">{s.label}</p>
                 </div>
@@ -296,12 +296,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* ── Divider glow line ── */}
-      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
-
-      {/* ── Meet the Team ── */}
-      <TeamFull />
 
       {/* ── Divider glow line ── */}
       <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />

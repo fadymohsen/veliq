@@ -155,7 +155,7 @@ export default async function Home() {
               <ScrollReveal key={s.title} animation="fade-up" delay={i * 100}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 transition-all duration-500 hover:bg-white/[0.08] hover:border-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2"
+                  className="group relative block h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 transition-all duration-500 hover:bg-white/[0.08] hover:border-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2"
                 >
                   {/* Hover glow effect */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
@@ -188,73 +188,6 @@ export default async function Home() {
               View All Services &rarr;
             </Link>
           </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ── Divider glow line ── */}
-      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
-
-      {/* ── About Us ── */}
-      <section className="relative py-28 overflow-hidden">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute right-1/4 top-1/4 h-[400px] w-[400px] rounded-full bg-indigo-600/8 blur-[130px]" />
-          <div className="absolute left-1/3 bottom-0 h-[250px] w-[250px] rounded-full bg-purple-600/6 blur-[100px]" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            {/* Left — Text */}
-            <ScrollReveal animation="fade-up">
-              <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
-                Who We Are
-              </p>
-              <h2 className="mt-2 text-3xl font-bold md:text-4xl text-white">
-                Your Digital{" "}
-                <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                  Growth Partner
-                </span>
-              </h2>
-              <p className="mt-6 text-lg text-slate-400 leading-relaxed">
-                VELIQ is a full-service digital agency built by engineers,
-                designers, and marketers who believe great software and smart
-                marketing should work together — not in silos.
-              </p>
-              <p className="mt-4 text-slate-500 leading-relaxed">
-                Founded with a simple belief: businesses deserve a partner who
-                understands both the technical and human sides of digital growth.
-              </p>
-              <Link
-                href="/about"
-                className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-indigo-400 transition-all duration-300 hover:text-indigo-300"
-              >
-                Learn More About Us
-                <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </ScrollReveal>
-
-            {/* Right — Stats */}
-            <div className="grid grid-cols-2 gap-5">
-              {[
-                { value: "120+", label: "Projects Delivered", delay: 0 },
-                { value: "40+", label: "Happy Clients", delay: 100 },
-                { value: "15+", label: "Team Members", delay: 200 },
-                { value: "99%", label: "Client Satisfaction", delay: 300 },
-              ].map((s) => (
-                <ScrollReveal key={s.label} animation="scale" delay={s.delay}>
-                  <div className="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-7 text-center transition-all duration-500 hover:bg-white/[0.08] hover:border-indigo-500/30 hover:-translate-y-1">
-                    <p className="text-3xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent md:text-4xl">
-                      {s.value}
-                    </p>
-                    <p className="mt-2 text-sm text-slate-500 group-hover:text-slate-400 transition-colors duration-300">
-                      {s.label}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
