@@ -11,13 +11,13 @@ interface Service {
 }
 
 interface GalleryItem {
-  bg: string;
+  image: string;
   caption: string;
 }
 
 interface Project {
   slug: string;
-  bg: string;
+  image: string;
   tag: string;
   title: string;
   desc: string;
@@ -171,6 +171,48 @@ export default function AdminDashboard() {
     setSavingServices(false);
   }
 
+  // ── Image upload ──
+  async function uploadImage(file: File): Promise<string | null> {
+    const formData = new FormData();
+    formData.append("file", file);
+    try {
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      if (!res.ok) return null;
+      const data = await res.json();
+      return data.url;
+    } catch {
+      return null;
+    }
+  }
+
+  async function handleProjectImageUpload(index: number, file: File) {
+    const url = await uploadImage(file);
+    if (url) {
+      setProjects((prev) =>
+        prev.map((p, i) => (i === index ? { ...p, image: url } : p))
+      );
+    } else {
+      setMessage("Error: Image upload failed");
+    }
+  }
+
+  async function handleGalleryImageUpload(projIndex: number, galIndex: number, file: File) {
+    const url = await uploadImage(file);
+    if (url) {
+      setProjects((prev) =>
+        prev.map((p, i) => {
+          if (i !== projIndex) return p;
+          const gallery = p.gallery.map((g, gi) =>
+            gi === galIndex ? { ...g, image: url } : g
+          );
+          return { ...p, gallery };
+        })
+      );
+    } else {
+      setMessage("Error: Image upload failed");
+    }
+  }
+
   // ── Projects ──
   function updateProject(index: number, field: keyof Project, value: string) {
     setProjects((prev) =>
@@ -203,7 +245,7 @@ export default function AdminDashboard() {
           ...p,
           gallery: [
             ...p.gallery,
-            { bg: "bg-gradient-to-br from-slate-300 to-slate-400", caption: "" },
+            { image: "", caption: "" },
           ],
         };
       })
@@ -224,17 +266,12 @@ export default function AdminDashboard() {
       ...prev,
       {
         slug: "",
-        bg: GRADIENT_OPTIONS[0],
+        image: "",
         tag: services.length > 0 ? services[0].title : "",
         title: "",
         desc: "",
         fullDesc: "",
-        gallery: [
-          { bg: "bg-gradient-to-br from-slate-300 to-slate-400", caption: "Screenshot 1" },
-          { bg: "bg-gradient-to-br from-slate-400 to-slate-500", caption: "Screenshot 2" },
-          { bg: "bg-gradient-to-br from-slate-300 to-slate-500", caption: "Screenshot 3" },
-          { bg: "bg-gradient-to-br from-slate-400 to-slate-600", caption: "Screenshot 4" },
-        ],
+        gallery: [],
       },
     ]);
     setEditingProject(projects.length);
@@ -538,7 +575,11 @@ export default function AdminDashboard() {
               {projects.map((project, index) => (
                 <div key={index} className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm overflow-hidden hover:border-white/10 transition">
                   <div className="flex items-center gap-4 p-5 cursor-pointer hover:bg-white/[0.02] transition" onClick={() => setEditingProject(editingProject === index ? null : index)}>
-                    <div className={`h-12 w-12 rounded-xl shrink-0 ${project.bg}`} />
+                    {project.image ? (
+                      <img src={project.image} alt="" className="h-12 w-12 rounded-xl shrink-0 object-cover" />
+                    ) : (
+                      <div className="h-12 w-12 rounded-xl shrink-0 bg-white/[0.06] border border-white/10 flex items-center justify-center text-slate-600 text-xs">No img</div>
+                    )}
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-semibold text-white truncate">{project.title || "Untitled Project"}</h3>
                       <p className="text-xs text-slate-500 mt-0.5">{project.tag || "No category"} &middot; {project.gallery.length} gallery items</p>
@@ -579,11 +620,17 @@ export default function AdminDashboard() {
                         <textarea value={project.fullDesc} onChange={(e) => updateProject(index, "fullDesc", e.target.value)} rows={5} className={`${inputClass} resize-none`} placeholder="Detailed project description for the project page..." />
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-slate-500 mb-2">Card Color</label>
-                        <div className="flex flex-wrap gap-2">
-                          {GRADIENT_OPTIONS.map((g) => (
-                            <button key={g} onClick={() => updateProject(index, "bg", g)} className={`h-8 w-8 rounded-lg ${g} transition ${project.bg === g ? "ring-2 ring-indigo-500 ring-offset-2 ring-offset-[#0a0a14]" : "hover:ring-2 hover:ring-white/20 hover:ring-offset-1 hover:ring-offset-[#0a0a14]"}`} />
-                          ))}
+                        <label className="block text-xs font-medium text-slate-500 mb-2">Cover Image</label>
+                        <div className="flex items-center gap-4">
+                          {project.image ? (
+                            <img src={project.image} alt="" className="h-20 w-32 rounded-xl object-cover border border-white/10" />
+                          ) : (
+                            <div className="h-20 w-32 rounded-xl bg-white/[0.04] border border-dashed border-white/15 flex items-center justify-center text-xs text-slate-600">No image</div>
+                          )}
+                          <label className="cursor-pointer rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-medium text-slate-300 hover:bg-white/[0.1] hover:text-white transition">
+                            Upload Image
+                            <input type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleProjectImageUpload(index, f); }} />
+                          </label>
                         </div>
                       </div>
                       <div>
@@ -594,11 +641,16 @@ export default function AdminDashboard() {
                         <div className="space-y-3">
                           {project.gallery.map((item, gi) => (
                             <div key={gi} className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
-                              <div className={`h-10 w-14 rounded-lg shrink-0 ${item.bg}`} />
+                              {item.image ? (
+                                <img src={item.image} alt="" className="h-10 w-14 rounded-lg shrink-0 object-cover" />
+                              ) : (
+                                <div className="h-10 w-14 rounded-lg shrink-0 bg-white/[0.04] border border-dashed border-white/10 flex items-center justify-center text-[10px] text-slate-600">No img</div>
+                              )}
                               <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
-                                <select value={item.bg} onChange={(e) => updateGalleryItem(index, gi, "bg", e.target.value)} className="rounded-lg border border-white/10 bg-white/[0.05] px-2 py-1.5 text-xs text-white outline-none focus:border-indigo-500/50 transition appearance-none">
-                                  {GRADIENT_OPTIONS.map((g) => (<option key={g} value={g} className="bg-[#0a0a14]">{g.replace("bg-gradient-to-br from-", "").replace(" to-", " → ")}</option>))}
-                                </select>
+                                <label className="cursor-pointer rounded-lg border border-white/10 bg-white/[0.05] px-2 py-1.5 text-xs text-slate-400 hover:text-white transition text-center">
+                                  Upload
+                                  <input type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleGalleryImageUpload(index, gi, f); }} />
+                                </label>
                                 <input type="text" value={item.caption} onChange={(e) => updateGalleryItem(index, gi, "caption", e.target.value)} className="rounded-lg border border-white/10 bg-white/[0.05] px-2 py-1.5 text-xs text-white placeholder-slate-600 outline-none focus:border-indigo-500/50 transition" placeholder="Caption" />
                               </div>
                               <button onClick={() => removeGalleryItem(index, gi)} className="text-xs text-red-400/70 hover:text-red-400 transition shrink-0">&times;</button>
@@ -609,7 +661,11 @@ export default function AdminDashboard() {
                       <div className="pt-4 border-t border-white/[0.06]">
                         <p className="text-xs font-medium text-slate-600 mb-3">CARD PREVIEW</p>
                         <div className="max-w-xs overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03]">
-                          <div className={`h-36 ${project.bg}`} />
+                          {project.image ? (
+                            <img src={project.image} alt="" className="h-36 w-full object-cover" />
+                          ) : (
+                            <div className="h-36 bg-white/[0.04] flex items-center justify-center text-sm text-slate-600">No cover image</div>
+                          )}
                           <div className="p-5">
                             <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400">{project.tag || "Category"}</span>
                             <h3 className="mt-1.5 text-base font-semibold text-white">{project.title || "Untitled"}</h3>

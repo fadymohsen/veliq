@@ -37,12 +37,13 @@ export async function PUT(req: Request) {
     const projects = body.map(
       (p: {
         slug?: string;
-        bg: string;
+        image?: string;
+        bg?: string;
         tag: string;
         title: string;
         desc: string;
         fullDesc: string;
-        gallery: { bg: string; caption: string }[];
+        gallery: { image?: string; bg?: string; caption: string }[];
       }) => ({
         slug:
           p.slug ||
@@ -50,19 +51,14 @@ export async function PUT(req: Request) {
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, "-")
             .replace(/(^-|-$)/g, ""),
-        bg: p.bg || "bg-gradient-to-br from-indigo-400 to-blue-500",
+        image: p.image || p.bg || "",
         tag: p.tag,
         title: p.title,
         desc: p.desc,
         fullDesc: p.fullDesc,
         gallery: Array.isArray(p.gallery)
-          ? p.gallery
-          : [
-              { bg: "bg-gradient-to-br from-slate-300 to-slate-400", caption: "Screenshot 1" },
-              { bg: "bg-gradient-to-br from-slate-400 to-slate-500", caption: "Screenshot 2" },
-              { bg: "bg-gradient-to-br from-slate-300 to-slate-500", caption: "Screenshot 3" },
-              { bg: "bg-gradient-to-br from-slate-400 to-slate-600", caption: "Screenshot 4" },
-            ],
+          ? p.gallery.map((g) => ({ image: g.image || g.bg || "", caption: g.caption }))
+          : [],
       })
     );
 

@@ -4,7 +4,7 @@ import { getCollection } from "@/lib/db";
 
 interface Project {
   slug: string;
-  bg: string;
+  image: string;
   tag: string;
   title: string;
   desc: string;
@@ -95,7 +95,11 @@ export default async function ProjectsPage() {
                       className="group block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-500 hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2"
                     >
                       <div className="overflow-hidden">
-                        <div className={`h-48 ${p.bg} transition-all duration-700 group-hover:scale-110 group-hover:brightness-110`} />
+                        {p.image ? (
+                          <img src={p.image} alt={p.title} className="h-48 w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110" />
+                        ) : (
+                          <div className="h-48 bg-gradient-to-br from-slate-700 to-slate-800" />
+                        )}
                       </div>
                       <div className="p-6">
                         <span className="text-xs font-semibold uppercase tracking-wider text-purple-400 group-hover:text-purple-300 transition-colors duration-300">

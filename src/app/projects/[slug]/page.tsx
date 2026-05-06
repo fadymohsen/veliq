@@ -5,13 +5,13 @@ import ScrollReveal from "../../components/scroll-reveal";
 import { getCollection } from "@/lib/db";
 
 interface GalleryItem {
-  bg: string;
+  image: string;
   caption: string;
 }
 
 interface Project {
   slug: string;
-  bg: string;
+  image: string;
   tag: string;
   title: string;
   desc: string;
@@ -102,9 +102,11 @@ export default async function ProjectPage({
             </div>
           </div>
           <div className="animate-fade-in-up delay-200">
-            <div
-              className={`w-full h-64 md:h-96 rounded-2xl ${project.bg} border border-white/10`}
-            />
+            {project.image ? (
+              <img src={project.image} alt={project.title} className="w-full h-64 md:h-96 rounded-2xl object-cover border border-white/10" />
+            ) : (
+              <div className="w-full h-64 md:h-96 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 border border-white/10" />
+            )}
           </div>
         </div>
       </section>
@@ -137,7 +139,11 @@ export default async function ProjectPage({
             {project.gallery.map((item, i) => (
               <ScrollReveal key={i} animation={i % 2 === 0 ? "fade-up" : "scale"} delay={i * 100}>
                 <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-500 hover:border-purple-500/30">
-                  <div className={`h-56 md:h-72 ${item.bg}`} />
+                  {item.image ? (
+                    <img src={item.image} alt={item.caption} className="h-56 md:h-72 w-full object-cover" />
+                  ) : (
+                    <div className="h-56 md:h-72 bg-gradient-to-br from-slate-700 to-slate-800" />
+                  )}
                   <div className="px-5 py-4">
                     <p className="text-sm font-medium text-slate-400">
                       {item.caption}
@@ -172,7 +178,11 @@ export default async function ProjectPage({
                       className="group block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-500 hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2"
                     >
                       <div className="overflow-hidden">
-                        <div className={`h-48 ${p.bg} transition-all duration-700 group-hover:scale-110`} />
+                        {p.image ? (
+                          <img src={p.image} alt={p.title} className="h-48 w-full object-cover transition-all duration-700 group-hover:scale-110" />
+                        ) : (
+                          <div className="h-48 bg-gradient-to-br from-slate-700 to-slate-800" />
+                        )}
                       </div>
                       <div className="p-6">
                         <span className="text-xs font-semibold uppercase tracking-wider text-purple-400">
