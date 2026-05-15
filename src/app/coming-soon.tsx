@@ -1,19 +1,6 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 
 export default function ComingSoon() {
-
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleNotify(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
-    setEmail("");
-  }
-
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#060612]">
       {/* Background effects */}
@@ -51,35 +38,26 @@ export default function ComingSoon() {
           </span>
         </h1>
 
-        {/* Email notify form */}
-        <form
-          onSubmit={handleNotify}
-          className="mt-10 flex w-full max-w-md flex-col gap-3 sm:flex-row"
+        {/* CTA */}
+        <Link
+          href="/register/contact"
+          className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:shadow-blue-500/40 hover:brightness-110 hover:scale-[1.02] active:scale-[0.97]"
         >
-          <input
-            type="email"
-            required
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              if (submitted) setSubmitted(false);
-            }}
-            className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white placeholder-slate-500 outline-none backdrop-blur-sm transition focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-          />
-          <button
-            type="submit"
-            className="rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:shadow-blue-500/40 hover:brightness-110 active:scale-[0.97]"
+          Get in Touch
+          <svg
+            className="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
           >
-            Notify Me
-          </button>
-        </form>
-
-        {submitted && (
-          <p className="mt-3 text-sm text-emerald-400">
-            Thank you! We&apos;ll let you know when we launch.
-          </p>
-        )}
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </Link>
 
         {/* Social links */}
         <div className="mt-10 flex items-center gap-5">
