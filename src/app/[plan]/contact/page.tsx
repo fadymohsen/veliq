@@ -104,9 +104,9 @@ export default function ContactPage() {
     <div className="relative min-h-screen bg-[#0a0a14]">
       {/* Background glow */}
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-fuchsia-600/15 blur-[120px]" />
-        <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-purple-700/10 blur-[100px]" />
-        <div className="absolute left-1/4 bottom-1/3 h-[250px] w-[250px] rounded-full bg-fuchsia-500/10 blur-[100px]" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-blue-600/15 blur-[120px]" />
+        <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-blue-700/10 blur-[100px]" />
+        <div className="absolute left-1/4 bottom-1/3 h-[250px] w-[250px] rounded-full bg-blue-500/10 blur-[100px]" />
       </div>
 
       {/* Subtle grid */}
@@ -122,15 +122,15 @@ export default function ContactPage() {
       <div className="relative z-10 mx-auto max-w-md px-6 py-16">
         {/* Logo */}
         <div className="text-center">
-          <Link href="/" className="bg-gradient-to-br from-fuchsia-600 via-purple-800 to-purple-950 bg-clip-text text-2xl font-bold tracking-[0.2em] text-transparent md:text-3xl transition hover:from-fuchsia-500 hover:to-purple-900">VELIQ</Link>
-          <div className="mx-auto mt-4 h-px w-12 bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent" />
+          <Link href="/" className="bg-gradient-to-r from-blue-700 via-blue-500 to-sky-400 bg-clip-text text-2xl font-bold tracking-[0.2em] text-transparent md:text-3xl transition hover:from-blue-600 hover:to-sky-300">VELIQ</Link>
+          <div className="mx-auto mt-4 h-px w-12 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
         </div>
 
         {/* Step indicator */}
         <div className="mt-8 flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-fuchsia-500/20 text-xs font-bold text-fuchsia-400">1</div>
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-xs font-bold text-sky-400">1</div>
           <div className="h-px flex-1 bg-slate-700" />
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-fuchsia-500 text-xs font-bold text-white">2</div>
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-xs font-bold text-white">2</div>
           <div className="h-px flex-1 bg-slate-700" />
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 text-xs font-bold text-slate-500">3</div>
           <div className="h-px flex-1 bg-slate-700" />
@@ -156,7 +156,7 @@ export default function ContactPage() {
               className={`w-full rounded-lg border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none backdrop-blur-sm transition ${
                 errors.name
                   ? "border-red-500/60 focus:border-red-500 focus:ring-1 focus:ring-red-500/40"
-                  : "border-slate-700 focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500/40"
+                  : "border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500/40"
               }`}
             />
             {errors.name && <p className="mt-1.5 text-xs text-red-400">{errors.name}</p>}
@@ -172,7 +172,7 @@ export default function ContactPage() {
                   onClick={() => setCountryOpen((p) => !p)}
                   className={`flex h-full items-center gap-1.5 rounded-lg border bg-white/5 px-3 py-3 text-sm whitespace-nowrap backdrop-blur-sm transition ${
                     errors.phone ? "border-red-500/60" : "border-slate-700"
-                  } ${countryOpen ? "ring-1 ring-fuchsia-500/40 border-fuchsia-500" : ""}`}
+                  } ${countryOpen ? "ring-1 ring-blue-500/40 border-blue-500" : ""}`}
                 >
                   <span>{selectedCountry.flag}</span>
                   <span className="text-white font-medium">{selectedCountry.code}</span>
@@ -199,7 +199,7 @@ export default function ContactPage() {
                           setErrors((p) => ({ ...p, phone: undefined }));
                         }}
                         className={`flex w-full items-center gap-3 px-4 py-2.5 text-sm transition hover:bg-white/5 ${
-                          selectedCountry.name === country.name ? "bg-fuchsia-500/10 text-fuchsia-400" : "text-slate-300"
+                          selectedCountry.name === country.name ? "bg-blue-500/10 text-sky-400" : "text-slate-300"
                         }`}
                       >
                         <span>{country.flag}</span>
@@ -219,7 +219,7 @@ export default function ContactPage() {
                 className={`w-full rounded-lg border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none backdrop-blur-sm transition ${
                   errors.phone
                     ? "border-red-500/60 focus:border-red-500 focus:ring-1 focus:ring-red-500/40"
-                    : "border-slate-700 focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500/40"
+                    : "border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500/40"
                 }`}
               />
             </div>
@@ -242,7 +242,7 @@ export default function ContactPage() {
               className={`w-full rounded-lg border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none backdrop-blur-sm transition ${
                 errors.email
                   ? "border-red-500/60 focus:border-red-500 focus:ring-1 focus:ring-red-500/40"
-                  : "border-slate-700 focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500/40"
+                  : "border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500/40"
               }`}
             />
             {errors.email && <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>}
@@ -261,7 +261,7 @@ export default function ContactPage() {
             <button
               type="button"
               onClick={handleNext}
-              className="flex-1 rounded-lg bg-fuchsia-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-fuchsia-500 active:scale-[0.98]"
+              className="flex-1 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-500 active:scale-[0.98]"
             >
               Next
             </button>

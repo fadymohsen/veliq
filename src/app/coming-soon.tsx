@@ -5,9 +5,9 @@ export default function ComingSoon() {
     <div className="relative flex h-screen flex-col items-center justify-center overflow-hidden bg-[#0a0a14]">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-fuchsia-600/15 blur-[120px]" />
-        <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-purple-700/15 blur-[100px]" />
-        <div className="absolute left-1/4 bottom-1/3 h-[250px] w-[250px] rounded-full bg-fuchsia-500/10 blur-[100px]" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-blue-600/15 blur-[120px]" />
+        <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-blue-700/15 blur-[100px]" />
+        <div className="absolute left-1/4 bottom-1/3 h-[250px] w-[250px] rounded-full bg-blue-500/10 blur-[100px]" />
       </div>
 
       {/* Subtle grid */}
@@ -23,17 +23,17 @@ export default function ComingSoon() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-2xl px-6 text-center">
         {/* Logo */}
-        <h2 className="bg-gradient-to-br from-fuchsia-600 via-purple-800 to-purple-950 bg-clip-text text-3xl font-bold tracking-[0.2em] text-transparent md:text-4xl">
+        <h2 className="bg-gradient-to-r from-blue-700 via-blue-500 to-sky-400 bg-clip-text text-3xl font-bold tracking-[0.2em] text-transparent md:text-4xl">
           VELIQ
         </h2>
 
         {/* Divider */}
-        <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent" />
+        <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
 
         {/* Headline */}
         <h1 className="mt-5 text-5xl font-extrabold leading-tight tracking-tight text-white md:text-7xl">
           Something{" "}
-          <span className="bg-gradient-to-r from-fuchsia-400 to-purple-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
             Great
           </span>
           <br />
@@ -48,7 +48,7 @@ export default function ComingSoon() {
         {/* CTA */}
         <Link
           href="/register"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-semibold text-[#0a0a14] shadow-lg shadow-fuchsia-500/20 transition hover:shadow-fuchsia-500/40 hover:scale-[1.02] active:scale-[0.98]"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-semibold text-[#0a0a14] shadow-lg shadow-blue-500/20 transition hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98]"
         >
           Get in Touch
           <svg
