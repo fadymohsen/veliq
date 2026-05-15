@@ -3,22 +3,14 @@ import Link from "next/link";
 export default function ComingSoon() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#060612]">
-      {/* Background pattern — subtle geometric mesh */}
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.04]"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern id="bg-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-            <path d="M0 40 L40 0 L80 40 L40 80Z" fill="none" stroke="white" strokeWidth="0.5" />
-            <circle cx="40" cy="0" r="1" fill="white" />
-            <circle cx="80" cy="40" r="1" fill="white" />
-            <circle cx="40" cy="80" r="1" fill="white" />
-            <circle cx="0" cy="40" r="1" fill="white" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#bg-pattern)" />
-      </svg>
+      {/* Background image */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.15]"
+        style={{ backgroundImage: "url('/bg.png')" }}
+      />
+
+      {/* Dark overlay for readability */}
+      <div className="pointer-events-none absolute inset-0 bg-[#060612]/60" />
 
       {/* Background glow effects */}
       <div className="pointer-events-none absolute inset-0">
