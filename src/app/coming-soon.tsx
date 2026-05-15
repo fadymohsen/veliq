@@ -33,7 +33,7 @@ export default function ComingSoon() {
         {/* Headline */}
         <h1 className="mt-5 text-5xl font-extrabold leading-tight tracking-tight text-white md:text-7xl">
           Something{" "}
-          <span className="bg-gradient-to-r from-fuchsia-600 to-purple-800 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-fuchsia-400 to-purple-500 bg-clip-text text-transparent">
             Great
           </span>
           <br />
