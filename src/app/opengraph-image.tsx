@@ -37,7 +37,7 @@ export default function OGImage() {
           style={{
             fontSize: 28,
             fontWeight: 500,
-            background: "linear-gradient(90deg, #c026d3, #7e22ce)",
+            background: "linear-gradient(90deg, #e879f9, #c084fc)",
             backgroundClip: "text",
             color: "transparent",
           }}

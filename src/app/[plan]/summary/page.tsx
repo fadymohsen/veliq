@@ -313,7 +313,7 @@ export default function SummaryPage() {
                   type="button"
                   onClick={handleSubmit}
                   disabled={status === "sending"}
-                  className="flex-1 rounded-lg bg-gradient-to-r from-purple-800 to-fuchsia-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/20 transition hover:shadow-fuchsia-500/30 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="flex-1 rounded-lg bg-gradient-to-r from-fuchsia-600 to-fuchsia-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/20 transition hover:shadow-fuchsia-500/30 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {status === "sending" ? "Sending..." : "Submit"}
                 </button>
