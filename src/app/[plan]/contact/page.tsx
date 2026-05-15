@@ -63,15 +63,6 @@ export default function ContactPage() {
     }
   }, [plan, router]);
 
-  // Prefill email from coming-soon capture, if any
-  useEffect(() => {
-    const prefill = sessionStorage.getItem("veliq-prefill-email");
-    if (prefill && emailRef.current && !emailRef.current.value) {
-      emailRef.current.value = prefill;
-      sessionStorage.removeItem("veliq-prefill-email");
-    }
-  }, []);
-
   function validate(): FormErrors {
     const errs: FormErrors = {};
     const name = nameRef.current?.value?.trim() ?? "";
