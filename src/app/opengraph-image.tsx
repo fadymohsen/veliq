@@ -16,15 +16,17 @@ export default function OGImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0a0a14 0%, #1e1b4b 50%, #0a0a14 100%)",
+          background: "linear-gradient(135deg, #0a0a14 0%, #3b0764 50%, #0a0a14 100%)",
           fontFamily: "sans-serif",
         }}
       >
         <div
           style={{
-            fontSize: 72,
+            fontSize: 84,
             fontWeight: 800,
-            color: "#ffffff",
+            background: "linear-gradient(135deg, #D946EF 0%, #A21CAF 55%, #581C87 100%)",
+            backgroundClip: "text",
+            color: "transparent",
             letterSpacing: "-2px",
             marginBottom: 16,
           }}
@@ -35,7 +37,7 @@ export default function OGImage() {
           style={{
             fontSize: 28,
             fontWeight: 500,
-            background: "linear-gradient(90deg, #818cf8, #a78bfa)",
+            background: "linear-gradient(90deg, #e879f9, #c084fc)",
             backgroundClip: "text",
             color: "transparent",
           }}
