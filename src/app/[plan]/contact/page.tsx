@@ -122,7 +122,7 @@ export default function ContactPage() {
       <div className="relative z-10 mx-auto max-w-md px-6 py-16">
         {/* Logo */}
         <div className="text-center">
-          <Link href="/" className="bg-gradient-to-br from-fuchsia-400 via-fuchsia-600 to-purple-800 bg-clip-text text-2xl font-bold tracking-[0.2em] text-transparent md:text-3xl transition hover:from-fuchsia-300 hover:to-purple-700">VELIQ</Link>
+          <Link href="/" className="bg-gradient-to-br from-fuchsia-600 via-purple-800 to-purple-950 bg-clip-text text-2xl font-bold tracking-[0.2em] text-transparent md:text-3xl transition hover:from-fuchsia-500 hover:to-purple-900">VELIQ</Link>
           <div className="mx-auto mt-4 h-px w-12 bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent" />
         </div>
 

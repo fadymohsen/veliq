@@ -3,9 +3,9 @@
   <path d="M6 7l5 13h1.4l3-9.5L18.4 20H20l5-13h-2.6l-3.4 9.5L16 9 13 16.5 9.6 7H6z" fill="url(#g)"/>
   <defs>
     <linearGradient id="g" x1="6" y1="7" x2="26" y2="22" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#D946EF"/>
-      <stop offset="0.55" stop-color="#A21CAF"/>
-      <stop offset="1" stop-color="#581C87"/>
+      <stop stop-color="#A21CAF"/>
+      <stop offset="0.55" stop-color="#6B21A8"/>
+      <stop offset="1" stop-color="#2E1065"/>
     </linearGradient>
   </defs>
 </svg>
