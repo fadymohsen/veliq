@@ -1,42 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-const LAUNCH_DATE = new Date("2025-08-01T00:00:00");
-
-function getTimeLeft() {
-  const now = new Date();
-  const diff = Math.max(0, LAUNCH_DATE.getTime() - now.getTime());
-  return {
-    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((diff / (1000 * 60)) % 60),
-    seconds: Math.floor((diff / 1000) % 60),
-  };
-}
-
-function CountdownUnit({ value, label }: { value: number; label: string }) {
-  return (
-    <div className="flex flex-col items-center">
-      <div className="relative flex h-20 w-20 items-center justify-center rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm sm:h-24 sm:w-24 md:h-28 md:w-28">
-        <span className="text-3xl font-bold tabular-nums text-white sm:text-4xl md:text-5xl">
-          {String(value).padStart(2, "0")}
-        </span>
-      </div>
-      <span className="mt-2 text-[11px] font-medium uppercase tracking-[0.2em] text-slate-400 sm:text-xs">
-        {label}
-      </span>
-    </div>
-  );
-}
+import { useState } from "react";
 
 export default function ComingSoon() {
-  const [time, setTime] = useState(getTimeLeft);
-
-  useEffect(() => {
-    const id = setInterval(() => setTime(getTimeLeft()), 1000);
-    return () => clearInterval(id);
-  }, []);
 
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -84,19 +50,6 @@ export default function ComingSoon() {
             Coming Soon
           </span>
         </h1>
-
-        <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-slate-400 sm:text-lg">
-          We&apos;re building something amazing. Be the first to know when we
-          launch — drop your email below and we&apos;ll notify you.
-        </p>
-
-        {/* Countdown */}
-        <div className="mt-10 flex gap-3 sm:gap-5 md:gap-6">
-          <CountdownUnit value={time.days} label="Days" />
-          <CountdownUnit value={time.hours} label="Hours" />
-          <CountdownUnit value={time.minutes} label="Minutes" />
-          <CountdownUnit value={time.seconds} label="Seconds" />
-        </div>
 
         {/* Email notify form */}
         <form
