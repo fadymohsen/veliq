@@ -31,10 +31,7 @@ export default function ComingSoon() {
 
         {/* Headline */}
         <h1 className="mt-8 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-7xl">
-          We Are{" "}
-          <span className="bg-gradient-to-r from-blue-500 to-sky-400 bg-clip-text text-transparent">
-            Coming Soon
-          </span>
+          Coming Soon
         </h1>
 
         {/* CTA */}
