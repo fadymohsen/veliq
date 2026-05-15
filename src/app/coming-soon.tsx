@@ -33,7 +33,7 @@ export default function ComingSoon() {
       {/* Content */}
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 py-12 text-center sm:py-0">
         {/* Logo */}
-        <p className="text-sm font-medium tracking-[0.35em] text-slate-400 sm:text-base">
+        <p className="bg-gradient-to-r from-blue-900 via-blue-600 to-sky-400 bg-clip-text text-sm font-semibold tracking-[0.35em] text-transparent sm:text-base">
           V E L I Q
         </p>
 
@@ -52,7 +52,7 @@ export default function ComingSoon() {
         {/* CTA */}
         <Link
           href="/register/contact"
-          className="mt-8 inline-flex items-center rounded-full border border-white/20 bg-white px-8 py-3.5 text-base font-semibold text-[#060f24] transition hover:bg-white/90 active:scale-[0.97] sm:mt-10"
+          className="mt-8 inline-flex items-center rounded-full bg-gradient-to-r from-blue-900 via-blue-600 to-sky-400 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:shadow-blue-500/50 hover:brightness-110 active:scale-[0.97] sm:mt-10"
         >
           Get in Touch
         </Link>
