@@ -247,9 +247,9 @@ export default function PricingPage() {
     <div className="relative min-h-screen overflow-hidden bg-[#0a0a14]">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[700px] rounded-full bg-indigo-600/10 blur-[120px]" />
-        <div className="absolute right-1/4 top-1/3 h-[350px] w-[350px] rounded-full bg-purple-600/8 blur-[100px]" />
-        <div className="absolute left-1/4 bottom-1/4 h-[300px] w-[300px] rounded-full bg-blue-600/8 blur-[100px]" />
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[700px] rounded-full bg-fuchsia-600/10 blur-[120px]" />
+        <div className="absolute right-1/4 top-1/3 h-[350px] w-[350px] rounded-full bg-purple-700/10 blur-[100px]" />
+        <div className="absolute left-1/4 bottom-1/4 h-[300px] w-[300px] rounded-full bg-fuchsia-500/10 blur-[100px]" />
       </div>
 
       {/* Subtle grid */}
@@ -265,10 +265,10 @@ export default function PricingPage() {
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-20">
         {/* Header */}
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">Pricing</p>
+          <p className="text-sm font-semibold uppercase tracking-widest text-fuchsia-400">Pricing</p>
           <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-white md:text-5xl">
             Simple,{" "}
-            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-fuchsia-400 to-purple-500 bg-clip-text text-transparent">
               Transparent
             </span>{" "}
             Pricing
@@ -276,7 +276,7 @@ export default function PricingPage() {
           <p className="mx-auto mt-4 max-w-xl text-lg text-slate-400">
             Choose the package that fits your needs. All prices are in Egyptian Pounds (EGP).
           </p>
-          <div className="mx-auto mt-6 h-px w-20 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
+          <div className="mx-auto mt-6 h-px w-20 bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent" />
         </div>
 
         {/* Toggle */}
@@ -286,7 +286,7 @@ export default function PricingPage() {
               onClick={() => setWithHosting(false)}
               className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${
                 !withHosting
-                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/20"
+                  ? "bg-fuchsia-600 text-white shadow-lg shadow-fuchsia-500/20"
                   : "text-slate-400 hover:text-white"
               }`}
             >
@@ -296,7 +296,7 @@ export default function PricingPage() {
               onClick={() => setWithHosting(true)}
               className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${
                 withHosting
-                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/20"
+                  ? "bg-fuchsia-600 text-white shadow-lg shadow-fuchsia-500/20"
                   : "text-slate-400 hover:text-white"
               }`}
             >
@@ -315,19 +315,19 @@ export default function PricingPage() {
                 key={pkg.name}
                 className={`relative flex flex-col rounded-2xl border p-6 transition-all duration-200 ${
                   pkg.popular
-                    ? "border-indigo-500/60 bg-indigo-600/10 shadow-xl shadow-indigo-500/10"
+                    ? "border-fuchsia-500/60 bg-fuchsia-600/10 shadow-xl shadow-fuchsia-500/10"
                     : "border-slate-700/50 bg-white/[0.03] hover:border-slate-600/60 hover:bg-white/[0.05]"
                 }`}
               >
                 {pkg.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="rounded-full bg-indigo-600 px-4 py-1 text-xs font-semibold text-white shadow-lg shadow-indigo-500/30">
+                    <span className="rounded-full bg-fuchsia-600 px-4 py-1 text-xs font-semibold text-white shadow-lg shadow-fuchsia-500/30">
                       Most Popular
                     </span>
                   </div>
                 )}
 
-                <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${pkg.popular ? "bg-indigo-500/20 text-indigo-400" : "bg-white/5 text-slate-400"}`}>
+                <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${pkg.popular ? "bg-fuchsia-500/20 text-fuchsia-400" : "bg-white/5 text-slate-400"}`}>
                   {pkg.icon}
                 </div>
 
@@ -343,7 +343,7 @@ export default function PricingPage() {
                 </div>
 
                 <div className="mt-3 flex items-center gap-1.5">
-                  <svg className="h-4 w-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg className="h-4 w-4 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span className="text-sm text-slate-400">Delivery: <span className="text-white font-medium">{pkg.delivery}</span></span>
@@ -354,7 +354,7 @@ export default function PricingPage() {
                 <ul className="flex flex-col gap-2.5">
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-slate-400">
-                      <svg className="mt-0.5 h-4 w-4 shrink-0 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <svg className="mt-0.5 h-4 w-4 shrink-0 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
                       {f}
@@ -366,7 +366,7 @@ export default function PricingPage() {
                   onClick={() => openModal(serviceLabel)}
                   className={`mt-6 block w-full rounded-xl py-2.5 text-center text-sm font-semibold transition-all duration-200 active:scale-[0.98] ${
                     pkg.popular
-                      ? "bg-indigo-600 text-white hover:bg-indigo-500 shadow-lg shadow-indigo-500/20"
+                      ? "bg-fuchsia-600 text-white hover:bg-fuchsia-500 shadow-lg shadow-fuchsia-500/20"
                       : "border border-slate-700 text-slate-300 hover:border-slate-500 hover:text-white"
                   }`}
                 >
@@ -380,17 +380,17 @@ export default function PricingPage() {
         {/* Support Plans */}
         <div className="mt-20">
           <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">Ongoing Support</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-fuchsia-400">Ongoing Support</p>
             <h2 className="mt-3 text-3xl font-extrabold text-white">
               Website{" "}
-              <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-fuchsia-400 to-purple-500 bg-clip-text text-transparent">
                 Maintenance Plans
               </span>
             </h2>
             <p className="mx-auto mt-3 max-w-md text-slate-400">
               Keep your site fast, secure, and growing — every month.
             </p>
-            <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
+            <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent" />
           </div>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -399,19 +399,19 @@ export default function PricingPage() {
                 key={plan.name}
                 className={`relative flex flex-col rounded-2xl border p-7 transition-all duration-200 ${
                   plan.highlighted
-                    ? "border-indigo-500/60 bg-indigo-600/10 shadow-xl shadow-indigo-500/10"
+                    ? "border-fuchsia-500/60 bg-fuchsia-600/10 shadow-xl shadow-fuchsia-500/10"
                     : "border-slate-700/50 bg-white/[0.03] hover:border-slate-600/60 hover:bg-white/[0.05]"
                 }`}
               >
                 {plan.highlighted && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="rounded-full bg-indigo-600 px-4 py-1 text-xs font-semibold text-white shadow-lg shadow-indigo-500/30">
+                    <span className="rounded-full bg-fuchsia-600 px-4 py-1 text-xs font-semibold text-white shadow-lg shadow-fuchsia-500/30">
                       Most Popular
                     </span>
                   </div>
                 )}
 
-                <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${plan.highlighted ? "bg-indigo-500/20 text-indigo-400" : "bg-white/5 text-slate-400"}`}>
+                <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${plan.highlighted ? "bg-fuchsia-500/20 text-fuchsia-400" : "bg-white/5 text-slate-400"}`}>
                   {plan.icon}
                 </div>
 
@@ -430,7 +430,7 @@ export default function PricingPage() {
                 <ul className="flex flex-col gap-2.5 flex-1">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-slate-400">
-                      <svg className="mt-0.5 h-4 w-4 shrink-0 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <svg className="mt-0.5 h-4 w-4 shrink-0 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
                       {f}
@@ -448,7 +448,7 @@ export default function PricingPage() {
                   onClick={() => openModal(`${plan.name} — Monthly Support`)}
                   className={`mt-5 block w-full rounded-xl py-2.5 text-center text-sm font-semibold transition-all duration-200 active:scale-[0.98] ${
                     plan.highlighted
-                      ? "bg-indigo-600 text-white hover:bg-indigo-500 shadow-lg shadow-indigo-500/20"
+                      ? "bg-fuchsia-600 text-white hover:bg-fuchsia-500 shadow-lg shadow-fuchsia-500/20"
                       : "border border-slate-700 text-slate-300 hover:border-slate-500 hover:text-white"
                   }`}
                 >
@@ -462,23 +462,23 @@ export default function PricingPage() {
         {/* SEO Service */}
         <div className="mt-20">
           <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">SEO Service</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-fuchsia-400">SEO Service</p>
             <h2 className="mt-3 text-3xl font-extrabold text-white">
               Grow Your{" "}
-              <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-fuchsia-400 to-purple-500 bg-clip-text text-transparent">
                 Organic Reach
               </span>
             </h2>
             <p className="mx-auto mt-3 max-w-md text-slate-400">
               A dedicated developer working on your project for 3 months — with full reports and website support included.
             </p>
-            <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
+            <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent" />
           </div>
 
           <div className="mt-10 mx-auto max-w-2xl">
-            <div className="relative rounded-2xl border border-indigo-500/40 bg-indigo-600/5 p-8 shadow-xl shadow-indigo-500/5">
+            <div className="relative rounded-2xl border border-fuchsia-500/40 bg-fuchsia-600/5 p-8 shadow-xl shadow-fuchsia-500/5">
               <div className="absolute -top-3 left-8">
-                <span className="rounded-full bg-indigo-600 px-4 py-1 text-xs font-semibold text-white shadow-lg shadow-indigo-500/30">
+                <span className="rounded-full bg-fuchsia-600 px-4 py-1 text-xs font-semibold text-white shadow-lg shadow-fuchsia-500/30">
                   Per Website / Project
                 </span>
               </div>
@@ -486,7 +486,7 @@ export default function PricingPage() {
               <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
                 {/* Left */}
                 <div className="flex flex-col gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-400">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-fuchsia-500/15 text-fuchsia-400">
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
                     </svg>
@@ -506,7 +506,7 @@ export default function PricingPage() {
 
                   <button
                     onClick={() => openModal("SEO Package — 3-Month Engagement")}
-                    className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all hover:bg-indigo-500 active:scale-[0.98]"
+                    className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-fuchsia-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/20 transition-all hover:bg-fuchsia-500 active:scale-[0.98]"
                   >
                     Get Started
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -531,7 +531,7 @@ export default function PricingPage() {
                     { label: "Monthly Reports & Analytics", desc: "GA4, Search Console, keyword rankings & full performance insights every month" },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-2.5">
-                      <svg className="mt-0.5 h-4 w-4 shrink-0 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <svg className="mt-0.5 h-4 w-4 shrink-0 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
                       <div>
@@ -555,7 +555,7 @@ export default function PricingPage() {
           Have a custom project in mind?{" "}
           <button
             onClick={() => openModal("Custom Project")}
-            className="text-indigo-400 hover:text-indigo-300 transition-colors"
+            className="text-fuchsia-400 hover:text-fuchsia-300 transition-colors"
           >
             Get in touch
           </button>{" "}
@@ -593,20 +593,20 @@ export default function PricingPage() {
               {submitted ? (
                 /* ── Success state ── */
                 <div className="flex flex-col items-center gap-4 py-6 text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-indigo-600/20">
-                    <svg className="h-8 w-8 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-fuchsia-600/20">
+                    <svg className="h-8 w-8 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                   </div>
                   <h3 className="text-xl font-bold text-white">You&apos;re all set!</h3>
                   <p className="text-sm text-slate-400 leading-relaxed">
                     Thanks for reaching out. We&apos;ve received your request for{" "}
-                    <span className="text-indigo-400 font-medium">{modalService}</span> and will get back to you within 24 hours.
+                    <span className="text-fuchsia-400 font-medium">{modalService}</span> and will get back to you within 24 hours.
                   </p>
                   <p className="text-xs text-slate-600">Check your inbox — a confirmation email is on its way.</p>
                   <button
                     onClick={closeModal}
-                    className="mt-2 rounded-xl bg-indigo-600 px-8 py-2.5 text-sm font-semibold text-white hover:bg-indigo-500 transition-colors"
+                    className="mt-2 rounded-xl bg-fuchsia-600 px-8 py-2.5 text-sm font-semibold text-white hover:bg-fuchsia-500 transition-colors"
                   >
                     Done
                   </button>
@@ -618,7 +618,7 @@ export default function PricingPage() {
                     <h2 className="text-xl font-bold text-white">Get Started</h2>
                     <p className="mt-1 text-sm text-slate-400">
                       Interested in{" "}
-                      <span className="text-indigo-400 font-medium">{modalService}</span>
+                      <span className="text-fuchsia-400 font-medium">{modalService}</span>
                     </p>
                   </div>
 
@@ -626,14 +626,14 @@ export default function PricingPage() {
                     {/* Name */}
                     <div>
                       <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
-                        Full Name <span className="text-indigo-400">*</span>
+                        Full Name <span className="text-fuchsia-400">*</span>
                       </label>
                       <input
                         type="text"
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         placeholder="John Doe"
-                        className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-indigo-500 ${
+                        className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-fuchsia-500 ${
                           errors.name ? "border-red-500/60" : "border-slate-700/60"
                         }`}
                       />
@@ -650,14 +650,14 @@ export default function PricingPage() {
                         value={form.agencyName}
                         onChange={(e) => setForm({ ...form, agencyName: e.target.value })}
                         placeholder="Your agency or company"
-                        className="w-full rounded-xl border border-slate-700/60 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-indigo-500"
+                        className="w-full rounded-xl border border-slate-700/60 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-fuchsia-500"
                       />
                     </div>
 
                     {/* Phone */}
                     <div>
                       <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
-                        Phone Number <span className="text-indigo-400">*</span>
+                        Phone Number <span className="text-fuchsia-400">*</span>
                       </label>
                       <div className="flex gap-2">
                         {/* Country dropdown */}
@@ -665,7 +665,7 @@ export default function PricingPage() {
                           <button
                             type="button"
                             onClick={() => setCountryOpen(!countryOpen)}
-                            className="flex h-full items-center gap-2 rounded-xl border border-slate-700/60 bg-white/5 px-3 py-3 text-sm text-white transition-colors hover:border-slate-600 focus:border-indigo-500 focus:outline-none"
+                            className="flex h-full items-center gap-2 rounded-xl border border-slate-700/60 bg-white/5 px-3 py-3 text-sm text-white transition-colors hover:border-slate-600 focus:border-fuchsia-500 focus:outline-none"
                           >
                             <span className="text-base">{selectedCountry.flag}</span>
                             <span className="text-slate-400 text-xs">{selectedCountry.code}</span>
@@ -681,7 +681,7 @@ export default function PricingPage() {
                                   key={`${c.name}-${c.code}`}
                                   type="button"
                                   onClick={() => { setSelectedCountry(c); setCountryOpen(false); setForm((f) => ({ ...f, phone: "" })); }}
-                                  className={`flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-white/5 ${selectedCountry.name === c.name ? "text-indigo-400" : "text-slate-300"}`}
+                                  className={`flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-white/5 ${selectedCountry.name === c.name ? "text-fuchsia-400" : "text-slate-300"}`}
                                 >
                                   <span>{c.flag}</span>
                                   <span className="flex-1 truncate">{c.name}</span>
@@ -701,7 +701,7 @@ export default function PricingPage() {
                             if (val.length <= selectedCountry.maxLen) setForm({ ...form, phone: val });
                           }}
                           placeholder={"0".repeat(selectedCountry.minLen)}
-                          className={`flex-1 rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-indigo-500 ${
+                          className={`flex-1 rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-fuchsia-500 ${
                             errors.phone ? "border-red-500/60" : "border-slate-700/60"
                           }`}
                         />
@@ -712,14 +712,14 @@ export default function PricingPage() {
                     {/* Email */}
                     <div>
                       <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
-                        Email Address <span className="text-indigo-400">*</span>
+                        Email Address <span className="text-fuchsia-400">*</span>
                       </label>
                       <input
                         type="email"
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                         placeholder="you@example.com"
-                        className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-indigo-500 ${
+                        className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors focus:border-fuchsia-500 ${
                           errors.email ? "border-red-500/60" : "border-slate-700/60"
                         }`}
                       />
@@ -735,7 +735,7 @@ export default function PricingPage() {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all hover:bg-indigo-500 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-fuchsia-600 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/20 transition-all hover:bg-fuchsia-500 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       {submitting ? (
                         <>
