@@ -31,35 +31,34 @@ export default function ComingSoon() {
       </picture>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-6 text-center">
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 py-12 text-center sm:py-0">
         {/* Logo */}
         <p className="text-sm font-medium tracking-[0.35em] text-slate-400 sm:text-base">
           V E L I Q
         </p>
 
         {/* Headline */}
-        <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+        <h1 className="mt-5 text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-white sm:mt-6 sm:text-5xl md:text-6xl lg:text-7xl">
           Software &amp; Marketing
           <br />
           Built to Scale
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-6 text-base text-slate-400 sm:text-lg">
+        <p className="mt-5 text-base text-slate-400 sm:mt-6 sm:text-lg">
           Precision at the speed of ambition.
         </p>
 
         {/* CTA */}
         <Link
           href="/register/contact"
-          className="mt-10 inline-flex items-center rounded-full border border-white/20 bg-white px-8 py-3.5 text-base font-semibold text-[#060f24] transition hover:bg-white/90 active:scale-[0.97]"
+          className="mt-8 inline-flex items-center rounded-full border border-white/20 bg-white px-8 py-3.5 text-base font-semibold text-[#060f24] transition hover:bg-white/90 active:scale-[0.97] sm:mt-10"
         >
           Get in Touch
         </Link>
-      </div>
 
-      {/* Social links */}
-      <div className="absolute bottom-8 z-10 flex items-center gap-5">
+        {/* Social links */}
+        <div className="mt-8 flex items-center gap-5 sm:mt-12">
         <a
           href="https://www.linkedin.com/company/veliq-co"
           target="_blank"
