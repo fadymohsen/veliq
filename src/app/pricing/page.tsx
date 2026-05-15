@@ -268,7 +268,7 @@ export default function PricingPage() {
           <p className="text-sm font-semibold uppercase tracking-widest text-fuchsia-400">Pricing</p>
           <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-white md:text-5xl">
             Simple,{" "}
-            <span className="bg-gradient-to-r from-fuchsia-400 to-purple-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-fuchsia-600 to-purple-800 bg-clip-text text-transparent">
               Transparent
             </span>{" "}
             Pricing
@@ -383,7 +383,7 @@ export default function PricingPage() {
             <p className="text-sm font-semibold uppercase tracking-widest text-fuchsia-400">Ongoing Support</p>
             <h2 className="mt-3 text-3xl font-extrabold text-white">
               Website{" "}
-              <span className="bg-gradient-to-r from-fuchsia-400 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-fuchsia-600 to-purple-800 bg-clip-text text-transparent">
                 Maintenance Plans
               </span>
             </h2>
@@ -465,7 +465,7 @@ export default function PricingPage() {
             <p className="text-sm font-semibold uppercase tracking-widest text-fuchsia-400">SEO Service</p>
             <h2 className="mt-3 text-3xl font-extrabold text-white">
               Grow Your{" "}
-              <span className="bg-gradient-to-r from-fuchsia-400 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-fuchsia-600 to-purple-800 bg-clip-text text-transparent">
                 Organic Reach
               </span>
             </h2>

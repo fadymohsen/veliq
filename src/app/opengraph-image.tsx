@@ -16,7 +16,7 @@ export default function OGImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0a0a14 0%, #3b0764 50%, #0a0a14 100%)",
+          background: "linear-gradient(135deg, #0a0a14 0%, #2e1065 50%, #0a0a14 100%)",
           fontFamily: "sans-serif",
         }}
       >
@@ -24,7 +24,7 @@ export default function OGImage() {
           style={{
             fontSize: 84,
             fontWeight: 800,
-            background: "linear-gradient(135deg, #D946EF 0%, #A21CAF 55%, #581C87 100%)",
+            background: "linear-gradient(135deg, #A21CAF 0%, #6B21A8 55%, #2E1065 100%)",
             backgroundClip: "text",
             color: "transparent",
             letterSpacing: "-2px",
@@ -37,7 +37,7 @@ export default function OGImage() {
           style={{
             fontSize: 28,
             fontWeight: 500,
-            background: "linear-gradient(90deg, #e879f9, #c084fc)",
+            background: "linear-gradient(90deg, #c026d3, #7e22ce)",
             backgroundClip: "text",
             color: "transparent",
           }}
