@@ -24,7 +24,7 @@ export default function OGImage() {
           style={{
             fontSize: 84,
             fontWeight: 800,
-            background: "linear-gradient(90deg, #1D4ED8 0%, #3B82F6 55%, #38BDF8 100%)",
+            background: "linear-gradient(90deg, #1E3A8A 0%, #2563EB 55%, #38BDF8 100%)",
             backgroundClip: "text",
             color: "transparent",
             letterSpacing: "-2px",

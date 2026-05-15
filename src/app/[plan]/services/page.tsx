@@ -74,7 +74,7 @@ export default function ServicesPage() {
       <div className="relative z-10 mx-auto max-w-md px-6 py-16">
         {/* Logo */}
         <div className="text-center">
-          <Link href="/" className="bg-gradient-to-r from-blue-700 via-blue-500 to-sky-400 bg-clip-text text-2xl font-bold tracking-[0.2em] text-transparent md:text-3xl transition hover:from-blue-600 hover:to-sky-300">VELIQ</Link>
+          <Link href="/" className="bg-gradient-to-r from-blue-900 via-blue-600 to-sky-400 bg-clip-text text-2xl font-bold tracking-[0.2em] text-transparent md:text-3xl transition hover:from-blue-800 hover:to-sky-300">VELIQ</Link>
           <div className="mx-auto mt-4 h-px w-12 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
         </div>
 

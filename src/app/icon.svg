@@ -3,8 +3,8 @@
   <path d="M6 7l5 13h1.4l3-9.5L18.4 20H20l5-13h-2.6l-3.4 9.5L16 9 13 16.5 9.6 7H6z" fill="url(#g)"/>
   <defs>
     <linearGradient id="g" x1="6" y1="14" x2="26" y2="14" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1D4ED8"/>
-      <stop offset="0.55" stop-color="#3B82F6"/>
+      <stop stop-color="#1E3A8A"/>
+      <stop offset="0.55" stop-color="#2563EB"/>
       <stop offset="1" stop-color="#38BDF8"/>
     </linearGradient>
   </defs>

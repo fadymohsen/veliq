@@ -23,7 +23,7 @@ export default function ComingSoon() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-2xl px-6 text-center">
         {/* Logo */}
-        <h2 className="bg-gradient-to-r from-blue-700 via-blue-500 to-sky-400 bg-clip-text text-3xl font-bold tracking-[0.2em] text-transparent md:text-4xl">
+        <h2 className="bg-gradient-to-r from-blue-900 via-blue-600 to-sky-400 bg-clip-text text-3xl font-bold tracking-[0.2em] text-transparent md:text-4xl">
           VELIQ
         </h2>
 
@@ -33,7 +33,7 @@ export default function ComingSoon() {
         {/* Headline */}
         <h1 className="mt-5 text-5xl font-extrabold leading-tight tracking-tight text-white md:text-7xl">
           Something{" "}
-          <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-900 via-blue-600 to-sky-400 bg-clip-text text-transparent">
             Great
           </span>
           <br />
