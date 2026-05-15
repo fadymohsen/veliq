@@ -63,9 +63,9 @@ export default function AgencyQuestionPage() {
     <div className="relative min-h-screen bg-[#0a0a14]">
       {/* Background glow */}
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-fuchsia-600/15 blur-[120px]" />
-        <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-purple-700/10 blur-[100px]" />
-        <div className="absolute left-1/4 bottom-1/3 h-[250px] w-[250px] rounded-full bg-fuchsia-500/10 blur-[100px]" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-blue-600/15 blur-[120px]" />
+        <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-blue-700/10 blur-[100px]" />
+        <div className="absolute left-1/4 bottom-1/3 h-[250px] w-[250px] rounded-full bg-blue-500/10 blur-[100px]" />
       </div>
 
       {/* Subtle grid */}
@@ -81,13 +81,13 @@ export default function AgencyQuestionPage() {
       <div className="relative z-10 mx-auto max-w-md px-6 py-16">
         {/* Logo */}
         <div className="text-center">
-          <Link href="/" className="bg-gradient-to-br from-fuchsia-600 via-purple-800 to-purple-950 bg-clip-text text-2xl font-bold tracking-[0.2em] text-transparent md:text-3xl transition hover:from-fuchsia-500 hover:to-purple-900">VELIQ</Link>
-          <div className="mx-auto mt-4 h-px w-12 bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent" />
+          <Link href="/" className="bg-gradient-to-r from-blue-700 via-blue-500 to-sky-400 bg-clip-text text-2xl font-bold tracking-[0.2em] text-transparent md:text-3xl transition hover:from-blue-600 hover:to-sky-300">VELIQ</Link>
+          <div className="mx-auto mt-4 h-px w-12 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
         </div>
 
         {/* Step indicator */}
         <div className="mt-8 flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-fuchsia-500 text-xs font-bold text-white">1</div>
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-xs font-bold text-white">1</div>
           <div className="h-px flex-1 bg-slate-700" />
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 text-xs font-bold text-slate-500">2</div>
           <div className="h-px flex-1 bg-slate-700" />
@@ -117,12 +117,12 @@ export default function AgencyQuestionPage() {
             }}
             className={`flex w-full items-center gap-3 rounded-lg border px-4 py-3.5 text-sm text-left transition ${
               agencyStatus === "with"
-                ? "border-fuchsia-500/40 bg-fuchsia-500/10 text-white"
+                ? "border-blue-500/40 bg-blue-500/10 text-white"
                 : "border-slate-800 bg-white/[0.02] text-slate-300 hover:border-slate-700 hover:bg-white/5"
             }`}
           >
             <div className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
-              agencyStatus === "with" ? "border-fuchsia-500 bg-fuchsia-500" : "border-slate-600"
+              agencyStatus === "with" ? "border-blue-500 bg-blue-500" : "border-slate-600"
             }`}>
               {agencyStatus === "with" && (
                 <div className="h-2 w-2 rounded-full bg-white" />
@@ -140,12 +140,12 @@ export default function AgencyQuestionPage() {
             }}
             className={`flex w-full items-center gap-3 rounded-lg border px-4 py-3.5 text-sm text-left transition ${
               agencyStatus === "looking"
-                ? "border-fuchsia-500/40 bg-fuchsia-500/10 text-white"
+                ? "border-blue-500/40 bg-blue-500/10 text-white"
                 : "border-slate-800 bg-white/[0.02] text-slate-300 hover:border-slate-700 hover:bg-white/5"
             }`}
           >
             <div className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
-              agencyStatus === "looking" ? "border-fuchsia-500 bg-fuchsia-500" : "border-slate-600"
+              agencyStatus === "looking" ? "border-blue-500 bg-blue-500" : "border-slate-600"
             }`}>
               {agencyStatus === "looking" && (
                 <div className="h-2 w-2 rounded-full bg-white" />
@@ -169,7 +169,7 @@ export default function AgencyQuestionPage() {
                 key={option}
                 className={`flex cursor-pointer items-center gap-3 rounded-lg border px-4 py-3 text-sm transition ${
                   selectedOptions.includes(option)
-                    ? "border-fuchsia-500/40 bg-fuchsia-500/10 text-white"
+                    ? "border-blue-500/40 bg-blue-500/10 text-white"
                     : "border-slate-800 bg-white/[0.02] text-slate-300 hover:border-slate-700 hover:bg-white/5"
                 }`}
               >
@@ -177,7 +177,7 @@ export default function AgencyQuestionPage() {
                   type="checkbox"
                   checked={selectedOptions.includes(option)}
                   onChange={() => toggleOption(option)}
-                  className="h-4 w-4 rounded border-slate-600 bg-transparent text-fuchsia-500 focus:ring-fuchsia-500/40"
+                  className="h-4 w-4 rounded border-slate-600 bg-transparent text-blue-500 focus:ring-blue-500/40"
                 />
                 {option}
               </label>
@@ -194,7 +194,7 @@ export default function AgencyQuestionPage() {
           <button
             type="button"
             onClick={handleNext}
-            className="mt-5 w-full rounded-lg bg-fuchsia-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-fuchsia-500 active:scale-[0.98]"
+            className="mt-5 w-full rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-500 active:scale-[0.98]"
           >
             Next
           </button>
