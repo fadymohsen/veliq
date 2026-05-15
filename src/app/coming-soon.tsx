@@ -3,22 +3,29 @@ import Link from "next/link";
 export default function ComingSoon() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#060612]">
-      {/* Background effects */}
+      {/* Background pattern — subtle geometric mesh */}
+      <svg
+        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.04]"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern id="bg-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M0 40 L40 0 L80 40 L40 80Z" fill="none" stroke="white" strokeWidth="0.5" />
+            <circle cx="40" cy="0" r="1" fill="white" />
+            <circle cx="80" cy="40" r="1" fill="white" />
+            <circle cx="40" cy="80" r="1" fill="white" />
+            <circle cx="0" cy="40" r="1" fill="white" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#bg-pattern)" />
+      </svg>
+
+      {/* Background glow effects */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[700px] w-[700px] rounded-full bg-blue-600/10 blur-[160px]" />
         <div className="absolute right-1/4 top-1/4 h-[350px] w-[350px] rounded-full bg-indigo-600/10 blur-[120px]" />
         <div className="absolute left-1/4 bottom-1/4 h-[300px] w-[300px] rounded-full bg-sky-500/8 blur-[120px]" />
       </div>
-
-      {/* Grid overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
 
       {/* Main content */}
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center px-6 py-16 text-center">
