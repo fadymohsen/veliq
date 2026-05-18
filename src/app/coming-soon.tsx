@@ -22,32 +22,32 @@ export default function ComingSoon() {
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 py-12 text-center sm:py-0">
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center sm:py-0">
         {/* Logo */}
-        <Logo className="h-20 w-auto sm:h-24 md:h-32 lg:h-40" />
+        <Logo className="h-24 w-auto sm:h-24 md:h-32 lg:h-40" />
 
         {/* Headline */}
-        <h1 className="mt-8 text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-white sm:mt-10 sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="mt-12 text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-white sm:mt-10 sm:text-5xl md:text-6xl lg:text-7xl">
           Software &amp; Marketing
           <br />
           Built to Scale
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-5 text-base text-slate-400 sm:mt-6 sm:text-lg">
+        <p className="mt-6 text-base text-slate-400 sm:mt-6 sm:text-lg">
           Precision at the speed of ambition.
         </p>
 
         {/* CTA */}
         <Link
           href="/register/contact"
-          className="mt-8 inline-flex items-center rounded-full bg-gradient-to-r from-violet-700 via-indigo-500 to-sky-400 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:shadow-indigo-500/50 hover:brightness-110 active:scale-[0.97] sm:mt-10"
+          className="mt-12 inline-flex items-center rounded-full bg-gradient-to-r from-violet-700 via-indigo-500 to-sky-400 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:shadow-indigo-500/50 hover:brightness-110 active:scale-[0.97] sm:mt-10"
         >
           Get in Touch
         </Link>
 
         {/* Social links */}
-        <div className="mt-8 flex items-center gap-5 sm:mt-12">
+        <div className="mt-14 flex items-center gap-6 sm:mt-12 sm:gap-5">
         <a
           href="https://www.linkedin.com/company/veliq-co"
           target="_blank"
@@ -95,7 +95,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Footer */}
-        <p className="mt-4 text-xs text-slate-600">
+        <p className="mt-8 text-xs text-slate-600 sm:mt-4">
           &copy; {new Date().getFullYear()} VELIQ. All rights reserved.
         </p>
       </div>
