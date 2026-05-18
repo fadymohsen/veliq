@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "./_components/Logo";
 
 export default function ComingSoon() {
   return (
@@ -23,52 +24,7 @@ export default function ComingSoon() {
       {/* Content */}
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 py-12 text-center sm:py-0">
         {/* Logo */}
-        <svg
-          viewBox="0 0 620 200"
-          fill="none"
-          role="img"
-          aria-label="VELIQ"
-          className="h-20 w-auto sm:h-24 md:h-32 lg:h-40"
-        >
-          <defs>
-            <linearGradient id="veliq-grad" x1="0" y1="0" x2="620" y2="0" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stopColor="#6D28D9" />
-              <stop offset="0.35" stopColor="#4338CA" />
-              <stop offset="0.7" stopColor="#3B82F6" />
-              <stop offset="1" stopColor="#7DD3FC" />
-            </linearGradient>
-          </defs>
-          {/* V */}
-          <path
-            d="M 20 30 L 80 170 L 140 30"
-            stroke="url(#veliq-grad)"
-            strokeWidth="14"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          {/* E — three bars */}
-          <path d="M 170 30 H 270" stroke="url(#veliq-grad)" strokeWidth="14" strokeLinecap="round" />
-          <path d="M 170 100 H 270" stroke="url(#veliq-grad)" strokeWidth="14" strokeLinecap="round" />
-          <path d="M 170 170 H 270" stroke="url(#veliq-grad)" strokeWidth="14" strokeLinecap="round" />
-          {/* L */}
-          <path
-            d="M 300 30 V 170 H 400"
-            stroke="url(#veliq-grad)"
-            strokeWidth="14"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          {/* I */}
-          <path d="M 430 30 V 170" stroke="url(#veliq-grad)" strokeWidth="14" strokeLinecap="round" />
-          {/* Q — circle + descender */}
-          <circle cx="530" cy="100" r="70" stroke="url(#veliq-grad)" strokeWidth="14" />
-          <path
-            d="M 560 158 V 190"
-            stroke="url(#veliq-grad)"
-            strokeWidth="14"
-            strokeLinecap="round"
-          />
-        </svg>
+        <Logo className="h-20 w-auto sm:h-24 md:h-32 lg:h-40" />
 
         {/* Headline */}
         <h1 className="mt-8 text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-white sm:mt-10 sm:text-5xl md:text-6xl lg:text-7xl">
