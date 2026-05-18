@@ -2,43 +2,76 @@ import Link from "next/link";
 
 export default function ComingSoon() {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
-      {/* Background image — responsive sources */}
-      <picture className="pointer-events-none absolute inset-0">
-        <source
-          media="(max-width: 768px)"
-          srcSet="/hero-bg-mobile.jpg"
-        />
-        <source
-          media="(max-width: 1920px)"
-          srcSet="/hero-bg-1920.webp"
-          type="image/webp"
-        />
-        <source
-          media="(max-width: 1920px)"
-          srcSet="/hero-bg-1920.jpg"
-          type="image/jpeg"
-        />
-        <source
-          srcSet="/hero-bg-2560.webp"
-          type="image/webp"
-        />
-        <img
-          src="/hero-bg-1920.jpg"
-          alt=""
-          className="h-full w-full object-cover"
-        />
-      </picture>
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#1a0b2e] via-[#0d1232] to-[#0a1a2e]">
+      {/* Brand-tinted glows for depth */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-32 top-0 h-[560px] w-[560px] rounded-full bg-violet-700/25 blur-[150px]" />
+        <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-sky-500/20 blur-[150px]" />
+        <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/15 blur-[130px]" />
+      </div>
+
+      {/* Subtle grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 py-12 text-center sm:py-0">
         {/* Logo */}
-        <p className="bg-gradient-to-r from-blue-900 via-blue-600 to-sky-400 bg-clip-text text-sm font-semibold tracking-[0.35em] text-transparent sm:text-base">
-          V E L I Q
-        </p>
+        <svg
+          viewBox="0 0 620 200"
+          fill="none"
+          role="img"
+          aria-label="VELIQ"
+          className="h-20 w-auto sm:h-24 md:h-32 lg:h-40"
+        >
+          <defs>
+            <linearGradient id="veliq-grad" x1="0" y1="0" x2="620" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stopColor="#6D28D9" />
+              <stop offset="0.35" stopColor="#4338CA" />
+              <stop offset="0.7" stopColor="#3B82F6" />
+              <stop offset="1" stopColor="#7DD3FC" />
+            </linearGradient>
+          </defs>
+          {/* V */}
+          <path
+            d="M 20 30 L 80 170 L 140 30"
+            stroke="url(#veliq-grad)"
+            strokeWidth="14"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          {/* E — three bars */}
+          <path d="M 170 30 H 270" stroke="url(#veliq-grad)" strokeWidth="14" strokeLinecap="round" />
+          <path d="M 170 100 H 270" stroke="url(#veliq-grad)" strokeWidth="14" strokeLinecap="round" />
+          <path d="M 170 170 H 270" stroke="url(#veliq-grad)" strokeWidth="14" strokeLinecap="round" />
+          {/* L */}
+          <path
+            d="M 300 30 V 170 H 400"
+            stroke="url(#veliq-grad)"
+            strokeWidth="14"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          {/* I */}
+          <path d="M 430 30 V 170" stroke="url(#veliq-grad)" strokeWidth="14" strokeLinecap="round" />
+          {/* Q — circle + descender */}
+          <circle cx="530" cy="100" r="70" stroke="url(#veliq-grad)" strokeWidth="14" />
+          <path
+            d="M 560 158 V 190"
+            stroke="url(#veliq-grad)"
+            strokeWidth="14"
+            strokeLinecap="round"
+          />
+        </svg>
 
         {/* Headline */}
-        <h1 className="mt-5 text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-white sm:mt-6 sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="mt-8 text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-white sm:mt-10 sm:text-5xl md:text-6xl lg:text-7xl">
           Software &amp; Marketing
           <br />
           Built to Scale
@@ -52,7 +85,7 @@ export default function ComingSoon() {
         {/* CTA */}
         <Link
           href="/register/contact"
-          className="mt-8 inline-flex items-center rounded-full bg-gradient-to-r from-blue-900 via-blue-600 to-sky-400 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:shadow-blue-500/50 hover:brightness-110 active:scale-[0.97] sm:mt-10"
+          className="mt-8 inline-flex items-center rounded-full bg-gradient-to-r from-violet-700 via-indigo-500 to-sky-400 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:shadow-indigo-500/50 hover:brightness-110 active:scale-[0.97] sm:mt-10"
         >
           Get in Touch
         </Link>
