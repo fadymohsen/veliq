@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+/*
+  iOS Safari auto-zooms on focus when an input's font-size is < 16px.
+  Force every typeable input to 16px below the md breakpoint. Attribute
+  selectors give specificity (0,1,1), which outranks Tailwind's
+  .text-sm (0,1,0) without needing !important.
+*/
+@media (max-width: 767px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="url"],
+  input:not([type]),
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
