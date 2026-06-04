@@ -4,14 +4,12 @@ import Image from "next/image";
 
 const clients = [
   { name: "Coach Mohamed Roshdy", logo: "/clients/coach-mohamed-roshdy.svg" },
-  { name: "Coach Batool", logo: "/clients/coach-batool.png" },
   { name: "Yamin Estate", logo: "/clients/yamin-estate.png" },
   { name: "Saudi Hayat", logo: "/clients/saudi-hayat.png" },
   { name: "Alfa Transport", logo: "/clients/alfa-transport.png" },
   { name: "Fanous Clinic", logo: "/clients/fanous-clinic.png" },
   { name: "CrewHub Studio", logo: "/clients/crewhub-studio.png" },
   { name: "Initio", logo: "/clients/initio.svg" },
-  { name: "BrandLab Agency", logo: "/clients/brandlab.png" },
   { name: "RedBone Gym", logo: "/clients/redbone-gym.png" },
 ];
 
@@ -25,7 +23,7 @@ function ClientLogo({ name, logo }: { name: string; logo: string }) {
         height={48}
         className="h-16 w-auto object-contain opacity-60 transition-all duration-500 hover:opacity-100"
       />
-      <span className="text-[10px] font-medium text-slate-600 whitespace-nowrap">{name}</span>
+      <span className="text-xs font-semibold text-slate-500 whitespace-nowrap">{name}</span>
     </div>
   );
 }
