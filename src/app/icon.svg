@@ -1,54 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="VELIQ">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="white"/>
   <defs>
-    <!-- Brand gradients for the rounded-square background -->
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0F235F"/>
-      <stop offset="100%" stop-color="#235FAA"/>
-    </linearGradient>
-
-    <!-- V gradient: navy → royal → sky (matches the wordmark logo) -->
-    <linearGradient id="vGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="#142D6E"/>
-      <stop offset="50%"  stop-color="#235FAA"/>
-      <stop offset="100%" stop-color="#3C9BD2"/>
-    </linearGradient>
-
-    <!-- Light-mode V gradient (when bg is white in dark-mode-inverse scenarios) -->
-    <linearGradient id="vGradLight" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="#142D6E"/>
-      <stop offset="50%"  stop-color="#235FAA"/>
-      <stop offset="100%" stop-color="#3C9BD2"/>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7B2D8E"/>
+      <stop offset="50%" stop-color="#3B3F9F"/>
+      <stop offset="100%" stop-color="#2E7BC4"/>
     </linearGradient>
   </defs>
-
-  <style>
-    /* Default: dark navy rounded square + bright V */
-    .bg   { fill: url(#bgGrad); }
-    .v    { fill: #FFFFFF; }
-
-    /* When the browser/OS is in dark mode, keep the same look —
-       the icon already works on dark UIs. */
-    @media (prefers-color-scheme: dark) {
-      .bg { fill: url(#bgGrad); }
-      .v  { fill: #FFFFFF; }
-    }
-
-    /* Optional: monochrome fallback (Safari pinned tab uses this).
-       Browsers that ignore color will render the V silhouette only. */
-  </style>
-
-  <!-- Rounded-square background -->
-  <rect class="bg" x="0" y="0" width="100" height="100" rx="22" ry="22"/>
-
-  <!-- V monogram, geometrically matched to the wordmark's V -->
-  <!-- Outer-left → inner-left → apex → inner-right → outer-right → apex-tail -->
-  <path class="v"
-        d="M 18,18
-           L 30,18
-           L 50,76
-           L 70,18
-           L 82,18
-           L 56,86
-           L 44,86
-           Z"/>
+  <!-- Left rounded bar of the V -->
+  <rect x="130" y="100" width="72" height="280" rx="36" fill="url(#g1)"/>
+  <!-- Right teardrop/leaf shape -->
+  <path d="M202 380 C202 380 202 340 240 280 C278 220 340 180 360 160 C380 140 382 120 370 110 C358 100 340 108 320 130 C280 170 202 300 202 380Z" fill="url(#g1)"/>
+  <!-- Inner notch (cutout effect) -->
+  <rect x="155" y="220" width="22" height="100" rx="11" fill="white"/>
 </svg>

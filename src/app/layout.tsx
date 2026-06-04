@@ -1,18 +1,30 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+import LayoutShell from "./components/layout-shell";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://veliq.com";
+
 export const metadata: Metadata = {
-  title: "VELIQ — Coming Soon | Software & Marketing Solutions",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "VELIQ — Software & Marketing Solutions",
+    template: "%s — VELIQ",
+  },
   description:
-    "VELIQ is launching soon. We build custom software, mobile apps, and data-driven marketing strategies that accelerate business growth. Get in touch to start early.",
+    "VELIQ delivers cutting-edge software development and data-driven marketing solutions to accelerate your business growth.",
   keywords: [
-    "VELIQ",
     "software development",
     "digital marketing",
     "web development",
@@ -20,23 +32,65 @@ export const metadata: Metadata = {
     "SEO",
     "brand strategy",
     "data analytics",
+    "digital agency",
+    "Cairo",
+    "Egypt",
   ],
+  authors: [{ name: "VELIQ" }],
+  creator: "VELIQ",
   openGraph: {
-    title: "VELIQ — Something Great Is Coming",
-    description:
-      "We're crafting cutting-edge software and marketing solutions to drive your business growth. Stay tuned or reach out now.",
-    url: "https://veliq.co",
-    siteName: "VELIQ",
-    locale: "en_US",
     type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: "VELIQ",
+    title: "VELIQ — Software & Marketing Solutions",
+    description:
+      "We design, build, and market digital products that help businesses scale — from custom software platforms to high-impact marketing campaigns.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "VELIQ — Something Great Is Coming",
+    title: "VELIQ — Software & Marketing Solutions",
     description:
-      "Software & marketing solutions that drive growth. Launching soon.",
+      "We design, build, and market digital products that help businesses scale.",
+    creator: "@veliq",
   },
-  metadataBase: new URL("https://veliq.co"),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "VELIQ",
+  url: SITE_URL,
+  description:
+    "Full-service digital agency delivering software development and marketing solutions.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Cairo",
+    addressCountry: "EG",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+20-155-116-4671",
+    contactType: "customer service",
+    email: "admin@veliq.co",
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/veliq",
+    "https://twitter.com/veliq",
+    "https://www.instagram.com/veliq",
+    "https://www.facebook.com/veliq",
+  ],
 };
 
 export default function RootLayout({
@@ -46,8 +100,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${geistSans.variable} font-sans antialiased`}>
-        {children}
+      <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );
