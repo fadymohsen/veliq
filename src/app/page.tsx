@@ -253,7 +253,7 @@ export default async function Home() {
               <div className="about-mission-card group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 md:p-10 h-full transition-all duration-700 hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/10">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-purple-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/5 rounded-full translate-y-1/2 -translate-x-1/2" />
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col h-full">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-purple-500/20 bg-purple-500/10 mb-5 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
                     <svg className="h-6 w-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 8.41m5.96 5.96a14.926 14.926 0 01-5.84 2.58m0 0a14.926 14.926 0 01-5.96-5.96M9.63 8.41A6 6 0 012.25 14.2" />
@@ -265,12 +265,12 @@ export default async function Home() {
                   <h3 className="mt-2 text-xl font-bold text-white md:text-2xl leading-snug">
                     Engineering Seamless Brand Experiences
                   </h3>
-                  <p className="mt-4 text-sm text-slate-500 leading-relaxed group-hover:text-slate-400 transition-colors duration-300">
+                  <p className="mt-4 text-sm text-slate-500 leading-relaxed group-hover:text-slate-400 transition-colors duration-300 flex-1">
                     VELIQ exists to engineer seamless brand experiences, combining velocity,
                     intelligence, and creative precision, so that every web, app, design,
                     and marketing channel our clients own moves in one unified direction: forward.
                   </p>
-                  <div className="mt-6 flex flex-wrap gap-2">
+                  <div className="mt-6 flex gap-2">
                     {["Velocity", "Intelligence", "Precision"].map((word) => (
                       <span
                         key={word}
@@ -289,7 +289,7 @@ export default async function Home() {
               <div className="about-mission-card group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 md:p-10 h-full transition-all duration-700 hover:border-cyan-500/30 hover:shadow-2xl hover:shadow-cyan-500/10">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full translate-y-1/2 -translate-x-1/2" />
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col h-full">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-500/20 bg-cyan-500/10 mb-5 transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6">
                     <svg className="h-6 w-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
@@ -302,12 +302,12 @@ export default async function Home() {
                   <h3 className="mt-2 text-xl font-bold text-white md:text-2xl leading-snug">
                     The Most Trusted Growth Architecture Firm
                   </h3>
-                  <p className="mt-4 text-sm text-slate-500 leading-relaxed group-hover:text-slate-400 transition-colors duration-300">
+                  <p className="mt-4 text-sm text-slate-500 leading-relaxed group-hover:text-slate-400 transition-colors duration-300 flex-1">
                     To become the most trusted growth architecture firm for elite brands
                     across four continents, where every digital touchpoint is a deliberate
                     act of precision.
                   </p>
-                  <div className="mt-6 flex flex-wrap gap-2">
+                  <div className="mt-6 flex gap-2">
                     {["Trust", "Growth", "Precision"].map((word) => (
                       <span
                         key={word}

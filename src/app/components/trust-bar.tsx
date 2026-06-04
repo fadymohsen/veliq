@@ -1,25 +1,30 @@
 "use client";
 
+import Image from "next/image";
+
 const clients = [
-  { name: "BrightPath", width: 120 },
-  { name: "NovaTech", width: 110 },
-  { name: "Meridian", width: 115 },
-  { name: "Quantum Labs", width: 130 },
-  { name: "Skyline", width: 100 },
-  { name: "Atlas Digital", width: 125 },
-  { name: "Vertex", width: 95 },
-  { name: "Prism Co", width: 110 },
+  { name: "Coach Mohamed Roshdy", logo: "/clients/coach-mohamed-roshdy.svg" },
+  { name: "Coach Batool", logo: "/clients/coach-batool.png" },
+  { name: "Yamin Estate", logo: "/clients/yamin-estate.png" },
+  { name: "Saudi Hayat", logo: "/clients/saudi-hayat.jpeg" },
+  { name: "Alfa Transport", logo: "/clients/alfa-transport.png" },
+  { name: "Fanous Clinic", logo: "/clients/fanous-clinic.png" },
+  { name: "CrewHub Studio", logo: "/clients/crewhub-studio.png" },
+  { name: "Initio", logo: "/clients/initio.svg" },
+  { name: "BrandLab Agency", logo: "/clients/brandlab.png" },
+  { name: "RedBone Gym", logo: "/clients/redbone-gym.png" },
 ];
 
-function LogoPlaceholder({ name, width }: { name: string; width: number }) {
+function ClientLogo({ name, logo }: { name: string; logo: string }) {
   return (
-    <div
-      className="flex-shrink-0 flex items-center justify-center px-8"
-      style={{ width }}
-    >
-      <span className="whitespace-nowrap text-base font-bold tracking-wide text-white/20 transition-all duration-500 hover:text-white/50 select-none">
-        {name}
-      </span>
+    <div className="flex-shrink-0 flex items-center justify-center px-8">
+      <Image
+        src={logo}
+        alt={name}
+        width={120}
+        height={48}
+        className="h-10 w-auto object-contain opacity-40 grayscale transition-all duration-500 hover:opacity-80 hover:grayscale-0"
+      />
     </div>
   );
 }
@@ -27,12 +32,11 @@ function LogoPlaceholder({ name, width }: { name: string; width: number }) {
 export default function TrustBar() {
   return (
     <section className="relative py-12 overflow-hidden border-y border-white/[0.04]">
-      {/* Subtle background */}
       <div className="pointer-events-none absolute inset-0 bg-white/[0.01]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <p className="mb-8 text-center text-xs font-semibold uppercase tracking-[0.25em] text-slate-600">
-          Trusted by forward-thinking companies
+          Trusted by growing businesses
         </p>
       </div>
 
@@ -44,9 +48,8 @@ export default function TrustBar() {
 
         {/* Scrolling track */}
         <div className="flex animate-marquee">
-          {/* Duplicate the list for seamless loop */}
           {[...clients, ...clients, ...clients, ...clients].map((c, i) => (
-            <LogoPlaceholder key={`${c.name}-${i}`} name={c.name} width={c.width} />
+            <ClientLogo key={`${c.name}-${i}`} name={c.name} logo={c.logo} />
           ))}
         </div>
       </div>
