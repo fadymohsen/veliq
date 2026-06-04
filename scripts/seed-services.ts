@@ -187,6 +187,66 @@ const services = [
       "Cloudflare",
     ],
   },
+  {
+    id: 4,
+    slug: "mobile-development",
+    icon: "mobile-development",
+    title: "Mobile Development",
+    desc: "Native and cross-platform mobile apps built for performance, usability, and business impact. iOS and Android.",
+    fullDesc:
+      "We build mobile applications that people actually want to use. From concept to App Store, our team designs and develops native and cross-platform apps that combine beautiful interfaces with rock-solid performance. Every app is built around your users' needs and your business objectives, not the other way around.",
+    color: "blue",
+    bg: "bg-gradient-to-br from-blue-600/20 to-purple-600/20",
+    highlights: [
+      { label: "Platforms", value: "iOS & Android" },
+      { label: "App Store Rating", value: "4.8+" },
+      { label: "Crash-Free Rate", value: "99.5%" },
+      { label: "Launch Time", value: "8-12 wks" },
+    ],
+    features: [
+      "Native iOS and Android development for maximum performance and platform integration",
+      "Cross-platform development with React Native and Flutter for faster time-to-market",
+      "UI/UX design optimized for mobile interactions, gestures, and accessibility",
+      "Offline-first architecture so your app works reliably even without connectivity",
+      "Push notifications, in-app messaging, and user engagement features",
+      "Secure authentication with biometrics, OAuth, and multi-factor support",
+      "API development and backend integration with your existing systems",
+      "App Store and Google Play submission, optimization, and compliance",
+      "Post-launch analytics, crash monitoring, and iterative improvement",
+    ],
+    process: [
+      {
+        step: "Discovery & Strategy",
+        desc: "Define user personas, core features, and technical requirements. Map the MVP scope to get to market fast without cutting quality.",
+      },
+      {
+        step: "Design & Prototype",
+        desc: "Interactive prototypes tested with real users before development begins. Every screen, every flow, every interaction validated.",
+      },
+      {
+        step: "Development & Testing",
+        desc: "Agile sprints with bi-weekly demos. Continuous testing on real devices. Performance and security baked in from the start.",
+      },
+      {
+        step: "Launch & Grow",
+        desc: "App Store submission, launch strategy, and post-launch monitoring. Ongoing updates based on user feedback and analytics data.",
+      },
+    ],
+    technologies: [
+      "React Native",
+      "Flutter",
+      "Swift",
+      "Kotlin",
+      "TypeScript",
+      "Firebase",
+      "Node.js",
+      "PostgreSQL",
+      "AWS",
+      "Figma",
+      "TestFlight",
+      "Fastlane",
+    ],
+  },
 ];
 
 async function seed() {
