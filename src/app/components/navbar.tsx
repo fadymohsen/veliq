@@ -161,40 +161,32 @@ export default function Navbar() {
 
       {/* Full-screen mobile menu overlay */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
-          menuOpen ? "visible" : "invisible"
+        className={`fixed inset-0 z-40 md:hidden transition-visibility ${
+          menuOpen ? "visible" : "invisible delay-300"
         }`}
       >
-        {/* Backdrop */}
+        {/* Backdrop — solid color, no blur for performance */}
         <div
-          className={`absolute inset-0 bg-[#0a0a14]/98 backdrop-blur-2xl transition-opacity duration-500 ${
+          className={`absolute inset-0 bg-[#0a0a14] transition-opacity duration-300 ${
             menuOpen ? "opacity-100" : "opacity-0"
           }`}
         />
 
-        {/* Glowing orbs for visual effect */}
+        {/* Subtle gradient accent — GPU-accelerated, no blur */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div
-            className={`absolute left-1/2 top-1/3 -translate-x-1/2 h-[400px] w-[400px] rounded-full bg-indigo-600/15 blur-[120px] transition-all duration-700 ${
-              menuOpen ? "opacity-100 scale-100" : "opacity-0 scale-50"
+            className={`absolute left-1/2 top-1/3 -translate-x-1/2 h-[300px] w-[300px] rounded-full transition-opacity duration-300 ${
+              menuOpen ? "opacity-100" : "opacity-0"
             }`}
+            style={{ background: "radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%)" }}
           />
           <div
-            className={`absolute right-0 bottom-1/4 h-[300px] w-[300px] rounded-full bg-purple-600/10 blur-[100px] transition-all duration-700 delay-200 ${
-              menuOpen ? "opacity-100 scale-100" : "opacity-0 scale-50"
+            className={`absolute right-0 bottom-1/4 h-[200px] w-[200px] rounded-full transition-opacity duration-300 ${
+              menuOpen ? "opacity-100" : "opacity-0"
             }`}
+            style={{ background: "radial-gradient(circle, rgba(34,211,238,0.08) 0%, transparent 70%)" }}
           />
         </div>
-
-        {/* Grid overlay */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
 
         {/* Menu content */}
         <div className="relative z-10 flex flex-col h-full pt-24 px-8 pb-10">
@@ -206,23 +198,23 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className={`group flex items-center gap-4 rounded-2xl px-5 py-4 transition-all duration-500 ${
+                  className={`group flex items-center gap-4 rounded-2xl px-5 py-4 transition-all duration-300 ease-out ${
                     menuOpen
                       ? "translate-x-0 opacity-100"
-                      : "-translate-x-8 opacity-0"
+                      : "-translate-x-4 opacity-0"
                   } ${
                     pathname.startsWith(link.href)
-                      ? "bg-white/[0.08] border border-white/10"
+                      ? "bg-white/[0.08] border border-purple-500/20"
                       : "hover:bg-white/[0.05]"
                   }`}
                   style={{
-                    transitionDelay: menuOpen ? `${150 + i * 60}ms` : "0ms",
+                    transitionDelay: menuOpen ? `${50 + i * 40}ms` : "0ms",
                   }}
                 >
                   <div
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-all duration-300 ${
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-colors duration-200 ${
                       pathname.startsWith(link.href)
-                        ? "border-indigo-500/30 bg-indigo-500/10 text-indigo-400"
+                        ? "border-purple-500/30 bg-purple-500/10 text-cyan-400"
                         : "border-white/10 bg-white/[0.04] text-slate-500 group-hover:text-white group-hover:border-white/20 group-hover:bg-white/[0.08]"
                     }`}
                   >
@@ -230,7 +222,7 @@ export default function Navbar() {
                   </div>
                   <div>
                     <p
-                      className={`text-lg font-semibold transition-colors duration-300 ${
+                      className={`text-lg font-semibold transition-colors duration-200 ${
                         pathname.startsWith(link.href)
                           ? "text-white"
                           : "text-slate-300 group-hover:text-white"
@@ -241,32 +233,32 @@ export default function Navbar() {
                     <p className="text-xs text-slate-600">{link.desc}</p>
                   </div>
                   {pathname.startsWith(link.href) && (
-                    <div className="ml-auto h-2 w-2 rounded-full bg-indigo-400 shadow-lg shadow-indigo-400/50" />
+                    <div className="ml-auto h-2 w-2 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/50" />
                   )}
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Bottom section: CTA + socials */}
+          {/* Bottom section: CTA */}
           <div
-            className={`space-y-6 transition-all duration-500 ${
+            className={`space-y-6 transition-all duration-300 ease-out ${
               menuOpen
                 ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
+                : "translate-y-4 opacity-0"
             }`}
-            style={{ transitionDelay: menuOpen ? "450ms" : "0ms" }}
+            style={{ transitionDelay: menuOpen ? "250ms" : "0ms" }}
           >
-            <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" />
 
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
-              className="group flex items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-base font-semibold text-[#0a0a14] shadow-lg shadow-indigo-500/20 transition-all duration-300 hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98]"
+              className="group flex items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-base font-semibold text-[#0a0a14] shadow-lg shadow-purple-500/20 transition-all duration-200 hover:shadow-purple-500/40 hover:scale-[1.02] active:scale-[0.98]"
             >
               Get in Touch
               <svg
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -281,7 +273,7 @@ export default function Navbar() {
             </Link>
 
             <p className="text-center text-xs text-slate-600">
-              Software &amp; Marketing Solutions
+              Your Dedicated Backbone Team
             </p>
           </div>
         </div>
