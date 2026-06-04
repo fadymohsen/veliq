@@ -5,22 +5,22 @@ import AnimatedCounter from "../components/animated-counter";
 export const metadata = {
   title: "About Us",
   description:
-    "Learn about VELIQ,a full-service digital partner blending technology and creativity. Meet our team, mission, and values.",
+    "VELIQ is a global boutique agency specializing in web development, app development, branding, UX, and full-stack digital marketing across Egypt, Saudi Arabia, UAE, and the United States.",
   openGraph: {
-    title: "About Us,VELIQ",
+    title: "About Us — VELIQ",
     description:
-      "Learn about VELIQ,a full-service digital partner blending technology and creativity.",
+      "VELIQ is a global boutique agency specializing in web development, app development, branding, UX, and full-stack digital marketing.",
     url: "https://veliq.com/about",
   },
   twitter: {
-    title: "About Us,VELIQ",
+    title: "About Us — VELIQ",
     description:
-      "Learn about VELIQ,a full-service digital partner blending technology and creativity.",
+      "VELIQ is a global boutique agency specializing in web development, app development, branding, UX, and full-stack digital marketing.",
   },
 };
 
 const stats = [
-  { end: 10, suffix: "+", label: "Projects Delivered" },
+  { end: 4, suffix: "", label: "Countries" },
   { end: 30, suffix: "+", label: "Happy Clients" },
   { end: 100, suffix: "%", label: "Satisfaction" },
   { end: 10, suffix: "+", label: "Team Members" },
@@ -30,21 +30,20 @@ const values = [
   {
     icon: (
       <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
       </svg>
     ),
-    title: "Innovation First",
-    desc: "We embrace emerging technologies and creative thinking to solve problems in ways others haven't imagined.",
+    title: "Speed",
+    desc: "We move fast without cutting corners. Every deadline is a promise, not a suggestion.",
   },
   {
     icon: (
       <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: "Impact-Driven",
-    desc: "Every line of code, every campaign, every design decision is measured by its real-world business impact.",
+    title: "Accuracy",
+    desc: "Every deliverable, every decision, every client interaction is measured against real outcomes.",
   },
   {
     icon: (
@@ -52,26 +51,8 @@ const values = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
       </svg>
     ),
-    title: "Radical Transparency",
-    desc: "No black boxes. We keep you informed at every step with open communication and honest feedback.",
-  },
-  {
-    icon: (
-      <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
-      </svg>
-    ),
-    title: "Continuous Growth",
-    desc: "We invest in learning, experimentation, and improvement,for ourselves and for our clients.",
-  },
-  {
-    icon: (
-      <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-      </svg>
-    ),
-    title: "Speed & Quality",
-    desc: "We move fast without cutting corners, delivering polished results on tight timelines.",
+    title: "Transparency",
+    desc: "No black boxes. Weekly pulse, monthly strategy, quarterly review. You always know where you stand.",
   },
   {
     icon: (
@@ -79,8 +60,41 @@ const values = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
       </svg>
     ),
-    title: "Client-Centric",
-    desc: "Your goals are our goals. We tailor every solution to fit your unique business needs and vision.",
+    title: "Dedication",
+    desc: "Every client gets a dedicated team. Not tasks. Not packages. A team that owns your digital presence.",
+  },
+  {
+    icon: (
+      <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+      </svg>
+    ),
+    title: "Intelligence",
+    desc: "We educate first, sell second. Every claim connects to a result or a client benefit.",
+  },
+  {
+    icon: (
+      <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 8.41m5.96 5.96a14.926 14.926 0 01-5.84 2.58m0 0a14.926 14.926 0 01-5.96-5.96M9.63 8.41A6 6 0 012.25 14.2" />
+      </svg>
+    ),
+    title: "Professionalism",
+    desc: "Confident, direct, warm. Never arrogant. Never vague. We speak with precision and care.",
+  },
+];
+
+const problems = [
+  {
+    problem: "Nothing is connected",
+    solution: "Full-channel alignment under one dedicated team: web, social, ads, brand, all moving together.",
+  },
+  {
+    problem: "I don't know what they're doing",
+    solution: "Radical transparency through educated reporting. Weekly pulse + monthly strategy + quarterly review.",
+  },
+  {
+    problem: "I can't measure the growth",
+    solution: "Outcome-based KPIs tied to real business metrics: bookings, qualified leads, revenue, not vanity numbers.",
   },
 ];
 
@@ -108,15 +122,15 @@ export default function AboutPage() {
               About VELIQ
             </p>
             <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-white md:text-6xl">
-              We Blend Technology &amp;{" "}
+              Your Dedicated{" "}
               <span className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
-                Creativity
+                Backbone Team
               </span>
             </h1>
           </div>
           <p className="animate-fade-in-up delay-200 mx-auto mt-6 max-w-2xl text-lg text-slate-400 md:text-xl">
-            A full-service digital partner delivering seamless experiences
-            from concept to launch and beyond.
+            Every Channel. One Direction.
+            We don&apos;t manage your marketing. We own it with you.
           </p>
         </div>
       </section>
@@ -124,7 +138,7 @@ export default function AboutPage() {
       {/* ── Who We Are + Stats ── */}
       <section className="relative py-24 overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/3 top-0 h-[400px] w-[400px] rounded-full bg-blue-600/8 blur-[120px]" />
+          <div className="absolute left-1/3 top-0 h-[400px] w-[400px] rounded-full bg-purple-600/8 blur-[120px]" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:flex lg:items-center lg:gap-16">
           <ScrollReveal animation="fade-up" className="lg:w-1/2">
@@ -132,21 +146,17 @@ export default function AboutPage() {
               Who We Are
             </p>
             <h2 className="mt-2 text-3xl font-bold md:text-4xl text-white">
-              Your Digital Growth Partner
+              A Global Boutique Agency
             </h2>
             <p className="mt-6 text-lg text-slate-400 leading-relaxed">
-              VELIQ is a full-service digital agency built by engineers,
-              designers, and marketers who believe great software and smart
-              marketing should work together,not in silos.
+              VELIQ is a global boutique agency operating across Egypt, Saudi Arabia,
+              UAE, and the United States, specializing in web development, app
+              development, branding, UX, and full-stack digital marketing.
             </p>
             <p className="mt-4 text-lg text-slate-400 leading-relaxed">
-              Whether you need a robust SaaS platform, a mobile app, or a
-              data-driven marketing strategy, we bring the expertise, speed,
-              and care to make it happen.
-            </p>
-            <p className="mt-4 text-lg text-slate-400 leading-relaxed">
-              Founded with a simple belief: businesses deserve a partner who
-              understands both the technical and human sides of digital growth.
+              At VELIQ, every client gets a dedicated team. Not tasks. Not packages.
+              A team that owns your digital presence, thinks with you, and moves
+              with the speed and precision your business deserves.
             </p>
           </ScrollReveal>
           <div className="mt-12 grid grid-cols-2 gap-6 lg:mt-0 lg:w-1/2">
@@ -165,7 +175,75 @@ export default function AboutPage() {
       </section>
 
       {/* ── Divider glow line ── */}
+      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
+
+      {/* ── Brand Equation ── */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[400px] rounded-full bg-blue-600/8 blur-[120px]" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+          <ScrollReveal animation="fade-up">
+            <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
+              Our Equation
+            </p>
+            <h2 className="mt-6 text-3xl font-bold md:text-5xl text-white leading-tight">
+              <span className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Speed</span>
+              {" × "}
+              <span className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Accuracy</span>
+              {" × "}
+              <span className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Professionalism</span>
+            </h2>
+            <div className="mt-4 flex items-center justify-center gap-3">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-white/20" />
+              <p className="text-xl font-semibold text-white md:text-2xl">= Aligned Growth</p>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-white/20" />
+            </div>
+            <p className="mx-auto mt-6 max-w-2xl text-base text-slate-500 leading-relaxed">
+              This is not a tagline. It is the law VELIQ operates by. Every deliverable, every decision,
+              every client interaction is measured against this equation.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── Divider glow line ── */}
       <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+
+      {/* ── Why the Name ── */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute right-1/3 top-0 h-[300px] w-[300px] rounded-full bg-cyan-600/6 blur-[100px]" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <div className="grid gap-8 lg:grid-cols-3">
+            <ScrollReveal animation="fade-up">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 text-center transition-all duration-500 hover:bg-white/[0.08] hover:border-purple-500/30">
+                <p className="text-3xl font-extrabold bg-gradient-to-r from-purple-500 to-purple-400 bg-clip-text text-transparent">VEL</p>
+                <p className="mt-2 text-lg font-semibold text-white">Velocity</p>
+                <p className="mt-2 text-sm text-slate-500">We move with urgency and intent</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-up" delay={100}>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 text-center transition-all duration-500 hover:bg-white/[0.08] hover:border-blue-500/30">
+                <p className="text-3xl font-extrabold bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent">EL</p>
+                <p className="mt-2 text-lg font-semibold text-white">Elite</p>
+                <p className="mt-2 text-sm text-slate-500">Premium standards, not premium ego</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-up" delay={200}>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 text-center transition-all duration-500 hover:bg-white/[0.08] hover:border-cyan-500/30">
+                <p className="text-3xl font-extrabold bg-gradient-to-r from-cyan-500 to-cyan-400 bg-clip-text text-transparent">IQ</p>
+                <p className="mt-2 text-lg font-semibold text-white">Intelligence & Precision</p>
+                <p className="mt-2 text-sm text-slate-500">Data-driven, measured, deliberate</p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Divider glow line ── */}
+      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
 
       {/* ── Mission & Vision ── */}
       <section className="relative py-24 overflow-hidden">
@@ -176,47 +254,36 @@ export default function AboutPage() {
           <div className="grid gap-8 lg:grid-cols-2">
             {/* Mission */}
             <ScrollReveal animation="fade-up">
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-10 md:p-14">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-10 md:p-14 h-full">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full translate-y-1/2 -translate-x-1/2" />
                 <div className="relative z-10">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.06] mb-6">
-                    <svg className="h-7 w-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-7 w-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 8.41m5.96 5.96a14.926 14.926 0 01-5.84 2.58m0 0a14.926 14.926 0 01-5.96-5.96M9.63 8.41A6 6 0 012.25 14.2" />
                     </svg>
                   </div>
-                  <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
+                  <p className="text-sm font-semibold uppercase tracking-widest text-purple-400">
                     Our Mission
                   </p>
                   <h3 className="mt-3 text-2xl font-bold md:text-3xl leading-tight text-white">
-                    Empowering Businesses Through Digital Excellence
+                    Engineering Seamless Brand Experiences
                   </h3>
                   <p className="mt-5 text-base text-slate-400 leading-relaxed">
-                    To deliver innovative, high-quality digital solutions that
-                    drive measurable growth for our clients. We combine technical
-                    expertise with creative strategy to transform ideas into
-                    powerful digital products,helping businesses of all sizes
-                    compete, scale, and thrive in the digital economy.
+                    VELIQ exists to engineer seamless brand experiences, combining
+                    velocity, intelligence, and creative precision, so that every
+                    web, app, design, and marketing channel our clients own moves
+                    in one unified direction: forward.
                   </p>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    {["Innovate", "Deliver", "Grow"].map((word) => (
-                      <span
-                        key={word}
-                        className="rounded-full border border-white/20 bg-white/[0.06] px-4 py-1.5 text-xs font-semibold tracking-wide text-slate-300"
-                      >
-                        {word}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </div>
             </ScrollReveal>
 
             {/* Vision */}
             <ScrollReveal animation="fade-up" delay={200}>
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-10 md:p-14">
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-10 md:p-14 h-full">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-500/5 rounded-full translate-y-1/2 -translate-x-1/2" />
                 <div className="relative z-10">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.06] mb-6">
                     <svg className="h-7 w-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -228,26 +295,13 @@ export default function AboutPage() {
                     Our Vision
                   </p>
                   <h3 className="mt-3 text-2xl font-bold md:text-3xl leading-tight text-white">
-                    The Go-To Partner for Digital Transformation
+                    The Most Trusted Growth Architecture Firm
                   </h3>
                   <p className="mt-5 text-base text-slate-400 leading-relaxed">
-                    To be the most trusted digital agency in the region,
-                    recognized for building products that matter, campaigns that
-                    convert, and partnerships that last. We envision a future
-                    where every business, regardless of size, has access to
-                    world-class digital solutions that unlock their full
-                    potential.
+                    To become the most trusted growth architecture firm for elite
+                    brands across four continents, where every digital touchpoint
+                    is a deliberate act of precision.
                   </p>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    {["Lead", "Transform", "Inspire"].map((word) => (
-                      <span
-                        key={word}
-                        className="rounded-full border border-white/20 bg-white/[0.06] px-4 py-1.5 text-xs font-semibold tracking-wide text-slate-300"
-                      >
-                        {word}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </div>
             </ScrollReveal>
@@ -257,6 +311,56 @@ export default function AboutPage() {
 
       {/* ── Divider glow line ── */}
       <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+
+      {/* ── The Problem We Solve ── */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-1/4 -translate-x-1/2 h-[400px] w-[400px] rounded-full bg-purple-600/8 blur-[120px]" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <ScrollReveal animation="fade-up" className="text-center mb-16">
+            <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
+              Why We Exist
+            </p>
+            <h2 className="mt-2 text-3xl font-bold md:text-4xl text-white">
+              The Problem We Solve
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-slate-500">
+              Most growing businesses are stuck between large agencies that treat them
+              like a number on a spreadsheet, and freelancers who can&apos;t cover all
+              needs under one roof.
+            </p>
+          </ScrollReveal>
+          <div className="grid gap-8 lg:grid-cols-3">
+            {problems.map((item, i) => (
+              <ScrollReveal key={i} animation="fade-up" delay={i * 100}>
+                <div className="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 h-full transition-all duration-500 hover:bg-white/[0.08] hover:border-purple-500/30 hover:-translate-y-2">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 text-red-400 text-sm font-bold mb-5">
+                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <p className="text-base font-semibold text-red-300/80 italic mb-3">
+                    &ldquo;{item.problem}&rdquo;
+                  </p>
+                  <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent my-4" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-green-500/20 bg-green-500/10 text-green-400 text-sm font-bold mb-4">
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <p className="text-sm text-slate-400 leading-relaxed">
+                    {item.solution}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Divider glow line ── */}
+      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
 
       {/* ── Core Values ── */}
       <section className="relative py-24 overflow-hidden">
@@ -272,14 +376,14 @@ export default function AboutPage() {
               Our Core Values
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-slate-500">
-              The principles that guide every decision, every project, and every
+              The principles behind every decision, every project, and every
               relationship we build.
             </p>
           </ScrollReveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {values.map((v, i) => (
-              <ScrollReveal key={v.title} animation="fade-up" delay={i * 100}>
-                <div className="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 transition-all duration-500 hover:bg-white/[0.08] hover:border-purple-500/30 hover:-translate-y-2">
+              <ScrollReveal key={v.title} animation="fade-up" delay={i * 100} className="h-full">
+                <div className="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 h-full transition-all duration-500 hover:bg-white/[0.08] hover:border-purple-500/30 hover:-translate-y-2">
                   <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.06] text-cyan-400 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-white/15 group-hover:border-white/25">
                     {v.icon}
                   </div>
@@ -299,28 +403,31 @@ export default function AboutPage() {
       {/* ── Divider glow line ── */}
       <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
 
-      {/* ── CTA ── */}
+      {/* ── Promise + CTA ── */}
       <section className="relative py-28 overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 h-[400px] w-[600px] rounded-full bg-purple-600/12 blur-[140px]" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-purple-600/10 blur-[120px]" />
         </div>
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
           <ScrollReveal animation="fade-up">
-            <h2 className="text-3xl font-bold md:text-5xl text-white">
-              Want to{" "}
+            <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400 mb-6">
+              Our Promise
+            </p>
+            <h2 className="text-4xl font-bold md:text-6xl text-white leading-tight">
+              Great businesses{" "}
               <span className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
-                Work With Us
-              </span>
-              ?
+                deserve
+              </span>{" "}
+              more than average agencies.
             </h2>
-            <p className="mt-6 text-lg text-slate-400">
-              We&apos;d love to hear about your project. Let&apos;s make it happen.
+            <p className="mt-8 text-2xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              You deserve more.
             </p>
           </ScrollReveal>
           <ScrollReveal animation="fade-up" delay={200}>
             <Link
               href="/contact"
-              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 text-base font-semibold text-[#0a0a14] shadow-lg shadow-purple-500/20 transition-all duration-300 hover:shadow-purple-500/40 hover:scale-[1.03] active:scale-[0.98]"
+              className="group mt-10 inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 text-base font-semibold text-[#0a0a14] shadow-lg shadow-purple-500/20 transition-all duration-300 hover:shadow-purple-500/40 hover:scale-[1.03] active:scale-[0.98]"
             >
               Get in Touch
               <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
