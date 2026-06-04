@@ -14,7 +14,7 @@ const clients = [
 
 function ClientLogo({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="flex-shrink-0 flex items-center justify-center px-8">
+    <div className="flex-shrink-0 flex flex-col items-center justify-center px-8 gap-2">
       <Image
         src={logo}
         alt={name}
@@ -22,6 +22,7 @@ function ClientLogo({ name, logo }: { name: string; logo: string }) {
         height={48}
         className="h-16 w-auto object-contain opacity-60 transition-all duration-500 hover:opacity-100"
       />
+      <span className="text-[10px] font-medium text-slate-600 whitespace-nowrap">{name}</span>
     </div>
   );
 }

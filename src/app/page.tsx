@@ -21,26 +21,12 @@ interface Project {
   desc: string;
 }
 
-interface Blog {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  readTime: string;
-  bg: string;
-}
-
 async function getServices(): Promise<Service[]> {
   return getCollection<Service>("services");
 }
 
 async function getProjects(): Promise<Project[]> {
   return getCollection<Project>("projects");
-}
-
-async function getBlogs(): Promise<Blog[]> {
-  return getCollection<Blog>("blogs");
 }
 
 export const dynamic = "force-dynamic";
@@ -63,7 +49,6 @@ export default async function Home() {
   const services = await getServices();
   const allProjects = await getProjects();
   const projects = allProjects.slice(0, 6);
-  const blogs = (await getBlogs()).slice(0, 3);
   return (
     <div className="bg-[#0a0a14]">
       <script
@@ -386,72 +371,6 @@ export default async function Home() {
               className="inline-block rounded-full border border-white/20 px-8 py-3.5 text-base font-semibold text-white transition-all duration-300 hover:bg-white/10 hover:border-purple-500/30"
             >
               View All Projects &rarr;
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ── Divider glow line ── */}
-      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent about-line-glow" />
-
-      {/* ── Blog Preview ── */}
-      <section className="relative py-28 overflow-hidden">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/3 top-1/4 h-[350px] w-[350px] rounded-full bg-cyan-600/6 blur-[120px]" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-7xl px-6">
-          <ScrollReveal animation="fade-up" className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
-              Insights
-            </p>
-            <h2 className="mt-2 text-3xl font-bold md:text-4xl text-white">
-              Educate First. Sell Second.
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-slate-500">
-              Practical advice on building better products and growing your brand.
-            </p>
-          </ScrollReveal>
-
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {blogs.map((b, i) => (
-              <ScrollReveal key={b.slug} animation="slide-left" delay={i * 150}>
-                <Link
-                  href={`/blog/${b.slug}`}
-                  className="group block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-500 hover:border-cyan-500/30 hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-3"
-                >
-                  <div className="overflow-hidden">
-                    <div className={`h-48 ${b.bg} transition-all duration-700 group-hover:scale-110 group-hover:brightness-110`} />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wider">
-                      <span className="rounded-full bg-cyan-500/10 text-cyan-400 px-3 py-1 border border-cyan-500/20">
-                        {b.category}
-                      </span>
-                      <span className="text-slate-600">{b.readTime}</span>
-                    </div>
-                    <h3 className="mt-3 text-lg font-bold text-white group-hover:text-cyan-300 transition-colors duration-300 leading-snug">
-                      {b.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-slate-500 group-hover:text-slate-400 transition-colors duration-300">{b.excerpt}</p>
-                    <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-cyan-400 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                      Read Article
-                      <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal animation="fade-up" delay={300} className="mt-14 text-center">
-            <Link
-              href="/blog"
-              className="inline-block rounded-full border border-white/20 px-8 py-3.5 text-base font-semibold text-white transition-all duration-300 hover:bg-white/10 hover:border-cyan-500/30"
-            >
-              View All Articles &rarr;
             </Link>
           </ScrollReveal>
         </div>
