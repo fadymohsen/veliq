@@ -45,10 +45,13 @@ export default function TrustBar() {
         <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[#0a0a14] to-transparent" />
         <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[#0a0a14] to-transparent" />
 
-        {/* Scrolling track */}
-        <div className="flex animate-marquee">
-          {[...clients, ...clients, ...clients, ...clients].map((c, i) => (
-            <ClientLogo key={`${c.name}-${i}`} name={c.name} logo={c.logo} />
+        {/* Scrolling track — two identical sets for seamless loop */}
+        <div className="flex animate-marquee w-max">
+          {[...clients, ...clients].map((c, i) => (
+            <ClientLogo key={`a-${c.name}-${i}`} name={c.name} logo={c.logo} />
+          ))}
+          {[...clients, ...clients].map((c, i) => (
+            <ClientLogo key={`b-${c.name}-${i}`} name={c.name} logo={c.logo} />
           ))}
         </div>
       </div>
