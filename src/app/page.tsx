@@ -102,7 +102,8 @@ export default async function Home() {
           <div className="animate-fade-in-up">
             <div className="mx-auto mb-6 h-px w-16 bg-gradient-to-r from-transparent via-purple-500 to-transparent about-line-glow" />
             <h1 className="mx-auto max-w-4xl text-5xl font-extrabold leading-tight tracking-tight text-white md:text-7xl">
-              Your Dedicated{" "}
+              Your Dedicated
+              <br />
               <span className="about-gradient-text">
                 Backbone Team
               </span>
