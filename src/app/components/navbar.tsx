@@ -100,9 +100,9 @@ export default function Navbar() {
             <Image
               src="/branding/colored-logo.png"
               alt="VELIQ"
-              width={120}
-              height={40}
-              className="h-8 w-auto"
+              width={921}
+              height={263}
+              className="h-10 w-auto"
               priority
             />
           </Link>

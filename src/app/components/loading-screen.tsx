@@ -54,13 +54,13 @@ export default function LoadingScreen() {
           <div className="absolute -inset-3 rounded-full bg-purple-500/10 blur-xl loading-inner-glow" />
 
           {/* The V mark image */}
-          <div className="relative h-20 w-20 loading-ring">
+          <div className="relative h-24 w-24 loading-ring">
             <Image
               src="/branding/colored-icon.png"
               alt="VELIQ"
-              width={80}
-              height={80}
-              className="h-20 w-20 object-contain drop-shadow-[0_0_20px_rgba(123,45,142,0.4)]"
+              width={520}
+              height={528}
+              className="h-24 w-24 object-contain drop-shadow-[0_0_20px_rgba(123,45,142,0.4)]"
               priority
             />
           </div>
