@@ -113,8 +113,9 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               {[
                 { href: "/services/website-development", label: "Website Development" },
+                { href: "/services/mobile-development", label: "Mobile Development" },
                 { href: "/services/website-support", label: "Website Support" },
-                { href: "/services/seo", label: "SEO" },
+                { href: "/services/seo", label: "Search Engine Optimization" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link

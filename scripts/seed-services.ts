@@ -69,6 +69,15 @@ const services = [
       "Shopify",
       "Webflow",
       "Stripe",
+      "Fawaterak",
+      "سلة",
+      "GitHub",
+      "Zid",
+      "Tabby",
+      "Moyasar",
+      "Mollie",
+      "Klarna",
+      "Contentful",
     ],
   },
   {
@@ -82,7 +91,7 @@ const services = [
     color: "blue",
     bg: "bg-gradient-to-br from-blue-600/20 to-cyan-600/20",
     highlights: [
-      { label: "Response Time", value: "<4h" },
+      { label: "Response Time", value: "<12h" },
       { label: "Uptime Guarantee", value: "99.9%" },
       { label: "Security Patches", value: "24/7" },
       { label: "Monthly Reports", value: "Yes" },
@@ -133,7 +142,7 @@ const services = [
     id: 3,
     slug: "seo",
     icon: "seo",
-    title: "SEO",
+    title: "Search Engine Optimization",
     desc: "Data-driven search engine optimization that brings qualified traffic to your business. Real rankings, real results.",
     fullDesc:
       "SEO is not about gaming algorithms. It is about making your business visible to the people actively searching for what you offer. We build SEO strategies grounded in data, focused on outcomes, and measured by revenue impact. From technical foundations to content strategy and local SEO, we cover every angle to get your site ranking where it belongs.",
@@ -273,7 +282,7 @@ async function seed() {
     DO UPDATE SET data = ${JSON.stringify(services)}::jsonb, updated_at = NOW()
   `;
 
-  console.log("Seeded 3 services: Website Development, Website Support, SEO");
+  console.log(`Seeded ${services.length} services: ${services.map(s => s.title).join(", ")}`);
 }
 
 seed().catch(console.error);

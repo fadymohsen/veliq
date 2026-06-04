@@ -384,8 +384,11 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
   transition: left 0.8s ease;
   z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
 }
-.about-mission-card:hover .about-card-shimmer {
+.about-mission-card:hover .about-card-shimmer,
+*:hover > .about-card-shimmer {
   left: 100%;
 }
 
