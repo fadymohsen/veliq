@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
@@ -57,11 +58,14 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link
-              href="/"
-              className="text-2xl font-bold tracking-tight text-white"
-            >
-              VELIQ
+            <Link href="/" className="inline-block">
+              <Image
+                src="/branding/colored-logo.png"
+                alt="VELIQ"
+                width={120}
+                height={40}
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-500">
               Software &amp; marketing solutions that drive growth. We design,

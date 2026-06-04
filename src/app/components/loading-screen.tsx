@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function LoadingScreen() {
@@ -26,9 +27,9 @@ export default function LoadingScreen() {
     >
       {/* Glowing orbs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-indigo-600/20 blur-[120px] loading-orb-pulse" />
-        <div className="absolute left-1/4 top-1/3 h-[250px] w-[250px] rounded-full bg-purple-600/15 blur-[100px] loading-orb-float" />
-        <div className="absolute right-1/4 bottom-1/3 h-[200px] w-[200px] rounded-full bg-blue-600/10 blur-[100px] loading-orb-float-reverse" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-purple-600/20 blur-[120px] loading-orb-pulse" />
+        <div className="absolute left-1/4 top-1/3 h-[250px] w-[250px] rounded-full bg-indigo-600/15 blur-[100px] loading-orb-float" />
+        <div className="absolute right-1/4 bottom-1/3 h-[200px] w-[200px] rounded-full bg-sky-600/10 blur-[100px] loading-orb-float-reverse" />
       </div>
 
       {/* Grid overlay */}
@@ -43,91 +44,26 @@ export default function LoadingScreen() {
 
       {/* Logo + Animation */}
       <div className="relative z-10 flex flex-col items-center">
-        {/* Logo mark — abstract V shape built from geometric lines */}
+        {/* Logo mark */}
         <div className="relative mb-8">
           {/* Outer ring */}
           <div className="loading-ring absolute -inset-6 rounded-full border border-white/[0.08]" />
-          <div className="loading-ring-spin absolute -inset-6 rounded-full border-t border-indigo-500/40" />
+          <div className="loading-ring-spin absolute -inset-6 rounded-full border-t border-purple-500/40" />
 
           {/* Inner glow */}
-          <div className="absolute -inset-3 rounded-full bg-indigo-500/10 blur-xl loading-inner-glow" />
+          <div className="absolute -inset-3 rounded-full bg-purple-500/10 blur-xl loading-inner-glow" />
 
-          {/* The V mark */}
-          <svg
-            className="relative h-20 w-20 loading-logo-draw"
-            viewBox="0 0 80 80"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Background hexagon shape */}
-            <path
-              className="loading-hex"
-              d="M40 4L72 22V58L40 76L8 58V22L40 4Z"
-              stroke="url(#hex-gradient)"
-              strokeWidth="1.5"
-              fill="none"
-              strokeDasharray="220"
-              strokeDashoffset="220"
+          {/* The V mark image */}
+          <div className="relative h-20 w-20 loading-ring">
+            <Image
+              src="/branding/colored-icon.png"
+              alt="VELIQ"
+              width={80}
+              height={80}
+              className="h-20 w-20 object-contain drop-shadow-[0_0_20px_rgba(123,45,142,0.4)]"
+              priority
             />
-            {/* Inner V letterform */}
-            <path
-              className="loading-v-stroke"
-              d="M24 26L40 56L56 26"
-              stroke="url(#v-gradient)"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-              strokeDasharray="80"
-              strokeDashoffset="80"
-            />
-            {/* Accent dot at the bottom of V */}
-            <circle
-              className="loading-dot"
-              cx="40"
-              cy="56"
-              r="2.5"
-              fill="url(#dot-gradient)"
-              opacity="0"
-            />
-            {/* Small accent lines */}
-            <line
-              className="loading-accent-1"
-              x1="40"
-              y1="14"
-              x2="40"
-              y2="20"
-              stroke="url(#v-gradient)"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              opacity="0"
-            />
-            <line
-              className="loading-accent-2"
-              x1="40"
-              y1="62"
-              x2="40"
-              y2="68"
-              stroke="url(#v-gradient)"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              opacity="0"
-            />
-            <defs>
-              <linearGradient id="hex-gradient" x1="8" y1="4" x2="72" y2="76">
-                <stop offset="0%" stopColor="#818cf8" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="#a78bfa" stopOpacity="0.2" />
-              </linearGradient>
-              <linearGradient id="v-gradient" x1="24" y1="26" x2="56" y2="56">
-                <stop offset="0%" stopColor="#818cf8" />
-                <stop offset="100%" stopColor="#c084fc" />
-              </linearGradient>
-              <radialGradient id="dot-gradient">
-                <stop offset="0%" stopColor="#e0e7ff" />
-                <stop offset="100%" stopColor="#818cf8" />
-              </radialGradient>
-            </defs>
-          </svg>
+          </div>
         </div>
 
         {/* VELIQ text */}
@@ -152,12 +88,12 @@ export default function LoadingScreen() {
 
         {/* Gradient underline swoosh */}
         <div className="mt-3 h-px w-56 overflow-hidden">
-          <div className="loading-tagline-line h-full bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+          <div className="loading-tagline-line h-full bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
         </div>
 
         {/* Loading bar */}
         <div className="mt-10 h-[1px] w-48 overflow-hidden rounded-full bg-white/5">
-          <div className="loading-bar h-full rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500" />
+          <div className="loading-bar h-full rounded-full bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400" />
         </div>
       </div>
     </div>

@@ -14,12 +14,17 @@
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
   --color-dark-bg: var(--dark-bg);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-poppins);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 /* ── Animations ── */

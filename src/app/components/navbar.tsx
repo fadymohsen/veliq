@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -94,9 +95,16 @@ export default function Navbar() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-2xl font-bold tracking-tight text-white transition-colors duration-300"
+            className="transition-opacity duration-300 hover:opacity-80"
           >
-            VELIQ
+            <Image
+              src="/branding/colored-logo.png"
+              alt="VELIQ"
+              width={120}
+              height={40}
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop links */}
