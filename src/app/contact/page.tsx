@@ -36,8 +36,8 @@ const contactInfo = [
       </svg>
     ),
     label: "Call Us",
-    value: "+20 123 456 7890",
-    href: "tel:+201234567890",
+    value: "+20 155 116 4671",
+    href: "tel:+201551164671",
   },
   {
     icon: (

@@ -81,7 +81,7 @@ const organizationJsonLd = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+20-123-456-7890",
+    telephone: "+20-155-116-4671",
     contactType: "customer service",
     email: "admin@veliq.co",
   },

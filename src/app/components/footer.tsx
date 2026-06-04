@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
-  { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact Us" },
@@ -144,10 +144,10 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:+201234567890"
+                  href="tel:+201551164671"
                   className="text-sm text-slate-400 hover:text-white transition"
                 >
-                  +20 123 456 7890
+                  +20 155 116 4671
                 </a>
               </li>
               <li className="text-sm text-slate-500">Cairo, Egypt</li>
