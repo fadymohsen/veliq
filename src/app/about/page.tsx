@@ -1,22 +1,21 @@
 import Link from "next/link";
 import ScrollReveal from "../components/scroll-reveal";
 import AnimatedCounter from "../components/animated-counter";
-import TestimonialsCarousel from "../components/testimonials-carousel";
 
 export const metadata = {
   title: "About Us",
   description:
-    "Learn about VELIQ — a full-service digital partner blending technology and creativity. Meet our team, mission, and values.",
+    "Learn about VELIQ,a full-service digital partner blending technology and creativity. Meet our team, mission, and values.",
   openGraph: {
-    title: "About Us — VELIQ",
+    title: "About Us,VELIQ",
     description:
-      "Learn about VELIQ — a full-service digital partner blending technology and creativity.",
+      "Learn about VELIQ,a full-service digital partner blending technology and creativity.",
     url: "https://veliq.com/about",
   },
   twitter: {
-    title: "About Us — VELIQ",
+    title: "About Us,VELIQ",
     description:
-      "Learn about VELIQ — a full-service digital partner blending technology and creativity.",
+      "Learn about VELIQ,a full-service digital partner blending technology and creativity.",
   },
 };
 
@@ -63,7 +62,7 @@ const values = [
       </svg>
     ),
     title: "Continuous Growth",
-    desc: "We invest in learning, experimentation, and improvement — for ourselves and for our clients.",
+    desc: "We invest in learning, experimentation, and improvement,for ourselves and for our clients.",
   },
   {
     icon: (
@@ -91,8 +90,8 @@ export default function AboutPage() {
       {/* ── Hero ── */}
       <section className="relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-indigo-600/15 blur-[120px] animate-pulse-glow" />
-          <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-purple-600/10 blur-[100px] animate-float-slow" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-purple-600/15 blur-[120px] animate-pulse-glow" />
+          <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-blue-600/10 blur-[100px] animate-float-slow" />
         </div>
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.03]"
@@ -104,19 +103,19 @@ export default function AboutPage() {
         />
         <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
           <div className="animate-fade-in-up">
-            <div className="mx-auto mb-6 h-px w-16 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-            <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
+            <div className="mx-auto mb-6 h-px w-16 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+            <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
               About VELIQ
             </p>
             <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-white md:text-6xl">
               We Blend Technology &amp;{" "}
-              <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
                 Creativity
               </span>
             </h1>
           </div>
           <p className="animate-fade-in-up delay-200 mx-auto mt-6 max-w-2xl text-lg text-slate-400 md:text-xl">
-            A full-service digital partner delivering seamless experiences —
+            A full-service digital partner delivering seamless experiences
             from concept to launch and beyond.
           </p>
         </div>
@@ -125,11 +124,11 @@ export default function AboutPage() {
       {/* ── Who We Are + Stats ── */}
       <section className="relative py-24 overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/3 top-0 h-[400px] w-[400px] rounded-full bg-indigo-600/8 blur-[120px]" />
+          <div className="absolute left-1/3 top-0 h-[400px] w-[400px] rounded-full bg-blue-600/8 blur-[120px]" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:flex lg:items-center lg:gap-16">
           <ScrollReveal animation="fade-up" className="lg:w-1/2">
-            <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
+            <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
               Who We Are
             </p>
             <h2 className="mt-2 text-3xl font-bold md:text-4xl text-white">
@@ -138,7 +137,7 @@ export default function AboutPage() {
             <p className="mt-6 text-lg text-slate-400 leading-relaxed">
               VELIQ is a full-service digital agency built by engineers,
               designers, and marketers who believe great software and smart
-              marketing should work together — not in silos.
+              marketing should work together,not in silos.
             </p>
             <p className="mt-4 text-lg text-slate-400 leading-relaxed">
               Whether you need a robust SaaS platform, a mobile app, or a
@@ -153,8 +152,8 @@ export default function AboutPage() {
           <div className="mt-12 grid grid-cols-2 gap-6 lg:mt-0 lg:w-1/2">
             {stats.map((s, i) => (
               <ScrollReveal key={s.label} animation="scale" delay={i * 100}>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 text-center transition-all duration-500 hover:bg-white/[0.08] hover:border-indigo-500/30">
-                  <p className="text-4xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 text-center transition-all duration-500 hover:bg-white/[0.08] hover:border-purple-500/30">
+                  <p className="text-4xl font-extrabold bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
                     <AnimatedCounter end={s.end} suffix={s.suffix} />
                   </p>
                   <p className="mt-2 text-sm text-slate-500">{s.label}</p>
@@ -166,27 +165,27 @@ export default function AboutPage() {
       </section>
 
       {/* ── Divider glow line ── */}
-      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
+      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
 
       {/* ── Mission & Vision ── */}
       <section className="relative py-24 overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute right-1/4 bottom-0 h-[300px] w-[300px] rounded-full bg-purple-600/8 blur-[100px]" />
+          <div className="absolute right-1/4 bottom-0 h-[300px] w-[300px] rounded-full bg-blue-600/8 blur-[100px]" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-6">
           <div className="grid gap-8 lg:grid-cols-2">
             {/* Mission */}
             <ScrollReveal animation="fade-up">
               <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-10 md:p-14">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full translate-y-1/2 -translate-x-1/2" />
                 <div className="relative z-10">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.06] mb-6">
-                    <svg className="h-7 w-7 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-7 w-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 8.41m5.96 5.96a14.926 14.926 0 01-5.84 2.58m0 0a14.926 14.926 0 01-5.96-5.96M9.63 8.41A6 6 0 012.25 14.2" />
                     </svg>
                   </div>
-                  <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
+                  <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
                     Our Mission
                   </p>
                   <h3 className="mt-3 text-2xl font-bold md:text-3xl leading-tight text-white">
@@ -196,7 +195,7 @@ export default function AboutPage() {
                     To deliver innovative, high-quality digital solutions that
                     drive measurable growth for our clients. We combine technical
                     expertise with creative strategy to transform ideas into
-                    powerful digital products — helping businesses of all sizes
+                    powerful digital products,helping businesses of all sizes
                     compete, scale, and thrive in the digital economy.
                   </p>
                   <div className="mt-8 flex flex-wrap gap-3">
@@ -216,23 +215,23 @@ export default function AboutPage() {
             {/* Vision */}
             <ScrollReveal animation="fade-up" delay={200}>
               <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-10 md:p-14">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full translate-y-1/2 -translate-x-1/2" />
                 <div className="relative z-10">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.06] mb-6">
-                    <svg className="h-7 w-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-7 w-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
-                  <p className="text-sm font-semibold uppercase tracking-widest text-purple-400">
+                  <p className="text-sm font-semibold uppercase tracking-widest text-cyan-400">
                     Our Vision
                   </p>
                   <h3 className="mt-3 text-2xl font-bold md:text-3xl leading-tight text-white">
                     The Go-To Partner for Digital Transformation
                   </h3>
                   <p className="mt-5 text-base text-slate-400 leading-relaxed">
-                    To be the most trusted digital agency in the region —
+                    To be the most trusted digital agency in the region,
                     recognized for building products that matter, campaigns that
                     convert, and partnerships that last. We envision a future
                     where every business, regardless of size, has access to
@@ -257,7 +256,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Divider glow line ── */}
-      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
+      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
 
       {/* ── Core Values ── */}
       <section className="relative py-24 overflow-hidden">
@@ -280,11 +279,11 @@ export default function AboutPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {values.map((v, i) => (
               <ScrollReveal key={v.title} animation="fade-up" delay={i * 100}>
-                <div className="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 transition-all duration-500 hover:bg-white/[0.08] hover:border-indigo-500/30 hover:-translate-y-2">
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.06] text-indigo-400 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-white/15 group-hover:border-white/25">
+                <div className="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 transition-all duration-500 hover:bg-white/[0.08] hover:border-purple-500/30 hover:-translate-y-2">
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.06] text-cyan-400 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-white/15 group-hover:border-white/25">
                     {v.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors duration-300">
                     {v.title}
                   </h3>
                   <p className="mt-3 text-sm text-slate-500 leading-relaxed group-hover:text-slate-400 transition-colors duration-300">
@@ -298,21 +297,18 @@ export default function AboutPage() {
       </section>
 
       {/* ── Divider glow line ── */}
-      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
-
-      {/* ── Testimonials ── */}
-      <TestimonialsCarousel />
+      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
 
       {/* ── CTA ── */}
       <section className="relative py-28 overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 h-[400px] w-[600px] rounded-full bg-indigo-600/12 blur-[140px]" />
+          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 h-[400px] w-[600px] rounded-full bg-purple-600/12 blur-[140px]" />
         </div>
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
           <ScrollReveal animation="fade-up">
             <h2 className="text-3xl font-bold md:text-5xl text-white">
               Want to{" "}
-              <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
                 Work With Us
               </span>
               ?
@@ -324,7 +320,7 @@ export default function AboutPage() {
           <ScrollReveal animation="fade-up" delay={200}>
             <Link
               href="/contact"
-              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 text-base font-semibold text-[#0a0a14] shadow-lg shadow-indigo-500/20 transition-all duration-300 hover:shadow-indigo-500/40 hover:scale-[1.03] active:scale-[0.98]"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 text-base font-semibold text-[#0a0a14] shadow-lg shadow-purple-500/20 transition-all duration-300 hover:shadow-purple-500/40 hover:scale-[1.03] active:scale-[0.98]"
             >
               Get in Touch
               <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

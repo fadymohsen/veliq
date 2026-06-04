@@ -85,41 +85,45 @@ export default async function BlogPage() {
       </section>
 
       {/* ── Featured Post ── */}
-      <section className="relative pb-16 overflow-hidden">
-        <div className="relative z-10 mx-auto max-w-7xl px-6">
-          <ScrollReveal animation="fade-up">
-            <Link
-              href={`/blog/${featured.slug}`}
-              className="group grid gap-8 lg:grid-cols-2 items-center rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-cyan-500/30 hover:shadow-2xl hover:shadow-cyan-500/10"
-            >
-              <div className={`h-64 lg:h-full min-h-[320px] ${featured.bg} transition-all duration-700 group-hover:brightness-110`} />
-              <div className="p-8 lg:p-12">
-                <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wider">
-                  <span className="rounded-full bg-cyan-500/10 text-cyan-400 px-3 py-1 border border-cyan-500/20">
-                    {featured.category}
-                  </span>
-                  <span className="text-slate-600">{featured.readTime}</span>
-                </div>
-                <h2 className="mt-4 text-2xl font-bold md:text-3xl text-white group-hover:text-cyan-300 transition-colors duration-300 leading-tight">
-                  {featured.title}
-                </h2>
-                <p className="mt-4 text-slate-400 leading-relaxed">
-                  {featured.excerpt}
-                </p>
-                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-cyan-400">
-                  Read Article
-                  <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
+      {featured && (
+        <>
+          <section className="relative pb-16 overflow-hidden">
+            <div className="relative z-10 mx-auto max-w-7xl px-6">
+              <ScrollReveal animation="fade-up">
+                <Link
+                  href={`/blog/${featured.slug}`}
+                  className="group grid gap-8 lg:grid-cols-2 items-center rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-cyan-500/30 hover:shadow-2xl hover:shadow-cyan-500/10"
+                >
+                  <div className={`h-64 lg:h-full min-h-[320px] ${featured.bg} transition-all duration-700 group-hover:brightness-110`} />
+                  <div className="p-8 lg:p-12">
+                    <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wider">
+                      <span className="rounded-full bg-cyan-500/10 text-cyan-400 px-3 py-1 border border-cyan-500/20">
+                        {featured.category}
+                      </span>
+                      <span className="text-slate-600">{featured.readTime}</span>
+                    </div>
+                    <h2 className="mt-4 text-2xl font-bold md:text-3xl text-white group-hover:text-cyan-300 transition-colors duration-300 leading-tight">
+                      {featured.title}
+                    </h2>
+                    <p className="mt-4 text-slate-400 leading-relaxed">
+                      {featured.excerpt}
+                    </p>
+                    <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-cyan-400">
+                      Read Article
+                      <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                </Link>
+              </ScrollReveal>
+            </div>
+          </section>
 
-      {/* ── Divider glow line ── */}
-      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+          {/* ── Divider glow line ── */}
+          <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+        </>
+      )}
 
       {/* ── All Posts ── */}
       <section className="relative py-24 overflow-hidden">

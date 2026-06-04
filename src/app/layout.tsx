@@ -83,7 +83,7 @@ const organizationJsonLd = {
     "@type": "ContactPoint",
     telephone: "+20-123-456-7890",
     contactType: "customer service",
-    email: "hello@veliq.com",
+    email: "admin@veliq.co",
   },
   sameAs: [
     "https://www.linkedin.com/company/veliq",

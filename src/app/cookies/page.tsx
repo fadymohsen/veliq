@@ -129,8 +129,8 @@ export default function CookiesPage() {
               <h2 className="text-xl font-bold text-white mb-4">7. Contact Us</h2>
               <p>
                 If you have questions about our use of cookies, please contact us at{" "}
-                <a href="mailto:hello@veliq.com" className="text-indigo-400 hover:text-indigo-300 transition">
-                  hello@veliq.com
+                <a href="mailto:admin@veliq.co" className="text-indigo-400 hover:text-indigo-300 transition">
+                  admin@veliq.co
                 </a>{" "}
                 or visit our{" "}
                 <Link href="/contact" className="text-indigo-400 hover:text-indigo-300 transition">

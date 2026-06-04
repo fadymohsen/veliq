@@ -102,7 +102,7 @@ export default function Navbar() {
               alt="VELIQ"
               width={921}
               height={263}
-              className="h-10 w-auto"
+              className="h-7 w-auto brightness-150"
               priority
             />
           </Link>

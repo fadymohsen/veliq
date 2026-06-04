@@ -2,8 +2,6 @@ import Link from "next/link";
 import ScrollReveal from "./components/scroll-reveal";
 import { ServiceIcon } from "./components/service-icons";
 import TrustBar from "./components/trust-bar";
-import { TeamPreview } from "./components/team-section";
-import TestimonialsCarousel from "./components/testimonials-carousel";
 import { getCollection } from "@/lib/db";
 
 interface Service {
@@ -421,15 +419,6 @@ export default async function Home() {
 
       {/* ── Divider glow line ── */}
       <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
-
-      {/* ── Team Preview ── */}
-      <TeamPreview />
-
-      {/* ── Divider glow line ── */}
-      <div className="mx-auto max-w-xs h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
-
-      {/* ── Testimonials ── */}
-      <TestimonialsCarousel />
 
       {/* ── CTA ── */}
       <section className="relative py-28 overflow-hidden">

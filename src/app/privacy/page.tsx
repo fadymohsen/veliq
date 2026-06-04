@@ -91,8 +91,8 @@ export default function PrivacyPage() {
               </ul>
               <p className="mt-3 text-sm">
                 To exercise any of these rights, please contact us at{" "}
-                <a href="mailto:hello@veliq.com" className="text-indigo-400 hover:text-indigo-300 transition">
-                  hello@veliq.com
+                <a href="mailto:admin@veliq.co" className="text-indigo-400 hover:text-indigo-300 transition">
+                  admin@veliq.co
                 </a>.
               </p>
             </div>
@@ -122,8 +122,8 @@ export default function PrivacyPage() {
               <h2 className="text-xl font-bold text-white mb-4">9. Contact Us</h2>
               <p>
                 If you have any questions about this Privacy Policy, please contact us at{" "}
-                <a href="mailto:hello@veliq.com" className="text-indigo-400 hover:text-indigo-300 transition">
-                  hello@veliq.com
+                <a href="mailto:admin@veliq.co" className="text-indigo-400 hover:text-indigo-300 transition">
+                  admin@veliq.co
                 </a>{" "}
                 or visit our{" "}
                 <Link href="/contact" className="text-indigo-400 hover:text-indigo-300 transition">

@@ -64,7 +64,7 @@ export default function Footer() {
                 alt="VELIQ"
                 width={921}
                 height={263}
-                className="h-10 w-auto"
+                className="h-7 w-auto brightness-150"
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-500">
@@ -112,12 +112,9 @@ export default function Footer() {
             </h4>
             <ul className="mt-4 space-y-3">
               {[
-                { href: "/services/website-development", label: "Web Development" },
-                { href: "/services/mobile-development", label: "Mobile Development" },
-                { href: "/services/seo-setup", label: "SEO Setup" },
-                { href: "/services/digital-marketing", label: "Digital Marketing" },
-                { href: "/services/data-analytics", label: "Data & Analytics" },
-                { href: "/services/brand-strategy", label: "Brand Strategy" },
+                { href: "/services/website-development", label: "Website Development" },
+                { href: "/services/website-support", label: "Website Support" },
+                { href: "/services/seo", label: "SEO" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -139,10 +136,10 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               <li>
                 <a
-                  href="mailto:hello@veliq.com"
+                  href="mailto:admin@veliq.co"
                   className="text-sm text-slate-400 hover:text-white transition"
                 >
-                  hello@veliq.com
+                  admin@veliq.co
                 </a>
               </li>
               <li>
@@ -154,7 +151,6 @@ export default function Footer() {
                 </a>
               </li>
               <li className="text-sm text-slate-500">Cairo, Egypt</li>
-              <li className="text-sm text-slate-500">Sun – Thu, 9AM – 6PM</li>
             </ul>
             <Link
               href="/contact"
