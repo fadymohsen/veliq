@@ -63,7 +63,7 @@ export default async function ProjectsPage() {
             </p>
             <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-white md:text-5xl">
               Projects &amp;{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
                 Case Studies
               </span>
             </h1>
@@ -82,7 +82,7 @@ export default async function ProjectsPage() {
           <section key={tag} className="relative py-16 overflow-hidden">
             {tagIndex % 2 === 0 && (
               <div className="pointer-events-none absolute inset-0">
-                <div className="absolute right-1/4 top-0 h-[300px] w-[300px] rounded-full bg-indigo-600/6 blur-[100px]" />
+                <div className="absolute right-1/4 top-0 h-[300px] w-[300px] rounded-full bg-blue-600/6 blur-[100px]" />
               </div>
             )}
             <div className="relative z-10 mx-auto max-w-7xl px-6">
@@ -140,7 +140,7 @@ export default async function ProjectsPage() {
           <ScrollReveal animation="fade-up">
             <h2 className="text-3xl font-bold md:text-5xl text-white">
               Have a{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
                 Project
               </span>{" "}
               in Mind?

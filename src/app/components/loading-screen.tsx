@@ -66,11 +66,15 @@ export default function LoadingScreen() {
           </div>
         </div>
 
-        {/* VELIQ text */}
-        <div className="overflow-hidden">
-          <h1 className="loading-text text-3xl font-bold tracking-[0.3em] text-white">
-            VELIQ
-          </h1>
+        {/* VELIQ logo */}
+        <div className="overflow-hidden loading-text">
+          <Image
+            src="/branding/colored-logo.png"
+            alt="VELIQ"
+            width={921}
+            height={263}
+            className="h-10 w-auto brightness-150"
+          />
         </div>
 
         {/* Tagline — word-by-word reveal */}
