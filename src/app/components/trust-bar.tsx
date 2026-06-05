@@ -11,8 +11,6 @@ const clients = [
   { name: "CrewHub Studio", logo: "/clients/crewhub-studio.png" },
   { name: "Initio", logo: "/clients/initio.svg" },
   { name: "RedBone Gym", logo: "/clients/redbone-gym.png" },
-  { name: "Captain Maged", logo: "/clients/captain-maged.png" },
-  { name: "Bedouin Trails", logo: "/clients/bedouin-trails.png" },
 ];
 
 function ClientLogo({ name, logo }: { name: string; logo: string }) {

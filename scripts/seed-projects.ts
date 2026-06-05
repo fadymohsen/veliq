@@ -384,6 +384,7 @@ const projects = [
   },
   {
     slug: "captain-maged",
+    hidden: true,
     image: "/uploads/captain-maged-proj.png",
     tag: "Website Support",
     title: "Captain Maged",
@@ -422,6 +423,7 @@ const projects = [
   },
   {
     slug: "window-adv",
+    hidden: true,
     image: "/uploads/window-adv-proj.png",
     tag: "Search Engine Optimization",
     title: "Window Advertising",
@@ -460,6 +462,7 @@ const projects = [
   },
   {
     slug: "bedouin-trails",
+    hidden: true,
     image: "/uploads/bedouin-trails-proj.png",
     tag: "Search Engine Optimization",
     title: "Bedouin Trails",
