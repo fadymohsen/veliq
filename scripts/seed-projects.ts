@@ -11,7 +11,7 @@ for (const line of envContent.split("\n")) {
 const projects = [
   {
     slug: "coach-mohamed-roshdy",
-    image: "/clients/coach-mohamed-roshdy.svg",
+    image: "/uploads/coach-shiko-proj.jpg",
     tag: "Website Development",
     title: "Coach Mohamed Roshdy",
     desc: "A bilingual fitness coaching platform with personalized training programs, nutrition plans, and client transformation showcases.",
