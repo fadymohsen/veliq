@@ -33,9 +33,8 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
-# uploads (user-uploaded images)
-/public/uploads/*
-!/public/uploads/.gitkeep
+# uploads - project images are tracked
+
 
 # vercel
 .vercel
