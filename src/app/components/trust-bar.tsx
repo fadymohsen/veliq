@@ -15,13 +15,13 @@ const clients = [
 
 function ClientLogo({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="flex-shrink-0 flex flex-col items-center justify-center px-8 gap-2">
+    <div className="flex flex-col items-center justify-center gap-2">
       <Image
         src={logo}
         alt={name}
         width={120}
         height={48}
-        className="h-16 w-auto object-contain opacity-60 transition-all duration-500 hover:opacity-100"
+        className="h-14 w-auto object-contain opacity-60 transition-all duration-500 hover:opacity-100"
       />
       <span className="text-xs font-semibold text-slate-500 whitespace-nowrap">{name}</span>
     </div>
@@ -34,24 +34,13 @@ export default function TrustBar() {
       <div className="pointer-events-none absolute inset-0 bg-white/[0.01]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
-        <p className="mb-8 text-center text-xs font-semibold uppercase tracking-[0.25em] text-slate-600">
+        <p className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.25em] text-slate-600">
           Trusted by growing businesses
         </p>
-      </div>
 
-      {/* Marquee container */}
-      <div className="relative">
-        {/* Fade edges */}
-        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[#0a0a14] to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[#0a0a14] to-transparent" />
-
-        {/* Scrolling track — two identical sets for seamless loop */}
-        <div className="flex animate-marquee w-max">
-          {[...clients, ...clients].map((c, i) => (
-            <ClientLogo key={`a-${c.name}-${i}`} name={c.name} logo={c.logo} />
-          ))}
-          {[...clients, ...clients].map((c, i) => (
-            <ClientLogo key={`b-${c.name}-${i}`} name={c.name} logo={c.logo} />
+        <div className="flex flex-wrap items-center justify-center gap-10 md:gap-14">
+          {clients.map((c) => (
+            <ClientLogo key={c.name} name={c.name} logo={c.logo} />
           ))}
         </div>
       </div>
