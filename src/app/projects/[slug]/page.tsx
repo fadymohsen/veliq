@@ -38,6 +38,7 @@ interface Project {
   features?: string[];
   testimonial?: Testimonial;
   gallery: GalleryItem[];
+  hidden?: boolean;
 }
 
 async function getProjects(): Promise<Project[]> {
@@ -81,9 +82,9 @@ export default async function ProjectPage({
 
   if (!project) notFound();
 
-  const related = projects.filter(
-    (p) => p.tag === project.tag && p.slug !== project.slug
-  );
+  const related = projects
+    .filter((p) => p.tag === project.tag && p.slug !== project.slug && !p.hidden)
+    .slice(0, 3);
 
   return (
     <div className="bg-[#0a0a14]">
@@ -371,7 +372,7 @@ export default async function ProjectPage({
                     >
                       <div className="overflow-hidden">
                         {p.image ? (
-                          <img src={p.image} alt={p.title} className="h-48 w-full object-cover transition-all duration-700 group-hover:scale-110" />
+                          <img src={p.image} alt={p.title} className={`h-48 w-full transition-all duration-700 group-hover:scale-110 ${p.image.includes('.jpg') || p.image.includes('.jpeg') ? 'object-cover' : 'object-contain bg-[#0f0f1a] p-4'}`} />
                         ) : (
                           <div className="h-48 bg-gradient-to-br from-slate-700 to-slate-800" />
                         )}

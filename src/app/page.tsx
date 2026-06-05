@@ -48,7 +48,7 @@ const homepageJsonLd = {
 export default async function Home() {
   const services = await getServices();
   const allProjects = await getProjects();
-  const projects = allProjects.slice(0, 6);
+  const projects = allProjects.filter((p: any) => !p.hidden).slice(0, 6);
   return (
     <div className="bg-[#0a0a14]">
       <script

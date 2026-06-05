@@ -181,6 +181,7 @@ const projects = [
   },
   {
     slug: "coach-batool",
+    hidden: true,
     image: "/uploads/coach-batool-proj.png",
     tag: "Website Development",
     title: "Coach Batoula",
@@ -305,6 +306,7 @@ const projects = [
   },
   {
     slug: "redbone-gym",
+    hidden: true,
     image: "/uploads/redbone-gym-proj.png",
     tag: "Website Development",
     title: "RedBone Gym",
@@ -343,6 +345,7 @@ const projects = [
   },
   {
     slug: "yamin-estate",
+    hidden: true,
     image: "/uploads/yamin-estate-proj.png",
     tag: "Website Development",
     title: "Yamin Estate",
@@ -381,7 +384,7 @@ const projects = [
   },
   {
     slug: "captain-maged",
-    image: "",
+    image: "/uploads/captain-maged-proj.png",
     tag: "Website Support",
     title: "Captain Maged",
     desc: "Ongoing website support and maintenance for a fitness education platform focused on anatomy and nutrition guidance.",
@@ -419,7 +422,7 @@ const projects = [
   },
   {
     slug: "window-adv",
-    image: "",
+    image: "/uploads/window-adv-proj.png",
     tag: "Search Engine Optimization",
     title: "Window Advertising",
     desc: "SEO strategy and optimization for a Riyadh-based advertising agency with 25+ years of experience and 1,000+ clients.",
@@ -457,7 +460,7 @@ const projects = [
   },
   {
     slug: "bedouin-trails",
-    image: "",
+    image: "/uploads/bedouin-trails-proj.png",
     tag: "Search Engine Optimization",
     title: "Bedouin Trails",
     desc: "SEO optimization for a Saudi desert tourism company, driving organic traffic for safari and adventure experiences.",

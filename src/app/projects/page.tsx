@@ -8,10 +8,12 @@ interface Project {
   tag: string;
   title: string;
   desc: string;
+  hidden?: boolean;
 }
 
 async function getProjects(): Promise<Project[]> {
-  return getCollection<Project>("projects");
+  const all = await getCollection<Project>("projects");
+  return all.filter((p) => !p.hidden);
 }
 
 export const dynamic = "force-dynamic";
