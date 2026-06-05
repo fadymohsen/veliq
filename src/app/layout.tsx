@@ -43,9 +43,17 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "VELIQ",
-    title: "VELIQ — Software & Marketing Solutions",
+    title: "VELIQ — Your Dedicated Backbone Team",
     description:
-      "We design, build, and market digital products that help businesses scale — from custom software platforms to high-impact marketing campaigns.",
+      "We engineer seamless brand experiences across web, app, design, and marketing. Every channel. One direction.",
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "VELIQ — Your Dedicated Backbone Team",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

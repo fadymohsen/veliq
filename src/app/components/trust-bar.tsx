@@ -3,19 +3,24 @@
 import Image from "next/image";
 
 const clients = [
-  { name: "Coach Mohamed Roshdy", logo: "/clients/coach-mohamed-roshdy.svg" },
-  { name: "Yamin Estate", logo: "/clients/yamin-estate.png" },
-  { name: "Saudi Hayat", logo: "/clients/saudi-hayat.png" },
-  { name: "Alfa Transport", logo: "/clients/alfa-transport.png" },
-  { name: "Fanous Clinic", logo: "/clients/fanous-clinic.png" },
-  { name: "CrewHub Studio", logo: "/clients/crewhub-studio.png" },
-  { name: "Initio", logo: "/clients/initio.svg" },
-  { name: "RedBone Gym", logo: "/clients/redbone-gym.png" },
+  { name: "Coach Mohamed Roshdy", logo: "/clients/coach-mohamed-roshdy.svg", url: "https://www.coachmohamedroshdy.com" },
+  { name: "Yamin Estate", logo: "/clients/yamin-estate.png", url: "https://www.yamin.estate" },
+  { name: "Saudi Hayat", logo: "/clients/saudi-hayat.png", url: "https://www.saudihayat.com" },
+  { name: "Alfa Transport", logo: "/clients/alfa-transport.png", url: "https://www.alfatransport.sa" },
+  { name: "Fanous Clinic", logo: "/clients/fanous-clinic.png", url: "https://www.fanousclinic.com" },
+  { name: "CrewHub Studio", logo: "/clients/crewhub-studio.png", url: "https://crewhubstudio.com" },
+  { name: "Initio", logo: "/clients/initio.svg", url: "https://www.initio.sa" },
+  { name: "RedBone Gym", logo: "/clients/redbone-gym.png", url: "https://www.redbonegym.com" },
 ];
 
-function ClientLogo({ name, logo }: { name: string; logo: string }) {
+function ClientLogo({ name, logo, url }: { name: string; logo: string; url: string }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-2">
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex flex-col items-center justify-center gap-2 transition-transform duration-300 hover:scale-105"
+    >
       <Image
         src={logo}
         alt={name}
@@ -24,7 +29,7 @@ function ClientLogo({ name, logo }: { name: string; logo: string }) {
         className="h-14 w-auto object-contain opacity-60 transition-all duration-500 hover:opacity-100"
       />
       <span className="text-xs font-semibold text-slate-500 whitespace-nowrap">{name}</span>
-    </div>
+    </a>
   );
 }
 
@@ -40,7 +45,7 @@ export default function TrustBar() {
 
         <div className="flex flex-wrap items-center justify-center gap-10 md:gap-14">
           {clients.map((c) => (
-            <ClientLogo key={c.name} name={c.name} logo={c.logo} />
+            <ClientLogo key={c.name} name={c.name} logo={c.logo} url={c.url} />
           ))}
         </div>
       </div>
