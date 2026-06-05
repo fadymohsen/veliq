@@ -96,7 +96,7 @@ export default async function ProjectsPage() {
                     >
                       <div className="overflow-hidden">
                         {p.image ? (
-                          <img src={p.image} alt={p.title} className="h-48 w-full object-contain bg-[#0f0f1a] p-4 transition-all duration-700 group-hover:scale-110 group-hover:brightness-110" />
+                          <img src={p.image} alt={p.title} className={`h-48 w-full transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 ${p.image.includes('.jpg') || p.image.includes('.jpeg') ? 'object-cover' : 'object-contain bg-[#0f0f1a] p-4'}`} />
                         ) : (
                           <div className="h-48 bg-gradient-to-br from-slate-700 to-slate-800" />
                         )}
