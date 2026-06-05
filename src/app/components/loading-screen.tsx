@@ -45,7 +45,7 @@ export default function LoadingScreen() {
       {/* Logo + Animation */}
       <div className="relative z-10 flex flex-col items-center">
         {/* Logo mark */}
-        <div className="relative mb-8">
+        <div className="relative mb-14">
           {/* Outer ring */}
           <div className="loading-ring absolute -inset-6 rounded-full border border-white/[0.08]" />
           <div className="loading-ring-spin absolute -inset-6 rounded-full border-t border-purple-500/40" />
