@@ -58,7 +58,7 @@ export default function CtaSection() {
 
   return (
     <section ref={ref} className="w-full bg-black rounded-[12px] overflow-hidden">
-      <div className="w-full min-h-screen flex flex-col items-center justify-center px-6 py-24 gap-16">
+      <div className="w-full flex flex-col items-center justify-center px-6 py-20 gap-12">
 
         <div className="flex flex-col items-center gap-5 text-center">
           <motion.p
