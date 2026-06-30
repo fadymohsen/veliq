@@ -73,9 +73,13 @@ export const PROJECTS: Project[] = [
     problemBody: "Saudi Hayat operated clinics across three Saudi cities but each had a separate, inconsistent web presence. Patients couldn't find unified information about services, doctors, or locations, leading to confusion and a poor first impression for a brand that should project trust and authority.",
     solutionHeading: "We unified their entire digital presence into a single, authoritative healthcare platform that serves all regions.",
     solutionBody: "We built a unified multilingual (Arabic/English) platform with location-based filtering, unified doctor directories, and online appointment booking across all branches. Patient appointment requests increased 120% in the first six months of launch.",
-    image1: SHARED_IMAGE_1,
-    image2: SHARED_IMAGE_2,
-    gallery: SHARED_GALLERY,
+    image1: "/uploads/saudi-hayat-1.png",
+    image2: "/uploads/saudi-hayat-2.png",
+    gallery: [
+      "/uploads/saudi-hayat-3.png",
+      "/uploads/saudi-hayat-4.png",
+      "/uploads/saudi-hayat-5.png",
+    ],
   },
   {
     slug: "fanous-clinic",
