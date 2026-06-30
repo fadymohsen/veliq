@@ -1,0 +1,245 @@
+export type Project = {
+  slug: string;
+  title: string;
+  category: string;
+  client: string;
+  year: string;
+  description: string;
+  preview: string;
+  url: string;
+  noEmbed?: boolean;
+  problemHeading: string;
+  problemBody: string;
+  solutionHeading: string;
+  solutionBody: string;
+  image1: string;
+  image2: string;
+  gallery: string[];
+};
+
+const SHARED_IMAGE_1 = "https://framerusercontent.com/images/2Qh9eAFoBqCEd8nMElKvxwik.png";
+const SHARED_IMAGE_2 = "https://framerusercontent.com/images/dnqyaHifcSkTXY7tJV8dRhmN4s.png";
+const SHARED_GALLERY = [
+  "https://framerusercontent.com/images/38Q7SfUj8cODnwWGuPx1KVkNajI.png",
+  "https://framerusercontent.com/images/Qpl7yATIp6rN9XXJRiwAUZpxdRg.png",
+  "https://framerusercontent.com/images/z7uBX03kXtjDZDYu5DZGH8ZNhU.png",
+];
+
+export const PROJECTS: Project[] = [
+  {
+    slug: "alfa-transport",
+    title: "Alfa Transport",
+    category: "Website Development",
+    client: "Alfa Transport",
+    year: "2025",
+    url: "https://www.alfatransport.sa",
+    description: "A multilingual logistics platform built for a Saudi fleet operator managing 120+ vehicles across three countries.",
+    preview: "/uploads/alfa-transport-screen.jpg",
+    problemHeading: "A transport company operating across three countries had no digital presence that matched the scale of their operations.",
+    problemBody: "Alfa Transport was managing a fleet of 120+ vehicles across Saudi Arabia, Egypt, and the UAE with nothing but a basic contact page. Clients couldn't track shipments, request quotes, or verify credentials online — leading to lost enterprise contracts and a credibility gap with larger buyers.",
+    solutionHeading: "We built a bilingual logistics platform that positioned Alfa as the regional enterprise carrier they actually are.",
+    solutionBody: "We designed an Arabic/English website with an integrated quote request system, fleet overview, and media-rich credential section. The platform now generates 3× more qualified enterprise inquiries per month and has become their primary sales tool with new regional partners.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "yamin-estate",
+    title: "Yamin Estate",
+    category: "Website Development",
+    client: "Yamin Estate",
+    year: "2025",
+    url: "https://www.yamin.estate",
+    description: "An immersive property platform that turned browsers into buyers before they ever visited the showroom.",
+    preview: "/uploads/yamin-estate-screen.jpg",
+    problemHeading: "A real estate developer was losing qualified buyers to competitors with superior property showcase experiences online.",
+    problemBody: "Yamin Estate was launching a premium residential development but their digital presence couldn't convey the quality of the properties. Prospective buyers were visiting competitor sites with immersive virtual tours and 3D renders, and choosing them without ever booking an in-person visit with Yamin.",
+    solutionHeading: "We built an immersive property platform that turns browsers into committed buyers before they ever visit a showroom.",
+    solutionBody: "We created a premium real estate website with a unit explorer, floor plan viewer, and automated lead qualification flow. The launch campaign generated 450 qualified leads in 30 days, converting 12% to sales consultations — their best launch performance to date.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "saudi-hayat",
+    title: "Saudi Hayat",
+    category: "Website Development",
+    client: "Saudi Hayat",
+    year: "2026",
+    url: "https://www.saudihayat.com",
+    description: "A unified bilingual healthcare platform serving patients across three Saudi cities from one authoritative web presence.",
+    preview: "/uploads/saudi-hayat-screen.jpg",
+    problemHeading: "A regional healthcare provider was struggling to attract patients across multiple cities with disconnected online properties.",
+    problemBody: "Saudi Hayat operated clinics across three Saudi cities but each had a separate, inconsistent web presence. Patients couldn't find unified information about services, doctors, or locations, leading to confusion and a poor first impression for a brand that should project trust and authority.",
+    solutionHeading: "We unified their entire digital presence into a single, authoritative healthcare platform that serves all regions.",
+    solutionBody: "We built a unified multilingual (Arabic/English) platform with location-based filtering, unified doctor directories, and online appointment booking across all branches. Patient appointment requests increased 120% in the first six months of launch.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "fanous-clinic",
+    title: "Fanous Clinic",
+    category: "Website Development",
+    client: "Fanous Clinic",
+    year: "2025",
+    url: "https://www.fanousclinic.com",
+    description: "A patient-first clinic website with local SEO that moved them from invisible to first-page Google results.",
+    preview: "/uploads/fanous-clinic-screen.jpg",
+    problemHeading: "A specialist clinic was losing patients to competitors despite offering superior medical care.",
+    problemBody: "Fanous Clinic's doctors were among the most qualified in their specialty — but their website was outdated, had no online booking, and wasn't appearing in local search results. Patients actively searching for their specialty were finding competitors first.",
+    solutionHeading: "We rebuilt their digital presence with patient-first design and a local SEO strategy that put them on the first page of Google.",
+    solutionBody: "We redesigned the website with streamlined online booking, detailed doctor profiles, and service pages optimized for high-intent local searches. Within three months, appointment bookings increased 75%, with a 40% reduction in phone inquiries as patients began self-serving online.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "initio",
+    title: "Initio",
+    category: "Website Development",
+    client: "Initio",
+    year: "2026",
+    url: "https://www.initio.sa",
+    description: "An enterprise-grade web presence for a software startup that helped close a funding round and land two enterprise contracts.",
+    preview: "/uploads/initio-screen.jpg",
+    problemHeading: "An enterprise software startup had a world-class product but a website that made them look like a side project.",
+    problemBody: "Initio's platform solved a real enterprise problem, but their website communicated none of that credibility. Investors, potential enterprise clients, and technical hires all landed on a basic landing page that failed to convey the depth of the product or the quality of the founding team.",
+    solutionHeading: "We built an enterprise-grade web presence that matched the sophistication of their actual product.",
+    solutionBody: "We designed a product-led website with clear use-case positioning, an interactive demo flow, and investor-ready trust signals. The new site played a key role in closing their next funding round and landing two enterprise contracts within 60 days of launch.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "redbone-gym",
+    title: "RedBone Gym",
+    category: "Website Development",
+    client: "RedBone Gym",
+    year: "2025",
+    url: "https://www.redbonegym.com",
+    description: "A results-focused gym brand and website that justified premium pricing and drove a 90% increase in new memberships.",
+    preview: "/uploads/redbone-gym-screen.jpg",
+    problemHeading: "A premium gym was competing on price against budget chains despite offering a genuinely superior fitness experience.",
+    problemBody: "RedBone Gym had top-tier equipment, certified trainers, and real transformation results — but their digital presence made them look like any other local gym. Their website was outdated, had no booking system, and failed to communicate their premium positioning.",
+    solutionHeading: "We built a results-focused brand and digital experience that justified premium pricing and drove membership growth.",
+    solutionBody: "We created a bold visual identity, a high-converting membership landing page with transformation testimonials, and a streamlined online trial booking flow. New member sign-ups increased 90% in the first quarter post-launch.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "crewhub-studio",
+    title: "CrewHub Studio",
+    category: "Website Development",
+    noEmbed: true,
+    client: "CrewHub Studio",
+    year: "2024",
+    url: "https://crewhubstudio.com",
+    description: "A brand identity overhaul for a creative production studio that converted their portfolio quality into inbound enterprise proposals.",
+    preview: "/uploads/crewhub-studio-screen.jpg",
+    problemHeading: "A creative production studio was producing award-quality work but couldn't communicate their positioning online.",
+    problemBody: "CrewHub Studio had an exceptional portfolio and a roster of major brand clients — but their website was generic. Prospective clients landing on their page couldn't understand what made them different from 50 other production studios in the region.",
+    solutionHeading: "We overhauled their brand identity and digital presence to match the premium quality of their actual work.",
+    solutionBody: "We developed a distinctive visual identity system — new typography, a refined color palette, and a motion-first website that showcased their production quality. The repositioning led to a 60% increase in inbound proposal requests from enterprise clients.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "captain-maged",
+    title: "Captain Maged",
+    category: "Website Development",
+    client: "Capt. Maged",
+    year: "2024",
+    url: "https://captainmagedcm.com",
+    description: "A personal brand platform for a maritime captain that drove a 240% increase in bookings, with a shift toward high-ticket corporate clients.",
+    preview: "/uploads/captain-maged-screen.jpg",
+    problemHeading: "A licensed maritime captain with 20 years of experience had no way to attract and vet high-value clients online.",
+    problemBody: "Captain Maged relied entirely on word-of-mouth referrals for his private sea tours and diving charters. Without a professional web presence, he couldn't reach international travelers or corporate groups willing to pay premium rates.",
+    solutionHeading: "We built a personal brand platform that positioned him as the authority on private maritime experiences in the Red Sea.",
+    solutionBody: "We created a professional booking website with credentials showcase, multilingual support, and a seamless reservation system. His bookings increased 240% in the first season, with a significant shift toward higher-ticket corporate clients.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "coach-batool",
+    title: "Coach Batool",
+    category: "Website Development",
+    client: "Coach Batool",
+    year: "2025",
+    url: "https://www.coachbatool.com",
+    description: "A premium coaching brand that tripled average client value by repositioning away from price competition.",
+    preview: "/uploads/coach-batool-screen.jpg",
+    problemHeading: "A highly qualified fitness coach was attracting low-budget clients despite offering premium transformation programs.",
+    problemBody: "Coach Batool's coaching results were exceptional — but her online presence didn't reflect that. A basic Instagram page and a generic landing page meant she was competing on price rather than value, attracting clients she had to over-serve for minimal return.",
+    solutionHeading: "We rebuilt her brand identity and website to command premium pricing and attract self-motivated, high-value clients.",
+    solutionBody: "We designed a high-converting landing page with transformation case studies, a clear program value ladder, and an application-based enrollment process that filtered for serious clients. Her average client value increased 3× while her lead volume remained consistent.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "coach-shiko",
+    title: "Coach Shiko",
+    category: "Website Development",
+    client: "Coach Shiko",
+    year: "2026",
+    url: "https://www.coachmohamedroshdy.com",
+    description: "An SEO-driven lead generation system that took a business coach from zero organic leads to 40+ qualified inquiries per month.",
+    preview: "/uploads/coach-shiko-screen.jpg",
+    problemHeading: "A business development coach with strong testimonials was getting zero organic leads despite years of results.",
+    problemBody: "Despite years of results and glowing client reviews, Coach Shiko's website had no SEO foundation, no clear positioning, and no mechanism to capture interested visitors. All leads came from expensive paid referrals and one-to-one networking events.",
+    solutionHeading: "We rebuilt his digital presence around his core methodology and built an SEO-driven lead generation system.",
+    solutionBody: "We crafted a positioning-first website built around his proprietary coaching framework, supported by keyword-optimized content and a free resource funnel. Organic inquiries grew from zero to 40+ per month within five months of launch.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "bedouin-trails",
+    title: "Bedouin Trails",
+    category: "SEO",
+    noEmbed: true,
+    client: "Bedouin Trails",
+    year: "2025",
+    url: "https://bedouintrails.com",
+    description: "A cinematic tourism platform that grew online bookings by 180% for a premium desert experience operator.",
+    preview: "/uploads/bedouin-trails-screen.jpg",
+    problemHeading: "A premium desert tourism company was losing international bookings to competitors with better digital storytelling.",
+    problemBody: "Bedouin Trails offered authentic Wadi Rum experiences that rivaled luxury operators, but their website was a static brochure from 2019. International travelers — their core market — couldn't book online or feel the immersive experience before they arrived.",
+    solutionHeading: "We created an immersive booking platform that brings the desert to the visitor's screen before they ever arrive.",
+    solutionBody: "We built a cinematic website with full-screen video, an integrated booking flow synced to their availability calendar, and curated itinerary packages. Online bookings increased 180% within 90 days of launch, with a measurable shift toward international visitors.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+  {
+    slug: "window-adv",
+    title: "Window Adv",
+    category: "SEO",
+    client: "Window Adv",
+    year: "2024",
+    url: "https://windowadv.com",
+    description: "A digital media platform that brought an outdoor advertising portfolio online and opened a new digital-sourced revenue channel.",
+    preview: "/uploads/window-adv-screen.jpg",
+    problemHeading: "An outdoor advertising agency had no digital strategy for a business that was entirely offline.",
+    problemBody: "Window Adv managed a substantial portfolio of billboards and outdoor placements but had zero digital infrastructure. There was no online portfolio, no digital inquiry system, and no way for media buyers to evaluate inventory remotely — a critical gap in an increasingly digital-first media market.",
+    solutionHeading: "We built a digital media platform that brought their entire outdoor inventory online for remote evaluation and booking.",
+    solutionBody: "We designed a media buyer-focused platform with an interactive location map, audience data per placement, and a streamlined campaign inquiry flow. Digital-sourced inquiries became their fastest-growing revenue channel within six months of launch.",
+    image1: SHARED_IMAGE_1,
+    image2: SHARED_IMAGE_2,
+    gallery: SHARED_GALLERY,
+  },
+];
+
+export function getProject(slug: string): Project | undefined {
+  return PROJECTS.find((p) => p.slug === slug);
+}
+
+export function getOtherProjects(slug: string, count = 4): Project[] {
+  const start = PROJECTS.findIndex((p) => p.slug === slug);
+  const ordered = [...PROJECTS.slice(start + 1), ...PROJECTS.slice(0, start + 1)];
+  return ordered.filter((p) => p.slug !== slug).slice(0, count);
+}
