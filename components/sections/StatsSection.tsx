@@ -12,7 +12,7 @@ const STATS = [
   },
   {
     label: "Projects Delivered",
-    value: 45,
+    value: 15,
     suffix: "+",
     detail: "Web, mobile, SEO & marketing",
   },
