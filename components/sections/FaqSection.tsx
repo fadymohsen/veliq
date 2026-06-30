@@ -6,19 +6,15 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 const FAQS = [
   {
     q: "What specific services do you provide?",
-    a: "We specialize in four core pillars: Brand Identity, Web Design (Framer), UI/UX for products, and Technical SEO. We focus purely on digital experiences, so we do not handle print marketing or mobile app coding (Swift/Kotlin).",
+    a: "We specialize in three core pillars: Website Development, Website Support, and Technical SEO. We focus purely on digital experiences, so we do not handle print marketing or mobile app coding (Swift/Kotlin).",
   },
   {
     q: "How long does a typical project take?",
-    a: "Speed is a priority, but quality takes time. A standard 5-page marketing site typically takes 4–6 weeks from kickoff to launch. Comprehensive branding and complex platform migrations usually range from 8–12 weeks.",
-  },
-  {
-    q: "Why do you use Framer instead of WordPress?",
-    a: "Framer allows us to bridge the gap between design and development. It enables us to ship sites 2× faster, ensures pixel-perfect design accuracy, and generates clean React code that outperforms WordPress in both speed and SEO ranking.",
+    a: "Speed is a priority, but quality takes time. A standard 5-page marketing site typically takes 3\u20137 days from kickoff to launch. Comprehensive branding and complex platform migrations usually range from 2\u20134 weeks.",
   },
   {
     q: "Can I update the website myself after launch?",
-    a: "Absolutely. One of the main reasons we use Framer is for its user-friendly CMS. Once we launch, we provide a library of training videos showing you exactly how to edit text, swap images, and publish blog posts without writing code.",
+    a: "Absolutely. We build websites with user-friendly content management in mind. Once we launch, we provide training and documentation showing you exactly how to edit text, swap images, and publish blog posts without writing code.",
   },
   {
     q: "How do payments and deposits work?",
@@ -26,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Do you offer ongoing support or maintenance?",
-    a: 'Yes. While our sites are built to be low-maintenance, we offer monthly "Growth" retainers covering new landing page designs, advanced SEO monitoring, and design iterations to ensure your digital presence scales with your company.',
+    a: "Yes. We offer monthly support and maintenance plans covering bug fixes, content edits, new page builds, SEO monitoring, and performance optimization to ensure your digital presence scales with your company.",
   },
 ];
 
@@ -45,9 +41,7 @@ function PlusIcon({ open }: { open: boolean }) {
   );
 }
 
-function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
-  const [open, setOpen] = useState(index === 0);
-
+function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
   return (
     <div
       className="rounded-[14px] overflow-hidden"
@@ -57,7 +51,7 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
       }}
     >
       <button
-        onClick={() => setOpen((v) => !v)}
+        onClick={onToggle}
         className="w-full flex items-center justify-between px-5 py-4 gap-4 text-left cursor-pointer"
       >
         <span className="text-white" style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "-0.03em" }}>
@@ -92,6 +86,7 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
 export default function FaqSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -120px 0px" });
+  const [openIndex, setOpenIndex] = useState(0);
 
   return (
     <section ref={ref} className="w-full bg-black section-padding">
@@ -115,7 +110,12 @@ export default function FaqSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             >
-              <FaqItem q={faq.q} a={faq.a} index={i} />
+              <FaqItem
+                q={faq.q}
+                a={faq.a}
+                open={openIndex === i}
+                onToggle={() => setOpenIndex(openIndex === i ? -1 : i)}
+              />
             </motion.div>
           ))}
         </div>

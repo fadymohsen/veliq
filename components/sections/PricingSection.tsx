@@ -36,7 +36,7 @@ const PLANS = [
     dim: false,
     features: [
       "Two active requests at a time",
-      "Framer development & updates",
+      "Website development & updates",
       "Landing page optimization",
       "Basic SEO setup",
       "Presentation decks",

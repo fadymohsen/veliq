@@ -26,7 +26,7 @@ const PLANS: Record<string, PlanInfo> = {
     price: "$4,499",
     suffix: "/ Month",
     category: "Monthly Plan",
-    features: ["Two active requests at a time", "Framer development & updates", "Landing page optimization", "Basic SEO setup", "Presentation decks", "Stock photo sourcing"],
+    features: ["Two active requests at a time", "Website development & updates", "Landing page optimization", "Basic SEO setup", "Presentation decks", "Stock photo sourcing"],
   },
   "agency-partner": {
     name: "Agency Partner",
