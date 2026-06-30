@@ -39,9 +39,13 @@ export const PROJECTS: Project[] = [
     problemBody: "Alfa Transport was managing a fleet of 120+ vehicles across Saudi Arabia, Egypt, and the UAE with nothing but a basic contact page. Clients couldn't track shipments, request quotes, or verify credentials online — leading to lost enterprise contracts and a credibility gap with larger buyers.",
     solutionHeading: "We built a bilingual logistics platform that positioned Alfa as the regional enterprise carrier they actually are.",
     solutionBody: "We designed an Arabic/English website with an integrated quote request system, fleet overview, and media-rich credential section. The platform now generates 3× more qualified enterprise inquiries per month and has become their primary sales tool with new regional partners.",
-    image1: SHARED_IMAGE_1,
-    image2: SHARED_IMAGE_2,
-    gallery: SHARED_GALLERY,
+    image1: "/uploads/alfa-transport-1.png",
+    image2: "/uploads/alfa-transport-2.png",
+    gallery: [
+      "/uploads/alfa-transport-3.png",
+      "/uploads/alfa-transport-4.png",
+      "/uploads/alfa-transport-5.png",
+    ],
   },
   {
     slug: "yamin-estate",
