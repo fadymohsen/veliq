@@ -10,6 +10,7 @@ const MENU_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Pricing",  href: "/pricing" },
   { label: "Projects", href: "/projects" },
+  { label: "Blog",     href: "/blog" },
 ];
 
 const LEGAL_LINKS = [
