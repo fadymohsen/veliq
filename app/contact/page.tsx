@@ -10,9 +10,37 @@ const CONTACT_INFO = [
 ];
 
 const SOCIALS = [
-  { label: "Instagram", href: "https://www.instagram.com/veliq.co" },
-  { label: "Facebook",  href: "https://www.facebook.com/veliq.co/" },
-  { label: "LinkedIn",  href: "https://www.linkedin.com/company/veliq-co" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/veliq.co",
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/veliq.co/",
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+      </svg>
+    ),
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/veliq-co",
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+        <rect x="2" y="9" width="4" height="12" />
+        <circle cx="4" cy="4" r="2" />
+      </svg>
+    ),
+  },
 ];
 
 const FAQS = [
@@ -119,7 +147,7 @@ export default function ContactPage() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full text-white hover:bg-white/10 transition-colors"
+                    className="flex items-center gap-2 rounded-full text-white hover:bg-white/10 transition-colors"
                     style={{
                       border: "1px solid rgb(40,40,40)",
                       fontSize: "13px",
@@ -127,6 +155,7 @@ export default function ContactPage() {
                       padding: "8px 16px",
                     }}
                   >
+                    {s.icon}
                     {s.label}
                   </a>
                 ))}
