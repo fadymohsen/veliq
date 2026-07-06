@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const NAV_LINKS = [
   { label: "About",    href: "/about"    },
   { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects", count: "12" },
+  { label: "Projects", href: "/projects" },
   { label: "Pricing",  href: "/pricing"  },
 ];
 
@@ -118,11 +118,6 @@ export default function Navbar() {
                     style={{ fontSize: "13px", fontWeight: 500, padding: "7px 14px" }}
                   >
                     {link.label}
-                    {link.count && (
-                      <sup className="text-[rgb(99,102,241)]" style={{ fontSize: "9px", fontWeight: 700 }}>
-                        {link.count}
-                      </sup>
-                    )}
                   </Link>
                 ))}
 
@@ -224,11 +219,6 @@ export default function Navbar() {
                     }}
                   >
                     {link.label}
-                    {link.count && (
-                      <sup style={{ fontSize: "14px", fontWeight: 700, color: "rgb(99,102,241)" }}>
-                        {link.count}
-                      </sup>
-                    )}
                   </Link>
                 </motion.div>
               ))}

@@ -10,12 +10,16 @@ const EQ_WEIGHT = 600;
 const EQ_TRACKING = "-0.05em";
 
 const CLIENT_LOGOS = [
-  { name: "Coach Roshdy",  src: "/clients/coach-mohamed-roshdy.svg" },
-  { name: "Initio",        src: "/clients/initio.svg" },
-  { name: "Fanous Clinic", src: "/clients/fanous-clinic.png" },
-  { name: "Yamin Estate",  src: "/clients/yamin-estate.png" },
-  { name: "RedBone Gym",   src: "/clients/redbone-gym.png" },
-  { name: "Saudi Hayat",   src: "/clients/saudi-hayat.png" },
+  { name: "Coach Roshdy",   src: "/clients/coach-mohamed-roshdy.svg" },
+  { name: "Initio",         src: "/clients/initio.svg" },
+  { name: "Fanous Clinic",  src: "/clients/fanous-clinic.png" },
+  { name: "Yamin Estate",   src: "/clients/yamin-estate.png" },
+  { name: "RedBone Gym",    src: "/clients/redbone-gym.png" },
+  { name: "Saudi Hayat",    src: "/clients/saudi-hayat.png" },
+  { name: "Alfa Transport", src: "/logos/alfa-transport.jpeg",  chip: true },
+  { name: "Coach Batool",   src: "/logos/coach-batool.jpeg",    chip: true },
+  { name: "Enjaz Care",     src: "/logos/enjazcare.jpeg",       chip: true },
+  { name: "Crewhub Studio", src: "/logos/crewhub-studio.jpeg",  chip: true },
 ];
 
 const EQ_WORDS = [
@@ -232,18 +236,24 @@ export default function IntroSection() {
           </div>
         </div>
 
-        {/* ── Logos — 2 columns on mobile, single row on desktop ───────── */}
-        <div className="w-full grid grid-cols-2 gap-2 md:flex md:items-center">
+        {/* ── Logos — 2 columns on mobile, wrapping row on desktop ───────── */}
+        <div className="w-full grid grid-cols-2 gap-2 md:flex md:flex-wrap md:justify-center">
           {CLIENT_LOGOS.map((logo, i) => (
             <motion.div
               key={logo.name}
-              className="md:flex-1 flex items-center justify-center rounded-[18px] h-[104px] md:h-[76px]"
-              style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(22,22,22)", padding: "16px" }}
+              className="md:w-[150px] flex items-center justify-center rounded-[18px] h-[104px] md:h-[76px]"
+              style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(22,22,22)", padding: "8px" }}
               initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 1.55 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Image src={logo.src} alt={logo.name} width={120} height={44} className="object-contain w-auto max-h-[44px] md:max-h-[28px]" />
+              {logo.chip ? (
+                <div className="flex items-center justify-center rounded-md bg-white w-full h-full" style={{ padding: "4px" }}>
+                  <Image src={logo.src} alt={logo.name} width={120} height={44} className="object-contain w-auto h-full max-h-[67px] md:max-h-[58px]" />
+                </div>
+              ) : (
+                <Image src={logo.src} alt={logo.name} width={120} height={44} className="object-contain w-auto h-full max-h-[70px] md:max-h-[62px]" />
+              )}
             </motion.div>
           ))}
         </div>

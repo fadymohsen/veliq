@@ -96,6 +96,9 @@ export default function Footer() {
             >
               +20 155 116 4671
             </a>
+            <span style={{ fontSize: "14px", fontWeight: 400, color: "rgb(80,80,80)" }}>
+              8 Samoiel Markos, St, Shobra, Cairo
+            </span>
           </div>
 
           <button
