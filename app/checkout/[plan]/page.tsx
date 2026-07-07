@@ -153,6 +153,14 @@ type Country = (typeof COUNTRIES)[number];
 
 const INDIGO = "rgb(99,102,241)";
 
+function averagePrice(price: string): string {
+  const match = price.match(/^([^\d]*)([\d,]+)\s*-\s*([\d,]+)$/);
+  if (!match) return price;
+  const [, prefix, from, to] = match;
+  const avg = (parseInt(from.replace(/,/g, ""), 10) + parseInt(to.replace(/,/g, ""), 10)) / 2;
+  return `${prefix}${Math.round(avg).toLocaleString()}`;
+}
+
 const PAYMENT_METHODS = [
   {
     id: "instapay" as const,
@@ -294,7 +302,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
           email: form.email.trim(),
           notes: form.notes.trim() || null,
           plan: planInfo.name,
-          planDetails: `${planInfo.category} — ${planInfo.price} ${planInfo.suffix}`,
+          planDetails: `${planInfo.category} — ${averagePrice(planInfo.price)} ${planInfo.suffix}`,
           paymentMethod,
         }),
       });
@@ -456,7 +464,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between">
                     <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>Subtotal</span>
-                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>{planInfo.price} {planInfo.suffix}</span>
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>{averagePrice(planInfo.price)} {planInfo.suffix}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>Discount</span>
@@ -466,7 +474,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
                   <div className="flex items-baseline justify-between">
                     <span className="text-white" style={{ fontSize: 15, fontWeight: 700 }}>Total</span>
                     <span className="text-white" style={{ fontSize: 22, fontWeight: 700 }}>
-                      {planInfo.price} <span style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.4)" }}>{planInfo.suffix}</span>
+                      {averagePrice(planInfo.price)} <span style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.4)" }}>{planInfo.suffix}</span>
                     </span>
                   </div>
                 </div>
