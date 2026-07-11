@@ -8,7 +8,16 @@ export async function POST(req: Request) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await req.json();
-    const { name, company, phone, email, notes, plan, planDetails } = body;
+    const { name, company, phone, email, notes, plan, planDetails, website, formLoadedAt } = body;
+
+    // Honeypot: hidden field bots fill in, humans never see.
+    if (typeof website === "string" && website.trim().length > 0) {
+      return NextResponse.json({ success: true });
+    }
+    // Timing trap: real users take >3s to fill the form; bots submit near-instantly.
+    if (typeof formLoadedAt !== "number" || Date.now() - formLoadedAt < 3000) {
+      return NextResponse.json({ success: true });
+    }
 
     if (!name || typeof name !== "string" || name.trim().length < 2) {
       return NextResponse.json({ error: "Name is required." }, { status: 400 });

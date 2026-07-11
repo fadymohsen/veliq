@@ -218,7 +218,8 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
   const baseSlug = planSlug.replace(/-hosting$/, "");
   const hasHostingOption = Boolean(PLANS[baseSlug]) && Boolean(PLANS[`${baseSlug}-hosting`]);
 
-  const [form, setForm] = useState({ name: "", company: "", phone: "", email: "", notes: "" });
+  const [form, setForm] = useState({ name: "", company: "", phone: "", email: "", notes: "", website: "" });
+  const formLoadedAt = useRef(Date.now());
   const [paymentMethod, setPaymentMethod] = useState<"instapay" | "fawterak" | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<Country>(COUNTRIES[0]);
   const [countryOpen, setCountryOpen] = useState(false);
@@ -304,6 +305,8 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
           plan: planInfo.name,
           planDetails: `${planInfo.category} — ${averagePrice(planInfo.price)} ${planInfo.suffix}`,
           paymentMethod,
+          website: form.website,
+          formLoadedAt: formLoadedAt.current,
         }),
       });
       const data = await res.json();
@@ -528,6 +531,18 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
                 <h3 className="text-white" style={{ fontSize: 20, fontWeight: 700, letterSpacing: "-0.03em" }}>
                   Complete your order
                 </h3>
+
+                {/* Honeypot — hidden from real users, bots tend to fill every field */}
+                <input
+                  type="text"
+                  name="website"
+                  value={form.website}
+                  onChange={(e) => setForm({ ...form, website: e.target.value })}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                />
 
                 {/* Step progress */}
                 <div className="flex items-center gap-2 -mt-1 mb-1">

@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /checkout/
+Disallow: /contact
 Disallow: /api/
 Disallow: /studio
 
