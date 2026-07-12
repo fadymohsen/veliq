@@ -220,6 +220,8 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
 
   const [form, setForm] = useState({ name: "", company: "", phone: "", email: "", notes: "", website: "" });
   const formLoadedAt = useRef(Date.now());
+  const [captcha, setCaptcha] = useState<{ a: number; b: number; token: string } | null>(null);
+  const [captchaAnswer, setCaptchaAnswer] = useState("");
   const [paymentMethod, setPaymentMethod] = useState<"instapay" | "fawterak" | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<Country>(COUNTRIES[0]);
   const [countryOpen, setCountryOpen] = useState(false);
@@ -248,6 +250,13 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
     }
     document.addEventListener("mousedown", handleOutside);
     return () => document.removeEventListener("mousedown", handleOutside);
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/captcha")
+      .then((res) => res.json())
+      .then(setCaptcha)
+      .catch(() => setCaptcha(null));
   }, []);
 
   if (!planInfo) {
@@ -283,6 +292,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
       newErrors.email = "Enter a valid email address.";
     }
     if (!paymentMethod) newErrors.payment = "Choose a payment method.";
+    if (!captcha || !captchaAnswer.trim()) newErrors.captcha = "Please answer the verification question.";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -307,6 +317,8 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
           paymentMethod,
           website: form.website,
           formLoadedAt: formLoadedAt.current,
+          captchaToken: captcha?.token,
+          captchaAnswer,
         }),
       });
       const data = await res.json();
@@ -766,6 +778,28 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
                     </div>
                   )}
                   {errors.payment && <p style={{ fontSize: 12, color: "rgb(239,68,68)" }}>{errors.payment}</p>}
+                </div>
+
+                {/* Verification — quick math check, blocks bots */}
+                <div className="flex flex-col gap-2">
+                  <label className="text-white" style={{ fontSize: 13, fontWeight: 600 }}>
+                    Quick check: what is {captcha ? `${captcha.a} + ${captcha.b}` : "…"}?
+                  </label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={captchaAnswer}
+                    onChange={(e) => setCaptchaAnswer(e.target.value)}
+                    placeholder="Your answer"
+                    className="w-full rounded-[10px] text-white outline-none"
+                    style={{
+                      backgroundColor: "rgb(20,20,20)",
+                      border: `1px solid ${errors.captcha ? "rgb(239,68,68)" : "rgb(38,38,38)"}`,
+                      fontSize: 14,
+                      padding: "12px 16px",
+                    }}
+                  />
+                  {errors.captcha && <p style={{ fontSize: 12, color: "rgb(239,68,68)" }}>{errors.captcha}</p>}
                 </div>
 
                 {errors.submit && (
