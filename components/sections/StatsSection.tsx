@@ -77,7 +77,7 @@ export default function StatsSection() {
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
-              className="flex flex-col justify-between p-8 rounded-[20px]"
+              className="flex flex-col justify-between p-8 rounded-[20px] transition-all duration-300 hover:-translate-y-1 hover:border-[rgb(40,40,40)]"
               style={{
                 backgroundColor: "rgb(14,14,14)",
                 border: "1px solid rgb(28,28,28)",
@@ -85,7 +85,7 @@ export default function StatsSection() {
               }}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             >
               <span className="text-[rgb(201,201,201)]" style={{ fontSize: "13px", fontWeight: 600 }}>
                 {stat.label}

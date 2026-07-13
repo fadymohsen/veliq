@@ -142,7 +142,7 @@ export default function HeroSection() {
                   backgroundColor: "rgb(99,102,241)",
                 }}
               />
-              <span style={{ fontSize: "13px", fontWeight: 400, color: "rgba(255,255,255,0.3)", letterSpacing: "-0.01em" }}>
+              <span style={{ fontSize: "13px", fontWeight: 400, color: "rgba(255,255,255,0.4)", letterSpacing: "-0.01em" }}>
                 {item}
               </span>
             </div>

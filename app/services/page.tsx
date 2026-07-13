@@ -47,7 +47,7 @@ export default function ServicesPage() {
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="group flex flex-col gap-6 p-8 rounded-[24px] transition-colors hover:border-[rgb(99,102,241)]"
+              className="group flex flex-col gap-6 p-8 rounded-[24px] transition-all duration-300 hover:border-[rgb(99,102,241)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)]"
               style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
             >
               {/* Icon */}

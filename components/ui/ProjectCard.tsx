@@ -1,15 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Project } from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const domain = project.url.replace(/^https?:\/\/(www\.)?/, "");
 
   return (
-    <Link href={`/projects/${project.slug}`} className="flex flex-col gap-3 group w-full">
+    <Link href={`/projects/${project.slug}`} className="flex flex-col gap-3 group w-full transition-transform duration-300 hover:-translate-y-1">
 
       {/* Browser shell */}
       <div
-        className="w-full overflow-hidden"
+        className="w-full overflow-hidden transition-shadow duration-300 group-hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)]"
         style={{ borderRadius: 14, border: "1px solid rgb(36,36,36)", backgroundColor: "rgb(16,16,16)" }}
       >
         {/* Chrome bar */}
@@ -31,12 +32,12 @@ export default function ProjectCard({ project }: { project: Project }) {
           className="relative w-full overflow-hidden"
           style={{ aspectRatio: "16 / 9", backgroundColor: "rgb(12,12,12)" }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={project.preview}
             alt={project.title}
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            fill
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
           />
           <span
             className="absolute"

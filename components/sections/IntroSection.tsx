@@ -174,7 +174,7 @@ export default function IntroSection() {
               Who We Are
             </span>
 
-            <p style={{ fontSize: "clamp(0.95rem, 1.35vw, 17px)", fontWeight: 400, color: "rgb(110,110,110)", lineHeight: 1.85 }}>
+            <p style={{ fontSize: "clamp(0.95rem, 1.35vw, 17px)", fontWeight: 400, color: "rgb(140,140,140)", lineHeight: 1.85 }}>
               Every client gets a dedicated team that owns their digital presence,
               thinks with them, and moves with the precision their business deserves.
               We are not just an agency — we are your growth architecture firm.

@@ -16,6 +16,7 @@ export type Project = {
   image1: string;
   image2: string;
   gallery: string[];
+  results?: { metric: string; detail: string }[];
 };
 
 export const PROJECTS: Project[] = [
@@ -39,6 +40,11 @@ export const PROJECTS: Project[] = [
       "/uploads/alfa-transport-4.png",
       "/uploads/alfa-transport-5.png",
     ],
+    results: [
+      { metric: "3x", detail: "More qualified enterprise inquiries per month" },
+      { metric: "120+", detail: "Vehicles managed across the platform" },
+      { metric: "2", detail: "Languages supported (Arabic & English)" },
+    ],
   },
   {
     slug: "yamin-estate",
@@ -60,6 +66,11 @@ export const PROJECTS: Project[] = [
       "/uploads/yamin-estate-4.png",
       "/uploads/yamin-estate-5.png",
     ],
+    results: [
+      { metric: "450", detail: "Qualified leads generated in 30 days" },
+      { metric: "12%", detail: "Lead-to-consultation conversion rate" },
+      { metric: "#1", detail: "Best launch performance to date" },
+    ],
   },
   {
     slug: "saudi-hayat",
@@ -80,6 +91,11 @@ export const PROJECTS: Project[] = [
       "/uploads/saudi-hayat-3.png",
       "/uploads/saudi-hayat-4.png",
       "/uploads/saudi-hayat-5.png",
+    ],
+    results: [
+      { metric: "120%", detail: "Increase in patient appointment requests" },
+      { metric: "3", detail: "Cities unified under one platform" },
+      { metric: "2", detail: "Languages (Arabic & English)" },
     ],
   },
   {
@@ -104,6 +120,11 @@ export const PROJECTS: Project[] = [
       "/uploads/fanous-clinic-4.png",
       "/uploads/fanous-clinic-5.png",
     ],
+    results: [
+      { metric: "75%", detail: "Increase in appointment bookings" },
+      { metric: "40%", detail: "Reduction in phone inquiries" },
+      { metric: "Page 1", detail: "Google ranking for local searches" },
+    ],
   },
   {
     slug: "initio",
@@ -124,6 +145,11 @@ export const PROJECTS: Project[] = [
       "/uploads/initio-3.png",
       "/uploads/initio-4.png",
       "/uploads/initio-5.png",
+    ],
+    results: [
+      { metric: "1", detail: "Funding round closed with new site" },
+      { metric: "2", detail: "Enterprise contracts landed in 60 days" },
+      { metric: "100%", detail: "Credibility gap eliminated" },
     ],
   },
   {
@@ -146,6 +172,11 @@ export const PROJECTS: Project[] = [
       "/uploads/redbone-gym-4.png",
       "/uploads/redbone-gym-5.png",
     ],
+    results: [
+      { metric: "90%", detail: "Increase in new member sign-ups" },
+      { metric: "Q1", detail: "Results achieved within first quarter" },
+      { metric: "Premium", detail: "Pricing justified through brand repositioning" },
+    ],
   },
   {
     slug: "captain-maged",
@@ -166,6 +197,11 @@ export const PROJECTS: Project[] = [
       "/uploads/captain-maged-3.png",
       "/uploads/captain-maged-4.png",
       "/uploads/captain-maged-5.png",
+    ],
+    results: [
+      { metric: "240%", detail: "Increase in bookings in first season" },
+      { metric: "Corporate", detail: "Shift toward high-ticket corporate clients" },
+      { metric: "Global", detail: "Reach expanded to international travelers" },
     ],
   },
   {
@@ -188,6 +224,11 @@ export const PROJECTS: Project[] = [
       "/uploads/coach-batool-4.png",
       "/uploads/coach-batool-5.png",
     ],
+    results: [
+      { metric: "3x", detail: "Increase in average client value" },
+      { metric: "Consistent", detail: "Lead volume maintained while filtering for quality" },
+      { metric: "Premium", detail: "Positioning commanding higher pricing" },
+    ],
   },
   {
     slug: "coach-shiko",
@@ -208,6 +249,11 @@ export const PROJECTS: Project[] = [
       "/uploads/coach-shiko-3.png",
       "/uploads/coach-shiko-4.png",
       "/uploads/coach-shiko-5.png",
+    ],
+    results: [
+      { metric: "40+", detail: "Qualified organic inquiries per month" },
+      { metric: "0→40", detail: "From zero organic leads in 5 months" },
+      { metric: "SEO", detail: "Driven growth, no paid ads required" },
     ],
   },
   {
@@ -232,6 +278,11 @@ export const PROJECTS: Project[] = [
       "/uploads/window-adv-4.png",
       "/uploads/window-adv-5.png",
     ],
+    results: [
+      { metric: "#1", detail: "Fastest-growing revenue channel" },
+      { metric: "Digital", detail: "New digital-sourced inquiry pipeline" },
+      { metric: "6 mo", detail: "Time to become top revenue source" },
+    ],
   },
   {
     slug: "enjazcare",
@@ -253,6 +304,11 @@ export const PROJECTS: Project[] = [
       "/uploads/enjazcare-4.png",
       "/uploads/enjazcare-5.png",
     ],
+    results: [
+      { metric: "6", detail: "Service categories integrated into one platform" },
+      { metric: "2", detail: "Languages (Arabic-first + English)" },
+      { metric: "Online", detail: "Booking system replacing phone/WhatsApp only" },
+    ],
   },
   {
     slug: "brandlab",
@@ -273,6 +329,11 @@ export const PROJECTS: Project[] = [
       "/uploads/brandlab-3.png",
       "/uploads/brandlab-4.png",
       "/uploads/brandlab-5.png",
+    ],
+    results: [
+      { metric: "200+", detail: "Delivered projects showcased" },
+      { metric: "Bilingual", detail: "Arabic & English for regional reach" },
+      { metric: "Day 1", detail: "Inbound inquiries from launch" },
     ],
   },
 ];

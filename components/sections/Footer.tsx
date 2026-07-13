@@ -92,12 +92,12 @@ export default function Footer() {
             </a>
             <a
               href="tel:+201551164671"
-              style={{ fontSize: "14px", fontWeight: 400, color: "rgb(80,80,80)" }}
+              style={{ fontSize: "14px", fontWeight: 400, color: "rgb(120,120,120)" }}
               className="hover:text-white transition-colors w-fit"
             >
               +20 155 116 4671
             </a>
-            <span style={{ fontSize: "14px", fontWeight: 400, color: "rgb(80,80,80)" }}>
+            <span style={{ fontSize: "14px", fontWeight: 400, color: "rgb(120,120,120)" }}>
               8 Samoiel Markos, St, Shobra, Cairo
             </span>
           </div>
@@ -127,7 +127,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: "14px", fontWeight: 500, color: "rgb(100,100,100)" }}
+                    style={{ fontSize: "14px", fontWeight: 500, color: "rgb(130,130,130)" }}
                     className="hover:text-white transition-colors"
                   >
                     {l.label}
@@ -146,7 +146,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: "14px", fontWeight: 500, color: "rgb(100,100,100)" }}
+                    style={{ fontSize: "14px", fontWeight: 500, color: "rgb(130,130,130)" }}
                     className="hover:text-white transition-colors"
                   >
                     {l.label}
@@ -168,7 +168,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-between py-3 transition-colors duration-200"
-                  style={{ borderBottom: "1px solid rgb(22,22,22)", color: "rgb(80,80,80)" }}
+                  style={{ borderBottom: "1px solid rgb(22,22,22)", color: "rgb(120,120,120)" }}
                 >
                   <div className="flex items-center gap-2.5">
                     <span className="group-hover:text-white transition-colors duration-200">
@@ -208,7 +208,7 @@ export default function Footer() {
           className="object-contain"
           style={{ opacity: 0.85 }}
         />
-        <span style={{ fontSize: "12px", fontWeight: 400, color: "rgb(50,50,50)", letterSpacing: "-0.01em" }}>
+        <span style={{ fontSize: "12px", fontWeight: 400, color: "rgb(100,100,100)", letterSpacing: "-0.01em" }}>
           © {new Date().getFullYear()} VELIQ. All rights reserved.
         </span>
       </div>

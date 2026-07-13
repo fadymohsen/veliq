@@ -1,9 +1,12 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 import Footer from "@/components/sections/Footer";
 import Button from "@/components/ui/Button";
 import ProjectCard from "@/components/ui/ProjectCard";
 import DeviceMockups from "@/components/ui/DeviceMockups";
 import { PROJECTS, getProject, getOtherProjects } from "@/lib/projects";
+import { SERVICES } from "@/lib/services";
 import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
@@ -113,7 +116,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
           {/* Meta pills */}
           <div className="flex items-end justify-center gap-5 mt-2 flex-wrap">
-            <MetaPill label="Service" value={project.category} />
+            {(() => {
+              const svc = SERVICES.find((s) => s.title === project.category);
+              return svc ? (
+                <Link href={`/services/${svc.slug}`} className="hover:opacity-80 transition-opacity">
+                  <MetaPill label="Service" value={project.category} />
+                </Link>
+              ) : (
+                <MetaPill label="Service" value={project.category} />
+              );
+            })()}
             <MetaPill label="Client" value={project.client} />
             <MetaPill label="Year" value={project.year} />
           </div>
@@ -144,9 +156,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {/* ── Two images side by side ── */}
       <div className="w-full max-w-[1200px] flex flex-col md:flex-row gap-1">
         {[project.image1, project.image2].map((src, i) => (
-          <div key={i} className="flex-1" style={{ aspectRatio: "1.246" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={src} alt={`${project.title} showcase ${i + 1}`} className="w-full h-full object-cover" style={{ borderRadius: "25px" }} />
+          <div key={i} className="relative flex-1 overflow-hidden" style={{ aspectRatio: "1.246", borderRadius: "25px" }}>
+            <Image src={src} alt={`${project.title} showcase ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
           </div>
         ))}
       </div>
@@ -154,12 +165,45 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {/* ── Solution ── */}
       <ContentBlock label="Solution" heading={project.solutionHeading} body={project.solutionBody} />
 
+      {/* ── Results ── */}
+      {project.results && project.results.length > 0 && (
+        <section className="w-full max-w-[1200px] py-[60px]">
+          <div className="flex flex-col gap-8">
+            <HighlighterTag label="Results" />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {project.results.map((r, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col gap-2 p-6 rounded-[20px]"
+                  style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
+                >
+                  <span
+                    className="text-white"
+                    style={{
+                      fontSize: "clamp(2rem, 4vw, 3rem)",
+                      fontWeight: 700,
+                      letterSpacing: "-0.04em",
+                      lineHeight: 1,
+                      color: "rgb(99,102,241)",
+                    }}
+                  >
+                    {r.metric}
+                  </span>
+                  <span style={{ fontSize: "14px", fontWeight: 500, color: "rgb(201,201,201)", lineHeight: 1.4 }}>
+                    {r.detail}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── Gallery ── */}
       <section className="w-full max-w-[1520px] flex flex-col gap-[10px]">
         {project.gallery.map((src, i) => (
-          <div key={i} className="w-full">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={src} alt={`${project.title} gallery ${i + 1}`} className="w-full h-auto object-cover" style={{ borderRadius: "25px" }} />
+          <div key={i} className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 9", borderRadius: "25px" }}>
+            <Image src={src} alt={`${project.title} gallery ${i + 1}`} fill sizes="100vw" className="object-cover" />
           </div>
         ))}
       </section>

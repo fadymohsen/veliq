@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { PROJECTS } from "@/lib/projects";
 
@@ -41,12 +42,12 @@ function BrowserCard({ project }: { project: (typeof PROJECTS)[number] }) {
 
         {/* Screenshot viewport */}
         <div style={{ position: "relative", width: CARD_W, height: CARD_H, overflow: "hidden", backgroundColor: "rgb(12,12,12)" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={project.preview}
             alt={project.title}
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            fill
+            sizes="760px"
+            className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
           />
           <span
             style={{

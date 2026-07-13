@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { SERVICES, getService } from "@/lib/services";
+import { PROJECTS } from "@/lib/projects";
+import ProjectCard from "@/components/ui/ProjectCard";
 import { JsonLd, serviceSchema, faqSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
 
 const ICONS: Record<string, React.ReactNode> = {
@@ -218,7 +220,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <h3 className="text-white" style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "-0.02em" }}>
                   WHY: {faq.q}
                 </h3>
-                <p style={{ fontSize: "14px", color: "rgb(160,160,160)", lineHeight: 1.7 }}>{faq.a}</p>
+                <p style={{ fontSize: "14px", color: "rgb(180,180,180)", lineHeight: 1.7 }}>{faq.a}</p>
               </div>
             ))}
           </div>
@@ -275,6 +277,24 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             &ldquo;After our discovery meeting, we recommend the tier that fits your actual needs — not the one that fits our revenue targets.&rdquo;
           </p>
         </div>
+
+        {/* Related Projects */}
+        {(() => {
+          const related = PROJECTS.filter((p) => p.category === service.title).slice(0, 4);
+          if (related.length === 0) return null;
+          return (
+            <div className="flex flex-col gap-8">
+              <h2 className="text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 600, letterSpacing: "-0.04em" }}>
+                Projects using this service.
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10px] gap-y-10">
+                {related.map((p) => (
+                  <ProjectCard key={p.slug} project={p} />
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Back + CTA */}
         <div className="flex items-center gap-4 flex-wrap">

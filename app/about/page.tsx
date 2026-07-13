@@ -138,7 +138,7 @@ export default function AboutPage() {
             </motion.h1>
           </div>
           <motion.p
-            style={{ fontSize: "clamp(1rem,1.5vw,18px)", color: "rgb(100,100,100)", lineHeight: 1.75, maxWidth: "52ch" }}
+            style={{ fontSize: "clamp(1rem,1.5vw,18px)", color: "rgb(140,140,140)", lineHeight: 1.75, maxWidth: "52ch" }}
             initial={{ opacity: 0, y: 16 }} animate={heroIn ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.22, ease }}
           >
@@ -206,7 +206,7 @@ export default function AboutPage() {
               </div>
               <div className="flex flex-col gap-2">
                 <h3 style={{ fontSize: "18px", fontWeight: 700, letterSpacing: "-0.03em", color: card.color }}>{card.title}</h3>
-                <p style={{ fontSize: "14px", lineHeight: 1.65, color: "rgb(90,90,90)" }}>{card.desc}</p>
+                <p style={{ fontSize: "14px", lineHeight: 1.65, color: "rgb(130,130,130)" }}>{card.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -227,7 +227,7 @@ export default function AboutPage() {
           ].map((text, i) => (
             <motion.p
               key={i}
-              style={{ fontSize: "17px", lineHeight: 1.8, color: "rgb(100,100,100)" }}
+              style={{ fontSize: "17px", lineHeight: 1.8, color: "rgb(140,140,140)" }}
               initial={{ opacity: 0, y: 20 }} animate={whoIn ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2 + i * 0.12, ease }}
             >
@@ -245,7 +245,7 @@ export default function AboutPage() {
           </motion.div>
           <SectionHeading inView={problemIn}>The problem we solve.</SectionHeading>
           <motion.p
-            style={{ fontSize: "16px", maxWidth: "56ch", lineHeight: 1.75, color: "rgb(100,100,100)" }}
+            style={{ fontSize: "16px", maxWidth: "56ch", lineHeight: 1.75, color: "rgb(140,140,140)" }}
             initial={{ opacity: 0, y: 16 }} animate={problemIn ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease }}
           >
@@ -295,7 +295,7 @@ export default function AboutPage() {
                 <Label color={card.labelColor}>{card.label}</Label>
               </div>
               <h3 className="text-white" style={{ fontSize: "22px", fontWeight: 600, letterSpacing: "-0.03em", lineHeight: 1.3 }}>{card.title}</h3>
-              <p style={{ fontSize: "15px", lineHeight: 1.75, color: "rgb(100,100,100)" }}>{card.body}</p>
+              <p style={{ fontSize: "15px", lineHeight: 1.75, color: "rgb(140,140,140)" }}>{card.body}</p>
             </motion.div>
           ))}
         </div>
@@ -320,7 +320,7 @@ export default function AboutPage() {
             >
               <span style={{ fontSize: 11, fontWeight: 700, color: v.color, letterSpacing: "0.08em" }}>0{i + 1}</span>
               <h3 className="text-white" style={{ fontSize: "18px", fontWeight: 700, letterSpacing: "-0.03em" }}>{v.title}</h3>
-              <p style={{ fontSize: "14px", lineHeight: 1.7, color: "rgb(90,90,90)" }}>{v.desc}</p>
+              <p style={{ fontSize: "14px", lineHeight: 1.7, color: "rgb(130,130,130)" }}>{v.desc}</p>
             </motion.div>
           ))}
         </div>
