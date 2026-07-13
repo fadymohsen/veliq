@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { verifyChallenge } from "@/lib/captcha";
 
 const ADMIN_EMAIL = "admin@veliq.co";
 const SENDER_EMAIL = "admin@veliq.co";
@@ -8,7 +9,20 @@ export async function POST(req: Request) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await req.json();
-    const { name, email, message } = body;
+    const { name, email, message, website, formLoadedAt, captchaToken, captchaAnswer } = body;
+
+    // Honeypot: hidden field bots fill in, humans never see.
+    if (typeof website === "string" && website.trim().length > 0) {
+      return NextResponse.json({ success: true });
+    }
+    // Timing trap: real users take >3s to fill the form; bots submit near-instantly.
+    if (typeof formLoadedAt !== "number" || Date.now() - formLoadedAt < 3000) {
+      return NextResponse.json({ success: true });
+    }
+    // Math challenge: server-signed, bots can't forge a valid answer without solving it.
+    if (!verifyChallenge(captchaToken, captchaAnswer)) {
+      return NextResponse.json({ error: "Verification failed. Please try again." }, { status: 400 });
+    }
 
     if (!name || typeof name !== "string" || name.trim().length < 2) {
       return NextResponse.json({ error: "Name is required (min 2 characters)." }, { status: 400 });
