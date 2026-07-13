@@ -32,11 +32,20 @@ export const metadata: Metadata = {
     siteName: "VELIQ",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "VELIQ — Software & Marketing Solutions",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "VELIQ — Software & Marketing Solutions",
     description: "Precision at the Speed of Ambition. Web development, SEO, and website support.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
