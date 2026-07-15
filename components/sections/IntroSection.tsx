@@ -16,9 +16,9 @@ const CLIENT_LOGOS = [
   { name: "Yamin Estate",   src: "/clients/yamin-estate.png" },
   { name: "RedBone Gym",    src: "/clients/redbone-gym.png" },
   { name: "Saudi Hayat",    src: "/clients/saudi-hayat.png" },
-  { name: "Alfa Transport", src: "/logos/alfa-transport.jpeg",  chip: true },
+  { name: "Alfa Transport", src: "/logos/alfa-transport.png" },
   { name: "Coach Batool",   src: "/logos/coach-batool.jpeg",    chip: true },
-  { name: "Enjaz Care",     src: "/logos/enjazcare.jpeg",       chip: true },
+  { name: "Enjaz Care",     src: "/logos/enjazcare.png" },
   { name: "Crewhub Studio", src: "/logos/crewhub-studio.png" },
 ];
 
