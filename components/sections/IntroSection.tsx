@@ -19,7 +19,7 @@ const CLIENT_LOGOS = [
   { name: "Alfa Transport", src: "/logos/alfa-transport.jpeg",  chip: true },
   { name: "Coach Batool",   src: "/logos/coach-batool.jpeg",    chip: true },
   { name: "Enjaz Care",     src: "/logos/enjazcare.jpeg",       chip: true },
-  { name: "Crewhub Studio", src: "/logos/crewhub-studio.jpeg",  chip: true },
+  { name: "Crewhub Studio", src: "/logos/crewhub-studio.png" },
 ];
 
 const EQ_WORDS = [
