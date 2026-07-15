@@ -651,6 +651,24 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
                       <button
                         type="button"
                         onClick={() => setCountryOpen(!countryOpen)}
+                        onKeyDown={(e) => {
+                          if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+                            e.preventDefault();
+                            if (!countryOpen) { setCountryOpen(true); return; }
+                            const idx = COUNTRIES.findIndex((c) => c.name === selectedCountry.name);
+                            const next = e.key === "ArrowDown" ? (idx + 1) % COUNTRIES.length : (idx - 1 + COUNTRIES.length) % COUNTRIES.length;
+                            setSelectedCountry(COUNTRIES[next]);
+                            setForm((f) => ({ ...f, phone: "" }));
+                          } else if (e.key === "Escape" && countryOpen) {
+                            e.preventDefault();
+                            setCountryOpen(false);
+                          } else if (e.key === "Enter" && countryOpen) {
+                            e.preventDefault();
+                            setCountryOpen(false);
+                          }
+                        }}
+                        aria-expanded={countryOpen}
+                        aria-haspopup="listbox"
                         className="flex h-full items-center gap-2 rounded-[12px] bg-[rgb(20,20,20)] px-3 py-4 text-sm text-white border transition-colors hover:border-[rgb(60,60,60)]"
                         style={{ borderColor: "rgb(40,40,40)" }}
                       >
@@ -662,6 +680,8 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
                       </button>
                       {countryOpen && (
                         <div
+                          role="listbox"
+                          aria-label="Select country"
                           className="absolute left-0 top-full z-50 mt-1 max-h-56 w-52 overflow-y-auto rounded-[12px] shadow-2xl"
                           style={{ backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(40,40,40)" }}
                         >
@@ -669,6 +689,8 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
                             <button
                               key={`${c.name}-${c.code}`}
                               type="button"
+                              role="option"
+                              aria-selected={selectedCountry.name === c.name}
                               onClick={() => { setSelectedCountry(c); setCountryOpen(false); setForm((f) => ({ ...f, phone: "" })); }}
                               className="flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-white/5"
                               style={{ color: selectedCountry.name === c.name ? INDIGO : "rgba(255,255,255,0.7)" }}

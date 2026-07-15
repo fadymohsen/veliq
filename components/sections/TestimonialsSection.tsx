@@ -44,6 +44,7 @@ const TESTIMONIALS = [
 export default function TestimonialsSection() {
   const [active, setActive] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
+  const [paused, setPaused] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -120px 0px" });
 
@@ -61,14 +62,22 @@ export default function TestimonialsSection() {
   }, [active, go]);
 
   useEffect(() => {
+    if (paused) return;
     const t = setInterval(next, 6000);
     return () => clearInterval(t);
-  }, [next]);
+  }, [next, paused]);
 
   const t = TESTIMONIALS[active];
 
   return (
-    <section ref={ref} className="w-full bg-black section-padding">
+    <section
+      ref={ref}
+      className="w-full bg-black section-padding"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
       <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-16">
 
         <motion.div
