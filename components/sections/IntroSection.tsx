@@ -17,7 +17,7 @@ const CLIENT_LOGOS = [
   { name: "RedBone Gym",    src: "/clients/redbone-gym.png" },
   { name: "Saudi Hayat",    src: "/clients/saudi-hayat.png" },
   { name: "Alfa Transport", src: "/logos/alfa-transport.png" },
-  { name: "Coach Batool",   src: "/logos/coach-batool.jpeg",    chip: true },
+  { name: "Coach Batool",   src: "/logos/coach-batool.png" },
   { name: "Enjaz Care",     src: "/logos/enjazcare.png" },
   { name: "Crewhub Studio", src: "/logos/crewhub-studio.png" },
 ];
@@ -247,13 +247,7 @@ export default function IntroSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 1.55 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
             >
-              {logo.chip ? (
-                <div className="flex items-center justify-center rounded-md bg-white w-full h-full" style={{ padding: "4px" }}>
-                  <Image src={logo.src} alt={logo.name} width={120} height={44} className="object-contain w-auto h-full max-h-[67px] md:max-h-[58px]" />
-                </div>
-              ) : (
-                <Image src={logo.src} alt={logo.name} width={120} height={44} className="object-contain w-auto h-full max-h-[70px] md:max-h-[62px]" />
-              )}
+              <Image src={logo.src} alt={logo.name} width={120} height={44} className="object-contain w-auto h-full max-h-[70px] md:max-h-[62px]" />
             </motion.div>
           ))}
         </div>
