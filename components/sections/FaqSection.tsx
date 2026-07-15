@@ -52,6 +52,7 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
     >
       <button
         onClick={onToggle}
+        aria-expanded={open}
         className="w-full flex items-center justify-between px-5 py-4 gap-4 text-left cursor-pointer"
       >
         <span className="text-white" style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "-0.03em" }}>

@@ -92,12 +92,12 @@ export default function Footer() {
             </a>
             <a
               href="tel:+201551164671"
-              style={{ fontSize: "14px", fontWeight: 400, color: "rgb(120,120,120)" }}
+              style={{ fontSize: "14px", fontWeight: 400, color: "rgb(156,156,156)" }}
               className="hover:text-white transition-colors w-fit"
             >
               +20 155 116 4671
             </a>
-            <span style={{ fontSize: "14px", fontWeight: 400, color: "rgb(120,120,120)" }}>
+            <span style={{ fontSize: "14px", fontWeight: 400, color: "rgb(156,156,156)" }}>
               8 Samoiel Markos, St, Shobra, Cairo
             </span>
           </div>
@@ -105,7 +105,7 @@ export default function Footer() {
           <button
             onClick={scrollToTop}
             className="inline-flex items-center gap-2 cursor-pointer hover:opacity-70 transition-opacity w-fit"
-            style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}
+            style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.5)", letterSpacing: "0.05em" }}
           >
             <span style={{
               display: "inline-flex", alignItems: "center", justifyContent: "center",
@@ -119,7 +119,7 @@ export default function Footer() {
         {/* Right: nav + social */}
         <div className="flex gap-16">
           <div className="flex flex-col gap-4">
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.22)" }}>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>
               Menu
             </span>
             <ul className="flex flex-col gap-[10px]">
@@ -127,7 +127,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: "14px", fontWeight: 500, color: "rgb(130,130,130)" }}
+                    style={{ fontSize: "14px", fontWeight: 500, color: "rgb(156,156,156)" }}
                     className="hover:text-white transition-colors"
                   >
                     {l.label}
@@ -138,7 +138,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.22)" }}>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>
               Legal
             </span>
             <ul className="flex flex-col gap-[10px]">
@@ -146,7 +146,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: "14px", fontWeight: 500, color: "rgb(130,130,130)" }}
+                    style={{ fontSize: "14px", fontWeight: 500, color: "rgb(156,156,156)" }}
                     className="hover:text-white transition-colors"
                   >
                     {l.label}
@@ -157,7 +157,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.22)" }}>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>
               Social
             </span>
             <div className="flex flex-col" style={{ borderTop: "1px solid rgb(22,22,22)" }}>
@@ -168,7 +168,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-between py-3 transition-colors duration-200"
-                  style={{ borderBottom: "1px solid rgb(22,22,22)", color: "rgb(120,120,120)" }}
+                  style={{ borderBottom: "1px solid rgb(22,22,22)", color: "rgb(156,156,156)" }}
                 >
                   <div className="flex items-center gap-2.5">
                     <span className="group-hover:text-white transition-colors duration-200">
@@ -208,7 +208,7 @@ export default function Footer() {
           className="object-contain"
           style={{ opacity: 0.85 }}
         />
-        <span style={{ fontSize: "12px", fontWeight: 400, color: "rgb(100,100,100)", letterSpacing: "-0.01em" }}>
+        <span style={{ fontSize: "12px", fontWeight: 400, color: "rgb(140,140,140)", letterSpacing: "-0.01em" }}>
           © {new Date().getFullYear()} VELIQ. All rights reserved.
         </span>
       </div>

@@ -50,7 +50,7 @@ const PLANS = [
     cta: "Book a Call",
     href: "/checkout/agency-partner",
     bg: "rgb(14,14,14)",
-    mutedColor: "rgba(255,255,255,0.4)",
+    mutedColor: "rgba(255,255,255,0.55)",
     dividerColor: "rgba(255,255,255,0.08)",
     ctaBg: "rgb(32,32,32)",   // dark CTA for "premium / contact us" tier
     dim: true,                 // card appears at 65% opacity — de-emphasised

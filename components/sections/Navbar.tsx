@@ -156,8 +156,8 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden flex flex-col gap-[5px] cursor-pointer"
-            style={{ padding: "7px 10px" }}
+            className="md:hidden flex flex-col items-center justify-center gap-[5px] cursor-pointer"
+            style={{ width: 44, height: 44 }}
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
           >

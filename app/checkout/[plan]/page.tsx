@@ -259,6 +259,13 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
       .catch(() => setCaptcha(null));
   }, []);
 
+  useEffect(() => {
+    if (!showReceiptModal) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setShowReceiptModal(false); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [showReceiptModal]);
+
   if (!planInfo) {
     return (
       <main className="bg-black min-h-screen pt-16">
@@ -339,7 +346,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
         <Link
           href="/pricing"
           className="inline-flex items-center gap-2 mb-10 transition-colors hover:text-white"
-          style={{ fontSize: 14, fontWeight: 500, color: "rgba(255,255,255,0.4)" }}
+          style={{ fontSize: 14, fontWeight: 500, color: "rgba(255,255,255,0.55)" }}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M10 12L6 8l4-4" />
@@ -648,7 +655,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
                         style={{ borderColor: "rgb(40,40,40)" }}
                       >
                         <span>{selectedCountry.flag}</span>
-                        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>{selectedCountry.code}</span>
+                        <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 12 }}>{selectedCountry.code}</span>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M6 9l6 6 6-6" />
                         </svg>
@@ -853,6 +860,9 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
           onClick={() => setShowReceiptModal(false)}
         >
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Send receipt on WhatsApp"
             onClick={(e) => e.stopPropagation()}
             className="relative flex w-full max-w-[420px] flex-col items-center gap-4 rounded-[20px] p-8 text-center"
             style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
@@ -901,7 +911,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
               type="button"
               onClick={() => setShowReceiptModal(false)}
               className="text-sm transition-colors hover:text-white"
-              style={{ fontSize: 13, color: "rgba(255,255,255,0.35)" }}
+              style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}
             >
               I&apos;ll do it later
             </button>
