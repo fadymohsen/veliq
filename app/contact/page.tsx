@@ -222,8 +222,9 @@ export default function ContactPage() {
                   { id: "email",   label: "Email",           type: "email", placeholder: "you@company.com" },
                 ].map((field) => (
                   <div key={field.id} className="flex flex-col gap-2">
-                    <label className="para-14 text-[rgb(201,201,201)]">{field.label}</label>
+                    <label htmlFor={`contact-${field.id}`} className="para-14 text-[rgb(201,201,201)]">{field.label}</label>
                     <input
+                      id={`contact-${field.id}`}
                       type={field.type}
                       placeholder={field.placeholder}
                       required
@@ -238,8 +239,9 @@ export default function ContactPage() {
                 ))}
 
                 <div className="flex flex-col gap-2">
-                  <label className="para-14 text-[rgb(201,201,201)]">Project brief</label>
+                  <label htmlFor="contact-message" className="para-14 text-[rgb(201,201,201)]">Project brief</label>
                   <textarea
+                    id="contact-message"
                     rows={5}
                     placeholder="Tell us about your project..."
                     required
@@ -266,10 +268,11 @@ export default function ContactPage() {
 
                 {/* Math captcha */}
                 <div className="flex flex-col gap-2">
-                  <label className="para-14 text-[rgb(201,201,201)]">
+                  <label htmlFor="contact-captcha" className="para-14 text-[rgb(201,201,201)]">
                     Quick check: what is {captcha ? `${captcha.a} + ${captcha.b}` : "…"}?
                   </label>
                   <input
+                    id="contact-captcha"
                     type="text"
                     inputMode="numeric"
                     value={captchaAnswer}

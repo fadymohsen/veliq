@@ -73,11 +73,18 @@ export default function RootLayout({
         <JsonLd data={localBusinessSchema} />
       </head>
       <body className="relative bg-black text-white min-h-full antialiased overflow-x-hidden">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:rounded-full focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+          style={{ backgroundColor: "rgb(99,102,241)" }}
+        >
+          Skip to content
+        </a>
         <SplashScreen />
         <GlobalBackground />
         <CustomCursor />
         <Navbar />
-        {children}
+        <div id="main">{children}</div>
         <WhatsAppButton />
       </body>
     </html>

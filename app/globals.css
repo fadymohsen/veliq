@@ -266,6 +266,43 @@ body {
   transition-duration: 600ms;
 }
 
+/* ─── Focus Indicators ────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid rgb(99, 102, 241);
+  outline-offset: 2px;
+}
+
+/* ─── Reduced Motion ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html { scroll-behavior: auto; }
+
+  .animate-marquee,
+  .veliq-ticker,
+  .loading-orb-pulse,
+  .loading-orb-float,
+  .loading-orb-float-reverse,
+  .loading-ring,
+  .loading-ring-spin,
+  .loading-inner-glow,
+  .loading-text,
+  .loading-tagline-word,
+  .loading-tagline-line,
+  .loading-bar {
+    animation: none !important;
+  }
+
+  .service-card-inner {
+    transition: none !important;
+  }
+}
+
 /* ─── Scrollbar ───────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #000; }

@@ -5,6 +5,7 @@ import { PROJECTS } from "@/lib/projects";
 export const metadata = {
   title: "Projects — VELIQ",
   description: "Real client projects across web development, SEO, mobile, brand strategy, and digital marketing.",
+  alternates: { canonical: "https://veliq.co/projects" },
 };
 
 export default function ProjectsPage() {

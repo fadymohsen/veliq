@@ -232,6 +232,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${page.title} — VELIQ`,
     description: page.description,
+    alternates: { canonical: `https://veliq.co/legal/${slug}` },
   };
 }
 

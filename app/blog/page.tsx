@@ -5,6 +5,7 @@ import { BLOG_POSTS } from "@/lib/blog";
 export const metadata = {
   title: "Blog — VELIQ",
   description: "Insights on web development, SEO, mobile apps, data analytics, brand strategy, and digital marketing.",
+  alternates: { canonical: "https://veliq.co/blog" },
 };
 
 const HUE_MAP: Record<string, string> = {

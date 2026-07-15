@@ -599,10 +599,11 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
 
                 {/* Name */}
                 <div className="flex flex-col gap-2">
-                  <label style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  <label htmlFor="checkout-name" style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                     Full Name <span style={{ color: INDIGO }}>*</span>
                   </label>
                   <input
+                    id="checkout-name"
                     type="text"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -617,10 +618,11 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
 
                 {/* Company */}
                 <div className="flex flex-col gap-2">
-                  <label style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  <label htmlFor="checkout-company" style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                     Company / Agency <span style={{ fontSize: 11, color: "rgba(255,255,255,0.25)" }}>(Optional)</span>
                   </label>
                   <input
+                    id="checkout-company"
                     type="text"
                     value={form.company}
                     onChange={(e) => setForm({ ...form, company: e.target.value })}
@@ -634,7 +636,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
 
                 {/* Phone */}
                 <div className="flex flex-col gap-2">
-                  <label style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  <label htmlFor="checkout-phone" style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                     Phone Number <span style={{ color: INDIGO }}>*</span>
                   </label>
                   <div className="flex gap-2">
@@ -673,6 +675,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
                       )}
                     </div>
                     <input
+                      id="checkout-phone"
                       type="tel"
                       value={form.phone}
                       onChange={(e) => {
@@ -691,10 +694,11 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
 
                 {/* Email */}
                 <div className="flex flex-col gap-2">
-                  <label style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  <label htmlFor="checkout-email" style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                     Email Address <span style={{ color: INDIGO }}>*</span>
                   </label>
                   <input
+                    id="checkout-email"
                     type="email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -709,10 +713,11 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
 
                 {/* Notes */}
                 <div className="flex flex-col gap-2">
-                  <label style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  <label htmlFor="checkout-notes" style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                     Additional Notes <span style={{ fontSize: 11, color: "rgba(255,255,255,0.25)" }}>(Optional)</span>
                   </label>
                   <textarea
+                    id="checkout-notes"
                     rows={3}
                     value={form.notes}
                     onChange={(e) => setForm({ ...form, notes: e.target.value })}
@@ -782,10 +787,11 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
 
                 {/* Verification — quick math check, blocks bots */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-white" style={{ fontSize: 13, fontWeight: 600 }}>
+                  <label htmlFor="checkout-captcha" className="text-white" style={{ fontSize: 13, fontWeight: 600 }}>
                     Quick check: what is {captcha ? `${captcha.a} + ${captcha.b}` : "…"}?
                   </label>
                   <input
+                    id="checkout-captcha"
                     type="text"
                     inputMode="numeric"
                     value={captchaAnswer}

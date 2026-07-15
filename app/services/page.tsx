@@ -28,6 +28,7 @@ const ICONS: Record<string, React.ReactNode> = {
 export const metadata = {
   title: "Services — VELIQ",
   description: "Website development, website support, and SEO — all under one dedicated team.",
+  alternates: { canonical: "https://veliq.co/services" },
 };
 
 export default function ServicesPage() {
