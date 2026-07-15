@@ -236,12 +236,12 @@ export default function IntroSection() {
           </div>
         </div>
 
-        {/* ── Logos — 2 columns on mobile, wrapping row on desktop ───────── */}
-        <div className="w-full grid grid-cols-2 gap-2 md:flex md:flex-wrap md:justify-center">
+        {/* ── Logos — 2 columns on mobile, 5 per row on desktop ───────── */}
+        <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-2">
           {CLIENT_LOGOS.map((logo, i) => (
             <motion.div
               key={logo.name}
-              className="md:w-[150px] flex items-center justify-center rounded-[18px] h-[104px] md:h-[76px]"
+              className="flex items-center justify-center rounded-[18px] h-[104px] md:h-[76px]"
               style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(22,22,22)", padding: "8px" }}
               initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
