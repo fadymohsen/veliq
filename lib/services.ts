@@ -29,8 +29,8 @@ export const SERVICES: Service[] = [
     icon: "W",
     title: "Website Development",
     subtitle: "A website that earns its first 7 seconds — and every second after.",
-    desc: "We engineer websites for the customers who actually have to use them: scanned in seconds, mobile-first by default, conversion-led from the first pixel.",
-    fullDesc: "Most websites are designed for the agency that built them. We engineer websites for the customers who actually have to use them: scanned in seconds, mobile-first by default, conversion-led from the first pixel to the last form field.",
+    desc: "As a website development company, we engineer sites for the customers who actually use them: scanned in seconds, mobile-first by default, SEO-optimized from the first pixel.",
+    fullDesc: "Most websites are designed for the agency that built them. As a website development company, we engineer sites for the customers who actually use them: scanned in seconds, mobile-first by default, SEO-optimized and conversion-led from the first pixel to the last form field.",
     problemHeading: "The Problem We Saw",
     problemBody: "We have audited dozens of websites that won awards and lost leads. They looked beautiful in a portfolio and crawled on a phone. They had clever interactions that confused a 45-year-old buyer. They were built around the designer's ego, not the customer's task. We build websites the way clients actually use them.",
     differentiators: [

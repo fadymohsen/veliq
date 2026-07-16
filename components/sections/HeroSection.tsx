@@ -82,8 +82,8 @@ export default function HeroSection() {
             letterSpacing: "-0.01em",
           }}
         >
-          We build websites, optimize search rankings, and provide ongoing support
-          — so you can focus on growing your business.
+          A website development company that builds SEO-optimized websites
+          and provides ongoing support — so you can focus on growing your business.
         </motion.p>
 
         {/* CTAs */}

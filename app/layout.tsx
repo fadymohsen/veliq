@@ -25,16 +25,16 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://veliq.co"),
   title: {
-    default: "VELIQ — Software & Marketing Solutions",
+    default: "VELIQ — Website Development Company with SEO",
     template: "%s — VELIQ",
   },
   description:
-    "Precision at the Speed of Ambition. VELIQ delivers web development, SEO, and website support across Egypt, Saudi Arabia, UAE, and the US.",
-  keywords: ["web development", "SEO", "website support", "software agency", "Egypt", "Saudi Arabia", "UAE", "digital agency"],
+    "VELIQ is a website development company that builds SEO-optimized websites from day one. Serving businesses in Egypt, Saudi Arabia, UAE, and the US with custom web development, technical SEO, and ongoing website support.",
+  keywords: ["website development company", "website development with SEO", "web development agency", "website development company in Egypt", "SEO-friendly website development", "custom website development", "website support", "web development Cairo", "SEO services Egypt", "website development Saudi Arabia"],
   authors: [{ name: "VELIQ", url: "https://veliq.co" }],
   openGraph: {
-    title: "VELIQ — Software & Marketing Solutions",
-    description: "Precision at the Speed of Ambition. Web development, SEO, and website support.",
+    title: "VELIQ — Website Development Company with SEO",
+    description: "Website development company building SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US.",
     url: "https://veliq.co",
     siteName: "VELIQ",
     locale: "en_US",
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "VELIQ — Software & Marketing Solutions",
+        alt: "VELIQ — Website Development Company with SEO",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VELIQ — Software & Marketing Solutions",
-    description: "Precision at the Speed of Ambition. Web development, SEO, and website support.",
+    title: "VELIQ — Website Development Company with SEO",
+    description: "Website development company building SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US.",
     images: ["/og-image.png"],
   },
   robots: {

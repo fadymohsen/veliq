@@ -13,11 +13,12 @@ export const organizationSchema = {
   name: "VELIQ",
   url: "https://veliq.co",
   logo: "https://veliq.co/branding/colored-logo.png",
-  description: "Precision at the Speed of Ambition. VELIQ delivers web development, SEO, and website support across Egypt, Saudi Arabia, UAE, and the US.",
+  description: "VELIQ is a website development company that builds SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US. Custom web development, technical SEO, and ongoing website support.",
   email: "admin@veliq.co",
   telephone: "+201551164671",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "8 Samoiel Markos St, Shobra",
     addressLocality: "Cairo",
     addressCountry: "EG",
   },
@@ -35,6 +36,16 @@ export const organizationSchema = {
   foundingDate: "2024",
   numberOfEmployees: { "@type": "QuantitativeValue", minValue: 5, maxValue: 15 },
   slogan: "Precision at the Speed of Ambition",
+  knowsLanguage: ["en", "ar"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Website Development & SEO Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Development", description: "Custom website development with SEO built in from day one" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Support", description: "Ongoing website maintenance, monitoring, and performance optimization" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO", description: "Technical SEO, on-page optimization, and link building for commercial-intent keywords" } },
+    ],
+  },
 };
 
 export const localBusinessSchema = {
@@ -42,13 +53,16 @@ export const localBusinessSchema = {
   "@type": "ProfessionalService",
   "@id": "https://veliq.co/#business",
   name: "VELIQ",
+  alternateName: "VELIQ Website Development Company",
   url: "https://veliq.co",
   logo: "https://veliq.co/branding/colored-logo.png",
   image: "https://veliq.co/branding/colored-logo.png",
+  description: "Website development company in Cairo, Egypt offering custom web development with SEO, website support, and technical SEO services.",
   email: "admin@veliq.co",
   telephone: "+201551164671",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "8 Samoiel Markos St, Shobra",
     addressLocality: "Cairo",
     addressCountry: "EG",
   },
@@ -58,8 +72,14 @@ export const localBusinessSchema = {
     longitude: 31.2357,
   },
   priceRange: "$$",
-  serviceType: ["Website Development", "SEO", "Website Support"],
-  areaServed: ["Egypt", "Saudi Arabia", "United Arab Emirates", "United States"],
+  serviceType: ["Website Development", "Website Development with SEO", "SEO", "Website Support"],
+  areaServed: [
+    { "@type": "Country", name: "Egypt" },
+    { "@type": "Country", name: "Saudi Arabia" },
+    { "@type": "Country", name: "United Arab Emirates" },
+    { "@type": "Country", name: "United States" },
+  ],
+  knowsLanguage: ["en", "ar"],
 };
 
 export function serviceSchema(service: {
