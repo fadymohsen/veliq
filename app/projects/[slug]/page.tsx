@@ -157,7 +157,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="w-full max-w-[1200px] flex flex-col md:flex-row gap-1">
         {[project.image1, project.image2].map((src, i) => (
           <div key={i} className="relative flex-1 overflow-hidden" style={{ aspectRatio: "1.246", borderRadius: "25px" }}>
-            <Image src={src} alt={`${project.title} showcase ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+            <Image src={src} alt={`${project.title} website design — screenshot ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
           </div>
         ))}
       </div>
@@ -203,7 +203,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <section className="w-full max-w-[1520px] flex flex-col gap-[10px]">
         {project.gallery.map((src, i) => (
           <div key={i} className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 9", borderRadius: "25px" }}>
-            <Image src={src} alt={`${project.title} gallery ${i + 1}`} fill sizes="100vw" className="object-cover" />
+            <Image src={src} alt={`${project.title} website — full page view ${i + 1}`} fill sizes="100vw" className="object-cover" />
           </div>
         ))}
       </section>
@@ -211,6 +211,37 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="w-full flex justify-center" style={{ paddingTop: "60px" }}>
         <Button label="Visit Website" href={project.url} variant="primary" openInNewTab />
       </div>
+
+      {/* ── CTA ── */}
+      <section className="w-full max-w-[1200px] py-[60px]">
+        <div
+          className="rounded-[20px] p-10 flex flex-col items-center text-center gap-5"
+          style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
+        >
+          <h2 className="text-white" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 600, letterSpacing: "-0.03em" }}>
+            Want results like these for your business?
+          </h2>
+          <p style={{ fontSize: "16px", color: "rgb(160,160,160)", lineHeight: 1.6, maxWidth: "50ch" }}>
+            Book a free discovery meeting. We'll assess your needs and recommend the right approach — no commitment required.
+          </p>
+          <div className="flex items-center gap-4 flex-wrap justify-center mt-2">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: "rgb(99,102,241)", fontSize: "14px", fontWeight: 600, padding: "12px 28px" }}
+            >
+              Get in Touch →
+            </Link>
+            <Link
+              href="/pricing"
+              className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-80 transition-opacity"
+              style={{ border: "1px solid rgb(40,40,40)", fontSize: "14px", fontWeight: 500, padding: "12px 24px" }}
+            >
+              View Pricing
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ── Next project ── */}
       <section className="w-full max-w-[1200px] flex flex-col gap-20" style={{ padding: "100px 0" }}>

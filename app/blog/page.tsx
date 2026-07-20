@@ -64,6 +64,36 @@ export default function BlogPage() {
             );
           })}
         </div>
+        {/* Cross-links */}
+        <div
+          className="rounded-[20px] p-8 flex flex-col sm:flex-row items-center justify-between gap-6"
+          style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
+        >
+          <div className="flex flex-col gap-2">
+            <h2 className="text-white" style={{ fontSize: "20px", fontWeight: 700, letterSpacing: "-0.03em" }}>
+              See our work in action
+            </h2>
+            <p className="text-[rgb(160,160,160)]" style={{ fontSize: "14px", lineHeight: 1.5 }}>
+              Browse our client projects or explore the services behind them.
+            </p>
+          </div>
+          <div className="flex items-center gap-3 shrink-0">
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-80 transition-opacity"
+              style={{ border: "1px solid rgb(40,40,40)", fontSize: "13px", fontWeight: 500, padding: "10px 20px" }}
+            >
+              View Projects →
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: "rgb(99,102,241)", fontSize: "13px", fontWeight: 600, padding: "10px 20px" }}
+            >
+              Our Services →
+            </Link>
+          </div>
+        </div>
       </section>
       <Footer />
     </main>

@@ -146,6 +146,49 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </Link>
         )}
 
+        {/* Related Blog Posts */}
+        {(() => {
+          const related = BLOG_POSTS
+            .filter((p) => p.slug !== post.slug && p.category === post.category)
+            .slice(0, 3);
+          if (related.length === 0) return null;
+          return (
+            <div className="flex flex-col gap-6 pt-6 border-t border-[rgb(28,28,28)]">
+              <h2
+                className="text-white"
+                style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 600, letterSpacing: "-0.03em" }}
+              >
+                Related articles
+              </h2>
+              <div className="flex flex-col gap-4">
+                {related.map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/blog/${r.slug}`}
+                    className="group flex items-center justify-between gap-4 rounded-[16px] p-5 transition-colors hover:border-[rgba(99,102,241,0.4)]"
+                    style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
+                  >
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white group-hover:text-[rgb(201,201,201)] transition-colors" style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "-0.02em" }}>
+                        {r.title}
+                      </span>
+                      <span className="text-[rgb(160,160,160)]" style={{ fontSize: "12px" }}>
+                        {r.date} · {r.readTime}
+                      </span>
+                    </div>
+                    <svg
+                      className="shrink-0 transition-transform group-hover:translate-x-1"
+                      width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgb(99,102,241)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
         {/* Author */}
         <div className="flex items-center gap-3 pt-4 border-t border-[rgb(28,28,28)]">
           <div

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ScrollReveal from "../../components/scroll-reveal";
@@ -342,7 +343,9 @@ export default async function ProjectPage({
               {project.gallery.filter(g => g.image).map((item, i) => (
                 <ScrollReveal key={i} animation={i % 2 === 0 ? "slide-left" : "slide-right"} delay={i * 100}>
                   <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-500 hover:border-purple-500/30 hover:-translate-y-1">
-                    <img src={item.image} alt={item.caption} className="h-56 md:h-72 w-full object-cover" />
+                    <div className="relative h-56 md:h-72 w-full">
+                      <Image src={item.image} alt={item.caption || `${project.title} gallery image`} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
+                    </div>
                     <div className="px-5 py-4">
                       <p className="text-sm font-medium text-slate-400">{item.caption}</p>
                     </div>
@@ -372,7 +375,9 @@ export default async function ProjectPage({
                     >
                       <div className="overflow-hidden">
                         {p.image ? (
-                          <img src={p.image} alt={p.title} className={`h-48 w-full transition-all duration-700 group-hover:scale-110 ${p.image.includes('.jpg') || p.image.includes('.jpeg') ? 'object-cover' : 'object-contain bg-[#0f0f1a] p-4'}`} />
+                          <div className="relative h-48 w-full">
+                            <Image src={p.image} alt={`${p.title} — project screenshot`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className={`transition-all duration-700 group-hover:scale-110 ${p.image.includes('.jpg') || p.image.includes('.jpeg') ? 'object-cover' : 'object-contain bg-[#0f0f1a] p-4'}`} />
+                          </div>
                         ) : (
                           <div className="h-48 bg-gradient-to-br from-slate-700 to-slate-800" />
                         )}

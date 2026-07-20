@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "./components/scroll-reveal";
 import { ServiceIcon } from "./components/service-icons";
@@ -342,7 +343,9 @@ export default async function Home() {
                 >
                   <div className="overflow-hidden">
                     {p.image ? (
-                      <img src={p.image} alt={p.title} className={`h-48 w-full transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 ${p.image.includes('.jpg') || p.image.includes('.jpeg') ? 'object-cover' : 'object-contain bg-[#0f0f1a] p-4'}`} />
+                      <div className="relative h-48 w-full">
+                        <Image src={p.image} alt={`${p.title} — project screenshot`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className={`transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 ${p.image.includes('.jpg') || p.image.includes('.jpeg') ? 'object-cover' : 'object-contain bg-[#0f0f1a] p-4'}`} />
+                      </div>
                     ) : (
                       <div className="h-48 bg-gradient-to-br from-slate-700 to-slate-800" />
                     )}

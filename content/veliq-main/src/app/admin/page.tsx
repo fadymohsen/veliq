@@ -576,7 +576,7 @@ export default function AdminDashboard() {
                 <div key={index} className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm overflow-hidden hover:border-white/10 transition">
                   <div className="flex items-center gap-4 p-5 cursor-pointer hover:bg-white/[0.02] transition" onClick={() => setEditingProject(editingProject === index ? null : index)}>
                     {project.image ? (
-                      <img src={project.image} alt="" className="h-12 w-12 rounded-xl shrink-0 object-cover" />
+                      <img src={project.image} alt={project.title || "Project thumbnail"} className="h-12 w-12 rounded-xl shrink-0 object-cover" />
                     ) : (
                       <div className="h-12 w-12 rounded-xl shrink-0 bg-white/[0.06] border border-white/10 flex items-center justify-center text-slate-600 text-xs">No img</div>
                     )}
@@ -623,7 +623,7 @@ export default function AdminDashboard() {
                         <label className="block text-xs font-medium text-slate-500 mb-2">Cover Image</label>
                         <div className="flex items-center gap-4">
                           {project.image ? (
-                            <img src={project.image} alt="" className="h-20 w-32 rounded-xl object-cover border border-white/10" />
+                            <img src={project.image} alt={`${project.title || "Project"} cover image`} className="h-20 w-32 rounded-xl object-cover border border-white/10" />
                           ) : (
                             <div className="h-20 w-32 rounded-xl bg-white/[0.04] border border-dashed border-white/15 flex items-center justify-center text-xs text-slate-600">No image</div>
                           )}
@@ -642,7 +642,7 @@ export default function AdminDashboard() {
                           {project.gallery.map((item, gi) => (
                             <div key={gi} className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
                               {item.image ? (
-                                <img src={item.image} alt="" className="h-10 w-14 rounded-lg shrink-0 object-cover" />
+                                <img src={item.image} alt={item.caption || "Gallery image"} className="h-10 w-14 rounded-lg shrink-0 object-cover" />
                               ) : (
                                 <div className="h-10 w-14 rounded-lg shrink-0 bg-white/[0.04] border border-dashed border-white/10 flex items-center justify-center text-[10px] text-slate-600">No img</div>
                               )}
@@ -662,7 +662,7 @@ export default function AdminDashboard() {
                         <p className="text-xs font-medium text-slate-600 mb-3">CARD PREVIEW</p>
                         <div className="max-w-xs overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03]">
                           {project.image ? (
-                            <img src={project.image} alt="" className="h-36 w-full object-cover" />
+                            <img src={project.image} alt={`${project.title || "Project"} preview`} className="h-36 w-full object-cover" />
                           ) : (
                             <div className="h-36 bg-white/[0.04] flex items-center justify-center text-sm text-slate-600">No cover image</div>
                           )}

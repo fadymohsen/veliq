@@ -3,8 +3,15 @@ import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { SERVICES, getService } from "@/lib/services";
 import { PROJECTS } from "@/lib/projects";
+import { BLOG_POSTS } from "@/lib/blog";
 import ProjectCard from "@/components/ui/ProjectCard";
 import { JsonLd, serviceSchema, faqSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+
+const SERVICE_TO_CATEGORIES: Record<string, string[]> = {
+  "website-development": ["Web Development", "Mobile Development", "Brand Strategy"],
+  "website-support": ["Data & Analytics"],
+  "seo": ["SEO", "Digital Marketing"],
+};
 
 const ICONS: Record<string, React.ReactNode> = {
   "website-development": (
@@ -290,6 +297,86 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10px] gap-y-10">
                 {related.map((p) => (
                   <ProjectCard key={p.slug} project={p} />
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Related Blog Posts */}
+        {(() => {
+          const categories = SERVICE_TO_CATEGORIES[service.slug] ?? [];
+          const relatedPosts = BLOG_POSTS.filter((p) => categories.includes(p.category)).slice(0, 3);
+          if (relatedPosts.length === 0) return null;
+          return (
+            <div className="flex flex-col gap-8">
+              <h2 className="text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 600, letterSpacing: "-0.04em" }}>
+                From the blog.
+              </h2>
+              <div className="flex flex-col gap-4">
+                {relatedPosts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="group flex items-center justify-between gap-4 rounded-[16px] p-6 transition-colors hover:border-[rgba(99,102,241,0.4)]"
+                    style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
+                  >
+                    <div className="flex flex-col gap-1">
+                      <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgb(99,102,241)" }}>
+                        {post.category}
+                      </span>
+                      <span className="text-white group-hover:text-[rgb(201,201,201)] transition-colors" style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.02em" }}>
+                        {post.title}
+                      </span>
+                      <span className="text-[rgb(160,160,160)]" style={{ fontSize: "13px", lineHeight: 1.5 }}>
+                        {post.readTime}
+                      </span>
+                    </div>
+                    <svg
+                      className="shrink-0 transition-transform group-hover:translate-x-1"
+                      width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(99,102,241)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Other Services */}
+        {(() => {
+          const otherServices = SERVICES.filter((s) => s.slug !== service.slug);
+          if (otherServices.length === 0) return null;
+          return (
+            <div className="flex flex-col gap-8">
+              <h2 className="text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 600, letterSpacing: "-0.04em" }}>
+                Explore other services.
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {otherServices.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/services/${s.slug}`}
+                    className="group flex items-center justify-between gap-4 rounded-[16px] p-6 transition-colors hover:border-[rgba(99,102,241,0.4)]"
+                    style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
+                  >
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white group-hover:text-[rgb(201,201,201)] transition-colors" style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.02em" }}>
+                        {s.title}
+                      </span>
+                      <span className="text-[rgb(160,160,160)]" style={{ fontSize: "13px", lineHeight: 1.5, maxWidth: "40ch" }}>
+                        {s.desc}
+                      </span>
+                    </div>
+                    <svg
+                      className="shrink-0 transition-transform group-hover:translate-x-1"
+                      width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(99,102,241)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 ))}
               </div>
             </div>
