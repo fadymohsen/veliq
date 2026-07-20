@@ -1,12 +1,14 @@
 "use client";
 
+import Image from "next/image";
+
 /* Rounded-rectangle SVG path helper */
 function rr(x: number, y: number, w: number, h: number, r: number) {
   return `M${x + r},${y} h${w - 2 * r} a${r},${r} 0 0 1 ${r},${r} v${h - 2 * r} a${r},${r} 0 0 1 ${-r},${r} h${-(w - 2 * r)} a${r},${r} 0 0 1 ${-r},${-r} v${-(h - 2 * r)} a${r},${r} 0 0 1 ${r},${-r} z`;
 }
 
 /* ─── iPhone 15 Pro Max ───────────────────────────────────────────────────── */
-function PhoneMockup({ url, previewImage, previewImageMobile }: { url: string; previewImage?: string; previewImageMobile?: string }) {
+function PhoneMockup({ url, title, previewImage, previewImageMobile }: { url: string; title: string; previewImage?: string; previewImageMobile?: string }) {
   // SVG units == pixels (1:1) so the frame aligns with the iframe exactly.
   const VB_W = 312, VB_H = 662;
   // Body: x6 y6 w300 h650 r52 · Screen hole: x17 y17 w278 h628 r42
@@ -48,20 +50,22 @@ function PhoneMockup({ url, previewImage, previewImageMobile }: { url: string; p
         </div>
 
         {/* Live site — starts below the notch */}
-        <div style={{ width: SCR_W, height: SITE_H, overflow: "hidden" }}>
+        <div style={{ position: "relative", width: SCR_W, height: SITE_H, overflow: "hidden" }}>
           {previewImageMobile ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={previewImageMobile}
-              alt="Mobile preview"
-              style={{ width: SCR_W, height: SITE_H, objectFit: "cover", objectPosition: "top", display: "block" }}
+              alt={`${title} — mobile preview`}
+              fill
+              sizes={`${SCR_W}px`}
+              style={{ objectFit: "cover", objectPosition: "top" }}
             />
           ) : previewImage ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={previewImage}
-              alt="Mobile preview"
-              style={{ width: SCR_W, height: SITE_H, objectFit: "cover", objectPosition: "top", display: "block" }}
+              alt={`${title} — mobile preview`}
+              fill
+              sizes={`${SCR_W}px`}
+              style={{ objectFit: "cover", objectPosition: "top" }}
             />
           ) : (
             <iframe
@@ -121,7 +125,7 @@ function PhoneMockup({ url, previewImage, previewImageMobile }: { url: string; p
 }
 
 /* ─── MacBook ─────────────────────────────────────────────────────────────── */
-function LaptopMockup({ url, previewImage }: { url: string; previewImage?: string }) {
+function LaptopMockup({ url, title, previewImage }: { url: string; title: string; previewImage?: string }) {
   const VB_W = 880, VB_H = 560;
   // Lid body: x60 y8 w760 h486 r20 · Screen hole: x74 y22 w732 h458 r6
   const SCR_X = 74, SCR_Y = 22, SCR_W = 732, SCR_H = 458, SCR_R = 6;
@@ -160,11 +164,12 @@ function LaptopMockup({ url, previewImage }: { url: string; previewImage?: strin
         overflow: "hidden", background: "#fff",
       }}>
         {previewImage ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={previewImage}
-            alt="Desktop preview"
-            style={{ width: SCR_W, height: IF_H, objectFit: "cover", objectPosition: "top", display: "block" }}
+            alt={`${title} — desktop preview`}
+            fill
+            sizes={`${SCR_W}px`}
+            style={{ objectFit: "cover", objectPosition: "top" }}
           />
         ) : (
           <iframe
@@ -243,9 +248,9 @@ export default function DeviceMockups({ url, title, previewImage, previewImageMo
         gap: 28, width: "100%", overflowX: "auto", paddingBottom: 12,
       }}>
         <div className="hidden md:block" style={{ flexShrink: 0 }}>
-          <LaptopMockup url={url} previewImage={previewImage} />
+          <LaptopMockup url={url} title={title} previewImage={previewImage} />
         </div>
-        <PhoneMockup url={url} previewImage={previewImage} previewImageMobile={previewImageMobile} />
+        <PhoneMockup url={url} title={title} previewImage={previewImage} previewImageMobile={previewImageMobile} />
       </div>
 
       <p style={{ fontSize: 11, color: "rgba(255,255,255,0.18)", letterSpacing: "0.02em" }}>

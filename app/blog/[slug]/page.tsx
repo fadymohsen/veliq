@@ -2,7 +2,17 @@ import { notFound } from "next/navigation";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { BLOG_POSTS, getBlogPost } from "@/lib/blog";
+import { getService } from "@/lib/services";
 import { JsonLd, articleSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+
+const CATEGORY_TO_SERVICE: Record<string, string> = {
+  "Web Development": "website-development",
+  "Mobile Development": "website-development",
+  "Brand Strategy": "website-development",
+  "Digital Marketing": "website-development",
+  "SEO": "seo",
+  "Data & Analytics": "website-support",
+};
 
 function renderLinks(text: string) {
   const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
@@ -38,6 +48,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) notFound();
+
+  const relatedServiceSlug = CATEGORY_TO_SERVICE[post.category];
+  const relatedService = relatedServiceSlug ? getService(relatedServiceSlug) : undefined;
 
   return (
     <main className="bg-black min-h-screen pt-16">
@@ -105,6 +118,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             );
           })}
         </div>
+
+        {/* Related service */}
+        {relatedService && (
+          <Link
+            href={`/services/${relatedService.slug}`}
+            className="group flex items-center justify-between gap-4 rounded-[16px] p-6 transition-colors hover:border-[rgba(99,102,241,0.4)]"
+            style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
+          >
+            <div className="flex flex-col gap-1">
+              <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgb(99,102,241)" }}>
+                Related Service
+              </span>
+              <span className="text-white" style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.02em" }}>
+                {relatedService.title}
+              </span>
+              <span className="text-[rgb(160,160,160)]" style={{ fontSize: "13px", lineHeight: 1.5, maxWidth: "56ch" }}>
+                {relatedService.desc}
+              </span>
+            </div>
+            <svg
+              className="shrink-0 transition-transform group-hover:translate-x-1"
+              width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(99,102,241)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
+        )}
 
         {/* Author */}
         <div className="flex items-center gap-3 pt-4 border-t border-[rgb(28,28,28)]">
