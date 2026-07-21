@@ -1,15 +1,18 @@
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/HeroSection";
 import HeaderBar from "@/components/ui/HeaderBar";
 import IntroSection from "@/components/sections/IntroSection";
 import MissionVisionSection from "@/components/sections/MissionVisionSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
-import ServicesSection from "@/components/sections/ServicesSection";
-import StatsSection from "@/components/sections/StatsSection";
-import FaqSection from "@/components/sections/FaqSection";
-import CtaSection from "@/components/sections/CtaSection";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
+
+const ServicesSection = dynamic(() => import("@/components/sections/ServicesSection"));
+const StatsSection = dynamic(() => import("@/components/sections/StatsSection"));
+const FaqSection = dynamic(() => import("@/components/sections/FaqSection"));
+const CtaSection = dynamic(() => import("@/components/sections/CtaSection"));
 
 const HOME_FAQS = [
   { q: "What specific services do you provide?", a: "We specialize in three core pillars: Website Development, Website Support, and Technical SEO. We focus purely on digital experiences." },
@@ -36,9 +39,13 @@ export default function Home() {
         <ProjectsSection />
 
         <HeaderBar label="Services" />
-        <ServicesSection />
+        <Suspense>
+          <ServicesSection />
+        </Suspense>
 
-        <StatsSection />
+        <Suspense>
+          <StatsSection />
+        </Suspense>
 
         {/* Pricing CTA */}
         <section className="w-full bg-black rounded-[30px] section-padding overflow-hidden">
@@ -56,7 +63,7 @@ export default function Home() {
               style={{ backgroundColor: "rgb(99,102,241)", fontSize: "14px", fontWeight: 600, padding: "14px 32px" }}
             >
               View Pricing
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
@@ -64,9 +71,13 @@ export default function Home() {
         </section>
 
         <HeaderBar label="FAQ" />
-        <FaqSection />
+        <Suspense>
+          <FaqSection />
+        </Suspense>
 
-        <CtaSection />
+        <Suspense>
+          <CtaSection />
+        </Suspense>
 
         <Footer />
       </div>

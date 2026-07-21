@@ -157,7 +157,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="w-full max-w-[1200px] flex flex-col md:flex-row gap-1">
         {[project.image1, project.image2].map((src, i) => (
           <div key={i} className="relative flex-1 overflow-hidden" style={{ aspectRatio: "1.246", borderRadius: "25px" }}>
-            <Image src={src} alt={`${project.title} website design — screenshot ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+            <Image src={src} alt={`${project.title} website design — screenshot ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" priority={i === 0} />
           </div>
         ))}
       </div>

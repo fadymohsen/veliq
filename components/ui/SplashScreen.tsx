@@ -4,16 +4,25 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function SplashScreen() {
-  const [phase, setPhase] = useState<"loading" | "reveal" | "done">("loading");
+  const [phase, setPhase] = useState<"loading" | "reveal" | "done">(() => {
+    if (typeof window !== "undefined" && sessionStorage.getItem("veliq-splash-seen")) {
+      return "done";
+    }
+    return "loading";
+  });
 
   useEffect(() => {
+    if (phase === "done") return;
     const revealTimer = setTimeout(() => setPhase("reveal"), 5200);
-    const doneTimer = setTimeout(() => setPhase("done"), 6000);
+    const doneTimer = setTimeout(() => {
+      setPhase("done");
+      sessionStorage.setItem("veliq-splash-seen", "1");
+    }, 6000);
     return () => {
       clearTimeout(revealTimer);
       clearTimeout(doneTimer);
     };
-  }, []);
+  }, [phase]);
 
   useEffect(() => {
     document.body.style.overflow = phase === "done" ? "" : "hidden";

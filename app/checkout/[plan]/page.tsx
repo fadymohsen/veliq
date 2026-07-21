@@ -132,6 +132,10 @@ const PLANS: Record<string, PlanInfo> = {
   },
 };
 
+export function generateStaticParams() {
+  return Object.keys(PLANS).map((plan) => ({ plan }));
+}
+
 const COUNTRIES = [
   { name: "Egypt", code: "+20", flag: "\u{1F1EA}\u{1F1EC}", minLen: 11, maxLen: 11 },
   { name: "Saudi Arabia", code: "+966", flag: "\u{1F1F8}\u{1F1E6}", minLen: 9, maxLen: 9 },

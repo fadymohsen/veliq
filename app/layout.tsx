@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import dynamic from "next/dynamic";
 import Navbar from "@/components/sections/Navbar";
-import CustomCursor from "@/components/ui/CustomCursor";
 import GlobalBackground from "@/components/ui/GlobalBackground";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
-import SplashScreen from "@/components/ui/SplashScreen";
 import { JsonLd, organizationSchema, localBusinessSchema } from "@/components/seo/JsonLd";
+
+const SplashScreen = dynamic(() => import("@/components/ui/SplashScreen"), { ssr: false });
+const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
 
 const inter = Inter({
   subsets: ["latin"],
@@ -84,7 +86,7 @@ export default function RootLayout({
         <GlobalBackground />
         <CustomCursor />
         <Navbar />
-        <div id="main">{children}</div>
+        <div id="main" tabIndex={-1}>{children}</div>
         <WhatsAppButton />
       </body>
     </html>

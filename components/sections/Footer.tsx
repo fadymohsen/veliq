@@ -1,7 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
+import BackToTopButton from "@/components/ui/BackToTopButton";
 
 const INDIGO = "rgb(99,102,241)";
 
@@ -24,7 +23,7 @@ const SOCIAL_LINKS = [
     label: "Instagram",
     href: "https://www.instagram.com/veliq.co",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="2" y="2" width="20" height="20" rx="5" />
         <circle cx="12" cy="12" r="4" />
         <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
@@ -35,7 +34,7 @@ const SOCIAL_LINKS = [
     label: "Facebook",
     href: "https://www.facebook.com/veliq.co/",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
       </svg>
     ),
@@ -44,7 +43,7 @@ const SOCIAL_LINKS = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/veliq-co",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
         <rect x="2" y="9" width="4" height="12" />
         <circle cx="4" cy="4" r="2" />
@@ -52,10 +51,6 @@ const SOCIAL_LINKS = [
     ),
   },
 ];
-
-function scrollToTop() {
-  if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
-}
 
 export default function Footer() {
   return (
@@ -102,18 +97,7 @@ export default function Footer() {
             </span>
           </div>
 
-          <button
-            onClick={scrollToTop}
-            className="inline-flex items-center gap-2 cursor-pointer hover:opacity-70 transition-opacity w-fit"
-            style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.5)", letterSpacing: "0.05em" }}
-          >
-            <span style={{
-              display: "inline-flex", alignItems: "center", justifyContent: "center",
-              width: 28, height: 28, borderRadius: "50%",
-              border: "1px solid rgb(38,38,38)", color: "white", fontSize: "14px",
-            }}>↑</span>
-            Back to top
-          </button>
+          <BackToTopButton />
         </div>
 
         {/* Right: nav + social */}
@@ -185,6 +169,7 @@ export default function Footer() {
                     width="12" height="12" viewBox="0 0 12 12" fill="none"
                     className="opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200"
                     stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                    aria-hidden="true"
                   >
                     <path d="M2 6h8M6 2l4 4-4 4" />
                   </svg>

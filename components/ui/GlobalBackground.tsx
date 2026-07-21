@@ -1,11 +1,9 @@
-"use client";
-
 export default function GlobalBackground() {
   return (
     <>
       {/* ─── Desktop: fixed corner glows ─── */}
       <div
-        aria-hidden
+        aria-hidden="true"
         className="hidden md:block fixed inset-0 pointer-events-none overflow-hidden"
         style={{ zIndex: 2, mixBlendMode: "screen" }}
       >
@@ -55,7 +53,7 @@ export default function GlobalBackground() {
 
       {/* ─── Mobile: big centered glows spanning the whole page, scrolling with content ─── */}
       <div
-        aria-hidden
+        aria-hidden="true"
         className="md:hidden absolute inset-0 pointer-events-none overflow-hidden"
         style={{ zIndex: 2, mixBlendMode: "screen" }}
       >
