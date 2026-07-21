@@ -1,12 +1,13 @@
 "use client";
 
-export default function GlobalError({ reset }: { error: Error; reset: () => void }) {
+export default function GlobalError({ error, reset }: { error: Error; reset: () => void }) {
+  console.error("Global error:", error);
   return (
     <html lang="en">
       <body style={{ backgroundColor: "#000", color: "#fff", fontFamily: "Inter, -apple-system, sans-serif", margin: 0 }}>
         <main style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: "24px", maxWidth: "448px" }}>
-            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
               Critical Error
             </span>
             <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 600, letterSpacing: "-0.04em", lineHeight: 1.1, margin: 0 }}>

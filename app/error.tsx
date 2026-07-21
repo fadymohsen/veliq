@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 
-export default function Error({ reset }: { error: Error; reset: () => void }) {
+export default function Error({ error, reset }: { error: Error; reset: () => void }) {
+  console.error("Page error:", error);
   return (
     <main className="bg-black min-h-screen flex items-center justify-center px-6">
       <div className="flex flex-col items-center text-center gap-6 max-w-md">
         <span
-          style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}
+          style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}
         >
           Something went wrong
         </span>
