@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = getProject(slug);
   if (!project) return {};
   return {
-    title: `${project.title} — VELIQ`,
+    title: project.title,
     description: project.description,
     alternates: { canonical: `https://veliq.co/projects/${slug}` },
   };

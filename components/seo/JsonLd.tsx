@@ -10,6 +10,7 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://veliq.co/#organization",
   name: "VELIQ",
   url: "https://veliq.co",
   logo: "https://veliq.co/branding/colored-logo.png",
@@ -139,6 +140,7 @@ export function articleSchema(post: {
     url: `https://veliq.co/blog/${post.slug}`,
     datePublished: post.date,
     dateModified: post.date,
+    image: `https://veliq.co/blog/${post.slug}/opengraph-image`,
     author: {
       "@type": "Organization",
       name: "VELIQ",

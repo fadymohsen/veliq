@@ -61,7 +61,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   return (
     <main className="bg-black min-h-screen pt-16">
       <JsonLd data={serviceSchema(service)} />
-      <JsonLd data={faqSchema(service.whyFaq.map((f) => ({ q: `WHY: ${f.q}`, a: f.a })))} />
+      <JsonLd data={faqSchema(service.whyFaq.map((f) => ({ q: f.q, a: f.a })))} />
       <JsonLd data={breadcrumbSchema([
         { name: "Home", url: "https://veliq.co" },
         { name: "Services", url: "https://veliq.co/services" },

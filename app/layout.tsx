@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s — VELIQ",
   },
   description:
-    "VELIQ is a website development company that builds SEO-optimized websites from day one. Serving businesses in Egypt, Saudi Arabia, UAE, and the US with custom web development, technical SEO, and ongoing website support.",
+    "VELIQ builds SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US. Custom web development, technical SEO, and ongoing support.",
   keywords: ["website development company", "website development with SEO", "web development agency", "website development company in Egypt", "SEO-friendly website development", "custom website development", "website support", "web development Cairo", "SEO services Egypt", "website development Saudi Arabia"],
   authors: [{ name: "VELIQ", url: "https://veliq.co" }],
   openGraph: {

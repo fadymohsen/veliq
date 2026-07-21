@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getBlogPost(slug);
   if (!post) return {};
   return {
-    title: `${post.title} — VELIQ`,
+    title: post.title,
     description: post.excerpt,
     alternates: { canonical: `https://veliq.co/blog/${slug}` },
   };
