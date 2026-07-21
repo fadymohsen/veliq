@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform, useReducedMotion } from "framer-motion";
 
 /* ─── Icons ──────────────────────────────────────────────────────────────── */
 function IconWebDev() {
   return (
-    <svg width="44" height="44" viewBox="0 0 56 56" fill="none">
+    <svg width="44" height="44" viewBox="0 0 56 56" fill="none" aria-hidden="true">
       <path d="M20 14L8 28L20 42" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M36 14L48 28L36 42" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M33 10L23 46" stroke="white" strokeWidth="3.5" strokeLinecap="round"/>
@@ -16,7 +16,7 @@ function IconWebDev() {
 }
 function IconSEO() {
   return (
-    <svg width="44" height="44" viewBox="0 0 56 56" fill="none">
+    <svg width="44" height="44" viewBox="0 0 56 56" fill="none" aria-hidden="true">
       <circle cx="24" cy="24" r="13" stroke="white" strokeWidth="3.5"/>
       <path d="M34 34L47 47" stroke="white" strokeWidth="3.5" strokeLinecap="round"/>
       <path d="M19 22C20 18 22 17 25 17" stroke="white" strokeWidth="3" strokeLinecap="round"/>
@@ -25,7 +25,7 @@ function IconSEO() {
 }
 function IconSupport() {
   return (
-    <svg width="44" height="44" viewBox="0 0 56 56" fill="none">
+    <svg width="44" height="44" viewBox="0 0 56 56" fill="none" aria-hidden="true">
       <path d="M28 6L12 13v16c0 11 7.5 21.2 16 23.5C44.5 50.2 52 40 52 29V13L28 6z" stroke="white" strokeWidth="3.5" strokeLinejoin="round"/>
       <path d="M20 29l6 6 12-12" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
@@ -88,11 +88,13 @@ export default function ServicesSection() {
     else setFlippedId(id);
   };
 
+  const shouldReduceMotion = useReducedMotion();
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
-  const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 24, restDelta: 0.001 });
+  const progress = useSpring(scrollYProgress, shouldReduceMotion ? { stiffness: 1000, damping: 100 } : { stiffness: 90, damping: 24, restDelta: 0.001 });
 
   const x0 = useTransform(progress, [0.05, 0.42], [0, FAN_X[0]]);
   const x1 = useTransform(progress, [0.22, 0.58], [0, FAN_X[1]]);
@@ -177,10 +179,12 @@ export default function ServicesSection() {
                 }}
               >
                 {/* Perspective + flip trigger */}
-                <div
+                <button
+                  type="button"
                   className={`service-card w-full h-full cursor-pointer${flippedId === svc.id ? " is-flipped" : ""}`}
-                  style={{ perspective: "800px" }}
+                  style={{ perspective: "800px", background: "none", border: "none", padding: 0 }}
                   onClick={() => handleCardClick(svc.id, svc.slug)}
+                  aria-label={`${svc.title} — ${flippedId === svc.id ? "click to open" : "click to see details"}`}
                 >
                   <div className="service-card-inner">
 
@@ -231,7 +235,7 @@ export default function ServicesSection() {
                     </div>
 
                   </div>
-                </div>
+                </button>
               </motion.div>
             ))}
 

@@ -65,7 +65,7 @@ export default function Footer() {
         <div className="flex flex-col gap-6 max-w-xs">
           <div className="flex flex-col gap-1">
             <span
-              style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)" }}
+              style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}
             >
               Ready to build?
             </span>
@@ -103,7 +103,7 @@ export default function Footer() {
         {/* Right: nav + social */}
         <div className="flex gap-16">
           <div className="flex flex-col gap-4">
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
               Menu
             </span>
             <ul className="flex flex-col gap-[10px]">
@@ -122,7 +122,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
               Legal
             </span>
             <ul className="flex flex-col gap-[10px]">
@@ -141,7 +141,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
               Social
             </span>
             <div className="flex flex-col" style={{ borderTop: "1px solid rgb(22,22,22)" }}>

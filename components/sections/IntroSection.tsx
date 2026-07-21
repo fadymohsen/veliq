@@ -49,7 +49,7 @@ function Operator({ text, delay, inView }: { text: string; delay: number; inView
         fontWeight: EQ_WEIGHT,
         letterSpacing: EQ_TRACKING,
         lineHeight: 1.1,
-        color: "rgba(255,255,255,0.3)",
+        color: "rgba(255,255,255,0.6)",
       }}
     >
       {text}
@@ -170,11 +170,11 @@ export default function IntroSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 1.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
               Who We Are
             </span>
 
-            <p style={{ fontSize: "clamp(0.95rem, 1.35vw, 17px)", fontWeight: 400, color: "rgb(140,140,140)", lineHeight: 1.85 }}>
+            <p style={{ fontSize: "clamp(0.95rem, 1.35vw, 17px)", fontWeight: 400, color: "rgb(170,170,170)", lineHeight: 1.85 }}>
               Every client gets a dedicated team that owns their digital presence,
               thinks with them, and moves with the precision their business deserves.
               We are not just an agency — we are your growth architecture firm.
@@ -183,10 +183,10 @@ export default function IntroSection() {
             <div className="flex flex-col gap-3">
               <div style={{ height: "1px", backgroundColor: "rgb(24,24,24)" }} />
               <div className="flex items-center gap-4 flex-wrap">
-                <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.45)", letterSpacing: "0.06em" }}>Est. 2023</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: "0.06em" }}>Est. 2023</span>
                 <span style={{ width: 24, height: 1, backgroundColor: "rgb(40,40,40)", display: "inline-block" }} />
                 {SERVICES.map((s) => (
-                  <span key={s} style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.28)", letterSpacing: "-0.01em" }}>{s}</span>
+                  <span key={s} style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.6)", letterSpacing: "-0.01em" }}>{s}</span>
                 ))}
               </div>
             </div>
@@ -202,7 +202,7 @@ export default function IntroSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 1.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Happy Clients</span>
+              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Happy Clients</span>
               <div className="flex items-end gap-4">
                 <span style={{ fontSize: "clamp(3rem,5vw,64px)", fontWeight: 700, letterSpacing: "-0.06em", lineHeight: 1, color: "white" }}>30+</span>
                 <div className="flex gap-[3px] mb-2">
@@ -222,12 +222,12 @@ export default function IntroSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 1.48, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Countries Served</span>
+              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Countries Served</span>
               <div className="flex items-end justify-between">
                 <span style={{ fontSize: "clamp(3rem,5vw,64px)", fontWeight: 700, letterSpacing: "-0.06em", lineHeight: 1, color: "white" }}>4</span>
                 <div className="flex flex-col items-end gap-[5px]">
                   {COUNTRIES.map((c) => (
-                    <span key={c} style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.32)" }}>{c}</span>
+                    <span key={c} style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>{c}</span>
                   ))}
                 </div>
               </div>

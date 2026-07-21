@@ -41,7 +41,8 @@ function PlusIcon({ open }: { open: boolean }) {
   );
 }
 
-function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
+function FaqItem({ q, a, open, onToggle, id }: { q: string; a: string; open: boolean; onToggle: () => void; id: string }) {
+  const panelId = `faq-panel-${id}`;
   return (
     <div
       className="rounded-[14px] overflow-hidden"
@@ -53,6 +54,7 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
       <button
         onClick={onToggle}
         aria-expanded={open}
+        aria-controls={panelId}
         className="w-full flex items-center justify-between px-5 py-4 gap-4 text-left cursor-pointer"
       >
         <span className="text-white" style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "-0.03em" }}>
@@ -65,6 +67,8 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
         {open && (
           <motion.div
             key="content"
+            id={panelId}
+            role="region"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -116,6 +120,7 @@ export default function FaqSection() {
                 a={faq.a}
                 open={openIndex === i}
                 onToggle={() => setOpenIndex(openIndex === i ? -1 : i)}
+                id={String(i)}
               />
             </motion.div>
           ))}

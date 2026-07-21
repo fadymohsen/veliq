@@ -86,6 +86,7 @@ export default function Navbar() {
     <>
       <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <motion.nav
+          aria-label="Main navigation"
           className="pointer-events-auto flex items-center rounded-full"
           style={{
             backgroundColor: "rgba(18,18,18,0.96)",
@@ -137,6 +138,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    aria-current={pathname === link.href ? "page" : undefined}
                     className={`flex items-center gap-0.5 rounded-full transition-colors whitespace-nowrap ${
                       pathname === link.href
                         ? "text-white bg-white/10"
@@ -236,6 +238,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    aria-current={pathname === link.href ? "page" : undefined}
                     className={`flex items-center gap-3 py-4 transition-colors ${
                       pathname === link.href ? "text-white" : "text-[rgb(120,120,120)] hover:text-white"
                     }`}
