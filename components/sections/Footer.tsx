@@ -2,8 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import BackToTopButton from "@/components/ui/BackToTopButton";
 
-const INDIGO = "rgb(99,102,241)";
-
 const MENU_LINKS = [
   { label: "About",    href: "/about" },
   { label: "Services", href: "/services" },
@@ -55,24 +53,17 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   return (
-    <footer
-      className="w-full flex flex-col overflow-hidden"
-      style={{ backgroundColor: "rgb(0,0,0)" }}
-    >
-      {/* ── Top content ──────────────────────────────────────────── */}
+    <footer className="w-full flex flex-col bg-black">
+      {/* Top content */}
       <div className="w-full flex flex-col sm:flex-row items-start justify-between gap-12 px-8 pt-16 pb-12">
 
         {/* Left: CTA + contact */}
         <div className="flex flex-col gap-6 max-w-xs">
           <div className="flex flex-col gap-1">
-            <span
-              style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}
-            >
-              Ready to build?
-            </span>
+            <span className="section-label">Ready to build?</span>
             <h3
-              className="text-white"
-              style={{ fontSize: "clamp(1.4rem, 2.5vw, 28px)", fontWeight: 600, letterSpacing: "-0.04em", lineHeight: 1.2 }}
+              className="text-white font-semibold tracking-[-0.04em] leading-[1.2]"
+              style={{ fontSize: "clamp(1.4rem, 2.5vw, 28px)" }}
             >
               Let&apos;s create something<br />that moves people.
             </h3>
@@ -81,19 +72,17 @@ export default function Footer() {
           <div className="flex flex-col gap-2">
             <a
               href="mailto:admin@veliq.co"
-              style={{ fontSize: "14px", fontWeight: 600, color: INDIGO, letterSpacing: "-0.01em" }}
-              className="hover:opacity-75 transition-opacity w-fit"
+              className="text-sm font-semibold text-[var(--accent-indigo)] hover:opacity-75 transition-opacity w-fit"
             >
               admin@veliq.co
             </a>
             <a
               href="tel:+201551164671"
-              style={{ fontSize: "14px", fontWeight: 400, color: "rgb(156,156,156)" }}
-              className="hover:text-white transition-colors w-fit"
+              className="text-sm text-[var(--text-body-light)] hover:text-white transition-colors w-fit"
             >
               +20 155 116 4671
             </a>
-            <span style={{ fontSize: "14px", fontWeight: 400, color: "rgb(156,156,156)" }}>
+            <span className="text-sm text-[var(--text-body-light)]">
               8 Samoiel Markos, St, Shobra, Cairo
             </span>
           </div>
@@ -104,16 +93,13 @@ export default function Footer() {
         {/* Right: nav + social */}
         <div className="flex gap-16">
           <div className="flex flex-col gap-4">
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
-              Menu
-            </span>
+            <span className="section-label-sm">Menu</span>
             <ul className="flex flex-col gap-[10px]">
               {MENU_LINKS.map((l) => (
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: "14px", fontWeight: 500, color: "rgb(156,156,156)" }}
-                    className="hover:text-white transition-colors"
+                    className="text-sm font-medium text-[var(--text-body-light)] hover:text-white transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -123,16 +109,13 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
-              Legal
-            </span>
+            <span className="section-label-sm">Legal</span>
             <ul className="flex flex-col gap-[10px]">
               {LEGAL_LINKS.map((l) => (
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: "14px", fontWeight: 500, color: "rgb(156,156,156)" }}
-                    className="hover:text-white transition-colors"
+                    className="text-sm font-medium text-[var(--text-body-light)] hover:text-white transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -142,27 +125,21 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
-              Social
-            </span>
-            <div className="flex flex-col" style={{ borderTop: "1px solid rgb(22,22,22)" }}>
+            <span className="section-label-sm">Social</span>
+            <div className="flex flex-col border-t border-[var(--border-subtle)]">
               {SOCIAL_LINKS.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between py-3 transition-colors duration-200"
-                  style={{ borderBottom: "1px solid rgb(22,22,22)", color: "rgb(156,156,156)" }}
+                  className="group flex items-center justify-between py-3 text-[var(--text-body-light)] border-b border-[var(--border-subtle)] transition-colors duration-200"
                 >
                   <div className="flex items-center gap-2.5">
                     <span className="group-hover:text-white transition-colors duration-200">
                       {l.icon}
                     </span>
-                    <span
-                      className="group-hover:text-white transition-colors duration-200"
-                      style={{ fontSize: "13px", fontWeight: 500, letterSpacing: "0.01em" }}
-                    >
+                    <span className="text-[13px] font-medium tracking-[0.01em] group-hover:text-white transition-colors duration-200">
                       {l.label}
                     </span>
                   </div>
@@ -181,20 +158,19 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── Divider ──────────────────────────────────────────────── */}
-      <div style={{ height: "1px", backgroundColor: "rgb(18,18,18)", margin: "0 32px" }} />
+      {/* Divider */}
+      <div className="h-px bg-[rgb(18,18,18)] mx-8" />
 
-      {/* ── Bottom brand row ─────────────────────────────────────── */}
+      {/* Bottom brand row */}
       <div className="w-full flex items-center justify-between px-8 py-6">
         <Image
           src="/branding/colored-logo.png"
           alt="VELIQ"
           width={100}
           height={32}
-          className="object-contain"
-          style={{ opacity: 0.85 }}
+          className="object-contain opacity-85"
         />
-        <span style={{ fontSize: "12px", fontWeight: 400, color: "rgb(140,140,140)", letterSpacing: "-0.01em" }}>
+        <span className="text-xs text-[var(--text-body)] tracking-[-0.01em]">
           © {new Date().getFullYear()} VELIQ. All rights reserved.
         </span>
       </div>

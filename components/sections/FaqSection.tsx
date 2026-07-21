@@ -3,6 +3,9 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+const EASE_ALT = [0.16, 1, 0.3, 1] as [number, number, number, number];
+
 const FAQS = [
   {
     q: "What specific services do you provide?",
@@ -29,8 +32,7 @@ const FAQS = [
 function PlusIcon({ open }: { open: boolean }) {
   return (
     <motion.div
-      className="shrink-0 flex items-center justify-center rounded-full"
-      style={{ width: "32px", height: "32px", backgroundColor: "rgb(99,102,241)" }}
+      className="shrink-0 flex items-center justify-center rounded-full w-8 h-8 bg-[var(--accent-indigo)]"
       animate={{ rotate: open ? 45 : 0 }}
       transition={{ duration: 0.22 }}
     >
@@ -44,20 +46,14 @@ function PlusIcon({ open }: { open: boolean }) {
 function FaqItem({ q, a, open, onToggle, id }: { q: string; a: string; open: boolean; onToggle: () => void; id: string }) {
   const panelId = `faq-panel-${id}`;
   return (
-    <div
-      className="rounded-[14px] overflow-hidden"
-      style={{
-        backgroundColor: "rgb(14,14,14)",
-        border: "1px solid rgb(24,24,24)",
-      }}
-    >
+    <div className="rounded-[14px] overflow-hidden bg-[var(--surface-card)] border border-[rgb(24,24,24)]">
       <button
         onClick={onToggle}
         aria-expanded={open}
         aria-controls={panelId}
         className="w-full flex items-center justify-between px-5 py-4 gap-4 text-left cursor-pointer"
       >
-        <span className="text-white" style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "-0.03em" }}>
+        <span className="text-white text-[15px] font-semibold tracking-[-0.03em]">
           {q}
         </span>
         <PlusIcon open={open} />
@@ -72,13 +68,10 @@ function FaqItem({ q, a, open, onToggle, id }: { q: string; a: string; open: boo
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.28, ease: EASE }}
             className="overflow-hidden"
           >
-            <p
-              className="px-5 pb-5"
-              style={{ fontSize: "14px", fontWeight: 400, color: "rgb(201,201,201)", lineHeight: 1.6 }}
-            >
+            <p className="px-5 pb-5 text-sm text-[var(--text-secondary)] leading-[1.6]">
               {a}
             </p>
           </motion.div>
@@ -96,24 +89,22 @@ export default function FaqSection() {
   return (
     <section ref={ref} className="w-full bg-black section-padding">
       <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-20">
-
         <motion.h2
           className="heading-1 text-white"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          transition={{ duration: 0.8, ease: EASE_ALT }}
         >
           FAQ.
         </motion.h2>
 
-        {/* Full-width FAQ list */}
         <div className="flex flex-col gap-2">
           {FAQS.map((faq, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              transition={{ duration: 0.8, delay: i * 0.07, ease: EASE }}
             >
               <FaqItem
                 q={faq.q}

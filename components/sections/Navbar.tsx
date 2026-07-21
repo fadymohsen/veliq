@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -50,13 +50,11 @@ export default function Navbar() {
 
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
-  // Focus trap for mobile menu
   useEffect(() => {
     if (!mobileOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -87,16 +85,7 @@ export default function Navbar() {
       <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <motion.nav
           aria-label="Main navigation"
-          className="pointer-events-auto flex items-center rounded-full"
-          style={{
-            backgroundColor: "rgba(18,18,18,0.96)",
-            backdropFilter: "blur(18px)",
-            WebkitBackdropFilter: "blur(18px)",
-            border: "1px solid rgba(255,255,255,0.07)",
-            boxShadow: "0 4px 32px rgba(0,0,0,0.45)",
-            padding: "6px 6px",
-            gap: "2px",
-          }}
+          className="pointer-events-auto flex items-center rounded-full bg-[rgba(18,18,18,0.96)] backdrop-blur-[18px] border border-white/[0.07] shadow-[0_4px_32px_rgba(0,0,0,0.45)] p-[6px] gap-[2px]"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
@@ -106,16 +95,14 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center rounded-full hover:bg-white/10 transition-colors"
-            style={{ padding: "5px 12px" }}
+            className="flex items-center rounded-full hover:bg-white/10 transition-colors px-3 py-[5px]"
           >
             <Image
               src="/branding/colored-logo.png"
               alt="VELIQ"
               width={72}
               height={24}
-              className="object-contain"
-              style={{ height: "22px", width: "auto" }}
+              className="object-contain h-[22px] w-auto"
               priority
             />
           </Link>
@@ -125,42 +112,32 @@ export default function Navbar() {
             {expanded ? (
               <motion.div
                 key="expanded"
-                className="hidden md:flex items-center gap-1"
+                className="hidden md:flex items-center gap-1 overflow-hidden"
                 initial={{ opacity: 0, width: 0 }}
                 animate={{ opacity: 1, width: "auto" }}
                 exit={{ opacity: 0, width: 0 }}
                 transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                style={{ overflow: "hidden" }}
               >
-                <div className="w-px h-4 mx-1" style={{ backgroundColor: "rgba(255,255,255,0.12)" }} />
+                <div className="w-px h-4 mx-1 bg-white/12" />
 
                 {NAV_LINKS.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     aria-current={pathname === link.href ? "page" : undefined}
-                    className={`flex items-center gap-0.5 rounded-full transition-colors whitespace-nowrap ${
-                      pathname === link.href
-                        ? "text-white bg-white/10"
-                        : "text-[rgb(201,201,201)] hover:text-white hover:bg-white/8"
+                    className={`nav-link ${
+                      pathname === link.href ? "nav-link--active" : "nav-link--default"
                     }`}
-                    style={{ fontSize: "13px", fontWeight: 500, padding: "7px 14px" }}
                   >
                     {link.label}
                   </Link>
                 ))}
 
-                <div className="w-px h-4 mx-1" style={{ backgroundColor: "rgba(255,255,255,0.12)" }} />
+                <div className="w-px h-4 mx-1 bg-white/12" />
 
                 <Link
                   href="/contact"
-                  className="flex items-center rounded-full text-white hover:brightness-110 transition-all whitespace-nowrap"
-                  style={{
-                    backgroundColor: "rgb(99,102,241)",
-                    fontSize: "13px",
-                    fontWeight: 600,
-                    padding: "7px 18px",
-                  }}
+                  className="flex items-center rounded-full text-white bg-[var(--accent-indigo)] text-[13px] font-semibold px-[18px] py-[7px] whitespace-nowrap hover:brightness-110 transition-all"
                 >
                   Contact
                 </Link>
@@ -168,14 +145,13 @@ export default function Navbar() {
             ) : (
               <motion.div
                 key="compact"
-                className="hidden md:flex items-center"
+                className="hidden md:flex items-center overflow-hidden"
                 initial={{ opacity: 0, width: 0 }}
                 animate={{ opacity: 1, width: "auto" }}
                 exit={{ opacity: 0, width: 0 }}
                 transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                style={{ overflow: "hidden" }}
               >
-                <div className="flex items-center gap-px text-white/60" style={{ padding: "7px 10px" }}>
+                <div className="flex items-center gap-px text-white/60 px-[10px] py-[7px]">
                   <DotsIcon />
                 </div>
               </motion.div>
@@ -184,26 +160,22 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden flex flex-col items-center justify-center gap-[5px] cursor-pointer"
-            style={{ width: 44, height: 44 }}
+            className="md:hidden flex flex-col items-center justify-center gap-[5px] cursor-pointer w-11 h-11"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
           >
             <motion.span
-              className="block bg-white origin-center"
-              style={{ width: "16px", height: "1.5px" }}
+              className="block bg-white origin-center w-4 h-[1.5px]"
               animate={mobileOpen ? { rotate: 45, y: 6.5 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.2 }}
             />
             <motion.span
-              className="block bg-white"
-              style={{ width: "16px", height: "1.5px" }}
+              className="block bg-white w-4 h-[1.5px]"
               animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
               transition={{ duration: 0.15 }}
             />
             <motion.span
-              className="block bg-white origin-center"
-              style={{ width: "16px", height: "1.5px" }}
+              className="block bg-white origin-center w-4 h-[1.5px]"
               animate={mobileOpen ? { rotate: -45, y: -6.5 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.2 }}
             />
@@ -221,13 +193,10 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 md:hidden flex flex-col"
-            style={{ backgroundColor: "rgb(8,8,8)" }}
+            className="fixed inset-0 z-40 md:hidden flex flex-col bg-[var(--surface-dark)]"
           >
-            {/* Spacer for navbar */}
-            <div style={{ height: 80 }} />
+            <div className="h-20" />
 
-            {/* Links */}
             <nav className="flex-1 flex flex-col justify-center px-8 gap-2">
               {NAV_LINKS.map((link, i) => (
                 <motion.div
@@ -239,15 +208,10 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     aria-current={pathname === link.href ? "page" : undefined}
-                    className={`flex items-center gap-3 py-4 transition-colors ${
-                      pathname === link.href ? "text-white" : "text-[rgb(120,120,120)] hover:text-white"
+                    className={`flex items-center gap-3 py-4 transition-colors border-b border-[rgb(22,22,22)] font-semibold tracking-[-0.04em] ${
+                      pathname === link.href ? "text-white" : "text-[var(--text-body-dark)] hover:text-white"
                     }`}
-                    style={{
-                      fontSize: "clamp(28px, 7vw, 42px)",
-                      fontWeight: 600,
-                      letterSpacing: "-0.04em",
-                      borderBottom: "1px solid rgb(22,22,22)",
-                    }}
+                    style={{ fontSize: "clamp(28px, 7vw, 42px)" }}
                   >
                     {link.label}
                   </Link>
@@ -262,15 +226,13 @@ export default function Navbar() {
               >
                 <Link
                   href="/contact"
-                  className="flex items-center justify-center rounded-full text-white font-semibold w-full hover:brightness-110 transition-all"
-                  style={{ backgroundColor: "rgb(99,102,241)", fontSize: "16px", fontWeight: 600, padding: "16px 0" }}
+                  className="flex items-center justify-center rounded-full text-white font-semibold w-full bg-[var(--accent-indigo)] text-base py-4 hover:brightness-110 transition-all"
                 >
                   Contact Us
                 </Link>
               </motion.div>
             </nav>
 
-            {/* Bottom info */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -279,12 +241,11 @@ export default function Navbar() {
             >
               <a
                 href="mailto:admin@veliq.co"
-                style={{ fontSize: "13px", fontWeight: 500, color: "rgb(99,102,241)" }}
-                className="hover:opacity-75 transition-opacity"
+                className="text-[13px] font-medium text-[var(--accent-indigo)] hover:opacity-75 transition-opacity"
               >
                 admin@veliq.co
               </a>
-              <span style={{ fontSize: "12px", color: "rgb(50,50,50)" }}>
+              <span className="text-xs text-[rgb(50,50,50)]">
                 &copy; {new Date().getFullYear()} VELIQ
               </span>
             </motion.div>

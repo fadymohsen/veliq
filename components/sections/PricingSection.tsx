@@ -5,6 +5,9 @@ import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+const EASE_ALT = [0.16, 1, 0.3, 1] as [number, number, number, number];
+
 const PLANS = [
   {
     name: "Design Support",
@@ -12,11 +15,8 @@ const PLANS = [
     price: "1,999",
     cta: "Get Started",
     href: "/checkout/design-support",
-    bg: "rgb(14,14,14)",
-    mutedColor: "rgba(255,255,255,0.5)",
-    dividerColor: "rgba(255,255,255,0.1)",
-    ctaBg: "rgb(99,102,241)",
     dim: false,
+    ctaDark: false,
     features: [
       "One active request at a time",
       "2-day average turnaround",
@@ -29,11 +29,8 @@ const PLANS = [
     price: "4,499",
     cta: "Scale Now",
     href: "/checkout/web-and-growth",
-    bg: "rgb(14,14,14)",
-    mutedColor: "rgba(255,255,255,0.5)",
-    dividerColor: "rgba(255,255,255,0.1)",
-    ctaBg: "rgb(99,102,241)",
     dim: false,
+    ctaDark: false,
     features: [
       "Two active requests at a time",
       "Website development & updates",
@@ -49,11 +46,8 @@ const PLANS = [
     price: "8,999",
     cta: "Book a Call",
     href: "/checkout/agency-partner",
-    bg: "rgb(14,14,14)",
-    mutedColor: "rgba(255,255,255,0.55)",
-    dividerColor: "rgba(255,255,255,0.08)",
-    ctaBg: "rgb(32,32,32)",   // dark CTA for "premium / contact us" tier
-    dim: true,                 // card appears at 65% opacity — de-emphasised
+    dim: true,
+    ctaDark: true,
     features: [
       "Four active requests at a time",
       "Priority support via Slack",
@@ -72,11 +66,7 @@ const FADE = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.8,
-      delay: i * 0.12,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
+    transition: { duration: 0.8, delay: i * 0.12, ease: EASE },
   }),
 };
 
@@ -88,12 +78,11 @@ export default function PricingSection() {
     <section ref={ref} className="w-full bg-black rounded-[30px] section-padding overflow-hidden">
       <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-20">
 
-        {/* Heading */}
         <motion.h2
           className="heading-1 text-white"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          transition={{ duration: 0.8, ease: EASE_ALT }}
         >
           Pricing.
         </motion.h2>
@@ -103,7 +92,7 @@ export default function PricingSection() {
           className="flex flex-col md:flex-row items-start justify-between gap-8"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          transition={{ duration: 0.8, delay: 0.15, ease: EASE_ALT }}
         >
           <div className="flex items-center gap-3 shrink-0">
             <Image
@@ -115,9 +104,7 @@ export default function PricingSection() {
             />
             <div className="flex flex-col gap-0.5">
               <span className="para-16 text-white">Michael Williams</span>
-              <span className="para-14" style={{ color: "rgba(255,255,255,0.6)" }}>
-                CEO @Vixopedia
-              </span>
+              <span className="para-14 text-[var(--text-label)]">CEO @Vixopedia</span>
             </div>
           </div>
           <p className="para-32 text-white md:w-[55%]">
@@ -131,94 +118,47 @@ export default function PricingSection() {
           {PLANS.map((plan, i) => (
             <motion.div
               key={plan.name}
-              className="flex-1 rounded-[20px] p-8 flex flex-col gap-6"
-              style={{
-                backgroundColor: plan.bg,
-                // Agency Partner card — visually de-emphasised
-                opacity: plan.dim ? 0.65 : 1,
-              }}
+              className="flex-1 card p-8 flex flex-col gap-6"
+              style={{ opacity: plan.dim ? 0.65 : 1 }}
               variants={FADE}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
               custom={i}
             >
-              {/* Name + description */}
               <div className="flex flex-col gap-2">
-                <h3
-                  className="text-white"
-                  style={{ fontSize: "18px", fontWeight: 700, letterSpacing: "-0.03em" }}
-                >
+                <h3 className="text-white text-lg font-bold tracking-[-0.03em]">
                   {plan.name}
                 </h3>
-                <p style={{ fontSize: "13px", fontWeight: 400, color: plan.mutedColor, lineHeight: 1.55 }}>
+                <p className="text-[13px] text-[var(--text-muted)] leading-[1.55]">
                   {plan.description}
                 </p>
               </div>
 
-              {/* Price — superscript $ + large number + /Month */}
-              <div className="flex items-baseline" style={{ gap: "2px" }}>
-                <sup
-                  className="text-white"
-                  style={{ fontSize: "18px", fontWeight: 500, lineHeight: 1 }}
-                >
-                  $
-                </sup>
-                <span
-                  className="text-white"
-                  style={{ fontSize: "60px", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1 }}
-                >
+              <div className="flex items-baseline gap-[2px]">
+                <sup className="text-white text-lg font-medium leading-none">$</sup>
+                <span className="text-white text-[60px] font-bold tracking-[-0.04em] leading-none">
                   {plan.price}
                 </span>
-                <span style={{ fontSize: "13px", fontWeight: 400, color: plan.mutedColor, marginLeft: "6px" }}>
-                  / Month
-                </span>
+                <span className="text-[13px] text-[var(--text-muted)] ml-1.5">/ Month</span>
               </div>
 
-              {/* CTA — full width pill */}
               <Link
                 href={plan.href}
-                className="w-full flex items-center justify-center rounded-full text-white font-semibold hover:brightness-110 transition-all"
-                style={{
-                  backgroundColor: plan.ctaBg,
-                  fontSize: "14px",
-                  fontWeight: 600,
-                  padding: "15px 0",
-                }}
+                className="w-full flex items-center justify-center rounded-full text-white text-sm font-semibold py-[15px] hover:brightness-110 transition-all"
+                style={{ backgroundColor: plan.ctaDark ? "rgb(32,32,32)" : "var(--accent-indigo)" }}
               >
                 {plan.cta}
               </Link>
 
-              {/* Divider */}
-              <div className="w-full h-px" style={{ backgroundColor: plan.dividerColor }} />
+              <div className="divider" style={{ backgroundColor: "rgba(255,255,255,0.1)" }} />
 
-              {/* Feature list */}
               <div className="flex flex-col gap-3">
-                <span className="text-white" style={{ fontSize: "15px", fontWeight: 700 }}>
-                  What&apos;s included
-                </span>
+                <span className="text-white text-[15px] font-bold">What&apos;s included</span>
                 <ul className="flex flex-col gap-[10px]">
                   {plan.features.map((feat) => (
                     <li key={feat} className="flex items-start gap-3">
-                      {/* YELLOW vertical bar — confirmed from frame 6 pixel analysis */}
-                      <span
-                        className="shrink-0"
-                        style={{
-                          display: "inline-block",
-                          width: "2px",
-                          height: "14px",
-                          marginTop: "3px",
-                          borderRadius: "2px",
-                          backgroundColor: "rgb(255,210,0)",
-                        }}
-                      />
-                      <span
-                        style={{
-                          fontSize: "13px",
-                          fontWeight: 400,
-                          color: "rgba(255,255,255,0.75)",
-                          lineHeight: 1.45,
-                        }}
-                      >
+                      <span className="feature-bar" />
+                      <span className="text-[13px] text-white/75 leading-[1.45]">
                         {feat}
                       </span>
                     </li>

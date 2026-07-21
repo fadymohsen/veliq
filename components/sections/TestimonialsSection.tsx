@@ -3,27 +3,30 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+const EASE_ALT = [0.16, 1, 0.3, 1] as [number, number, number, number];
+
 const TESTIMONIALS = [
   {
     quote: "VELIQ transformed our online presence. Their software expertise paired with sharp marketing strategy doubled our customer acquisition in just six months.",
     name: "Sarah Mitchell",
     role: "CEO at BrightPath",
     initials: "SM",
-    accent: "rgb(99,102,241)",
+    accent: "var(--accent-indigo)",
   },
   {
     quote: "Working with VELIQ felt like having an in-house team. They understood our vision from day one and delivered a platform that exceeded every expectation.",
     name: "Khaled Mansour",
     role: "Founder of NovaTech",
     initials: "KM",
-    accent: "rgb(56,189,248)",
+    accent: "var(--accent-sky)",
   },
   {
     quote: "Our mobile app went from concept to launch in record time. The quality of code and design was outstanding — our users love it.",
     name: "Lina Farouk",
     role: "Product Lead at Meridian",
     initials: "LF",
-    accent: "rgb(52,211,153)",
+    accent: "var(--accent-teal)",
   },
   {
     quote: "Their SEO and marketing campaigns brought us from page 5 to the top 3 results. The ROI has been incredible — we've tripled our organic leads.",
@@ -37,7 +40,7 @@ const TESTIMONIALS = [
     name: "Dina Rashad",
     role: "COO at Skyline Group",
     initials: "DR",
-    accent: "rgb(244,114,182)",
+    accent: "var(--accent-pink)",
   },
 ];
 
@@ -84,15 +87,13 @@ export default function TestimonialsSection() {
           className="flex items-end justify-between"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          transition={{ duration: 0.8, ease: EASE_ALT }}
         >
           <h2 className="heading-1 text-white">What clients say.</h2>
-          {/* Nav arrows */}
           <div className="flex gap-2">
             <button
               onClick={prev}
-              className="flex items-center justify-center rounded-full text-white transition-colors hover:bg-white/10"
-              style={{ width: 44, height: 44, border: "1px solid rgb(40,40,40)" }}
+              className="flex items-center justify-center rounded-full w-11 h-11 text-white border border-[var(--border-hover)] transition-colors hover:bg-white/10"
               aria-label="Previous"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -101,8 +102,7 @@ export default function TestimonialsSection() {
             </button>
             <button
               onClick={next}
-              className="flex items-center justify-center rounded-full text-white transition-colors hover:bg-white/10"
-              style={{ width: 44, height: 44, border: "1px solid rgb(40,40,40)" }}
+              className="flex items-center justify-center rounded-full w-11 h-11 text-white border border-[var(--border-hover)] transition-colors hover:bg-white/10"
               aria-label="Next"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -116,18 +116,13 @@ export default function TestimonialsSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="relative overflow-hidden"
-          style={{ borderRadius: "24px", backgroundColor: "rgb(12,12,12)", border: "1px solid rgb(24,24,24)", minHeight: "280px" }}
+          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+          className="relative overflow-hidden rounded-[24px] bg-[var(--surface-card-alt)] border border-[rgb(24,24,24)] min-h-[280px]"
         >
           {/* Accent glow */}
           <div
-            className="absolute top-0 left-0 w-full pointer-events-none"
-            style={{
-              height: "3px",
-              background: `linear-gradient(90deg, ${t.accent} 0%, transparent 60%)`,
-              transition: "background 0.5s ease",
-            }}
+            className="absolute top-0 left-0 w-full h-[3px] pointer-events-none transition-all duration-500"
+            style={{ background: `linear-gradient(90deg, ${t.accent} 0%, transparent 60%)` }}
           />
 
           <AnimatePresence mode="wait" custom={dir}>
@@ -137,13 +132,12 @@ export default function TestimonialsSection() {
               initial={{ opacity: 0, x: dir * 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: dir * -40 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              transition={{ duration: 0.45, ease: EASE }}
               className="flex flex-col md:flex-row gap-10 p-10 md:p-14 items-start"
             >
-              {/* Quote mark */}
               <span
-                className="select-none shrink-0 leading-none"
-                style={{ fontSize: "6rem", fontWeight: 900, color: t.accent, opacity: 0.25, lineHeight: 0.8, marginTop: "-4px" }}
+                className="select-none shrink-0 font-black leading-[0.8] -mt-1"
+                style={{ fontSize: "6rem", color: t.accent, opacity: 0.25 }}
                 aria-hidden
               >
                 &ldquo;
@@ -151,24 +145,24 @@ export default function TestimonialsSection() {
 
               <div className="flex flex-col gap-8 flex-1">
                 <blockquote
-                  className="text-white"
-                  style={{ fontSize: "clamp(1.1rem, 2.2vw, 1.5rem)", fontWeight: 500, lineHeight: 1.6, letterSpacing: "-0.02em", maxWidth: "60ch" }}
+                  className="text-white font-medium leading-[1.6] tracking-[-0.02em] max-w-[60ch]"
+                  style={{ fontSize: "clamp(1.1rem, 2.2vw, 1.5rem)" }}
                 >
                   {t.quote}
                 </blockquote>
 
                 <div className="flex items-center gap-4">
                   <div
-                    className="flex items-center justify-center rounded-full text-white shrink-0"
-                    style={{ width: 44, height: 44, backgroundColor: t.accent, fontSize: "14px", fontWeight: 700 }}
+                    className="flex items-center justify-center rounded-full text-white shrink-0 w-11 h-11 text-sm font-bold"
+                    style={{ backgroundColor: t.accent }}
                   >
                     {t.initials}
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-white" style={{ fontSize: "15px", fontWeight: 700, letterSpacing: "-0.02em" }}>
+                    <span className="text-white text-[15px] font-bold tracking-[-0.02em]">
                       {t.name}
                     </span>
-                    <span className="text-[rgb(124,124,124)]" style={{ fontSize: "13px", fontWeight: 400 }}>
+                    <span className="text-[var(--text-subtle)] text-[13px]">
                       {t.role}
                     </span>
                   </div>
@@ -188,7 +182,7 @@ export default function TestimonialsSection() {
               style={{
                 width: i === active ? 28 : 8,
                 height: 8,
-                backgroundColor: i === active ? "rgb(99,102,241)" : "rgb(40,40,40)",
+                backgroundColor: i === active ? "var(--accent-indigo)" : "var(--border-hover)",
               }}
               aria-label={`Go to testimonial ${i + 1}`}
             />

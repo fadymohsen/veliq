@@ -13,11 +13,11 @@ export default function SplashScreen() {
 
   useEffect(() => {
     if (phase === "done") return;
-    const revealTimer = setTimeout(() => setPhase("reveal"), 5200);
+    const revealTimer = setTimeout(() => setPhase("reveal"), 1400);
     const doneTimer = setTimeout(() => {
       setPhase("done");
       sessionStorage.setItem("veliq-splash-seen", "1");
-    }, 6000);
+    }, 2000);
     return () => {
       clearTimeout(revealTimer);
       clearTimeout(doneTimer);
@@ -95,7 +95,7 @@ export default function SplashScreen() {
             <span
               key={i}
               className="loading-tagline-word inline-block text-xs font-medium uppercase tracking-[0.15em] text-slate-500"
-              style={{ animationDelay: `${2.6 + i * 0.15}s` }}
+              style={{ animationDelay: `${0.7 + i * 0.06}s` }}
             >
               {word}
             </span>

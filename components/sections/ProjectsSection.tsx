@@ -8,7 +8,7 @@ import Button from "@/components/ui/Button";
 import { PROJECTS } from "@/lib/projects";
 
 const CARD_W   = 760;
-const CARD_H   = Math.round(CARD_W * 9 / 16); // 428
+const CARD_H   = Math.round(CARD_W * 9 / 16);
 const CARD_GAP = 20;
 const ONE_SET  = PROJECTS.length * (CARD_W + CARD_GAP);
 
@@ -22,26 +22,23 @@ function BrowserCard({ project }: { project: (typeof PROJECTS)[number] }) {
       style={{ width: `${CARD_W}px` }}
     >
       {/* Browser shell */}
-      <div
-        className="overflow-hidden"
-        style={{ borderRadius: 14, border: "1px solid rgb(36,36,36)", backgroundColor: "rgb(16,16,16)" }}
-      >
+      <div className="overflow-hidden rounded-[14px] border border-[rgb(36,36,36)] bg-[rgb(16,16,16)]">
         {/* Chrome bar */}
-        <div style={{ height: 34, backgroundColor: "rgb(22,22,22)", borderBottom: "1px solid rgb(36,36,36)", display: "flex", alignItems: "center", gap: 6, padding: "0 14px" }}>
-          <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
-            <span style={{ width: 9, height: 9, borderRadius: "50%", backgroundColor: "rgb(255,95,87)",  display: "block" }} />
-            <span style={{ width: 9, height: 9, borderRadius: "50%", backgroundColor: "rgb(255,189,46)", display: "block" }} />
-            <span style={{ width: 9, height: 9, borderRadius: "50%", backgroundColor: "rgb(39,201,63)",  display: "block" }} />
+        <div className="h-[34px] bg-[rgb(22,22,22)] border-b border-[rgb(36,36,36)] flex items-center gap-1.5 px-3.5">
+          <div className="flex gap-[5px] shrink-0">
+            <span className="block w-[9px] h-[9px] rounded-full bg-[rgb(255,95,87)]" />
+            <span className="block w-[9px] h-[9px] rounded-full bg-[rgb(255,189,46)]" />
+            <span className="block w-[9px] h-[9px] rounded-full bg-[rgb(39,201,63)]" />
           </div>
-          <div style={{ flex: 1, marginLeft: 8, backgroundColor: "rgb(14,14,14)", borderRadius: 5, height: 20, display: "flex", alignItems: "center", padding: "0 8px", overflow: "hidden" }}>
-            <span style={{ fontSize: 9, color: "rgb(90,90,90)", letterSpacing: "0.01em", whiteSpace: "nowrap" }}>
+          <div className="flex-1 ml-2 bg-[var(--surface-card)] rounded-[5px] h-5 flex items-center px-2 overflow-hidden">
+            <span className="text-[9px] text-[rgb(90,90,90)] tracking-[0.01em] whitespace-nowrap">
               🔒 {domain}
             </span>
           </div>
         </div>
 
         {/* Screenshot viewport */}
-        <div style={{ position: "relative", width: CARD_W, height: CARD_H, overflow: "hidden", backgroundColor: "rgb(12,12,12)" }}>
+        <div className="relative overflow-hidden bg-[var(--surface-card-alt)]" style={{ width: CARD_W, height: CARD_H }}>
           <Image
             src={project.preview}
             alt={project.title}
@@ -49,20 +46,13 @@ function BrowserCard({ project }: { project: (typeof PROJECTS)[number] }) {
             sizes="760px"
             className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
           />
-          <span
-            style={{
-              position: "absolute", top: 10, right: 10, zIndex: 2,
-              backgroundColor: "rgb(99,102,241)", color: "rgb(0,0,0)",
-              borderRadius: 100, padding: "4px 12px",
-              fontSize: 11, fontWeight: 600, letterSpacing: "-0.2px",
-            }}
-          >
+          <span className="absolute top-2.5 right-2.5 z-[2] bg-[var(--accent-indigo)] text-black rounded-full px-3 py-1 text-[11px] font-semibold tracking-[-0.2px]">
             {project.category}
           </span>
         </div>
       </div>
 
-      <span style={{ color: "rgb(201,201,201)", fontSize: 22, fontWeight: 600, letterSpacing: "-0.04em" }}>
+      <span className="text-[var(--text-secondary)] text-[22px] font-semibold tracking-[-0.04em]">
         {project.title}
       </span>
     </Link>
@@ -85,23 +75,14 @@ export default function ProjectsSection() {
         >
           <div className="flex items-start gap-3">
             <h2 className="heading-1 text-white">Projects.</h2>
-            <span className="para-12 text-[rgb(201,201,201)] mt-4">(12)</span>
+            <span className="para-12 text-[var(--text-secondary)] mt-4">(12)</span>
           </div>
-          {/* Desktop: button beside the title */}
           <div className="hidden md:block">
             <Button label="All Projects" href="/projects" variant="outline" />
           </div>
         </motion.div>
 
-        {/*
-          4-layer architecture:
-            Layer 1 — full-bleed wrapper, overflow:hidden (no edge fade)
-            Layer 2 — perspective context (separate from overflow so 3D isn't clipped)
-            Layer 3 — static rotateY tilt (plain CSS, no Framer Motion)
-            Layer 4 — CSS @keyframes translateX (compositor thread, never snaps)
-        */}
-
-        {/* Layer 1 — full-bleed (no edge gradient) */}
+        {/* Layer 1 — full-bleed */}
         <div
           style={{
             width: "100vw",
@@ -111,11 +92,9 @@ export default function ProjectsSection() {
         >
           {/* Layer 2 — perspective */}
           <div style={{ perspective: "1800px", perspectiveOrigin: "50% 50%" }}>
-
             {/* Layer 3 — static 3D tilt */}
             <div style={{ transform: "rotateY(-28deg)", transformStyle: "preserve-3d" }}>
-
-              {/* Layer 4 — smooth CSS animation, translateX only */}
+              {/* Layer 4 — CSS animation */}
               <div
                 className="veliq-ticker flex w-max"
                 style={{
@@ -128,12 +107,10 @@ export default function ProjectsSection() {
                   <BrowserCard key={`${p.slug}-${i}`} project={p} />
                 ))}
               </div>
-
             </div>
           </div>
         </div>
 
-        {/* Mobile: button at the end */}
         <div className="md:hidden flex justify-center">
           <Button label="All Projects" href="/projects" variant="outline" />
         </div>

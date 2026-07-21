@@ -4,20 +4,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export default function HeroSection() {
   return (
     <section
-      className="relative w-full overflow-hidden flex items-center justify-center"
-      style={{ minHeight: "100vh", backgroundColor: "rgb(0,0,0)" }}
+      className="relative w-full min-h-screen overflow-hidden flex items-center justify-center bg-black"
     >
       {/* Subtle ambient glow */}
       <div className="pointer-events-none absolute inset-0">
         <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
           style={{
             width: "min(800px, 120vw)",
             height: "min(800px, 120vw)",
-            borderRadius: "50%",
             background: "radial-gradient(circle, rgba(99,102,241,0.08) 0%, rgba(99,102,241,0.02) 40%, transparent 70%)",
           }}
         />
@@ -30,7 +30,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, ease: EASE }}
         >
           <Image
             src="/branding/colored-logo.png"
@@ -47,21 +47,16 @@ export default function HeroSection() {
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="text-white"
-          style={{
-            fontSize: "clamp(2.2rem, 7vw, 5rem)",
-            fontWeight: 700,
-            lineHeight: 1.05,
-            letterSpacing: "-0.04em",
-          }}
+          transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
+          className="text-white font-bold leading-[1.05] tracking-[-0.04em]"
+          style={{ fontSize: "clamp(2.2rem, 7vw, 5rem)" }}
         >
           Precision at the
           <br />
           <span
             className="bg-clip-text text-transparent"
             style={{
-              backgroundImage: "linear-gradient(135deg, rgb(99,102,241), rgb(168,85,247), rgb(45,212,191))",
+              backgroundImage: "linear-gradient(135deg, var(--accent-indigo), var(--accent-purple), var(--accent-teal))",
             }}
           >
             Speed of Ambition.
@@ -72,14 +67,11 @@ export default function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
+          className="text-[var(--text-muted)] tracking-[-0.01em] leading-[1.7]"
           style={{
             fontSize: "clamp(0.95rem, 1.6vw, 1.15rem)",
-            fontWeight: 400,
-            lineHeight: 1.7,
-            color: "rgba(255,255,255,0.5)",
             maxWidth: "48ch",
-            letterSpacing: "-0.01em",
           }}
         >
           A website development company that builds SEO-optimized websites
@@ -91,35 +83,15 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row items-center gap-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
         >
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-full text-white hover:brightness-110 transition-all"
-            style={{
-              backgroundColor: "rgb(99,102,241)",
-              fontSize: "15px",
-              fontWeight: 600,
-              padding: "14px 32px",
-              letterSpacing: "-0.01em",
-            }}
-          >
+          <Link href="/contact" className="btn-primary text-[15px]">
             Start Your Project
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </Link>
-          <Link
-            href="/projects"
-            className="inline-flex items-center rounded-full text-white hover:bg-white/10 transition-all"
-            style={{
-              fontSize: "15px",
-              fontWeight: 500,
-              padding: "14px 28px",
-              border: "1px solid rgba(255,255,255,0.12)",
-              letterSpacing: "-0.01em",
-            }}
-          >
+          <Link href="/projects" className="btn-outline">
             View Our Work
           </Link>
         </motion.div>
@@ -133,16 +105,8 @@ export default function HeroSection() {
         >
           {["10+ Projects Delivered", "Clients across 4 Countries", "SEO & Development"].map((item) => (
             <div key={item} className="flex items-center gap-2">
-              <span
-                style={{
-                  display: "inline-block",
-                  width: 5,
-                  height: 5,
-                  borderRadius: "50%",
-                  backgroundColor: "rgb(99,102,241)",
-                }}
-              />
-              <span style={{ fontSize: "13px", fontWeight: 400, color: "rgba(255,255,255,0.4)", letterSpacing: "-0.01em" }}>
+              <span className="inline-block w-[5px] h-[5px] rounded-full bg-[var(--accent-indigo)]" />
+              <span className="text-[13px] text-[var(--text-dim)] tracking-[-0.01em]">
                 {item}
               </span>
             </div>
@@ -158,12 +122,10 @@ export default function HeroSection() {
         transition={{ duration: 1, delay: 0.9 }}
       >
         <motion.div
-          className="rounded-full"
-          style={{ width: 24, height: 38, border: "1.5px solid rgba(255,255,255,0.15)" }}
+          className="rounded-full w-6 h-[38px] border-[1.5px] border-white/15"
         >
           <motion.div
-            className="mx-auto mt-2 rounded-full"
-            style={{ width: 3, height: 8, backgroundColor: "rgba(255,255,255,0.3)" }}
+            className="mx-auto mt-2 rounded-full w-[3px] h-2 bg-white/30"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
           />

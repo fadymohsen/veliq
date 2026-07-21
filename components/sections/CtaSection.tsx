@@ -4,6 +4,9 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Button from "@/components/ui/Button";
 
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+const EASE_ALT = [0.16, 1, 0.3, 1] as [number, number, number, number];
+
 const TYPEWRITER_WORDS = [
   "a new website?",
   "mobile app development?",
@@ -21,7 +24,6 @@ function TypewriterText() {
 
   useEffect(() => {
     const word = TYPEWRITER_WORDS[wordIndex];
-
     if (paused) {
       const t = setTimeout(() => { setPaused(false); setDeleting(true); }, 1800);
       return () => clearTimeout(t);
@@ -62,26 +64,19 @@ export default function CtaSection() {
 
         <div className="flex flex-col items-center gap-5 text-center">
           <motion.p
-            className="text-[rgb(201,201,201)] uppercase tracking-[0.18em]"
-            style={{ fontSize: "0.75rem", fontWeight: 600 }}
+            className="text-[var(--text-secondary)] uppercase tracking-[0.18em] text-xs font-semibold"
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.05, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+            transition={{ duration: 0.8, delay: 0.05, ease: EASE_ALT }}
           >
             Ready to begin?
           </motion.p>
           <motion.h2
-            className="text-white text-center"
-            style={{
-              fontSize: "clamp(2.5rem, 8vw, 7rem)",
-              fontWeight: 600,
-              lineHeight: 1.05,
-              letterSpacing: "-0.05em",
-              maxWidth: "14ch",
-            }}
+            className="text-white text-center font-semibold leading-[1.05] tracking-[-0.05em] max-w-[14ch]"
+            style={{ fontSize: "clamp(2.5rem, 8vw, 7rem)" }}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
           >
             Let&apos;s build something extraordinary.
           </motion.h2>
@@ -89,17 +84,15 @@ export default function CtaSection() {
 
         {/* Indigo pill */}
         <motion.div
-          className="flex items-center justify-between gap-4 rounded-full pl-7 pr-2 py-2 w-full max-w-[600px]"
-          style={{ backgroundColor: "rgb(99,102,241)" }}
+          className="flex items-center justify-between gap-4 rounded-full pl-7 pr-2 py-2 w-full max-w-[600px] bg-[var(--accent-indigo)]"
           initial={{ opacity: 0, scale: 0.92, y: 20 }}
           animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+          transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
         >
-          <div className="flex-1 overflow-hidden" style={{ fontSize: "1rem", fontWeight: 500 }}>
+          <div className="flex-1 overflow-hidden text-base font-medium">
             <span className="text-white/70">Need </span>
             <TypewriterText />
           </div>
-
           <Button
             label="Contact us"
             href="/contact"
@@ -109,11 +102,10 @@ export default function CtaSection() {
         </motion.div>
 
         <motion.p
-          className="text-[rgb(201,201,201)] text-center"
-          style={{ fontSize: "0.875rem", fontWeight: 400, maxWidth: "36ch" }}
+          className="text-[var(--text-secondary)] text-center text-sm max-w-[36ch]"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          transition={{ duration: 0.8, delay: 0.35, ease: EASE_ALT }}
         >
           No commitment. Just a conversation. We&apos;ll get back to you within 24 hours.
         </motion.p>
