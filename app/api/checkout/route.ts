@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { verifyChallenge } from "@/lib/captcha";
+import { escapeHtml } from "@/lib/escape-html";
 
 const ADMIN_EMAIL = "admin@veliq.co";
 const SENDER_EMAIL = "admin@veliq.co";
@@ -23,8 +24,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Verification failed. Please try again." }, { status: 400 });
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
     if (!name || typeof name !== "string" || name.trim().length < 2) {
       return NextResponse.json({ error: "Name is required." }, { status: 400 });
     }
@@ -35,13 +34,23 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "A valid phone number is required." }, { status: 400 });
     }
 
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const safeName = escapeHtml(name.trim());
+    const safeEmail = escapeHtml(email.trim());
+    const safePhone = escapeHtml(phone.trim());
+    const safeCompany = company?.trim() ? escapeHtml(company.trim()) : "";
+    const safePlan = escapeHtml(plan || "N/A");
+    const safePlanDetails = escapeHtml(planDetails || "");
+    const safeNotes = notes?.trim() ? escapeHtml(notes.trim()).replace(/\n/g, "<br>") : "";
+
     const date = new Date().toLocaleDateString("en-US", {
       weekday: "long", year: "numeric", month: "long", day: "numeric",
       hour: "2-digit", minute: "2-digit",
     });
 
-    const companyRow = company?.trim()
-      ? `<tr><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0;width:120px"><span style="color:#64748b;font-size:13px;font-weight:500">Company</span></td><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0"><span style="color:#0f172a;font-size:14px;font-weight:600">${company.trim()}</span></td></tr>`
+    const companyRow = safeCompany
+      ? `<tr><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0;width:120px"><span style="color:#64748b;font-size:13px;font-weight:500">Company</span></td><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0"><span style="color:#0f172a;font-size:14px;font-weight:600">${safeCompany}</span></td></tr>`
       : "";
 
     // Admin notification
@@ -49,7 +58,7 @@ export async function POST(req: Request) {
       from: `VELIQ <${SENDER_EMAIL}>`,
       to: [ADMIN_EMAIL],
       replyTo: email.trim(),
-      subject: `New Order: ${plan || "Unknown Plan"} — ${name.trim()}`,
+      subject: `New Order: ${safePlan} — ${safeName}`,
       html: `
     <!DOCTYPE html><html><head><meta charset="utf-8"></head>
     <body style="margin:0;padding:0;background:#f1f5f9;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
@@ -61,17 +70,17 @@ export async function POST(req: Request) {
           </td></tr>
           <tr><td style="padding:24px 40px 0;text-align:right"><span style="color:#94a3b8;font-size:12px">${date}</span></td></tr>
           <tr><td style="padding:16px 40px 0">
-            <h2 style="margin:0 0 12px;color:#0f172a;font-size:18px;font-weight:700">Plan: ${plan || "N/A"}</h2>
-            <p style="margin:0 0 16px;color:#64748b;font-size:14px">${planDetails || ""}</p>
+            <h2 style="margin:0 0 12px;color:#0f172a;font-size:18px;font-weight:700">Plan: ${safePlan}</h2>
+            <p style="margin:0 0 16px;color:#64748b;font-size:14px">${safePlanDetails}</p>
             <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;border-radius:12px;overflow:hidden">
-              <tr><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0;width:120px"><span style="color:#64748b;font-size:13px;font-weight:500">Name</span></td><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0"><span style="color:#0f172a;font-size:14px;font-weight:600">${name.trim()}</span></td></tr>
+              <tr><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0;width:120px"><span style="color:#64748b;font-size:13px;font-weight:500">Name</span></td><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0"><span style="color:#0f172a;font-size:14px;font-weight:600">${safeName}</span></td></tr>
               ${companyRow}
-              <tr><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0"><span style="color:#64748b;font-size:13px;font-weight:500">Phone</span></td><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0"><a href="tel:${phone.trim()}" style="color:#4338ca;font-size:14px;font-weight:600;text-decoration:none">${phone.trim()}</a></td></tr>
-              <tr><td style="padding:16px 20px"><span style="color:#64748b;font-size:13px;font-weight:500">Email</span></td><td style="padding:16px 20px"><a href="mailto:${email.trim()}" style="color:#4338ca;font-size:14px;font-weight:600;text-decoration:none">${email.trim()}</a></td></tr>
+              <tr><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0"><span style="color:#64748b;font-size:13px;font-weight:500">Phone</span></td><td style="padding:16px 20px;border-bottom:1px solid #e2e8f0"><a href="tel:${safePhone}" style="color:#4338ca;font-size:14px;font-weight:600;text-decoration:none">${safePhone}</a></td></tr>
+              <tr><td style="padding:16px 20px"><span style="color:#64748b;font-size:13px;font-weight:500">Email</span></td><td style="padding:16px 20px"><a href="mailto:${safeEmail}" style="color:#4338ca;font-size:14px;font-weight:600;text-decoration:none">${safeEmail}</a></td></tr>
             </table>
           </td></tr>
-          ${notes?.trim() ? `<tr><td style="padding:28px 40px 0"><h2 style="margin:0 0 12px;color:#0f172a;font-size:18px;font-weight:700">Notes</h2><div style="background:#f8fafc;border-radius:12px;padding:20px;color:#334155;font-size:14px;line-height:1.7">${notes.trim().replace(/\n/g, "<br>")}</div></td></tr>` : ""}
-          <tr><td style="padding:32px 40px"><a href="mailto:${email.trim()}" style="display:inline-block;background:#4338ca;color:#fff;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none">Reply to ${name.trim()}</a></td></tr>
+          ${safeNotes ? `<tr><td style="padding:28px 40px 0"><h2 style="margin:0 0 12px;color:#0f172a;font-size:18px;font-weight:700">Notes</h2><div style="background:#f8fafc;border-radius:12px;padding:20px;color:#334155;font-size:14px;line-height:1.7">${safeNotes}</div></td></tr>` : ""}
+          <tr><td style="padding:32px 40px"><a href="mailto:${safeEmail}" style="display:inline-block;background:#4338ca;color:#fff;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none">Reply to ${safeName}</a></td></tr>
           <tr><td style="background:#f8fafc;padding:20px 40px;text-align:center;border-top:1px solid #e2e8f0"><p style="margin:0;color:#94a3b8;font-size:12px">Order submitted via VELIQ checkout.</p></td></tr>
         </table>
       </td></tr></table>
@@ -88,7 +97,7 @@ export async function POST(req: Request) {
         from: `VELIQ <${SENDER_EMAIL}>`,
         to: [email.trim()],
         replyTo: ADMIN_EMAIL,
-        subject: `Order Received — ${plan || "VELIQ"}`,
+        subject: `Order Received — ${safePlan}`,
         html: `
       <!DOCTYPE html><html><head><meta charset="utf-8"></head>
       <body style="margin:0;padding:0;background:#f1f5f9;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
@@ -100,8 +109,8 @@ export async function POST(req: Request) {
               <p style="margin:0;color:#c7d2fe;font-size:16px">Order Confirmed</p>
             </td></tr>
             <tr><td style="padding:36px 40px 0">
-              <h2 style="margin:0;color:#0f172a;font-size:22px;font-weight:700">Hi ${name.trim()},</h2>
-              <p style="margin:12px 0 0;color:#475569;font-size:15px;line-height:1.7">Thank you for choosing <strong>${plan || "VELIQ"}</strong>. We've received your order and a dedicated member of our team will reach out within 24 hours.</p>
+              <h2 style="margin:0;color:#0f172a;font-size:22px;font-weight:700">Hi ${safeName},</h2>
+              <p style="margin:12px 0 0;color:#475569;font-size:15px;line-height:1.7">Thank you for choosing <strong>${safePlan}</strong>. We've received your order and a dedicated member of our team will reach out within 24 hours.</p>
             </td></tr>
             <tr><td style="padding:28px 40px 0">
               <div style="background:#f8fafc;border-radius:12px;padding:24px;border-left:4px solid #4338ca">
@@ -133,7 +142,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Checkout form error:", error);
-    const msg = error instanceof Error ? error.message : "Unknown error";
-    return NextResponse.json({ error: msg }, { status: 500 });
+    return NextResponse.json({ error: "Something went wrong. Please try again later." }, { status: 500 });
   }
 }

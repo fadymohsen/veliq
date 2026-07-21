@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { verifyChallenge } from "@/lib/captcha";
+import { escapeHtml } from "@/lib/escape-html";
 
 const ADMIN_EMAIL = "admin@veliq.co";
 const SENDER_EMAIL = "admin@veliq.co";
 
 export async function POST(req: Request) {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await req.json();
     const { name, email, message, website, formLoadedAt, captchaToken, captchaAnswer } = body;
 
@@ -34,6 +34,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Please include a project brief (min 5 characters)." }, { status: 400 });
     }
 
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const safeName = escapeHtml(name.trim());
+    const safeEmail = escapeHtml(email.trim());
+    const safeMessage = escapeHtml(message.trim()).replace(/\n/g, "<br>");
+
     const date = new Date().toLocaleDateString("en-US", {
       weekday: "long",
       year: "numeric",
@@ -48,7 +54,7 @@ export async function POST(req: Request) {
         from: `VELIQ <${SENDER_EMAIL}>`,
         to: [ADMIN_EMAIL],
         replyTo: email.trim(),
-        subject: `New Contact Request from ${name.trim()}`,
+        subject: `New Contact Request from ${safeName}`,
         html: `
       <!DOCTYPE html>
       <html>
@@ -77,7 +83,7 @@ export async function POST(req: Request) {
                         <span style="color:#64748b;font-size:13px;font-weight:500">Name</span>
                       </td>
                       <td style="padding:16px 20px;border-bottom:1px solid #e2e8f0">
-                        <span style="color:#0f172a;font-size:14px;font-weight:600">${name.trim()}</span>
+                        <span style="color:#0f172a;font-size:14px;font-weight:600">${safeName}</span>
                       </td>
                     </tr>
                     <tr>
@@ -85,7 +91,7 @@ export async function POST(req: Request) {
                         <span style="color:#64748b;font-size:13px;font-weight:500">Email</span>
                       </td>
                       <td style="padding:16px 20px">
-                        <a href="mailto:${email.trim()}" style="color:#4338ca;font-size:14px;font-weight:600;text-decoration:none">${email.trim()}</a>
+                        <a href="mailto:${safeEmail}" style="color:#4338ca;font-size:14px;font-weight:600;text-decoration:none">${safeEmail}</a>
                       </td>
                     </tr>
                   </table>
@@ -95,13 +101,13 @@ export async function POST(req: Request) {
                 <td style="padding:28px 40px 0">
                   <h2 style="margin:0 0 12px;color:#0f172a;font-size:18px;font-weight:700">Project Brief</h2>
                   <div style="background:#f8fafc;border-radius:12px;padding:20px;color:#334155;font-size:14px;line-height:1.7">
-                    ${message.trim().replace(/\n/g, "<br>")}
+                    ${safeMessage}
                   </div>
                 </td>
               </tr>
               <tr>
                 <td style="padding:32px 40px">
-                  <a href="mailto:${email.trim()}" style="display:inline-block;background:#4338ca;color:#ffffff;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none">Reply to ${name.trim()}</a>
+                  <a href="mailto:${safeEmail}" style="display:inline-block;background:#4338ca;color:#ffffff;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none">Reply to ${safeName}</a>
                 </td>
               </tr>
               <tr>
@@ -145,7 +151,7 @@ export async function POST(req: Request) {
               </tr>
               <tr>
                 <td style="padding:36px 40px 0">
-                  <h2 style="margin:0;color:#0f172a;font-size:22px;font-weight:700">Hi ${name.trim()},</h2>
+                  <h2 style="margin:0;color:#0f172a;font-size:22px;font-weight:700">Hi ${safeName},</h2>
                   <p style="margin:12px 0 0;color:#475569;font-size:15px;line-height:1.7">
                     We're excited to hear from you! Your inquiry has been received and a dedicated member of our team will be in touch with you shortly.
                   </p>
@@ -182,7 +188,7 @@ export async function POST(req: Request) {
                 <td style="padding:28px 40px 0">
                   <h3 style="margin:0 0 12px;color:#0f172a;font-size:15px;font-weight:700">Your message</h3>
                   <div style="background:#f8fafc;border-radius:12px;padding:20px;color:#475569;font-size:14px;line-height:1.7">
-                    ${message.trim().replace(/\n/g, "<br>")}
+                    ${safeMessage}
                   </div>
                 </td>
               </tr>
@@ -218,7 +224,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Contact form error:", error);
-    const msg = error instanceof Error ? error.message : "Unknown error";
-    return NextResponse.json({ error: msg }, { status: 500 });
+    return NextResponse.json({ error: "Something went wrong. Please try again later." }, { status: 500 });
   }
 }
