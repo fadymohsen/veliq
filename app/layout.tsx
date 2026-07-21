@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/sections/Navbar";
 import GlobalBackground from "@/components/ui/GlobalBackground";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
-import { SplashScreen, CustomCursor } from "@/components/ui/ClientOnly";
+import { SplashScreen } from "@/components/ui/ClientOnly";
 import { JsonLd, organizationSchema, localBusinessSchema } from "@/components/seo/JsonLd";
 
 const inter = Inter({
@@ -81,7 +81,6 @@ export default function RootLayout({
         </a>
         <SplashScreen />
         <GlobalBackground />
-        <CustomCursor />
         <Navbar />
         <div id="main" tabIndex={-1}>{children}</div>
         <WhatsAppButton />

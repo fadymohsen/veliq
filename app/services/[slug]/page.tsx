@@ -69,6 +69,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       ])} />
       <article className="max-w-[1200px] mx-auto section-padding flex flex-col gap-20">
 
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-[var(--text-body-light)]">
+          <Link href="/" className="hover:text-white transition-colors">Home</Link>
+          <span className="text-[var(--text-dim)]">/</span>
+          <Link href="/services" className="hover:text-white transition-colors">Services</Link>
+          <span className="text-[var(--text-dim)]">/</span>
+          <span className="text-white font-medium">{service.title}</span>
+        </nav>
+
         {/* Hero */}
         <div className="flex flex-col gap-6 max-w-[760px]">
           <div

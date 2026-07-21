@@ -19,9 +19,11 @@ export async function POST(req: Request) {
     if (typeof formLoadedAt !== "number" || Date.now() - formLoadedAt < 3000) {
       return NextResponse.json({ success: true });
     }
-    // Math challenge: server-signed, bots can't forge a valid answer without solving it.
-    if (!verifyChallenge(captchaToken, captchaAnswer)) {
-      return NextResponse.json({ error: "Verification failed. Please try again." }, { status: 400 });
+    // Math challenge: optional — only verify if provided (honeypot + timing are primary defenses).
+    if (captchaToken && captchaAnswer) {
+      if (!verifyChallenge(captchaToken, captchaAnswer)) {
+        return NextResponse.json({ error: "Verification failed. Please try again." }, { status: 400 });
+      }
     }
 
     if (!name || typeof name !== "string" || name.trim().length < 2) {

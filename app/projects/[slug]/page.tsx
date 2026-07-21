@@ -108,8 +108,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         { name: project.title, url: `https://veliq.co/projects/${project.slug}` },
       ])} />
 
+      {/* ── Breadcrumb ── */}
+      <nav aria-label="Breadcrumb" className="w-full max-w-[1200px] flex items-center gap-2 text-sm text-[var(--text-body-light)]" style={{ paddingTop: "94px" }}>
+        <Link href="/" className="hover:text-white transition-colors">Home</Link>
+        <span className="text-[var(--text-dim)]">/</span>
+        <Link href="/projects" className="hover:text-white transition-colors">Projects</Link>
+        <span className="text-[var(--text-dim)]">/</span>
+        <span className="text-white font-medium">{project.title}</span>
+      </nav>
+
       {/* ── Intro ── */}
-      <section className="w-full flex flex-col items-center gap-10" style={{ paddingTop: "94px" }}>
+      <section className="w-full flex flex-col items-center gap-10 pt-6">
         <div className="w-full max-w-[600px] flex flex-col items-center text-center gap-4">
           <h1 className="heading-1 text-white">{project.title}</h1>
           <p className="para-26 text-white" style={{ textAlign: "center" }}>{project.description}</p>

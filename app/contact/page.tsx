@@ -1,7 +1,7 @@
 "use client";
 
 import Footer from "@/components/sections/Footer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const CONTACT_INFO = [
   { label: "Email",    value: "admin@veliq.co",    href: "mailto:admin@veliq.co" },
@@ -69,25 +69,9 @@ export default function ContactPage() {
   const [error, setError] = useState("");
   const [website, setWebsite] = useState(""); // honeypot
   const [formLoadedAt] = useState(() => Date.now());
-  const [captcha, setCaptcha] = useState<{ a: number; b: number; token: string } | null>(null);
-  const [captchaAnswer, setCaptchaAnswer] = useState("");
-  const [captchaError, setCaptchaError] = useState("");
-
-  // Fetch math captcha on mount
-  useEffect(() => {
-    fetch("/api/captcha")
-      .then((r) => r.json())
-      .then(setCaptcha)
-      .catch(() => setCaptcha(null));
-  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!captcha || !captchaAnswer.trim()) {
-      setCaptchaError("Please answer the verification question.");
-      return;
-    }
-    setCaptchaError("");
     setSending(true);
     setError("");
     try {
@@ -98,8 +82,6 @@ export default function ContactPage() {
           ...form,
           website,
           formLoadedAt,
-          captchaToken: captcha?.token,
-          captchaAnswer,
         }),
       });
       const data = await res.json();
@@ -265,28 +247,6 @@ export default function ContactPage() {
                   aria-hidden="true"
                   style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0 }}
                 />
-
-                {/* Math captcha */}
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-captcha" className="para-14 text-[rgb(201,201,201)]">
-                    Quick check: what is {captcha ? `${captcha.a} + ${captcha.b}` : "…"}?
-                  </label>
-                  <input
-                    id="contact-captcha"
-                    type="text"
-                    inputMode="numeric"
-                    value={captchaAnswer}
-                    onChange={(e) => setCaptchaAnswer(e.target.value)}
-                    placeholder="Your answer"
-                    className="bg-[rgb(20,20,20)] text-white rounded-[12px] px-5 py-4 para-16 outline-none transition-colors"
-                    style={{
-                      border: `1px solid ${captchaError ? "rgb(239,68,68)" : "rgb(40,40,40)"}`,
-                    }}
-                    onFocus={(e) => (e.target.style.borderColor = "rgb(99,102,241)")}
-                    onBlur={(e) => (e.target.style.borderColor = captchaError ? "rgb(239,68,68)" : "rgb(40,40,40)")}
-                  />
-                  {captchaError && <p style={{ fontSize: 12, color: "rgb(239,68,68)" }}>{captchaError}</p>}
-                </div>
 
                 {error && (
                   <p className="text-sm rounded-[12px] px-4 py-3" style={{ backgroundColor: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.2)", color: "rgb(239,68,68)" }}>

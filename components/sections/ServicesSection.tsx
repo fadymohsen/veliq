@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { motion, useScroll, useSpring, useTransform, useReducedMotion } from "framer-motion";
 
 /* Icons */
@@ -47,7 +47,6 @@ const STACK_R = [-4, 0, 4];
 
 export default function ServicesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   const [vp, setVp] = useState({ w: 1280, h: 800 });
   useEffect(() => {
@@ -74,12 +73,6 @@ export default function ServicesSection() {
     CW = 150; CH = 200;
     FAN_X = D_X; FAN_Y = D_Y; FAN_ROT = D_ROT;
   }
-
-  const [flippedId, setFlippedId] = useState<string | null>(null);
-  const handleCardClick = (id: string, slug: string) => {
-    if (flippedId === id) router.push(`/services/${slug}`);
-    else setFlippedId(id);
-  };
 
   const shouldReduceMotion = useReducedMotion();
 
@@ -159,12 +152,10 @@ export default function ServicesSection() {
                   rotate: slots[i].r,
                 }}
               >
-                <button
-                  type="button"
-                  className={`service-card w-full h-full cursor-pointer${flippedId === svc.id ? " is-flipped" : ""}`}
-                  style={{ perspective: "800px", background: "none", border: "none", padding: 0 }}
-                  onClick={() => handleCardClick(svc.id, svc.slug)}
-                  aria-label={`${svc.title} — ${flippedId === svc.id ? "click to open" : "click to see details"}`}
+                <Link
+                  href={`/services/${svc.slug}`}
+                  className="service-card block w-full h-full cursor-pointer"
+                  style={{ perspective: "800px" }}
                 >
                   <div className="service-card-inner">
                     {/* Front */}
@@ -199,7 +190,7 @@ export default function ServicesSection() {
                       </span>
                     </div>
                   </div>
-                </button>
+                </Link>
               </motion.div>
             ))}
           </div>

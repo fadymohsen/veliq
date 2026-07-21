@@ -91,7 +91,7 @@ export default function Footer() {
         </div>
 
         {/* Right: nav + social */}
-        <div className="flex gap-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-16">
           <div className="flex flex-col gap-4">
             <span className="section-label-sm">Menu</span>
             <ul className="flex flex-col gap-[10px]">

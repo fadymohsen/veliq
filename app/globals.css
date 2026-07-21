@@ -303,13 +303,6 @@ body {
   will-change: transform;
 }
 
-/* ─── Custom cursor — hide native cursor only on precise-pointer devices ──── */
-@media (pointer: fine) {
-  html, body, a, button, [role="button"], label, input, textarea, select {
-    cursor: none;
-  }
-}
-
 /* ─── Service card flip ──────────────────────────────────────────────────── */
 .service-card-inner {
   position: relative;
