@@ -6,6 +6,8 @@ import IntroSection from "@/components/sections/IntroSection";
 import MissionVisionSection from "@/components/sections/MissionVisionSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import Footer from "@/components/sections/Footer";
+import Link from "next/link";
+import { SERVICES } from "@/lib/services";
 import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
 
 const ServicesSection = dynamic(() => import("@/components/sections/ServicesSection"));
@@ -41,6 +43,23 @@ export default function Home() {
         <Suspense>
           <ServicesSection />
         </Suspense>
+
+        {/* Server-rendered service descriptions for SEO crawlability */}
+        <section className="w-full bg-black section-padding">
+          <div className="w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+            {SERVICES.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="card p-7 flex flex-col gap-4 transition-colors hover:border-[var(--accent-indigo)]"
+              >
+                <h3 className="text-white text-lg font-bold tracking-[-0.03em]">{service.title}</h3>
+                <p className="text-sm text-[var(--text-body)] leading-[1.65]">{service.desc}</p>
+                <span className="text-[var(--accent-indigo)] text-[13px] font-semibold">Learn more →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <Suspense>
           <StatsSection />

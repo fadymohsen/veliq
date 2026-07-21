@@ -59,6 +59,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://veliq.co",
+    languages: {
+      "x-default": "https://veliq.co",
+      "en": "https://veliq.co",
+    },
   },
 };
 

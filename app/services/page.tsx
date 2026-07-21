@@ -82,6 +82,28 @@ export default function ServicesPage() {
           ))}
         </div>
 
+        {/* SEO landing page cross-link */}
+        <Link
+          href="/website-development-with-seo"
+          className="group rounded-[20px] p-8 flex flex-col sm:flex-row items-center justify-between gap-6 transition-colors hover:border-[rgba(99,102,241,0.4)]"
+          style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
+        >
+          <div className="flex flex-col gap-2">
+            <h2 className="text-white" style={{ fontSize: "20px", fontWeight: 700, letterSpacing: "-0.03em" }}>
+              Website Development with SEO Built In
+            </h2>
+            <p className="text-[rgb(160,160,160)]" style={{ fontSize: "14px", lineHeight: 1.5 }}>
+              Learn how we combine web development and technical SEO from day one — so your site ranks from the moment it launches.
+            </p>
+          </div>
+          <svg
+            className="shrink-0 transition-transform group-hover:translate-x-1"
+            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(99,102,241)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </Link>
+
         {/* CTA + Blog link */}
         <div
           className="rounded-[20px] p-8 flex flex-col sm:flex-row items-center justify-between gap-6"

@@ -34,7 +34,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         >
           <Image
             src={project.preview}
-            alt={project.title}
+            alt={`${project.title} website screenshot — ${project.description.slice(0, 80)}`}
             fill
             sizes="(max-width: 640px) 100vw, 50vw"
             className="object-cover object-top transition-transform duration-500 group-hover:scale-105"

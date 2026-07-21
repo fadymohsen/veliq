@@ -41,7 +41,7 @@ function BrowserCard({ project }: { project: (typeof PROJECTS)[number] }) {
         <div className="relative overflow-hidden bg-[var(--surface-card-alt)]" style={{ width: CARD_W, height: CARD_H }}>
           <Image
             src={project.preview}
-            alt={project.title}
+            alt={`${project.title} website screenshot — ${project.description.slice(0, 80)}`}
             fill
             sizes="760px"
             className="object-cover object-top transition-transform duration-700 group-hover:scale-105"

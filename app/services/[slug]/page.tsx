@@ -392,6 +392,27 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           );
         })()}
 
+        {/* SEO landing page cross-link */}
+        <Link
+          href="/website-development-with-seo"
+          className="group card p-7 flex items-center justify-between gap-4 transition-colors hover:border-[rgba(99,102,241,0.4)]"
+        >
+          <div className="flex flex-col gap-1">
+            <span className="text-white text-[17px] font-semibold tracking-[-0.02em]">
+              Website Development with SEO Built In
+            </span>
+            <span className="text-[rgb(160,160,160)] text-[13px] leading-[1.5]">
+              See how we combine development and SEO from day one.
+            </span>
+          </div>
+          <svg
+            className="shrink-0 transition-transform group-hover:translate-x-1"
+            width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(99,102,241)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </Link>
+
         {/* Back + CTA */}
         <div className="flex items-center gap-4 flex-wrap">
           <Link
