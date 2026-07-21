@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import dynamic from "next/dynamic";
 import Navbar from "@/components/sections/Navbar";
 import GlobalBackground from "@/components/ui/GlobalBackground";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { SplashScreen, CustomCursor } from "@/components/ui/ClientOnly";
 import { JsonLd, organizationSchema, localBusinessSchema } from "@/components/seo/JsonLd";
-
-const SplashScreen = dynamic(() => import("@/components/ui/SplashScreen"), { ssr: false });
-const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
 
 const inter = Inter({
   subsets: ["latin"],
