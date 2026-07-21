@@ -2,12 +2,15 @@ import { createHmac, randomInt } from "crypto";
 
 // Self-hosted math challenge — no external service, no API keys.
 // Signed so a bot can't just POST a=1&b=1&answer=2 without solving the real question.
-const SECRET = process.env.CAPTCHA_SECRET;
-if (!SECRET) throw new Error("CAPTCHA_SECRET environment variable is required");
+function getSecret(): string {
+  const s = process.env.CAPTCHA_SECRET;
+  if (!s) throw new Error("CAPTCHA_SECRET environment variable is required");
+  return s;
+}
 const TTL_MS = 10 * 60 * 1000; // 10 minutes to fill the form
 
 function sign(payload: string): string {
-  return createHmac("sha256", SECRET).update(payload).digest("hex");
+  return createHmac("sha256", getSecret()).update(payload).digest("hex");
 }
 
 export function generateChallenge() {
