@@ -136,7 +136,7 @@ export default function IntroSection() {
             >
               <span className="section-label">Happy Clients</span>
               <div className="flex items-end gap-4">
-                <span className="stat-value" style={{ fontSize: "clamp(3rem,5vw,64px)" }}>30+</span>
+                <span className="stat-value" style={{ fontSize: "clamp(3rem,5vw,64px)" }}>15+</span>
                 <div className="flex gap-[3px] mb-2">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="var(--accent-indigo)">
