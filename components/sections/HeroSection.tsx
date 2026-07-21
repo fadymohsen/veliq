@@ -51,7 +51,7 @@ export default function HeroSection() {
           className="text-white font-bold leading-[1.05] tracking-[-0.04em]"
           style={{ fontSize: "clamp(2.2rem, 7vw, 5rem)" }}
         >
-          Precision at the
+          Websites that rank,
           <br />
           <span
             className="bg-clip-text text-transparent"
@@ -59,7 +59,7 @@ export default function HeroSection() {
               backgroundImage: "linear-gradient(135deg, var(--accent-indigo), var(--accent-purple), var(--accent-teal))",
             }}
           >
-            Speed of Ambition.
+            convert, and grow.
           </span>
         </motion.h1>
 
@@ -74,8 +74,8 @@ export default function HeroSection() {
             maxWidth: "48ch",
           }}
         >
-          A website development company that builds SEO-optimized websites
-          and provides ongoing support — so you can focus on growing your business.
+          We build SEO-optimized websites and provide ongoing support
+          — so your business gets found, wins trust, and scales online.
         </motion.p>
 
         {/* CTAs */}

@@ -1,17 +1,16 @@
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/HeroSection";
-import HeaderBar from "@/components/ui/HeaderBar";
 import IntroSection from "@/components/sections/IntroSection";
-import MissionVisionSection from "@/components/sections/MissionVisionSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import ResultsSection from "@/components/sections/ResultsSection";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { SERVICES } from "@/lib/services";
 import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
 
-const ServicesSection = dynamic(() => import("@/components/sections/ServicesSection"));
 const StatsSection = dynamic(() => import("@/components/sections/StatsSection"));
+const LeadMagnetSection = dynamic(() => import("@/components/sections/LeadMagnetSection"));
 const FaqSection = dynamic(() => import("@/components/sections/FaqSection"));
 const CtaSection = dynamic(() => import("@/components/sections/CtaSection"));
 
@@ -27,49 +26,62 @@ export default function Home() {
   return (
     <main className="bg-black">
       <JsonLd data={faqSchema(HOME_FAQS)} />
-      {/* Hero — full-bleed, fills the entire viewport */}
+
+      {/* 1. Hero — clear value prop + primary CTA */}
       <HeroSection />
 
-      {/* Everything below keeps the inset rounded-card stack look */}
       <div className="flex flex-col gap-[10px] p-2">
-        <HeaderBar label="About Us" />
+
+        {/* 2. Client Logos + instant credibility */}
         <IntroSection />
-        <MissionVisionSection />
 
-        <HeaderBar label="Portfolio" />
-        <ProjectsSection />
-
-        <HeaderBar label="Services" />
-        <Suspense>
-          <ServicesSection />
-        </Suspense>
-
-        {/* Server-rendered service descriptions for SEO crawlability */}
+        {/* 3. Services — server-rendered grid (crawlable, no scroll-jacking) */}
         <section className="w-full bg-black section-padding">
-          <div className="w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
-            {SERVICES.map((service) => (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-                className="card p-7 flex flex-col gap-4 transition-colors hover:border-[var(--accent-indigo)]"
-              >
-                <h3 className="text-white text-lg font-bold tracking-[-0.03em]">{service.title}</h3>
-                <p className="text-sm text-[var(--text-body)] leading-[1.65]">{service.desc}</p>
-                <span className="text-[var(--accent-indigo)] text-[13px] font-semibold">Learn more →</span>
-              </Link>
-            ))}
+          <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-12">
+            <div className="flex flex-col gap-4">
+              <h2 className="heading-1 text-white">Services.</h2>
+              <p className="para-32 text-[var(--text-secondary)] max-w-2xl">
+                Three focused disciplines. One dedicated team.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {SERVICES.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="card p-7 flex flex-col gap-4 transition-colors hover:border-[var(--accent-indigo)]"
+                >
+                  <h3 className="text-white text-lg font-bold tracking-[-0.03em]">{service.title}</h3>
+                  <p className="text-sm text-[var(--text-body)] leading-[1.65]">{service.desc}</p>
+                  <span className="text-[var(--accent-indigo)] text-[13px] font-semibold mt-auto">Learn more →</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
+        {/* 4. Projects — browsable grid */}
+        <ProjectsSection />
+
+        {/* 5. Results / Stats */}
         <Suspense>
           <StatsSection />
         </Suspense>
 
-        <HeaderBar label="FAQ" />
+        {/* 6. Social proof — real client results */}
+        <ResultsSection />
+
+        {/* 7. Lead magnet — free SEO audit */}
+        <Suspense>
+          <LeadMagnetSection />
+        </Suspense>
+
+        {/* 8. FAQ */}
         <Suspense>
           <FaqSection />
         </Suspense>
 
+        {/* 9. Final CTA */}
         <Suspense>
           <CtaSection />
         </Suspense>

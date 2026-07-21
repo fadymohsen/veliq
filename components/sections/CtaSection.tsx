@@ -9,11 +9,10 @@ const EASE_ALT = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 const TYPEWRITER_WORDS = [
   "a new website?",
-  "mobile app development?",
   "better SEO rankings?",
-  "a stronger brand identity?",
-  "data & analytics?",
-  "digital marketing?",
+  "ongoing website support?",
+  "a bilingual web platform?",
+  "a faster, converting site?",
 ];
 
 function TypewriterText() {

@@ -240,7 +240,7 @@ export default function PricingPage() {
                   </ul>
 
                   <Link
-                    href={`/checkout/${checkoutSlug}`}
+                    href={`/contact?plan=${checkoutSlug}`}
                     className="w-full flex items-center justify-center rounded-full text-white font-semibold hover:brightness-110 transition-all"
                     style={{
                       backgroundColor: pkg.popular ? INDIGO : "rgb(28,28,28)",
@@ -249,7 +249,7 @@ export default function PricingPage() {
                       padding: "13px 0",
                     }}
                   >
-                    Get Started
+                    Request a Quote
                   </Link>
                 </div>
               );
@@ -317,7 +317,7 @@ export default function PricingPage() {
                 )}
 
                 <Link
-                  href={`/checkout/${plan.slug}`}
+                  href={`/contact?plan=${plan.slug}`}
                   className="w-full flex items-center justify-center rounded-full text-white font-semibold hover:brightness-110 transition-all"
                   style={{
                     backgroundColor: plan.highlighted ? INDIGO : "rgb(28,28,28)",
@@ -360,7 +360,7 @@ export default function PricingPage() {
                   <span style={{ fontSize: 14, color: MUTED, marginLeft: 6 }}>{seoPackage.suffix}</span>
                 </div>
                 <Link
-                  href={`/checkout/${seoPackage.slug}`}
+                  href={`/contact?plan=${seoPackage.slug}`}
                   className="inline-flex items-center justify-center gap-2 rounded-full text-white font-semibold hover:brightness-110 transition-all"
                   style={{ backgroundColor: INDIGO, fontSize: 14, fontWeight: 600, padding: "13px 24px" }}
                 >
