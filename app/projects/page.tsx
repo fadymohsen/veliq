@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Footer from "@/components/sections/Footer";
 import ProjectCard from "@/components/ui/ProjectCard";
 import { PROJECTS } from "@/lib/projects";
@@ -21,6 +22,20 @@ export default function ProjectsPage() {
           ))}
         </div>
       </section>
+
+      <section className="section-padding max-w-[1200px] mx-auto">
+        <div className="rounded-3xl border border-white/[0.06] bg-white/[0.02] p-10 sm:p-14 flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
+          <div className="flex-1 text-center sm:text-left">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Ready to start your project?</h2>
+            <p className="mt-3 text-slate-400 text-base max-w-lg">Explore our services or read our blog for insights on web development, SEO, and digital strategy.</p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link href="/services" className="rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white hover:bg-indigo-500 transition text-center">Our Services</Link>
+            <Link href="/blog" className="rounded-xl border border-white/10 bg-white/[0.05] px-6 py-3 text-sm font-semibold text-slate-300 hover:bg-white/[0.1] hover:text-white transition text-center">Read the Blog</Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

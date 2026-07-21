@@ -576,7 +576,7 @@ export default function AdminDashboard() {
                 <div key={index} className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm overflow-hidden hover:border-white/10 transition">
                   <div className="flex items-center gap-4 p-5 cursor-pointer hover:bg-white/[0.02] transition" onClick={() => setEditingProject(editingProject === index ? null : index)}>
                     {project.image ? (
-                      <img src={project.image} alt={project.title || "Project thumbnail"} className="h-12 w-12 rounded-xl shrink-0 object-cover" />
+                      <img src={project.image} alt={`${project.title || "Project"} thumbnail`} className="h-12 w-12 rounded-xl shrink-0 object-cover" />
                     ) : (
                       <div className="h-12 w-12 rounded-xl shrink-0 bg-white/[0.06] border border-white/10 flex items-center justify-center text-slate-600 text-xs">No img</div>
                     )}
@@ -642,7 +642,7 @@ export default function AdminDashboard() {
                           {project.gallery.map((item, gi) => (
                             <div key={gi} className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
                               {item.image ? (
-                                <img src={item.image} alt={item.caption || "Gallery image"} className="h-10 w-14 rounded-lg shrink-0 object-cover" />
+                                <img src={item.image} alt={item.caption || `${project.title || "Project"} gallery image`} className="h-10 w-14 rounded-lg shrink-0 object-cover" />
                               ) : (
                                 <div className="h-10 w-14 rounded-lg shrink-0 bg-white/[0.04] border border-dashed border-white/10 flex items-center justify-center text-[10px] text-slate-600">No img</div>
                               )}
