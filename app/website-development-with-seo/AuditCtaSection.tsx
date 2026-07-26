@@ -99,7 +99,7 @@ function AuditModal({ onClose }: { onClose: () => void }) {
           </div>
         ) : (
           <>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 text-left">
               <h3 className="text-white" style={{ fontSize: 20, fontWeight: 700, letterSpacing: "-0.02em" }}>
                 Get your free SEO audit
               </h3>
@@ -121,7 +121,7 @@ function AuditModal({ onClose }: { onClose: () => void }) {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="para-14" style={{ color: "rgb(201,201,201)" }}>Full name</label>
+                <label className="para-14 text-left" style={{ color: "rgb(201,201,201)" }}>Full name</label>
                 <input
                   type="text"
                   required
@@ -136,7 +136,7 @@ function AuditModal({ onClose }: { onClose: () => void }) {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="para-14" style={{ color: "rgb(201,201,201)" }}>Email</label>
+                <label className="para-14 text-left" style={{ color: "rgb(201,201,201)" }}>Email</label>
                 <input
                   type="email"
                   required
@@ -151,7 +151,7 @@ function AuditModal({ onClose }: { onClose: () => void }) {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="para-14" style={{ color: "rgb(201,201,201)" }}>WhatsApp number</label>
+                <label className="para-14 text-left" style={{ color: "rgb(201,201,201)" }}>WhatsApp number</label>
                 <div className="flex gap-2">
                   <select
                     value={form.countryCode}
@@ -185,7 +185,7 @@ function AuditModal({ onClose }: { onClose: () => void }) {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="para-14" style={{ color: "rgb(201,201,201)" }}>Website link</label>
+                <label className="para-14 text-left" style={{ color: "rgb(201,201,201)" }}>Website link</label>
                 <input
                   type="text"
                   required
