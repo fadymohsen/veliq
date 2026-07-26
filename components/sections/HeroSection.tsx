@@ -63,21 +63,6 @@ export default function HeroSection() {
           </span>
         </motion.h1>
 
-        {/* Subline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
-          className="text-[var(--text-muted)] tracking-[-0.01em] leading-[1.7]"
-          style={{
-            fontSize: "clamp(0.95rem, 1.6vw, 1.15rem)",
-            maxWidth: "48ch",
-          }}
-        >
-          We build SEO-optimized websites and provide ongoing support
-          — so your business gets found, wins trust, and scales online.
-        </motion.p>
-
         {/* CTAs */}
         <motion.div
           className="flex flex-col sm:flex-row items-center gap-3"
@@ -96,22 +81,6 @@ export default function HeroSection() {
           </Link>
         </motion.div>
 
-        {/* Trust indicators */}
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.65 }}
-        >
-          {["10+ Projects Delivered", "Clients across 4 Countries", "SEO & Development"].map((item) => (
-            <div key={item} className="flex items-center gap-2">
-              <span className="inline-block w-[5px] h-[5px] rounded-full bg-[var(--accent-indigo)]" />
-              <span className="text-[13px] text-[var(--text-dim)] tracking-[-0.01em]">
-                {item}
-              </span>
-            </div>
-          ))}
-        </motion.div>
       </div>
 
       {/* Scroll indicator */}
