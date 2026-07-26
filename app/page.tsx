@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/HeroSection";
 import IntroSection from "@/components/sections/IntroSection";
+import ReviewsSection from "@/components/sections/ReviewsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
@@ -32,6 +33,9 @@ export default function Home() {
 
         {/* 2. Client Logos + instant credibility */}
         <IntroSection />
+
+        {/* 2.5. Google Reviews — real client social proof */}
+        <ReviewsSection />
 
         {/* 3. Services — server-rendered grid (crawlable, no scroll-jacking) */}
         <section className="w-full bg-black section-padding">
