@@ -131,7 +131,7 @@ export async function POST(req: Request) {
 
     // Confirmation email to client (best effort — don't fail the request if this errors)
     try {
-      await resend.emails.send({
+      const clientResult = await resend.emails.send({
         from: `VELIQ <${SENDER_EMAIL}>`,
         to: [email.trim()],
         replyTo: ADMIN_EMAIL,
@@ -219,6 +219,9 @@ export async function POST(req: Request) {
       </html>
         `,
       });
+      if (clientResult.error) {
+        console.warn("Client confirmation email failed (non-blocking):", clientResult.error);
+      }
     } catch (clientErr) {
       console.warn("Client confirmation email failed (non-blocking):", clientErr);
     }

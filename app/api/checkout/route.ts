@@ -93,7 +93,7 @@ export async function POST(req: Request) {
 
     // Client confirmation (best effort)
     try {
-      await resend.emails.send({
+      const clientResult = await resend.emails.send({
         from: `VELIQ <${SENDER_EMAIL}>`,
         to: [email.trim()],
         replyTo: ADMIN_EMAIL,
@@ -135,6 +135,9 @@ export async function POST(req: Request) {
         </td></tr></table>
       </body></html>`,
       });
+      if (clientResult.error) {
+        console.warn("Client checkout email failed (non-blocking):", clientResult.error);
+      }
     } catch (clientErr) {
       console.warn("Client checkout email failed (non-blocking):", clientErr);
     }
