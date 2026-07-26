@@ -107,17 +107,19 @@ function AuditModal({ onClose }: { onClose: () => void }) {
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              {/* Honeypot — hidden from real users */}
-              <input
-                type="text"
-                name="company"
-                value={form.hp}
-                onChange={(e) => setForm({ ...form, hp: e.target.value })}
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
-              />
+              {/* Honeypot — hidden from real users. Field name avoids autofill-trigger
+                  words (website/company/url) that browsers fill in for real users even
+                  when off-screen, which was blocking real leads. */}
+              <div style={{ display: "none" }} aria-hidden="true">
+                <input
+                  type="text"
+                  name="hp_check_field"
+                  value={form.hp}
+                  onChange={(e) => setForm({ ...form, hp: e.target.value })}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
 
               <div className="flex flex-col gap-2">
                 <label className="para-14" style={{ color: "rgb(201,201,201)" }}>Full name</label>

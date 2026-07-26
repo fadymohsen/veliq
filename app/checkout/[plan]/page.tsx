@@ -551,17 +551,19 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
                   Complete your order
                 </h3>
 
-                {/* Honeypot — hidden from real users, bots tend to fill every field */}
-                <input
-                  type="text"
-                  name="website"
-                  value={form.website}
-                  onChange={(e) => setForm({ ...form, website: e.target.value })}
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
-                />
+                {/* Honeypot — hidden from real users. Field name avoids autofill-trigger
+                    words (website/company/url) that browsers fill in for real users even
+                    when off-screen, which was blocking real leads. */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <input
+                    type="text"
+                    name="hp_check_field"
+                    value={form.website}
+                    onChange={(e) => setForm({ ...form, website: e.target.value })}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
 
                 {/* Step progress */}
                 <div className="flex items-center gap-2 -mt-1 mb-1">

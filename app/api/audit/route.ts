@@ -12,10 +12,12 @@ export async function POST(req: Request) {
 
     // Honeypot: hidden field bots fill in, humans never see.
     if (typeof hp === "string" && hp.trim().length > 0) {
+      console.warn("Audit request dropped: honeypot filled", { email });
       return NextResponse.json({ success: true });
     }
-    // Timing trap: real users take >3s to fill the form; bots submit near-instantly.
-    if (typeof formLoadedAt !== "number" || Date.now() - formLoadedAt < 3000) {
+    // Timing trap: real users take >1.5s to fill the form; bots submit near-instantly.
+    if (typeof formLoadedAt !== "number" || Date.now() - formLoadedAt < 1500) {
+      console.warn("Audit request dropped: submitted too fast", { email, elapsedMs: typeof formLoadedAt === "number" ? Date.now() - formLoadedAt : "n/a" });
       return NextResponse.json({ success: true });
     }
 

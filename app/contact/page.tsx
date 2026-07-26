@@ -236,17 +236,19 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {/* Honeypot — hidden from real users */}
-                <input
-                  type="text"
-                  name="website"
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                  autoComplete="off"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                  style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0 }}
-                />
+                {/* Honeypot — hidden from real users. Field name deliberately avoids
+                    autofill-trigger words (website/company/url) that browsers fill in
+                    for real users even when off-screen, which was blocking real leads. */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <input
+                    type="text"
+                    name="hp_check_field"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                    autoComplete="off"
+                    tabIndex={-1}
+                  />
+                </div>
 
                 {error && (
                   <p className="text-sm rounded-[12px] px-4 py-3" style={{ backgroundColor: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.2)", color: "rgb(239,68,68)" }}>
