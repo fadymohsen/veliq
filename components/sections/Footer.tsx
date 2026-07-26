@@ -161,7 +161,7 @@ export default function Footer() {
       <div className="h-px bg-[rgb(18,18,18)] mx-8" />
 
       {/* Bottom brand row */}
-      <div className="w-full flex items-center justify-between px-8 py-6">
+      <div className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-8 py-6">
         <Image
           src="/branding/colored-logo.png"
           alt="VELIQ"
@@ -169,7 +169,7 @@ export default function Footer() {
           height={32}
           className="object-contain opacity-85"
         />
-        <span className="text-xs text-[var(--text-body)] tracking-[-0.01em]">
+        <span className="text-xs text-[var(--text-body)] tracking-[-0.01em] sm:text-center">
           © {new Date().getFullYear()} VELIQ. All rights reserved.
         </span>
       </div>
