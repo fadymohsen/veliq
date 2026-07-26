@@ -1,15 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 export default function SplashScreen() {
-  const [phase, setPhase] = useState<"loading" | "reveal" | "done">(() => {
-    if (typeof window !== "undefined" && sessionStorage.getItem("veliq-splash-seen")) {
-      return "done";
+  // Initial state must match the SSR output exactly ("loading") — sessionStorage
+  // doesn't exist on the server, so branching on it here caused a hydration
+  // mismatch (server always rendered the splash, a client hydrating a second
+  // page load in the same session could compute "done" and render null),
+  // which crashed the whole tree and silently broke form submissions below it.
+  const [phase, setPhase] = useState<"loading" | "reveal" | "done">("loading");
+
+  // useLayoutEffect (not useEffect) so this resolves before paint — same
+  // no-flash behavior as before, but only after hydration has completed.
+  useLayoutEffect(() => {
+    if (sessionStorage.getItem("veliq-splash-seen")) {
+      setPhase("done");
     }
-    return "loading";
-  });
+  }, []);
 
   useEffect(() => {
     if (phase === "done") return;
