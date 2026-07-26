@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/sections/Footer";
 import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
+import AuditCtaSection from "./AuditCtaSection";
 
 export const metadata: Metadata = {
   title: "Website Development with SEO Built In",
@@ -201,22 +202,7 @@ export default function WebDevWithSeoPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding max-w-[700px] mx-auto flex flex-col items-center text-center gap-6">
-        <h2 className="text-white" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 600, letterSpacing: "-0.04em" }}>
-          Ready to build a website that ranks?
-        </h2>
-        <p style={{ fontSize: 15, color: "rgba(255,255,255,0.45)", maxWidth: "42ch", lineHeight: 1.6 }}>
-          No commitment. Tell us about your project and we will show you exactly how we would approach your website development with SEO from day one.
-        </p>
-        <Link
-          href="/contact"
-          className="inline-flex items-center gap-2 rounded-full text-white hover:brightness-110 transition-all"
-          style={{ backgroundColor: INDIGO, fontSize: 14, fontWeight: 600, padding: "14px 32px" }}
-        >
-          Get a Free Consultation
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-        </Link>
-      </section>
+      <AuditCtaSection />
 
       {/* FAQ */}
       <section className="section-padding max-w-[900px] mx-auto flex flex-col gap-10">
