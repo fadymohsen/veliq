@@ -7,11 +7,31 @@ import { COUNTRY_CODES, validatePhone, findCountryByCode } from "@/lib/country-c
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const AUDIT_ITEMS = [
-  "Your top 20 commercial-intent keywords — and where you actually rank",
-  "Technical SEO health score — indexing issues, speed, mobile-usability",
-  "Your content gap map — pages that should exist and don't",
-  "Competitor comparison — domain authority vs your 3 closest competitors",
+const FEATURES = [
+  {
+    title: "SEO Architecture from Day One",
+    desc: "Clean URL structures, semantic HTML, proper heading hierarchy, and crawlable site architecture — built into the foundation.",
+  },
+  {
+    title: "Core Web Vitals by Default",
+    desc: "Sub-2-second load times, zero layout shift, and instant interactivity. Google rewards fast sites with higher rankings.",
+  },
+  {
+    title: "Structured Data Built In",
+    desc: "JSON-LD schema markup for your business, services, FAQs, and articles — enabling rich results from launch day.",
+  },
+  {
+    title: "Mobile-First Development",
+    desc: "70%+ of traffic is mobile. Every layout is designed and tested on phones first, ensuring fast loads where it matters most.",
+  },
+  {
+    title: "Conversion-Led Design",
+    desc: "Strategic CTA placement, clear user journeys, and copy that converts — not just a pretty design that loses leads.",
+  },
+  {
+    title: "Ongoing Support & SEO Growth",
+    desc: "After launch, we monitor performance, track rankings, and continuously optimize. Your site improves every month.",
+  },
 ];
 
 function CloseIcon() {
@@ -118,9 +138,6 @@ function AuditModal({ onClose }: { onClose: () => void }) {
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              {/* Honeypot — hidden from real users. Field name avoids autofill-trigger
-                  words (website/company/url) that browsers fill in for real users even
-                  when off-screen, which was blocking real leads. */}
               <div style={{ display: "none" }} aria-hidden="true">
                 <input
                   type="text"
@@ -233,85 +250,77 @@ function AuditModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-export default function LeadMagnetSection() {
+export default function SeoDevSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -120px 0px" });
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <section ref={ref} className="w-full bg-black section-padding">
-      <div className="w-full max-w-[1200px] mx-auto">
+      <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-14">
+
+        {/* Header */}
         <motion.div
-          className="rounded-[24px] overflow-hidden"
-          style={{
-            background: "linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(45,212,191,0.08) 100%)",
-            border: "1px solid rgba(99,102,241,0.2)",
-          }}
-          initial={{ opacity: 0, y: 24 }}
+          className="flex flex-col gap-5 max-w-[680px]"
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: EASE }}
+          transition={{ duration: 0.7, ease: EASE }}
         >
-          <div className="flex flex-col lg:flex-row gap-10 p-8 lg:p-12">
-
-            {/* Left */}
-            <div className="flex flex-col gap-6 lg:w-[55%]">
-              <div className="flex flex-col gap-3">
-                <span className="section-label text-[var(--accent-indigo)]">Free — No Commitment</span>
-                <h2
-                  className="text-white font-semibold tracking-[-0.04em] leading-[1.1]"
-                  style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}
-                >
-                  Get a free 48-hour SEO visibility audit.
-                </h2>
-                <p className="text-[var(--text-body)] text-[15px] leading-[1.7] max-w-[48ch]">
-                  Before you hire anyone, see exactly where you stand. We&apos;ll analyze your site and deliver
-                  a custom report within 48 hours — completely free.
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-start gap-3">
-                <button
-                  type="button"
-                  onClick={() => setModalOpen(true)}
-                  className="btn-primary text-[15px]"
-                >
-                  Get Your Free Audit
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </button>
-                <Link
-                  href="/pricing"
-                  className="btn-outline text-sm"
-                >
-                  View Pricing
-                </Link>
-              </div>
-            </div>
-
-            {/* Right — what's included */}
-            <div className="flex flex-col gap-4 lg:w-[45%]">
-              <span className="text-[var(--text-faint)] text-[11px] font-bold tracking-[0.1em] uppercase">
-                What you&apos;ll receive
-              </span>
-              {AUDIT_ITEMS.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="flex items-start gap-3"
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.2 + i * 0.08, ease: EASE }}
-                >
-                  <span className="shrink-0 mt-1 flex items-center justify-center rounded-full w-5 h-5 bg-[var(--accent-indigo)]/20 text-[var(--accent-indigo)] text-[10px] font-bold">
-                    {i + 1}
-                  </span>
-                  <span className="text-[var(--text-secondary)] text-sm leading-[1.55]">{item}</span>
-                </motion.div>
-              ))}
-            </div>
-
-          </div>
+          <span className="section-label text-[var(--accent-indigo)]">Website Development + SEO</span>
+          <h2
+            className="text-white font-semibold tracking-[-0.04em] leading-[1.1]"
+            style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}
+          >
+            Websites built to rank from day one.
+          </h2>
+          <p className="text-[var(--text-body)] text-[15px] leading-[1.7]">
+            Most websites are built first and optimized later. We do both at the same time.
+            Every site we develop is engineered for search engines from the first line of code — so
+            you launch with speed, structure, and rankings from day one.
+          </p>
         </motion.div>
+
+        {/* Features grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {FEATURES.map((feature, i) => (
+            <motion.div
+              key={i}
+              className="card p-7 flex flex-col gap-3"
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.07, ease: EASE }}
+            >
+              <h3 className="text-white text-[15px] font-bold tracking-[-0.02em]">{feature.title}</h3>
+              <p className="text-sm text-[var(--text-body)] leading-[1.65]">{feature.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTAs */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-start gap-3"
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5, ease: EASE }}
+        >
+          <Link
+            href="/website-development-with-seo"
+            className="btn-primary text-[15px]"
+          >
+            Know More
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
+          <button
+            type="button"
+            onClick={() => setModalOpen(true)}
+            className="btn-outline text-sm"
+          >
+            Get Free Audit
+          </button>
+        </motion.div>
+
       </div>
 
       {modalOpen && <AuditModal onClose={() => setModalOpen(false)} />}

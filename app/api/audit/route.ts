@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { escapeHtml } from "@/lib/escape-html";
+import { findCountryByCode, validatePhone } from "@/lib/country-codes";
 
 const ADMIN_EMAIL = "admin@veliq.co";
 const SENDER_EMAIL = "admin@veliq.co";
@@ -8,7 +9,7 @@ const SENDER_EMAIL = "admin@veliq.co";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, whatsapp, website, hp, formLoadedAt } = body;
+    const { name, email, countryCode, whatsapp, website, hp, formLoadedAt } = body;
 
     // Honeypot: hidden field bots fill in, humans never see.
     if (typeof hp === "string" && hp.trim().length > 0) {
@@ -29,6 +30,15 @@ export async function POST(req: Request) {
     }
     if (!whatsapp || typeof whatsapp !== "string" || whatsapp.trim().length < 7) {
       return NextResponse.json({ error: "A valid WhatsApp number is required." }, { status: 400 });
+    }
+    if (countryCode && typeof countryCode === "string") {
+      const country = findCountryByCode(countryCode);
+      if (country) {
+        const digits = whatsapp.replace(/\D/g, "").replace(new RegExp(`^${country.dial.replace("+", "")}`), "");
+        if (digits.length < country.minDigits || digits.length > country.maxDigits) {
+          return NextResponse.json({ error: `Phone number should be ${country.minDigits === country.maxDigits ? country.minDigits : `${country.minDigits}-${country.maxDigits}`} digits for ${country.name}.` }, { status: 400 });
+        }
+      }
     }
     if (!website || typeof website !== "string" || website.trim().length < 4) {
       return NextResponse.json({ error: "Your website URL is required." }, { status: 400 });

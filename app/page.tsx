@@ -3,13 +3,12 @@ import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/HeroSection";
 import IntroSection from "@/components/sections/IntroSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
-import ResultsSection from "@/components/sections/ResultsSection";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { SERVICES } from "@/lib/services";
 import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
 
-const StatsSection = dynamic(() => import("@/components/sections/StatsSection"));
+const SeoDevSection = dynamic(() => import("@/components/sections/SeoDevSection"));
 const LeadMagnetSection = dynamic(() => import("@/components/sections/LeadMagnetSection"));
 const FaqSection = dynamic(() => import("@/components/sections/FaqSection"));
 const CtaSection = dynamic(() => import("@/components/sections/CtaSection"));
@@ -63,15 +62,12 @@ export default function Home() {
         {/* 4. Projects — browsable grid */}
         <ProjectsSection />
 
-        {/* 5. Results / Stats */}
+        {/* 5. Website Development + SEO service highlight */}
         <Suspense>
-          <StatsSection />
+          <SeoDevSection />
         </Suspense>
 
-        {/* 6. Social proof — real client results */}
-        <ResultsSection />
-
-        {/* 7. Lead magnet — free SEO audit */}
+        {/* 6. Lead magnet — free SEO audit */}
         <Suspense>
           <LeadMagnetSection />
         </Suspense>
