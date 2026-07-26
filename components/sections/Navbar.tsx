@@ -237,16 +237,10 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.35 }}
-              className="px-8 pb-10 flex items-center justify-between"
+              className="px-8 pb-10 flex items-center justify-center"
             >
-              <a
-                href="mailto:admin@veliq.co"
-                className="text-[13px] font-medium text-[var(--accent-indigo)] hover:opacity-75 transition-opacity"
-              >
-                admin@veliq.co
-              </a>
               <span className="text-xs text-[rgb(50,50,50)]">
-                &copy; {new Date().getFullYear()} VELIQ
+                &copy; {new Date().getFullYear()} VELIQ. All rights reserved.
               </span>
             </motion.div>
           </motion.div>
