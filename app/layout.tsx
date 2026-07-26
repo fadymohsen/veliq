@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/sections/Navbar";
 import GlobalBackground from "@/components/ui/GlobalBackground";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { SplashScreen } from "@/components/ui/ClientOnly";
 import { JsonLd, organizationSchema, localBusinessSchema } from "@/components/seo/JsonLd";
+
+const GA_ID = "G-9ZJEFXDNWM";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -72,6 +75,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable} h-full`}>
       <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
         <JsonLd data={organizationSchema} />
         <JsonLd data={localBusinessSchema} />
       </head>
