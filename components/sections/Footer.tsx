@@ -8,7 +8,6 @@ const MENU_LINKS = [
   { label: "Pricing",  href: "/pricing" },
   { label: "Projects", href: "/projects" },
   { label: "Blog",     href: "/blog" },
-  { label: "Website Development with SEO", href: "/website-development-with-seo" },
 ];
 
 const LEGAL_LINKS = [

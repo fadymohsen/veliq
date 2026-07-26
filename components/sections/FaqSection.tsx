@@ -71,7 +71,7 @@ function FaqItem({ q, a, open, onToggle, id }: { q: string; a: string; open: boo
             transition={{ duration: 0.28, ease: EASE }}
             className="overflow-hidden"
           >
-            <p className="px-5 pb-5 text-sm text-[var(--text-secondary)] leading-[1.6]">
+            <p className="px-5 pb-5 text-[15px] md:text-sm text-[var(--text-secondary)] leading-[1.6]">
               {a}
             </p>
           </motion.div>

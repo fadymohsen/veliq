@@ -59,7 +59,7 @@ function BrowserCard({ project, index }: { project: (typeof PROJECTS)[number]; i
           <span className="text-[var(--text-secondary)] text-lg font-semibold tracking-[-0.03em]">
             {project.title}
           </span>
-          <span className="text-[var(--text-body)] text-[13px] leading-[1.5] line-clamp-2">
+          <span className="text-[var(--text-body)] text-[15px] md:text-[13px] leading-[1.5] line-clamp-2">
             {project.description}
           </span>
         </div>

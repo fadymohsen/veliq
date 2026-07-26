@@ -8,7 +8,6 @@ import Link from "next/link";
 import { SERVICES } from "@/lib/services";
 import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
 
-const SeoDevSection = dynamic(() => import("@/components/sections/SeoDevSection"));
 const LeadMagnetSection = dynamic(() => import("@/components/sections/LeadMagnetSection"));
 const FaqSection = dynamic(() => import("@/components/sections/FaqSection"));
 const CtaSection = dynamic(() => import("@/components/sections/CtaSection"));
@@ -51,7 +50,7 @@ export default function Home() {
                   className="card p-7 flex flex-col gap-4 transition-colors hover:border-[var(--accent-indigo)]"
                 >
                   <h3 className="text-white text-lg font-bold tracking-[-0.03em]">{service.title}</h3>
-                  <p className="text-sm text-[var(--text-body)] leading-[1.65]">{service.desc}</p>
+                  <p className="text-[15px] md:text-sm text-[var(--text-body)] leading-[1.65]">{service.desc}</p>
                   <span className="text-[var(--accent-indigo)] text-[13px] font-semibold mt-auto">Learn more →</span>
                 </Link>
               ))}
@@ -62,12 +61,7 @@ export default function Home() {
         {/* 4. Projects — browsable grid */}
         <ProjectsSection />
 
-        {/* 5. Website Development + SEO service highlight */}
-        <Suspense>
-          <SeoDevSection />
-        </Suspense>
-
-        {/* 6. Lead magnet — free SEO audit */}
+        {/* 5. SEO dev features + Lead magnet */}
         <Suspense>
           <LeadMagnetSection />
         </Suspense>

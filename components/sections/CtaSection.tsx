@@ -101,7 +101,7 @@ export default function CtaSection() {
         </motion.div>
 
         <motion.p
-          className="text-[var(--text-secondary)] text-center text-sm max-w-[36ch]"
+          className="text-[var(--text-secondary)] text-center text-[15px] md:text-sm max-w-[36ch]"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.35, ease: EASE_ALT }}
