@@ -7,33 +7,6 @@ import { COUNTRY_CODES, validatePhone, findCountryByCode } from "@/lib/country-c
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const FEATURES = [
-  {
-    title: "SEO Architecture from Day One",
-    desc: "Clean URL structures, semantic HTML, proper heading hierarchy, and crawlable site architecture — built into the foundation.",
-  },
-  {
-    title: "Core Web Vitals by Default",
-    desc: "Sub-2-second load times, zero layout shift, and instant interactivity. Google rewards fast sites with higher rankings.",
-  },
-  {
-    title: "Structured Data Built In",
-    desc: "JSON-LD schema markup for your business, services, FAQs, and articles — enabling rich results from launch day.",
-  },
-  {
-    title: "Mobile-First Development",
-    desc: "70%+ of traffic is mobile. Every layout is designed and tested on phones first, ensuring fast loads where it matters most.",
-  },
-  {
-    title: "Conversion-Led Design",
-    desc: "Strategic CTA placement, clear user journeys, and copy that converts — not just a pretty design that loses leads.",
-  },
-  {
-    title: "Ongoing Support & SEO Growth",
-    desc: "After launch, we monitor performance, track rankings, and continuously optimize. Your site improves every month.",
-  },
-];
-
 const AUDIT_ITEMS = [
   "Your top 20 commercial-intent keywords — and where you actually rank",
   "Technical SEO health score — indexing issues, speed, mobile-usability",
@@ -264,68 +237,7 @@ export default function LeadMagnetSection() {
 
   return (
     <section ref={ref} className="w-full bg-black section-padding">
-      <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-14">
-
-        {/* Header */}
-        <motion.div
-          className="flex flex-col gap-5 max-w-[680px]"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: EASE }}
-        >
-          <span className="section-label text-[var(--accent-indigo)]">Website Development + SEO</span>
-          <h2
-            className="text-white font-semibold tracking-[-0.04em] leading-[1.1]"
-            style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}
-          >
-            Websites built to rank from day one.
-          </h2>
-          <p className="text-[var(--text-body)] text-base md:text-[15px] leading-[1.7]">
-            Most websites are built first and optimized later. We do both at the same time.
-            Every site we develop is engineered for search engines from the first line of code — so
-            you launch with speed, structure, and rankings from day one.
-          </p>
-        </motion.div>
-
-        {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {FEATURES.map((feature, i) => (
-            <motion.div
-              key={i}
-              className="card p-7 flex flex-col gap-3"
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 + i * 0.07, ease: EASE }}
-            >
-              <h3 className="text-white text-[15px] font-bold tracking-[-0.02em]">{feature.title}</h3>
-              <p className="text-[15px] md:text-sm text-[var(--text-body)] leading-[1.65]">{feature.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* CTAs */}
-        <motion.div
-          className="flex flex-col sm:flex-row items-start gap-3"
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5, ease: EASE }}
-        >
-          <Link href="/website-development-with-seo" className="btn-primary text-[15px]">
-            Know More
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </Link>
-          <button
-            type="button"
-            onClick={() => setModalOpen(true)}
-            className="btn-outline text-sm"
-          >
-            Get Free Audit
-          </button>
-        </motion.div>
-
-        {/* Audit card */}
+      <div className="w-full max-w-[1200px] mx-auto">
         <motion.div
           className="rounded-[24px] overflow-hidden"
           style={{
@@ -334,44 +246,45 @@ export default function LeadMagnetSection() {
           }}
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
+          transition={{ duration: 0.8, ease: EASE }}
         >
           <div className="flex flex-col lg:flex-row gap-10 p-8 lg:p-12">
 
             {/* Left */}
             <div className="flex flex-col gap-6 lg:w-[55%]">
               <div className="flex flex-col gap-3">
-                <span className="section-label text-[var(--accent-indigo)]">Free — No Commitment</span>
+                <span className="section-label text-[var(--accent-indigo)]">Website Development + SEO</span>
                 <h2
                   className="text-white font-semibold tracking-[-0.04em] leading-[1.1]"
                   style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}
                 >
-                  Get a free 48-hour SEO visibility audit.
+                  Websites built to rank from day one.
                 </h2>
                 <p className="text-[var(--text-body)] text-base md:text-[15px] leading-[1.7] max-w-[48ch]">
-                  Before you hire anyone, see exactly where you stand. We&apos;ll analyze your site and deliver
-                  a custom report within 48 hours — completely free.
+                  Most websites are built first and optimized later. We do both at the same time.
+                  Every site we develop is engineered for search engines from the first line of code — so
+                  you launch with speed, structure, and rankings from day one.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row items-start gap-3">
-                <button
-                  type="button"
-                  onClick={() => setModalOpen(true)}
-                  className="btn-primary text-[15px]"
-                >
-                  Get Your Free Audit
+                <Link href="/website-development-with-seo" className="btn-primary text-[15px]">
+                  Know More
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
-                </button>
-                <Link href="/pricing" className="btn-outline text-sm">
-                  View Pricing
                 </Link>
+                <button
+                  type="button"
+                  onClick={() => setModalOpen(true)}
+                  className="btn-outline text-sm"
+                >
+                  Get Your Free Audit
+                </button>
               </div>
             </div>
 
-            {/* Right — what's included */}
+            {/* Right — what's included in the audit */}
             <div className="flex flex-col gap-4 lg:w-[45%]">
               <span className="text-[var(--text-faint)] text-[11px] font-bold tracking-[0.1em] uppercase">
                 What you&apos;ll receive
@@ -382,7 +295,7 @@ export default function LeadMagnetSection() {
                   className="flex items-start gap-3"
                   initial={{ opacity: 0, x: 16 }}
                   animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.4 + i * 0.08, ease: EASE }}
+                  transition={{ duration: 0.6, delay: 0.2 + i * 0.08, ease: EASE }}
                 >
                   <span className="shrink-0 mt-1 flex items-center justify-center rounded-full w-5 h-5 bg-[var(--accent-indigo)]/20 text-[var(--accent-indigo)] text-[10px] font-bold">
                     {i + 1}
@@ -394,7 +307,6 @@ export default function LeadMagnetSection() {
 
           </div>
         </motion.div>
-
       </div>
 
       {modalOpen && <AuditModal onClose={() => setModalOpen(false)} />}
