@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: project.title,
     description: project.description,
-    alternates: { canonical: `https://veliq.co/projects/${slug}` },
+    alternates: { canonical: `https://www.veliq.co/projects/${slug}` },
   };
 }
 
@@ -103,9 +103,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <main className="bg-black min-h-screen flex flex-col items-center" style={{ padding: "0 24px 0" }}>
       <JsonLd data={breadcrumbSchema([
-        { name: "Home", url: "https://veliq.co" },
-        { name: "Projects", url: "https://veliq.co/projects" },
-        { name: project.title, url: `https://veliq.co/projects/${project.slug}` },
+        { name: "Home", url: "https://www.veliq.co" },
+        { name: "Projects", url: "https://www.veliq.co/projects" },
+        { name: project.title, url: `https://www.veliq.co/projects/${project.slug}` },
       ])} />
 
       {/* ── Breadcrumb ── */}

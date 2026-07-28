@@ -28,7 +28,7 @@ const ICONS: Record<string, React.ReactNode> = {
 export const metadata = {
   title: "Website Development, SEO & Support Services",
   description: "VELIQ is a website development company offering custom web development with SEO built in, ongoing website support, and technical SEO services across Egypt, Saudi Arabia, UAE, and the US.",
-  alternates: { canonical: "https://veliq.co/services" },
+  alternates: { canonical: "https://www.veliq.co/services" },
 };
 
 export default function ServicesPage() {

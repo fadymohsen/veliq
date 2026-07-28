@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `https://veliq.co/blog/${slug}` },
+    alternates: { canonical: `https://www.veliq.co/blog/${slug}` },
   };
 }
 
@@ -56,9 +56,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <main className="bg-black min-h-screen pt-16">
       <JsonLd data={articleSchema(post)} />
       <JsonLd data={breadcrumbSchema([
-        { name: "Home", url: "https://veliq.co" },
-        { name: "Blog", url: "https://veliq.co/blog" },
-        { name: post.title, url: `https://veliq.co/blog/${post.slug}` },
+        { name: "Home", url: "https://www.veliq.co" },
+        { name: "Blog", url: "https://www.veliq.co/blog" },
+        { name: post.title, url: `https://www.veliq.co/blog/${post.slug}` },
       ])} />
       <article className="section-padding max-w-[760px] mx-auto flex flex-col gap-10">
 

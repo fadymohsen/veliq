@@ -3,7 +3,7 @@ import { PROJECTS } from "@/lib/projects";
 import { SERVICES } from "@/lib/services";
 import { BLOG_POSTS } from "@/lib/blog";
 
-const BASE = "https://veliq.co";
+const BASE = "https://www.veliq.co";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

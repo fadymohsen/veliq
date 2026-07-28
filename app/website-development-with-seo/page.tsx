@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   title: "Website Development with SEO Built In",
   description:
     "VELIQ is a website development company that builds SEO into every website from day one. Custom web development with technical SEO, Core Web Vitals optimization, and structured data — serving Egypt, Saudi Arabia, UAE, and the US.",
-  alternates: { canonical: "https://veliq.co/website-development-with-seo" },
+  alternates: { canonical: "https://www.veliq.co/website-development-with-seo" },
   openGraph: {
     title: "Website Development with SEO Built In — VELIQ",
     description: "A website development company that builds SEO-optimized websites from the ground up. No retrofitting, no afterthoughts.",
-    url: "https://veliq.co/website-development-with-seo",
+    url: "https://www.veliq.co/website-development-with-seo",
   },
 };
 

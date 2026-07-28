@@ -4,4 +4,4 @@ Disallow: /checkout/
 Disallow: /api/
 Disallow: /studio
 
-Sitemap: https://veliq.co/sitemap.xml
+Sitemap: https://www.veliq.co/sitemap.xml

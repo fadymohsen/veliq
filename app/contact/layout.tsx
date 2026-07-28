@@ -11,7 +11,7 @@ const CONTACT_FAQS = [
 export const metadata: Metadata = {
   title: "Contact VELIQ — Website Development Company",
   description: "Get in touch with VELIQ for custom website development, SEO, and ongoing support. We'll get back to you within 24 hours.",
-  alternates: { canonical: "https://veliq.co/contact" },
+  alternates: { canonical: "https://www.veliq.co/contact" },
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {

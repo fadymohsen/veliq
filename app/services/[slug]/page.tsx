@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${service.title}`,
     description: service.desc,
-    alternates: { canonical: `https://veliq.co/services/${slug}` },
+    alternates: { canonical: `https://www.veliq.co/services/${slug}` },
   };
 }
 
@@ -63,9 +63,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <JsonLd data={serviceSchema(service)} />
       <JsonLd data={faqSchema(service.whyFaq.map((f) => ({ q: f.q, a: f.a })))} />
       <JsonLd data={breadcrumbSchema([
-        { name: "Home", url: "https://veliq.co" },
-        { name: "Services", url: "https://veliq.co/services" },
-        { name: service.title, url: `https://veliq.co/services/${service.slug}` },
+        { name: "Home", url: "https://www.veliq.co" },
+        { name: "Services", url: "https://www.veliq.co/services" },
+        { name: service.title, url: `https://www.veliq.co/services/${service.slug}` },
       ])} />
       <article className="max-w-[1200px] mx-auto section-padding flex flex-col gap-20">
 

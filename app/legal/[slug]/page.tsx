@@ -232,7 +232,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: page.title,
     description: page.description,
-    alternates: { canonical: `https://veliq.co/legal/${slug}` },
+    alternates: { canonical: `https://www.veliq.co/legal/${slug}` },
   };
 }
 

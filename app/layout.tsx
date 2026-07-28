@@ -26,7 +26,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://veliq.co"),
+  metadataBase: new URL("https://www.veliq.co"),
   title: {
     default: "VELIQ — Website Development Company with SEO",
     template: "%s — VELIQ",
@@ -34,11 +34,11 @@ export const metadata: Metadata = {
   description:
     "VELIQ builds SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US. Custom web development, technical SEO, and ongoing support.",
   keywords: ["website development company", "website development with SEO", "web development agency", "website development company in Egypt", "SEO-friendly website development", "custom website development", "website support", "web development Cairo", "SEO services Egypt", "website development Saudi Arabia"],
-  authors: [{ name: "VELIQ", url: "https://veliq.co" }],
+  authors: [{ name: "VELIQ", url: "https://www.veliq.co" }],
   openGraph: {
     title: "VELIQ — Website Development Company with SEO",
     description: "Website development company building SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US.",
-    url: "https://veliq.co",
+    url: "https://www.veliq.co",
     siteName: "VELIQ",
     locale: "en_US",
     type: "website",
@@ -62,10 +62,10 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://veliq.co",
+    canonical: "https://www.veliq.co",
     languages: {
-      "x-default": "https://veliq.co",
-      "en": "https://veliq.co",
+      "x-default": "https://www.veliq.co",
+      "en": "https://www.veliq.co",
     },
   },
 };
