@@ -3,7 +3,7 @@ import ReviewCard from "@/components/ui/ReviewCard";
 import { REVIEWS } from "@/lib/reviews";
 
 export const metadata = {
-  title: "Reviews — VELIQ",
+  title: "Reviews",
   description: `5.0 rating from ${REVIEWS.length} client reviews on Google.`,
 };
 

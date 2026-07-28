@@ -148,9 +148,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Related Blog Posts */}
         {(() => {
-          const related = BLOG_POSTS
-            .filter((p) => p.slug !== post.slug && p.category === post.category)
-            .slice(0, 3);
+          const sameCategory = BLOG_POSTS.filter((p) => p.slug !== post.slug && p.category === post.category);
+          const others = BLOG_POSTS.filter((p) => p.slug !== post.slug && p.category !== post.category);
+          const related = [...sameCategory, ...others].slice(0, 3);
           if (related.length === 0) return null;
           return (
             <div className="flex flex-col gap-6 pt-6 border-t border-[rgb(28,28,28)]">
@@ -160,12 +160,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               >
                 Related articles
               </h2>
-              <div className="flex flex-col gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {related.map((r) => (
                   <Link
                     key={r.slug}
                     href={`/blog/${r.slug}`}
-                    className="group flex items-center justify-between gap-4 rounded-[16px] p-5 transition-colors hover:border-[rgba(99,102,241,0.4)]"
+                    className="group flex flex-col justify-between gap-4 h-full rounded-[16px] p-5 transition-colors hover:border-[rgba(99,102,241,0.4)]"
                     style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
                   >
                     <div className="flex flex-col gap-1">
@@ -189,19 +189,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           );
         })()}
 
-        {/* Author */}
-        <div className="flex items-center gap-3 pt-4 border-t border-[rgb(28,28,28)]">
-          <div
-            className="flex items-center justify-center rounded-full text-white"
-            style={{ width: 40, height: 40, backgroundColor: "rgb(99,102,241)", fontSize: "14px", fontWeight: 700 }}
-          >
-            V
-          </div>
-          <div className="flex flex-col">
-            <span className="text-white" style={{ fontSize: "14px", fontWeight: 600 }}>{post.author}</span>
-            <span className="text-[rgb(201,201,201)]" style={{ fontSize: "12px" }}>veliq.agency@gmail.com</span>
-          </div>
-        </div>
       </article>
       <Footer />
     </main>

@@ -51,7 +51,7 @@ export default function HeroSection() {
           className="text-white font-bold leading-[1.05] tracking-[-0.04em]"
           style={{ fontSize: "clamp(2.2rem, 7vw, 5rem)" }}
         >
-          Websites that rank,
+          Websites that rank
           <br />
           <span
             className="bg-clip-text text-transparent"
@@ -59,7 +59,7 @@ export default function HeroSection() {
               backgroundImage: "linear-gradient(135deg, var(--accent-indigo), var(--accent-purple), var(--accent-teal))",
             }}
           >
-            convert, and grow.
+            convert and grow.
           </span>
         </motion.h1>
 

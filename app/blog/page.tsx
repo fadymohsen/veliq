@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BLOG_POSTS } from "@/lib/blog";
 
 export const metadata = {
-  title: "Blog — VELIQ",
+  title: "Blog",
   description: "Insights on web development, SEO, mobile apps, data analytics, brand strategy, and digital marketing.",
   alternates: { canonical: "https://veliq.co/blog" },
 };

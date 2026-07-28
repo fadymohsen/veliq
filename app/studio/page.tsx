@@ -1,7 +1,7 @@
 import Footer from "@/components/sections/Footer";
 
 export const metadata = {
-  title: "Studio — VELIQ",
+  title: "Studio",
   description: "Learn about our design studio, process, and team.",
   alternates: { canonical: "https://veliq.co/studio" },
 };
