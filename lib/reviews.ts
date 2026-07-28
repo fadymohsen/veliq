@@ -69,4 +69,27 @@ export const REVIEWS: Review[] = [
     date: "6 days ago",
     text: "Dealing with them is very nice and they are very skilled. ❤️",
   },
+  {
+    name: "White and Black Desert",
+    subtitle: "",
+    initial: "W",
+    avatarColor: "#b45309",
+    avatar: "/review-icons/white-and-black-desert.png",
+    rating: 5,
+    date: "5 hours ago",
+    text: "Working with VELiQ has been a fantastic experience! They developed a highly professional website for my business and did an outstanding job on SEO. The team is extremely respectful, professional, and easy to communicate with. Highly recommended for anyone looking for top-quality digital solutions and polite service!",
+  },
+  {
+    name: "G G",
+    subtitle: "1 review",
+    initial: "G",
+    avatarColor: "#7c3aed",
+    rating: 5,
+    date: "5 hours ago",
+    text: "I worked with Mr. Fadi on programming, website management, and domain projects, and it was truly an excellent experience. He's a professional, understands his work well, is punctual, and is always ready to solve any technical problem quickly and honestly. I highly recommend him to anyone needing professional programming and website management services.",
+  },
 ];
+
+// Homepage shows a curated 6; Mohammed Ismail is swapped for White and Black
+// Desert there but still appears normally on the full /reviews page.
+export const HOMEPAGE_REVIEWS: Review[] = REVIEWS.filter((r) => r.name !== "Mohammed Ismail" && r.name !== "G G");

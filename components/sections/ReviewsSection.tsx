@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { REVIEWS } from "@/lib/reviews";
+import { HOMEPAGE_REVIEWS } from "@/lib/reviews";
 import ReviewCard from "@/components/ui/ReviewCard";
 
 const AUTO_SWIPE_MS = 3000;
@@ -17,7 +17,7 @@ export default function ReviewsSection() {
   useEffect(() => {
     if (paused) return;
     const timer = setInterval(() => {
-      setIndex((i) => (i + 1) % REVIEWS.length);
+      setIndex((i) => (i + 1) % HOMEPAGE_REVIEWS.length);
     }, AUTO_SWIPE_MS);
     return () => clearInterval(timer);
   }, [paused]);
@@ -47,13 +47,13 @@ export default function ReviewsSection() {
         <div className="flex flex-col gap-4">
           <h2 className="heading-1 text-white">Reviews.</h2>
           <p className="para-32 text-[var(--text-secondary)] max-w-2xl">
-            5.0 rating from 6 reviews on Google.
+            5.0 rating from {HOMEPAGE_REVIEWS.length} reviews on Google.
           </p>
         </div>
 
         {/* Desktop — static 3x2 grid, all 6 shown */}
         <div className="hidden md:grid md:grid-cols-3 md:grid-rows-2 gap-4">
-          {REVIEWS.map((review) => (
+          {HOMEPAGE_REVIEWS.map((review) => (
             <ReviewCard key={review.name} review={review} />
           ))}
         </div>
@@ -66,7 +66,7 @@ export default function ReviewsSection() {
           className="flex md:hidden gap-4 overflow-x-auto -mx-4 px-4 pb-1"
           style={{ scrollSnapType: "x mandatory" }}
         >
-          {REVIEWS.map((review) => (
+          {HOMEPAGE_REVIEWS.map((review) => (
             <div key={review.name} className="shrink-0" style={{ width: "85%", scrollSnapAlign: "start" }}>
               <ReviewCard review={review} />
             </div>

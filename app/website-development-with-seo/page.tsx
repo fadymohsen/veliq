@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/sections/Footer";
 import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
+import JourneyMapSection, { type JourneyStop } from "@/components/sections/JourneyMapSection";
+import FadeIn from "@/components/ui/FadeIn";
 import AuditCtaSection from "./AuditCtaSection";
 
 export const metadata: Metadata = {
@@ -18,7 +20,11 @@ export const metadata: Metadata = {
 
 const INDIGO = "rgb(99,102,241)";
 
-const BENEFITS = [
+const JOURNEY_STOPS: JourneyStop[] = [
+  {
+    title: "The problem with most website development",
+    desc: "Most companies build your site, hand it over, and wish you luck with SEO. The result: bloated code, missing meta tags, no structured data, broken mobile layouts, and a 4-second load time Google penalizes. Then you pay an SEO agency to fix what should've been built right the first time.",
+  },
   {
     title: "SEO Architecture from Day One",
     desc: "Clean URL structures, semantic HTML, proper heading hierarchy, and crawlable site architecture — built into the foundation, not bolted on after launch.",
@@ -43,13 +49,22 @@ const BENEFITS = [
     title: "Ongoing Support & SEO Growth",
     desc: "After launch, we monitor performance, track rankings, and continuously optimize. Your website improves every month, not just on launch day.",
   },
-];
-
-const PROCESS = [
-  { step: "01", title: "Discovery & SEO Audit", desc: "We analyze your market, competitors, and target keywords before writing a single line of code. SEO strategy informs every design and development decision." },
-  { step: "02", title: "Design & Architecture", desc: "Mobile-first wireframes and UI design built around your SEO keyword map. Every page targets specific search intent with the right content hierarchy." },
-  { step: "03", title: "Development & Optimization", desc: "Clean, performant code with Next.js. Technical SEO implemented during development: meta tags, schema markup, image optimization, internal linking." },
-  { step: "04", title: "Launch & Growth", desc: "We deploy, submit to search engines, and begin tracking rankings. Ongoing support and SEO refinement keep your site climbing month after month." },
+  {
+    title: "Discovery & SEO Audit",
+    desc: "We analyze your market, competitors, and target keywords before writing a single line of code. SEO strategy informs every design and development decision.",
+  },
+  {
+    title: "Design & Architecture",
+    desc: "Mobile-first wireframes and UI design built around your SEO keyword map. Every page targets specific search intent with the right content hierarchy.",
+  },
+  {
+    title: "Development & Optimization",
+    desc: "Clean, performant code with Next.js. Technical SEO implemented during development: meta tags, schema markup, image optimization, internal linking.",
+  },
+  {
+    title: "Launch & Growth",
+    desc: "We deploy, submit to search engines, and begin tracking rankings. Ongoing support and SEO refinement keep your site climbing month after month.",
+  },
 ];
 
 const FAQS = [
@@ -120,89 +135,17 @@ export default function WebDevWithSeoPage() {
         </div>
       </section>
 
-      {/* Problem Statement */}
-      <section className="section-padding max-w-[800px] mx-auto">
-        <div
-          className="rounded-[24px] p-10 md:p-14 flex flex-col gap-6"
-          style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(24,24,24)" }}
-        >
-          <h2 className="text-white" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 600, letterSpacing: "-0.03em" }}>
-            The problem with most website development
-          </h2>
-          <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.75 }}>
-            Most website development companies build your site, hand it over, and wish you luck with SEO.
-            The result? A beautiful website that nobody finds. Your site launches with bloated code, missing
-            meta tags, no structured data, broken mobile layouts, and a 4-second load time that Google
-            penalizes. Then you hire an SEO agency to fix what should have been built correctly from the start
-            — paying twice for the same work.
-          </p>
-          <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.75 }}>
-            We built VELIQ to solve this. As a website development company with SEO expertise in-house,
-            we combine both disciplines into a single build process. Your website launches fast, optimized,
-            and ready to rank.
-          </p>
-        </div>
-      </section>
-
-      {/* Benefits Grid */}
-      <section className="section-padding max-w-[1200px] mx-auto flex flex-col gap-12">
-        <div className="flex flex-col items-center text-center gap-4">
-          <h2 className="text-white" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 600, letterSpacing: "-0.04em" }}>
-            What SEO-first website development looks like
-          </h2>
-          <p style={{ fontSize: 15, color: "rgba(255,255,255,0.45)", maxWidth: "50ch", lineHeight: 1.6 }}>
-            Every website we build includes these SEO foundations as standard — not as an add-on.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {BENEFITS.map((b) => (
-            <div
-              key={b.title}
-              className="flex flex-col gap-3 rounded-[18px] p-7"
-              style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(24,24,24)" }}
-            >
-              <h3 className="text-white" style={{ fontSize: 16, fontWeight: 600, letterSpacing: "-0.02em" }}>
-                {b.title}
-              </h3>
-              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.65 }}>
-                {b.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="section-padding max-w-[900px] mx-auto flex flex-col gap-12">
-        <div className="flex flex-col items-center text-center gap-4">
-          <h2 className="text-white" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 600, letterSpacing: "-0.04em" }}>
-            Our website development process
-          </h2>
-          <p style={{ fontSize: 15, color: "rgba(255,255,255,0.45)", maxWidth: "48ch", lineHeight: 1.6 }}>
-            SEO is woven into every step — not added as a final checkbox.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4">
-          {PROCESS.map((p) => (
-            <div
-              key={p.step}
-              className="flex items-start gap-6 rounded-[18px] p-7"
-              style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(24,24,24)" }}
-            >
-              <span className="shrink-0 text-white" style={{ fontSize: 28, fontWeight: 700, color: INDIGO, opacity: 0.6 }}>
-                {p.step}
-              </span>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-white" style={{ fontSize: 16, fontWeight: 600 }}>{p.title}</h3>
-                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.65 }}>{p.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Problem + Benefits + Process — one continuous journey map */}
+      <JourneyMapSection
+        stops={JOURNEY_STOPS}
+        heading="From problem to launch, one route."
+        subheading="SEO is woven into every stop along the way — not added as a final checkbox."
+      />
 
       {/* CTA */}
-      <AuditCtaSection />
+      <FadeIn>
+        <AuditCtaSection />
+      </FadeIn>
 
       {/* FAQ */}
       <section className="section-padding max-w-[900px] mx-auto flex flex-col gap-10">
@@ -211,18 +154,19 @@ export default function WebDevWithSeoPage() {
         </h2>
         <div className="flex flex-col gap-4">
           {FAQS.map((faq) => (
-            <div
-              key={faq.q}
-              className="flex flex-col gap-3 rounded-[16px] p-7"
-              style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(24,24,24)" }}
-            >
-              <h3 className="text-white" style={{ fontSize: 15, fontWeight: 600, letterSpacing: "-0.02em" }}>
-                {faq.q}
-              </h3>
-              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>
-                {faq.a}
-              </p>
-            </div>
+            <FadeIn key={faq.q}>
+              <div
+                className="flex flex-col gap-3 rounded-[16px] p-7"
+                style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(24,24,24)" }}
+              >
+                <h3 className="text-white" style={{ fontSize: 15, fontWeight: 600, letterSpacing: "-0.02em" }}>
+                  {faq.q}
+                </h3>
+                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>
+                  {faq.a}
+                </p>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </section>
