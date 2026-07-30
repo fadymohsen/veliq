@@ -3,5 +3,6 @@ Allow: /
 Disallow: /checkout/
 Disallow: /api/
 Disallow: /studio
+Disallow: /_next/
 
 Sitemap: https://www.veliq.co/sitemap.xml
