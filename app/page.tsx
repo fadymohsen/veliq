@@ -10,6 +10,7 @@ import { SERVICES } from "@/lib/services";
 import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
 
 const LeadMagnetSection = dynamic(() => import("@/components/sections/LeadMagnetSection"));
+const BlogSection = dynamic(() => import("@/components/sections/BlogSection"));
 const FaqSection = dynamic(() => import("@/components/sections/FaqSection"));
 const CtaSection = dynamic(() => import("@/components/sections/CtaSection"));
 
@@ -68,6 +69,11 @@ export default function Home() {
         {/* 5. SEO dev features + Lead magnet */}
         <Suspense>
           <LeadMagnetSection />
+        </Suspense>
+
+        {/* 7.5. Blog — latest articles */}
+        <Suspense>
+          <BlogSection />
         </Suspense>
 
         {/* 8. FAQ */}
