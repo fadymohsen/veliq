@@ -21,6 +21,10 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
+    // Serve local /public images as-is instead of routing them through
+    // Vercel's paid image-optimization pipeline. That pipeline was 402'ing
+    // (quota exhausted) on the project screenshots, breaking them in prod.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
