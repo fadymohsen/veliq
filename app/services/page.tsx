@@ -23,11 +23,24 @@ const ICONS: Record<string, React.ReactNode> = {
       <path d="M11 8v6M8 11h6" />
     </svg>
   ),
+  "website-applications": (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <path d="M8 21h8M12 17v4" />
+      <path d="M8 10l2 2 4-4" />
+    </svg>
+  ),
+  "mobile-applications": (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="2" />
+      <path d="M12 18h.01" />
+    </svg>
+  ),
 };
 
 export const metadata = {
-  title: "Website Development, SEO & Support Services",
-  description: "VELIQ is a website development company offering custom web development with SEO built in, ongoing website support, and technical SEO services across Egypt, Saudi Arabia, UAE, and the US.",
+  title: "Website Development, Apps, SEO & Support Services",
+  description: "VELIQ offers custom web development, web & mobile application development with agile sprints, SEO, and ongoing website support across Egypt, Saudi Arabia, UAE, and the US.",
   alternates: { canonical: "https://www.veliq.co/services" },
 };
 
@@ -39,7 +52,7 @@ export default function ServicesPage() {
         <div className="flex flex-col gap-4">
           <h1 className="heading-1 text-white">Services.</h1>
           <p className="para-32 text-[rgb(201,201,201)] max-w-2xl">
-            Three focused disciplines. One dedicated team. Every channel aligned to one direction — your growth.
+            Five focused disciplines. One dedicated team. Every channel aligned to one direction — your growth.
           </p>
         </div>
 

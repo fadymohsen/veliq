@@ -31,19 +31,39 @@ function IconSupport() {
     </svg>
   );
 }
+function IconWebApp() {
+  return (
+    <svg width="44" height="44" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+      <rect x="6" y="10" width="44" height="30" rx="5" stroke="white" strokeWidth="3.5" strokeLinejoin="round"/>
+      <path d="M18 46h20M28 40v6" stroke="white" strokeWidth="3.5" strokeLinecap="round"/>
+      <path d="M18 26l6 6 14-14" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+function IconMobileApp() {
+  return (
+    <svg width="44" height="44" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+      <rect x="15" y="4" width="26" height="48" rx="5" stroke="white" strokeWidth="3.5" strokeLinejoin="round"/>
+      <path d="M24 44h8" stroke="white" strokeWidth="3.5" strokeLinecap="round"/>
+      <path d="M22 20l4 4 8-8" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
 
 /* Data */
 const SERVICES = [
-  { id: "01", title: "Web Dev",     slug: "website-development", Icon: IconWebDev,   summary: "Fast, beautiful websites and web apps built to convert and scale." },
-  { id: "02", title: "Web Support", slug: "website-support",     Icon: IconSupport,  summary: "Ongoing maintenance, updates, and security so your site never sleeps." },
-  { id: "03", title: "SEO",         slug: "seo",                 Icon: IconSEO,      summary: "Rank higher and drive qualified traffic with technical SEO & content." },
+  { id: "01", title: "Web Dev",      slug: "website-development",   Icon: IconWebDev,    summary: "Fast, beautiful websites built to convert and scale from day one." },
+  { id: "02", title: "Web Apps",     slug: "website-applications",  Icon: IconWebApp,    summary: "Custom web applications built in agile sprints with a client review every two weeks." },
+  { id: "03", title: "Mobile Apps",  slug: "mobile-applications",   Icon: IconMobileApp, summary: "iOS & Android apps delivered sprint by sprint — on your device, not a simulator." },
+  { id: "04", title: "Web Support",  slug: "website-support",       Icon: IconSupport,   summary: "Ongoing maintenance, updates, and security so your site never sleeps." },
+  { id: "05", title: "SEO",          slug: "seo",                   Icon: IconSEO,       summary: "Rank higher and drive qualified traffic with technical SEO & content." },
 ] as const;
 
-/* Fan geometry */
-const D_X   = [-320, 0, 320];
-const D_Y   = [44,   0,  44];
-const D_ROT = [-18,  0,  18];
-const STACK_R = [-4, 0, 4];
+/* Fan geometry — 5 cards */
+const D_X   = [-380, -190, 0, 190, 380];
+const D_Y   = [60,    26,  0,  26,  60];
+const D_ROT = [-24,  -12,  0,  12,  24];
+const STACK_R = [-8, -4, 0, 4, 8];
 
 export default function ServicesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -60,15 +80,15 @@ export default function ServicesSection() {
 
   let CW: number, CH: number, FAN_X: number[], FAN_Y: number[], FAN_ROT: number[];
   if (isMobile) {
-    const GAP = 16;
+    const GAP = 12;
     const usableH = vp.h * 0.82;
-    CH = Math.max(110, Math.min(190, (usableH - 2 * GAP) / 3));
+    CH = Math.max(90, Math.min(160, (usableH - 4 * GAP) / 5));
     CW = Math.min(CH * 0.82, vp.w * 0.74);
     const S = CH + GAP;
-    FAN_Y = [-1, 0, 1].map((m) => Math.round(m * S));
-    const sway = Math.max(0, Math.min(14, (vp.w * 0.8 - CW) / 2));
-    FAN_X = [-1, 0, 1].map((m) => Math.round(m * sway));
-    FAN_ROT = [-4, 0, 4];
+    FAN_Y = [-2, -1, 0, 1, 2].map((m) => Math.round(m * S));
+    const sway = Math.max(0, Math.min(10, (vp.w * 0.8 - CW) / 2));
+    FAN_X = [-2, -1, 0, 1, 2].map((m) => Math.round(m * sway * 0.5));
+    FAN_ROT = [-5, -2.5, 0, 2.5, 5];
   } else {
     CW = 150; CH = 200;
     FAN_X = D_X; FAN_Y = D_Y; FAN_ROT = D_ROT;
@@ -82,17 +102,23 @@ export default function ServicesSection() {
   });
   const progress = useSpring(scrollYProgress, shouldReduceMotion ? { stiffness: 1000, damping: 100 } : { stiffness: 90, damping: 24, restDelta: 0.001 });
 
-  const x0 = useTransform(progress, [0.05, 0.5], [0, FAN_X[0]]);
-  const x1 = useTransform(progress, [0.2, 0.6], [0, FAN_X[1]]);
-  const x2 = useTransform(progress, [0.35, 0.7], [0, FAN_X[2]]);
+  const x0 = useTransform(progress, [0.04, 0.48], [0, FAN_X[0]]);
+  const x1 = useTransform(progress, [0.14, 0.54], [0, FAN_X[1]]);
+  const x2 = useTransform(progress, [0.24, 0.60], [0, FAN_X[2]]);
+  const x3 = useTransform(progress, [0.34, 0.66], [0, FAN_X[3]]);
+  const x4 = useTransform(progress, [0.44, 0.72], [0, FAN_X[4]]);
 
-  const y0 = useTransform(progress, [0.05, 0.5], [0, FAN_Y[0]]);
-  const y1 = useTransform(progress, [0.2, 0.6], [0, FAN_Y[1]]);
-  const y2 = useTransform(progress, [0.35, 0.7], [0, FAN_Y[2]]);
+  const y0 = useTransform(progress, [0.04, 0.48], [0, FAN_Y[0]]);
+  const y1 = useTransform(progress, [0.14, 0.54], [0, FAN_Y[1]]);
+  const y2 = useTransform(progress, [0.24, 0.60], [0, FAN_Y[2]]);
+  const y3 = useTransform(progress, [0.34, 0.66], [0, FAN_Y[3]]);
+  const y4 = useTransform(progress, [0.44, 0.72], [0, FAN_Y[4]]);
 
-  const r0 = useTransform(progress, [0.05, 0.5], [STACK_R[0], FAN_ROT[0]]);
-  const r1 = useTransform(progress, [0.2, 0.6], [STACK_R[1], FAN_ROT[1]]);
-  const r2 = useTransform(progress, [0.35, 0.7], [STACK_R[2], FAN_ROT[2]]);
+  const r0 = useTransform(progress, [0.04, 0.48], [STACK_R[0], FAN_ROT[0]]);
+  const r1 = useTransform(progress, [0.14, 0.54], [STACK_R[1], FAN_ROT[1]]);
+  const r2 = useTransform(progress, [0.24, 0.60], [STACK_R[2], FAN_ROT[2]]);
+  const r3 = useTransform(progress, [0.34, 0.66], [STACK_R[3], FAN_ROT[3]]);
+  const r4 = useTransform(progress, [0.44, 0.72], [STACK_R[4], FAN_ROT[4]]);
 
   const textOpacity = useTransform(progress, [0, 0.3, 0.6], [0.5, 0.7, 1]);
 
@@ -100,6 +126,8 @@ export default function ServicesSection() {
     { x: x0, y: y0, r: r0 },
     { x: x1, y: y1, r: r1 },
     { x: x2, y: y2, r: r2 },
+    { x: x3, y: y3, r: r3 },
+    { x: x4, y: y4, r: r4 },
   ];
 
   return (

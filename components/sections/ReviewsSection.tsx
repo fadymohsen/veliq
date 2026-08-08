@@ -44,11 +44,22 @@ export default function ReviewsSection() {
   return (
     <section className="w-full bg-black section-padding">
       <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-8">
-        <div className="flex flex-col gap-4">
-          <h2 className="heading-1 text-white">Reviews.</h2>
-          <p className="para-32 text-[var(--text-secondary)] max-w-2xl">
-            5.0 rating from {HOMEPAGE_REVIEWS.length} reviews on Google.
-          </p>
+        <div className="flex items-end justify-between gap-4 flex-wrap">
+          <div className="flex flex-col gap-2">
+            <h2 className="heading-1 text-white">Reviews.</h2>
+            <p className="para-32 text-[var(--text-secondary)]">
+              5.0 rating on Google.
+            </p>
+          </div>
+          <Link
+            href="/reviews"
+            className="btn-outline text-sm hidden md:inline-flex"
+          >
+            See all reviews
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
 
         {/* Desktop — static 3x2 grid, all 6 shown */}
@@ -73,12 +84,12 @@ export default function ReviewsSection() {
           ))}
         </div>
 
-        {/* CTA — mobile only, desktop already shows all 6 */}
+        {/* CTA — mobile only */}
         <Link
           href="/reviews"
           className="btn-outline text-sm self-start md:hidden"
         >
-          See More Reviews
+          See all reviews
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>

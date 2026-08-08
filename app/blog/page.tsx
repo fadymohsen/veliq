@@ -18,6 +18,15 @@ const HUE_MAP: Record<string, string> = {
   "Digital Marketing": "150",
 };
 
+const ACCENT_MAP: Record<string, string> = {
+  "Web Development":   "#6366f1",
+  "SEO":               "#a855f7",
+  "Mobile Development":"#f97316",
+  "Data & Analytics":  "#06b6d4",
+  "Brand Strategy":    "#f59e0b",
+  "Digital Marketing": "#22c55e",
+};
+
 function CategoryIcon({ category, size = 64 }: { category: string; size?: number }) {
   const common = {
     width: size,
@@ -47,34 +56,60 @@ function CategoryIcon({ category, size = 64 }: { category: string; size?: number
   }
 }
 
-function PostThumb({ category, size = 64, featured = false }: { category: string; size?: number; featured?: boolean }) {
+function PostThumb({ category, size = 64, featured = false, index = 0 }: { category: string; size?: number; featured?: boolean; index?: number }) {
   const hue = HUE_MAP[category] ?? "220";
+  const accent = ACCENT_MAP[category] ?? "#6366f1";
+  const num = String(index + 1).padStart(2, "0");
   return (
     <div
       className="w-full rounded-[15px] overflow-hidden relative"
       style={{
         aspectRatio: featured ? "1.5" : "1.6",
-        background: `linear-gradient(135deg, hsl(${hue}, 20%, 10%) 0%, hsl(${hue}, 12%, 6%) 100%)`,
+        background: `linear-gradient(145deg, hsl(${hue}, 20%, 9%) 0%, hsl(${hue}, 14%, 5%) 100%)`,
       }}
     >
+      {/* Grid lines */}
       <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: `radial-gradient(ellipse at 50% 110%, hsl(${hue}, 38%, ${featured ? 20 : 16}%) 0%, transparent 70%)` }}
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `linear-gradient(${accent}14 1px, transparent 1px), linear-gradient(90deg, ${accent}14 1px, transparent 1px)`,
+          backgroundSize: "32px 32px",
+        }}
       />
+      {/* Glow blob */}
       <div
-        className="absolute opacity-[0.14] group-hover:opacity-25 transition-opacity duration-500"
+        className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        style={{ bottom: "-40px", left: "-20px", width: "260px", height: "260px", borderRadius: "9999px", background: accent, opacity: 0.15, filter: "blur(50px)" }}
+      />
+      {/* Static base glow */}
+      <div
+        className="absolute"
+        style={{ bottom: "-60px", left: "-30px", width: "200px", height: "200px", borderRadius: "9999px", background: accent, opacity: 0.08, filter: "blur(40px)" }}
+      />
+      {/* Large post number watermark */}
+      <span
+        className="absolute select-none font-black"
+        style={{ right: "10px", bottom: "-8px", fontSize: featured ? "110px" : "88px", fontWeight: 900, color: "rgba(255,255,255,0.04)", lineHeight: 1, letterSpacing: "-0.06em" }}
+      >
+        {num}
+      </span>
+      {/* Icon */}
+      <div
+        className="absolute opacity-20 group-hover:opacity-35 transition-opacity duration-500"
         style={{ bottom: "14px", right: "14px" }}
       >
         <CategoryIcon category={category} size={size} />
       </div>
+      {/* Category badge */}
       <span
-        className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[rgb(201,201,201)] uppercase"
+        className="absolute top-3 left-3 px-2.5 py-1 rounded-full uppercase"
         style={{
           fontSize: "10px",
-          fontWeight: 600,
+          fontWeight: 700,
           letterSpacing: "0.1em",
-          backgroundColor: "rgba(0,0,0,0.55)",
-          border: "1px solid rgba(255,255,255,0.07)",
+          color: accent,
+          backgroundColor: `${accent}18`,
+          border: `1px solid ${accent}40`,
         }}
       >
         {category}
@@ -107,7 +142,7 @@ export default function BlogPage() {
                 className="group grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-12 rounded-[20px] p-3 lg:p-4 -m-3 lg:-m-4 transition-colors hover:bg-white/[0.02]"
               >
                 <div className="relative">
-                  <PostThumb category={featured.category} size={80} featured />
+                  <PostThumb category={featured.category} size={80} featured index={0} />
                   <span
                     className="absolute top-3 right-3 px-3 py-1.5 rounded-full text-white uppercase"
                     style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", backgroundColor: "rgb(99,102,241)" }}
@@ -149,7 +184,7 @@ export default function BlogPage() {
             {rest.map((post, i) => (
               <Reveal key={post.slug} delay={Math.min(i * 0.06, 0.3)}>
                 <Link href={`/blog/${post.slug}`} className="group flex flex-col gap-4 h-full">
-                  <PostThumb category={post.category} />
+                  <PostThumb category={post.category} index={i + 1} />
                   <div className="flex flex-col gap-1.5 flex-1">
                     <span className="para-12 text-[rgb(124,124,124)]">{post.date} &middot; {post.readTime}</span>
                     <h2

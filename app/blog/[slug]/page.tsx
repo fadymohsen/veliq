@@ -14,6 +14,88 @@ const CATEGORY_TO_SERVICE: Record<string, string> = {
   "Data & Analytics": "website-support",
 };
 
+const CATEGORY_COVER: Record<string, { glow: string; accent: string; grid: string }> = {
+  "Web Development":   { glow: "#6366f1", accent: "#818cf8", grid: "#6366f118" },
+  "SEO":               { glow: "#a855f7", accent: "#c084fc", grid: "#a855f718" },
+  "Mobile Development":{ glow: "#f97316", accent: "#fb923c", grid: "#f9731618" },
+  "Data & Analytics":  { glow: "#06b6d4", accent: "#22d3ee", grid: "#06b6d418" },
+  "Brand Strategy":    { glow: "#f59e0b", accent: "#fbbf24", grid: "#f59e0b18" },
+  "Digital Marketing": { glow: "#22c55e", accent: "#4ade80", grid: "#22c55e18" },
+};
+
+function CategoryCoverIcon({ category }: { category: string }) {
+  const common = { width: 64, height: 64, viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: 1.2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  switch (category) {
+    case "Web Development":   return <svg {...common}><path d="M9 18l-6-6 6-6" /><path d="M15 6l6 6-6 6" /></svg>;
+    case "SEO":               return <svg {...common}><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>;
+    case "Mobile Development":return <svg {...common}><rect x="7" y="2" width="10" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>;
+    case "Data & Analytics":  return <svg {...common}><line x1="6" y1="20" x2="6" y2="14" /><line x1="12" y1="20" x2="12" y2="8" /><line x1="18" y1="20" x2="18" y2="4" /></svg>;
+    case "Brand Strategy":    return <svg {...common}><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" /></svg>;
+    case "Digital Marketing": return <svg {...common}><path d="M3 11l18-6v14l-18-6v-2z" /><path d="M7 15v4a2 2 0 0 0 2 2h1" /></svg>;
+    default:                  return null;
+  }
+}
+
+function BlogCoverImage({ category, postIndex }: { category: string; postIndex: number }) {
+  const cover = CATEGORY_COVER[category] ?? CATEGORY_COVER["Web Development"];
+  const num = String(postIndex + 1).padStart(2, "0");
+  return (
+    <div
+      className="w-full rounded-2xl overflow-hidden relative"
+      style={{ aspectRatio: "1200/420", background: "#080812" }}
+      aria-hidden="true"
+    >
+      {/* Grid pattern */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `linear-gradient(${cover.grid} 1px, transparent 1px), linear-gradient(90deg, ${cover.grid} 1px, transparent 1px)`,
+          backgroundSize: "48px 48px",
+        }}
+      />
+      {/* Glow bottom-left */}
+      <div className="absolute" style={{ bottom: "-80px", left: "-60px", width: "420px", height: "420px", borderRadius: "9999px", background: cover.glow, opacity: 0.22, filter: "blur(80px)" }} />
+      {/* Glow top-right */}
+      <div className="absolute" style={{ top: "-60px", right: "120px", width: "200px", height: "200px", borderRadius: "9999px", background: cover.glow, opacity: 0.12, filter: "blur(50px)" }} />
+      {/* Large post number */}
+      <span
+        className="absolute select-none font-bold"
+        style={{
+          right: "40px",
+          bottom: "-16px",
+          fontSize: "clamp(100px, 18vw, 200px)",
+          fontWeight: 900,
+          color: "rgba(255,255,255,0.04)",
+          lineHeight: 1,
+          letterSpacing: "-0.06em",
+          fontVariantNumeric: "tabular-nums",
+        }}
+      >
+        {num}
+      </span>
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-12">
+        <div className="flex items-center gap-3">
+          <span className="text-white font-bold tracking-widest" style={{ fontSize: 13, letterSpacing: "3px" }}>VELIQ</span>
+          <span className="opacity-30 text-white">·</span>
+          <span style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", letterSpacing: "2px" }}>BLOG</span>
+        </div>
+        <div className="flex items-end justify-between gap-4">
+          <div
+            className="px-4 py-2 rounded-full text-white font-semibold"
+            style={{ fontSize: 12, letterSpacing: "0.5px", border: `1px solid ${cover.accent}55`, color: cover.accent, background: `${cover.glow}22` }}
+          >
+            {category}
+          </div>
+          <div style={{ opacity: 0.5 }}>
+            <CategoryCoverIcon category={category} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function slugify(text: string) {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
@@ -55,6 +137,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const relatedServiceSlug = CATEGORY_TO_SERVICE[post.category];
   const relatedService = relatedServiceSlug ? getService(relatedServiceSlug) : undefined;
+  const postIndex = BLOG_POSTS.findIndex((p) => p.slug === slug);
 
   const toc = post.content
     .filter((block) => block.startsWith("## "))
@@ -90,6 +173,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </svg>
             Back to Blog
           </Link>
+
+          {/* Cover image */}
+          <BlogCoverImage category={post.category} postIndex={postIndex} />
 
           {/* Header */}
           <div className="flex flex-col gap-5">

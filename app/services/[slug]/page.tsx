@@ -11,6 +11,8 @@ const SERVICE_TO_CATEGORIES: Record<string, string[]> = {
   "website-development": ["Web Development", "Mobile Development", "Brand Strategy"],
   "website-support": ["Data & Analytics"],
   "seo": ["SEO", "Digital Marketing"],
+  "website-applications": ["Web Development", "Data & Analytics"],
+  "mobile-applications": ["Mobile Development"],
 };
 
 const ICONS: Record<string, React.ReactNode> = {
@@ -32,6 +34,19 @@ const ICONS: Record<string, React.ReactNode> = {
       <circle cx="11" cy="11" r="8" />
       <path d="m21 21-4.35-4.35" />
       <path d="M11 8v6M8 11h6" />
+    </svg>
+  ),
+  "website-applications": (
+    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <path d="M8 21h8M12 17v4" />
+      <path d="M8 10l2 2 4-4" />
+    </svg>
+  ),
+  "mobile-applications": (
+    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="2" />
+      <path d="M12 18h.01" />
     </svg>
   ),
 };
