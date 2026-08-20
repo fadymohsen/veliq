@@ -5,7 +5,6 @@ import BackToTopButton from "@/components/ui/BackToTopButton";
 const MENU_LINKS = [
   { label: "About",    href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Pricing",  href: "/pricing" },
   { label: "Projects", href: "/projects" },
   { label: "Blog",     href: "/blog" },
 ];

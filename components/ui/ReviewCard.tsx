@@ -23,13 +23,19 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
+const GBP_URL = "https://maps.app.goo.gl/9auvG44ppeAoAwxW9";
+
 export default function ReviewCard({ review, clampText = true }: { review: Review; clampText?: boolean }) {
   return (
-    <div
-      className="relative flex flex-col rounded-2xl overflow-hidden h-full"
+    <a
+      href={GBP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="relative flex flex-col rounded-2xl overflow-hidden h-full cursor-pointer transition-all duration-200 hover:border-white/20 hover:scale-[1.015]"
       style={{
         background: "linear-gradient(145deg, rgb(16,16,18) 0%, rgb(11,11,13) 100%)",
         border: "1px solid rgb(32,32,36)",
+        textDecoration: "none",
       }}
     >
       {/* Decorative quote mark */}
@@ -112,6 +118,6 @@ export default function ReviewCard({ review, clampText = true }: { review: Revie
         </div>
         <GoogleG />
       </div>
-    </div>
+    </a>
   );
 }

@@ -241,13 +241,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             >
               Get in Touch →
             </Link>
-            <Link
-              href="/pricing"
-              className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-80 transition-opacity"
-              style={{ border: "1px solid rgb(40,40,40)", fontSize: "14px", fontWeight: 500, padding: "12px 24px" }}
-            >
-              View Pricing
-            </Link>
           </div>
         </div>
       </section>
