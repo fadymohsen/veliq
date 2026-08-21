@@ -142,7 +142,17 @@ export default function AboutPage() {
             <motion.div
               key={stat.label}
               className="flex flex-col gap-2 rounded-[20px]"
-              style={{ ...CARD_STYLE, padding: "clamp(20px,2.5vw,32px)" }}
+              style={{
+                border: "1px solid rgb(26,26,26)",
+                background: i % 4 === 0
+                  ? "linear-gradient(90deg, rgba(99,102,241,0.15) 0%, rgba(45,212,191,0.15) 100%)"
+                  : i % 4 === 1
+                  ? "linear-gradient(90deg, rgba(168,85,247,0.15) 0%, rgba(99,102,241,0.15) 100%)"
+                  : i % 4 === 2
+                  ? "linear-gradient(90deg, rgba(45,212,191,0.15) 0%, rgba(56,189,248,0.15) 100%)"
+                  : "linear-gradient(90deg, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.15) 100%)",
+                padding: "clamp(20px,2.5vw,32px)",
+              }}
               initial={{ opacity: 0, y: 24 }} animate={heroIn ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.3 + i * 0.07, ease }}
             >
@@ -197,7 +207,11 @@ export default function AboutPage() {
               key={card.title}
               className="flex flex-col items-center text-center gap-6 rounded-[24px]"
               style={{
-                backgroundColor: "rgba(99,102,241,0.05)",
+                background: i === 0
+                  ? "linear-gradient(90deg, rgba(99,102,241,0.2) 0%, rgba(45,212,191,0.2) 100%)"
+                  : i === 1
+                  ? "linear-gradient(90deg, rgba(168,85,247,0.2) 0%, rgba(99,102,241,0.2) 100%)"
+                  : "linear-gradient(90deg, rgba(99,102,241,0.2) 0%, rgba(56,189,248,0.2) 100%)",
                 border: "1px solid rgba(99,102,241,0.22)",
                 padding: "clamp(28px,3vw,44px)",
               }}
@@ -265,7 +279,15 @@ export default function AboutPage() {
             <motion.div
               key={item.problem}
               className="flex flex-col gap-5 rounded-[20px]"
-              style={{ ...CARD_STYLE, padding: "clamp(20px,2.5vw,32px)" }}
+              style={{
+                border: "1px solid rgb(26,26,26)",
+                background: i % 3 === 0
+                  ? "linear-gradient(90deg, rgba(99,102,241,0.15) 0%, rgba(45,212,191,0.15) 100%)"
+                  : i % 3 === 1
+                  ? "linear-gradient(90deg, rgba(168,85,247,0.15) 0%, rgba(99,102,241,0.15) 100%)"
+                  : "linear-gradient(90deg, rgba(45,212,191,0.15) 0%, rgba(56,189,248,0.15) 100%)",
+                padding: "clamp(20px,2.5vw,32px)",
+              }}
               initial={{ opacity: 0, y: 28 }} animate={problemIn ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.75, delay: 0.3 + i * 0.1, ease }}
             >
@@ -293,7 +315,13 @@ export default function AboutPage() {
             <motion.div
               key={card.label}
               className="flex flex-col gap-5 rounded-[24px]"
-              style={{ ...CARD_STYLE, padding: "clamp(24px,3vw,40px)" }}
+              style={{
+                border: "1px solid rgb(26,26,26)",
+                background: i === 0
+                  ? "linear-gradient(90deg, rgba(99,102,241,0.2) 0%, rgba(45,212,191,0.2) 100%)"
+                  : "linear-gradient(90deg, rgba(168,85,247,0.2) 0%, rgba(99,102,241,0.2) 100%)",
+                padding: "clamp(24px,3vw,40px)",
+              }}
               initial={{ opacity: 0, y: 28 }} animate={mvIn ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.75, delay: 0.2 + i * 0.12, ease }}
             >
@@ -321,7 +349,21 @@ export default function AboutPage() {
             <motion.div
               key={v.title}
               className="flex flex-col gap-3 rounded-[20px]"
-              style={{ ...CARD_STYLE, padding: "clamp(20px,2.5vw,32px)" }}
+              style={{
+                border: "1px solid rgb(26,26,26)",
+                background: i % 6 === 0
+                  ? "linear-gradient(90deg, rgba(99,102,241,0.15) 0%, rgba(45,212,191,0.15) 100%)"
+                  : i % 6 === 1
+                  ? "linear-gradient(90deg, rgba(168,85,247,0.15) 0%, rgba(99,102,241,0.15) 100%)"
+                  : i % 6 === 2
+                  ? "linear-gradient(90deg, rgba(45,212,191,0.15) 0%, rgba(56,189,248,0.15) 100%)"
+                  : i % 6 === 3
+                  ? "linear-gradient(90deg, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.15) 100%)"
+                  : i % 6 === 4
+                  ? "linear-gradient(90deg, rgba(56,189,248,0.15) 0%, rgba(45,212,191,0.15) 100%)"
+                  : "linear-gradient(90deg, rgba(99,102,241,0.15) 0%, rgba(236,72,153,0.15) 100%)",
+                padding: "clamp(20px,2.5vw,32px)",
+              }}
               initial={{ opacity: 0, y: 28 }} animate={valIn ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.75, delay: 0.1 + i * 0.08, ease }}
             >
