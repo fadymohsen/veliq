@@ -101,8 +101,14 @@ export default function IntroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
           {/* Manifesto */}
           <motion.div
-            className="lg:col-span-7 card-lg flex flex-col justify-between gap-10"
-            style={{ padding: "clamp(24px,3vw,44px)", minHeight: "240px" }}
+            className="lg:col-span-7 flex flex-col justify-between gap-10"
+            style={{
+              padding: "clamp(24px,3vw,44px)",
+              minHeight: "240px",
+              border: "1px solid var(--border-default)",
+              borderRadius: "24px",
+              background: "linear-gradient(135deg, rgba(99,102,241,0.1) 0%, rgba(99,102,241,0.03) 100%)",
+            }}
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 1.35, ease: [0.22, 1, 0.36, 1] }}
@@ -128,8 +134,13 @@ export default function IntroSection() {
           {/* Right — 2 rows */}
           <div className="lg:col-span-5 grid grid-rows-2 gap-3">
             <motion.div
-              className="card-lg flex flex-col justify-between"
-              style={{ padding: "clamp(20px,2.5vw,36px)" }}
+              className="flex flex-col justify-between"
+              style={{
+                padding: "clamp(20px,2.5vw,36px)",
+                border: "1px solid var(--border-default)",
+                borderRadius: "24px",
+                background: "linear-gradient(135deg, rgba(168,85,247,0.1) 0%, rgba(168,85,247,0.03) 100%)",
+              }}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 1.4, ease: [0.22, 1, 0.36, 1] }}
@@ -148,8 +159,13 @@ export default function IntroSection() {
             </motion.div>
 
             <motion.div
-              className="card-lg flex flex-col justify-between"
-              style={{ padding: "clamp(20px,2.5vw,36px)" }}
+              className="flex flex-col justify-between"
+              style={{
+                padding: "clamp(20px,2.5vw,36px)",
+                border: "1px solid var(--border-default)",
+                borderRadius: "24px",
+                background: "linear-gradient(135deg, rgba(45,212,191,0.1) 0%, rgba(45,212,191,0.03) 100%)",
+              }}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 1.48, ease: [0.22, 1, 0.36, 1] }}
