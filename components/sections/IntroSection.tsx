@@ -107,7 +107,7 @@ export default function IntroSection() {
               minHeight: "240px",
               border: "1px solid var(--border-default)",
               borderRadius: "24px",
-              background: "linear-gradient(135deg, rgba(99,102,241,0.1) 0%, rgba(99,102,241,0.03) 100%)",
+              background: "linear-gradient(90deg, rgba(99,102,241,0.2) 0%, rgba(45,212,191,0.2) 100%)",
             }}
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -139,7 +139,7 @@ export default function IntroSection() {
                 padding: "clamp(20px,2.5vw,36px)",
                 border: "1px solid var(--border-default)",
                 borderRadius: "24px",
-                background: "linear-gradient(135deg, rgba(168,85,247,0.1) 0%, rgba(168,85,247,0.03) 100%)",
+                background: "linear-gradient(90deg, rgba(168,85,247,0.2) 0%, rgba(99,102,241,0.2) 100%)",
               }}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -164,7 +164,7 @@ export default function IntroSection() {
                 padding: "clamp(20px,2.5vw,36px)",
                 border: "1px solid var(--border-default)",
                 borderRadius: "24px",
-                background: "linear-gradient(135deg, rgba(45,212,191,0.1) 0%, rgba(45,212,191,0.03) 100%)",
+                background: "linear-gradient(90deg, rgba(45,212,191,0.2) 0%, rgba(56,189,248,0.2) 100%)",
               }}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}

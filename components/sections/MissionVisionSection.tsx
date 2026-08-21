@@ -47,8 +47,8 @@ function Card({ numeral, label, Icon, title, body, tags, delay, accentColor }: C
         border: "1px solid rgb(26,26,26)",
         padding: "clamp(28px, 3.5vw, 48px)",
         background: accentColor === INDIGO
-          ? `linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(99,102,241,0.05) 100%)`
-          : `linear-gradient(135deg, rgba(129,140,248,0.15) 0%, rgba(129,140,248,0.05) 100%)`,
+          ? `linear-gradient(90deg, rgba(99,102,241,0.25) 0%, rgba(45,212,191,0.25) 100%)`
+          : `linear-gradient(90deg, rgba(168,85,247,0.25) 0%, rgba(99,102,241,0.25) 100%)`,
       }}
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
