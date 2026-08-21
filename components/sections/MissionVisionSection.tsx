@@ -44,11 +44,11 @@ function Card({ numeral, label, Icon, title, body, tags, delay, accentColor }: C
       ref={ref}
       className="relative rounded-[28px] overflow-hidden flex flex-col justify-between gap-8"
       style={{
-        backgroundColor: "rgb(10,10,10)",
         border: "1px solid rgb(26,26,26)",
         padding: "clamp(28px, 3.5vw, 48px)",
-        /* subtle top-glow matching accent */
-        background: `linear-gradient(160deg, rgba(99,102,241,0.055) 0%, transparent 35%), rgb(10,10,10)`,
+        background: accentColor === INDIGO
+          ? `linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(99,102,241,0.05) 100%)`
+          : `linear-gradient(135deg, rgba(129,140,248,0.15) 0%, rgba(129,140,248,0.05) 100%)`,
       }}
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}

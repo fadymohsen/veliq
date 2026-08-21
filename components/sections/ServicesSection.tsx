@@ -187,7 +187,20 @@ export default function ServicesSection() {
                 >
                   <div className="service-card-inner">
                     {/* Front */}
-                    <div className="service-card-face flex flex-col items-center justify-center bg-[var(--surface-input)]">
+                    <div
+                      className="service-card-face flex flex-col items-center justify-center p-4"
+                      style={{
+                        background: i % 5 === 0
+                          ? 'linear-gradient(135deg, rgba(99,102,241,0.3) 0%, rgba(99,102,241,0.1) 100%)'
+                          : i % 5 === 1
+                          ? 'linear-gradient(135deg, rgba(168,85,247,0.3) 0%, rgba(168,85,247,0.1) 100%)'
+                          : i % 5 === 2
+                          ? 'linear-gradient(135deg, rgba(45,212,191,0.3) 0%, rgba(45,212,191,0.1) 100%)'
+                          : i % 5 === 3
+                          ? 'linear-gradient(135deg, rgba(236,72,153,0.3) 0%, rgba(236,72,153,0.1) 100%)'
+                          : 'linear-gradient(135deg, rgba(56,189,248,0.3) 0%, rgba(56,189,248,0.1) 100%)',
+                      }}
+                    >
                       <span className="absolute top-3 right-3.5 text-white text-[13px] font-medium opacity-80">
                         {svc.id}
                       </span>
@@ -198,7 +211,20 @@ export default function ServicesSection() {
                     </div>
 
                     {/* Back */}
-                    <div className="service-card-face service-card-back flex flex-col justify-between bg-[var(--surface-input)] p-4">
+                    <div
+                      className="service-card-face service-card-back flex flex-col justify-between p-4"
+                      style={{
+                        background: i % 5 === 0
+                          ? 'linear-gradient(135deg, rgba(99,102,241,0.3) 0%, rgba(99,102,241,0.1) 100%)'
+                          : i % 5 === 1
+                          ? 'linear-gradient(135deg, rgba(168,85,247,0.3) 0%, rgba(168,85,247,0.1) 100%)'
+                          : i % 5 === 2
+                          ? 'linear-gradient(135deg, rgba(45,212,191,0.3) 0%, rgba(45,212,191,0.1) 100%)'
+                          : i % 5 === 3
+                          ? 'linear-gradient(135deg, rgba(236,72,153,0.3) 0%, rgba(236,72,153,0.1) 100%)'
+                          : 'linear-gradient(135deg, rgba(56,189,248,0.3) 0%, rgba(56,189,248,0.1) 100%)',
+                      }}
+                    >
                       <div className="flex items-center justify-between">
                         <span className="text-[var(--text-dim)] text-xs font-medium">{svc.id}</span>
                         <span className="block w-[7px] h-[7px] rounded-full bg-[var(--accent-indigo)]" />
