@@ -168,9 +168,14 @@ export default function Footer() {
           height={32}
           className="object-contain opacity-85"
         />
-        <span className="text-xs text-[var(--text-body)] tracking-[-0.01em] sm:text-center">
-          © {new Date().getFullYear()} VELIQ. All rights reserved.
-        </span>
+        <div className="flex flex-col items-start sm:items-center gap-1">
+          <span className="text-xs tracking-[0.08em] uppercase" style={{ color: "rgb(99,102,241)" }}>
+            Built for those who don&apos;t settle.
+          </span>
+          <span className="text-xs text-[var(--text-body)] tracking-[-0.01em]">
+            © {new Date().getFullYear()} VELIQ. All rights reserved.
+          </span>
+        </div>
       </div>
     </footer>
   );

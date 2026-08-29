@@ -130,7 +130,7 @@ export async function POST(req: Request) {
             <tr><td style="padding:0 40px"><div style="height:1px;background:#e2e8f0"></div></td></tr>
             <tr><td style="padding:24px 40px 32px;text-align:center">
               <h3 style="margin:0 0 4px;color:#0f172a;font-size:16px;font-weight:700;letter-spacing:1px">VELIQ</h3>
-              <p style="margin:0;color:#94a3b8;font-size:12px">Precision at the Speed of Ambition</p>
+              <p style="margin:0;color:#94a3b8;font-size:12px">Built for those who don't settle.</p>
               <p style="margin:12px 0 0;color:#cbd5e1;font-size:11px">&copy; ${new Date().getFullYear()} VELIQ. All rights reserved.</p>
             </td></tr>
           </table>

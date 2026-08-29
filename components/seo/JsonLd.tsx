@@ -36,7 +36,7 @@ export const organizationSchema = {
   ],
   foundingDate: "2024",
   numberOfEmployees: { "@type": "QuantitativeValue", minValue: 5, maxValue: 15 },
-  slogan: "Precision at the Speed of Ambition",
+  slogan: "Built for those who don't settle.",
   knowsLanguage: ["en", "ar"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",

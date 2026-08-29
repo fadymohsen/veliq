@@ -99,7 +99,7 @@ export default function SplashScreen() {
 
         {/* Tagline — word-by-word reveal */}
         <div className="mt-4 flex items-center gap-[0.35em] overflow-hidden">
-          {"Precision at the speed of ambition".split(" ").map((word, i) => (
+          {"Built for those who don't settle.".split(" ").map((word, i) => (
             <span
               key={i}
               className="loading-tagline-word inline-block text-xs font-medium uppercase tracking-[0.15em] text-slate-500"
