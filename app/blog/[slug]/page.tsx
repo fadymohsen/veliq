@@ -225,6 +225,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </div>
                 );
               }
+              if (block.startsWith("### ")) {
+                const text = block.replace("### ", "");
+                return (
+                  <p
+                    key={i}
+                    className="text-white"
+                    style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.5, marginTop: "8px" }}
+                  >
+                    {text}
+                  </p>
+                );
+              }
               return (
                 <p
                   key={i}
