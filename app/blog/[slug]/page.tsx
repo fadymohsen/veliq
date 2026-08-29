@@ -146,6 +146,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       return { id: slugify(text), text };
     });
 
+  const faqStartIndex = post.content.findIndex((b) => b === "## Frequently Asked Questions");
+
   return (
     <main className="bg-black min-h-screen pt-16">
       <JsonLd data={articleSchema(post)} />
@@ -210,10 +212,43 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           {/* Content */}
           <div className="flex flex-col gap-6">
-            {post.content.map((block, i) => {
+            {post.content.flatMap((block, i) => {
+              const elements: React.ReactNode[] = [];
+
+              // Inject mid-article CTA before the FAQ section
+              if (faqStartIndex > 0 && i === faqStartIndex) {
+                elements.push(
+                  <div
+                    key="mid-cta"
+                    className="rounded-[16px] p-6 flex flex-col gap-3"
+                    style={{ background: "rgba(99,102,241,0.05)", border: "1px solid rgba(99,102,241,0.2)", marginTop: "12px" }}
+                  >
+                    <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgb(99,102,241)" }}>
+                      Ready to take action?
+                    </span>
+                    <h3 className="text-white" style={{ fontSize: "17px", fontWeight: 700, letterSpacing: "-0.03em", margin: 0 }}>
+                      Get a free quote for your project
+                    </h3>
+                    <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.65, margin: 0 }}>
+                      Tell us what you&apos;re building — we respond within one business day.
+                    </p>
+                    <Link
+                      href="/pricing"
+                      className="self-start inline-flex items-center gap-1.5 rounded-full text-white hover:brightness-110 transition-all"
+                      style={{ backgroundColor: "rgb(99,102,241)", fontSize: "13px", fontWeight: 600, padding: "9px 18px" }}
+                    >
+                      Get a Quote
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                );
+              }
+
               if (block.startsWith("## ")) {
                 const text = block.replace("## ", "");
-                return (
+                elements.push(
                   <div key={i} id={slugify(text)} className="flex items-center gap-3 scroll-mt-28" style={{ marginTop: "20px" }}>
                     <span aria-hidden style={{ width: "20px", height: "1px", backgroundColor: "rgb(99,102,241)", flexShrink: 0 }} />
                     <h2
@@ -224,27 +259,42 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </h2>
                   </div>
                 );
-              }
-              if (block.startsWith("### ")) {
+              } else if (block.startsWith("### ")) {
                 const text = block.replace("### ", "");
-                return (
+                elements.push(
+                  <div key={i} className="flex items-start gap-3" style={{ marginTop: "12px" }}>
+                    <span
+                      className="shrink-0 flex items-center justify-center rounded-full font-bold"
+                      style={{
+                        width: "22px",
+                        height: "22px",
+                        minWidth: "22px",
+                        backgroundColor: "rgba(99,102,241,0.12)",
+                        border: "1px solid rgba(99,102,241,0.25)",
+                        fontSize: "11px",
+                        color: "rgb(99,102,241)",
+                        marginTop: "2px",
+                      }}
+                    >
+                      Q
+                    </span>
+                    <p className="text-white" style={{ fontSize: "16px", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.5 }}>
+                      {text}
+                    </p>
+                  </div>
+                );
+              } else {
+                elements.push(
                   <p
                     key={i}
-                    className="text-white"
-                    style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.5, marginTop: "8px" }}
+                    style={{ fontSize: "17px", fontWeight: 400, letterSpacing: "-0.01em", lineHeight: 1.75, color: "rgb(180,180,180)" }}
                   >
-                    {text}
+                    {renderLinks(block)}
                   </p>
                 );
               }
-              return (
-                <p
-                  key={i}
-                  style={{ fontSize: "17px", fontWeight: 400, letterSpacing: "-0.01em", lineHeight: 1.75, color: "rgb(180,180,180)" }}
-                >
-                  {renderLinks(block)}
-                </p>
-              );
+
+              return elements;
             })}
           </div>
 
@@ -274,6 +324,37 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </svg>
             </Link>
           )}
+
+          {/* End-of-article CTA */}
+          <div
+            className="rounded-[20px] p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+            style={{ background: "linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(99,102,241,0.03) 100%)", border: "1px solid rgba(99,102,241,0.2)" }}
+          >
+            <div className="flex flex-col gap-2">
+              <h3 className="text-white" style={{ fontSize: "19px", fontWeight: 700, letterSpacing: "-0.03em", margin: 0 }}>
+                Let&apos;s build something together.
+              </h3>
+              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>
+                Tell us about your project — we get back to you within one business day.
+              </p>
+            </div>
+            <div className="flex items-center gap-3 shrink-0">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-80 transition-opacity"
+                style={{ border: "1px solid rgba(99,102,241,0.4)", fontSize: "13px", fontWeight: 500, padding: "10px 18px", color: "rgba(255,255,255,0.8)" }}
+              >
+                Contact Us
+              </Link>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-2 rounded-full text-white hover:brightness-110 transition-all"
+                style={{ backgroundColor: "rgb(99,102,241)", fontSize: "13px", fontWeight: 600, padding: "10px 18px" }}
+              >
+                Get a Quote →
+              </Link>
+            </div>
+          </div>
         </article>
 
         {/* On this page */}
@@ -296,6 +377,29 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </a>
                 ))}
               </nav>
+
+              {/* Sidebar CTA */}
+              <div
+                className="rounded-[14px] p-4 flex flex-col gap-2.5"
+                style={{ backgroundColor: "rgb(10,10,10)", border: "1px solid rgba(99,102,241,0.2)" }}
+              >
+                <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgb(99,102,241)" }}>
+                  Free consultation
+                </span>
+                <p className="text-white" style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.4, margin: 0 }}>
+                  Ready to build something great?
+                </p>
+                <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5, margin: 0 }}>
+                  No commitment. We respond within one business day.
+                </p>
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center gap-1 rounded-full text-white hover:brightness-110 transition-all"
+                  style={{ backgroundColor: "rgb(99,102,241)", fontSize: "12px", fontWeight: 600, padding: "8px 14px", marginTop: "2px" }}
+                >
+                  Get a Quote →
+                </Link>
+              </div>
             </div>
           </aside>
         )}

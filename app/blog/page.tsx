@@ -197,6 +197,18 @@ export default function BlogPage() {
                       {post.excerpt}
                     </p>
                   </div>
+                  <span
+                    className="inline-flex items-center gap-1 transition-colors"
+                    style={{ fontSize: "12px", fontWeight: 600, color: "rgb(99,102,241)" }}
+                  >
+                    Read article
+                    <svg
+                      width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                      className="transition-transform group-hover:translate-x-0.5"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
                 </Link>
               </Reveal>
             ))}
