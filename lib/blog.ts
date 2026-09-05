@@ -1,5 +1,6 @@
 export type BlogPost = {
   slug: string;
+  image: string;
   title: string;
   excerpt: string;
   category: string;
@@ -12,6 +13,7 @@ export type BlogPost = {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "why-your-business-needs-a-custom-website-in-2026",
+    image: "/blogs/1.jpeg",
     title: "Why Your Business Needs a Custom Website in 2026",
     excerpt: "Template websites are holding you back. Here's why a custom-built site is the smartest investment you can make this year.",
     category: "Web Development",
@@ -52,6 +54,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "seo-mistakes-killing-your-traffic",
+    image: "/blogs/2.jpeg",
     title: "7 SEO Mistakes That Are Killing Your Traffic",
     excerpt: "Flat traffic despite real SEO effort? These seven mistakes are the usual cause — and Google's own 2026 guidance shows exactly how to fix each one.",
     category: "SEO",
@@ -89,6 +92,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "mobile-app-vs-responsive-website",
+    image: "/blogs/3.jpeg",
     title: "Mobile App vs. Responsive Website: Which Do You Need?",
     excerpt: "Not every business needs an app. A practical, cost-backed framework for deciding between a native app, a PWA, and a responsive website in 2026.",
     category: "Mobile Development",
@@ -128,6 +132,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "how-data-analytics-drives-business-growth",
+    image: "/blogs/4.jpeg",
     title: "How Data Analytics Drives Real Business Growth",
     excerpt: "97% of companies invest in analytics. Most still don't act on it. Here's the framework that turns dashboards into decisions — and decisions into growth.",
     category: "Data & Analytics",
@@ -165,6 +170,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "building-a-brand-that-actually-stands-out",
+    image: "/blogs/5.jpeg",
     title: "Building a Brand That Actually Stands Out",
     excerpt: "Your logo isn't your brand. Here's the positioning, consistency, and storytelling framework that actually makes a brand memorable — and profitable.",
     category: "Brand Strategy",
@@ -202,6 +208,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "digital-marketing-trends-2026",
+    image: "/blogs/6.jpeg",
     title: "5 Digital Marketing Trends You Can't Ignore in 2026",
     excerpt: "Global ad spend just crossed $1 trillion and the old playbook is getting less efficient. Five trends actually backed by 2026 data — and how to act on each.",
     category: "Digital Marketing",
@@ -235,6 +242,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "complete-guide-website-development-2026",
+    image: "/blogs/7.jpeg",
     title: "The Complete Guide to Website Development in 2026",
     excerpt: "Everything that actually matters when building a website in 2026: tech stack choices, realistic costs, CMS options, e-commerce, bilingual builds, and how to pick an agency.",
     category: "Web Development",
@@ -274,6 +282,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "technical-seo-complete-checklist-2026",
+    image: "/blogs/8.jpeg",
     title: "Technical SEO: The Complete 2026 Checklist",
     excerpt: "A working technical SEO checklist for 2026: crawlability, Core Web Vitals with INP, structured data, hreflang, canonicals, and the audit process that ties it together.",
     category: "SEO",
@@ -315,6 +324,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "how-to-choose-web-development-agency",
+    image: "/blogs/9.jpeg",
     title: "How to Choose the Right Web Development Agency in 2026",
     excerpt: "Red flags, the right questions to ask, pricing models decoded, and a practical framework for choosing between an agency, a freelancer, and hiring in-house.",
     category: "Web Development",
@@ -350,6 +360,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "website-development-with-seo-why-they-should-never-be-separate",
+    image: "/blogs/10.jpeg",
     title: "Website Development with SEO: Why They Should Never Be Separate",
     excerpt: "Separating web development from SEO is one of the most expensive mistakes a business can make. Here is what breaks when they are split — and what it costs to fix.",
     category: "Web Development",

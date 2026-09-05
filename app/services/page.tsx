@@ -10,24 +10,11 @@ const ICONS: Record<string, React.ReactNode> = {
       <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
     </svg>
   ),
-  "website-support": (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <path d="M9 12l2 2 4-4" />
-    </svg>
-  ),
   "seo": (
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="11" cy="11" r="8" />
       <path d="m21 21-4.35-4.35" />
       <path d="M11 8v6M8 11h6" />
-    </svg>
-  ),
-  "website-applications": (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="3" width="20" height="14" rx="2" />
-      <path d="M8 21h8M12 17v4" />
-      <path d="M8 10l2 2 4-4" />
     </svg>
   ),
   "mobile-applications": (
@@ -36,11 +23,29 @@ const ICONS: Record<string, React.ReactNode> = {
       <path d="M12 18h.01" />
     </svg>
   ),
+  "social-media": (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+      <path d="M8.6 10.6l6.8-3.2M8.6 13.4l6.8 3.2" />
+    </svg>
+  ),
+  "marketing-strategy": (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1" />
+      <path d="M19 5l-4.5 4.5" />
+    </svg>
+  ),
+  "media-buying": (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 11v2a1 1 0 001 1h2l4 4V6l-4 4H4a1 1 0 00-1 1z" />
+      <path d="M14 9a3 3 0 010 6M17 6a7 7 0 010 12" />
+    </svg>
+  ),
 };
 
 export const metadata = {
-  title: "Website Development, Apps, SEO & Support Services",
-  description: "VELIQ offers custom web development, web & mobile application development with agile sprints, SEO, and ongoing website support across Egypt, Saudi Arabia, UAE, and the US.",
+  title: "Website Development, Apps, SEO, Social & Marketing Services",
+  description: "VELIQ offers website development, mobile app development, SEO, social media, marketing strategy, and media buying across Egypt, Saudi Arabia, UAE, and the US.",
   alternates: { canonical: "https://www.veliq.co/services" },
 };
 
@@ -52,7 +57,7 @@ export default function ServicesPage() {
         <div className="flex flex-col gap-4">
           <h1 className="heading-1 text-white">Services.</h1>
           <p className="para-32 text-[rgb(201,201,201)] max-w-2xl">
-            Five focused disciplines. One dedicated team. Every channel aligned to one direction — your growth.
+            Six focused disciplines. One dedicated team. Every channel aligned to one direction — your growth.
           </p>
         </div>
 

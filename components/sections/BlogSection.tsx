@@ -3,51 +3,23 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { BLOG_POSTS } from "@/lib/blog";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const HUE_MAP: Record<string, string> = {
-  "Web Development":    "230",
-  "SEO":                "290",
-  "Mobile Development": "25",
-  "Data & Analytics":   "180",
-  "Brand Strategy":     "40",
-  "Digital Marketing":  "150",
+const ACCENT_MAP: Record<string, string> = {
+  "Web Development":    "#6366f1",
+  "SEO":                "#a855f7",
+  "Mobile Development": "#f97316",
+  "Data & Analytics":   "#06b6d4",
+  "Brand Strategy":     "#f59e0b",
+  "Digital Marketing":  "#22c55e",
 };
 
-function CategoryIcon({ category, size = 56 }: { category: string; size?: number }) {
-  const common = {
-    width: size,
-    height: size,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "white",
-    strokeWidth: 1.5,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
-  switch (category) {
-    case "Web Development":
-      return <svg {...common}><path d="M9 18l-6-6 6-6" /><path d="M15 6l6 6-6 6" /></svg>;
-    case "SEO":
-      return <svg {...common}><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>;
-    case "Mobile Development":
-      return <svg {...common}><rect x="7" y="2" width="10" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>;
-    case "Data & Analytics":
-      return <svg {...common}><line x1="6" y1="20" x2="6" y2="14" /><line x1="12" y1="20" x2="12" y2="8" /><line x1="18" y1="20" x2="18" y2="4" /></svg>;
-    case "Brand Strategy":
-      return <svg {...common}><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" /></svg>;
-    case "Digital Marketing":
-      return <svg {...common}><path d="M3 11l18-6v14l-18-6v-2z" /><path d="M7 15v4a2 2 0 0 0 2 2h1" /></svg>;
-    default:
-      return null;
-  }
-}
-
 function BlogCard({ post, index }: { post: (typeof BLOG_POSTS)[number]; index: number }) {
-  const hue = HUE_MAP[post.category] ?? "220";
+  const accent = ACCENT_MAP[post.category] ?? "#6366f1";
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -58,21 +30,26 @@ function BlogCard({ post, index }: { post: (typeof BLOG_POSTS)[number]; index: n
       <Link href={`/blog/${post.slug}`} className="group flex flex-col gap-4 h-full">
         <div
           className="w-full rounded-[15px] overflow-hidden relative"
-          style={{
-            aspectRatio: "1.6",
-            background: `linear-gradient(135deg, hsl(${hue}, 20%, 10%) 0%, hsl(${hue}, 12%, 6%) 100%)`,
-          }}
+          style={{ aspectRatio: "1.6" }}
         >
-          <div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style={{ background: `radial-gradient(ellipse at 50% 110%, hsl(${hue}, 35%, 16%) 0%, transparent 70%)` }}
+          <Image
+            src={post.image}
+            alt=""
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute opacity-[0.14] group-hover:opacity-25 transition-opacity duration-500" style={{ bottom: "14px", right: "14px" }}>
-            <CategoryIcon category={post.category} />
-          </div>
           <span
-            className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[rgb(201,201,201)] uppercase"
-            style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", backgroundColor: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.07)" }}
+            className="absolute top-3 left-3 px-2.5 py-1 rounded-full uppercase"
+            style={{
+              fontSize: "10px",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              color: accent,
+              backgroundColor: `${accent}18`,
+              border: `1px solid ${accent}40`,
+              backdropFilter: "blur(6px)",
+            }}
           >
             {post.category}
           </span>

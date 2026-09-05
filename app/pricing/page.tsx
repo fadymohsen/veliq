@@ -5,10 +5,11 @@ import Footer from "@/components/sections/Footer";
 
 const SERVICES = [
   "Website Development",
-  "Website Support / Maintenance",
-  "SEO",
-  "Web Application",
   "Mobile Application",
+  "SEO",
+  "Social Media",
+  "Marketing Strategy",
+  "Media Buying",
 ];
 
 const INDIGO = "rgb(99,102,241)";
