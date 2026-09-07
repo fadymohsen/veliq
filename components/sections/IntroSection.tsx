@@ -9,16 +9,21 @@ const EQ_WEIGHT = 600;
 const EQ_TRACKING = "-0.05em";
 
 const CLIENT_LOGOS = [
-  { name: "Coach Roshdy",   src: "/clients/coach-mohamed-roshdy.svg" },
-  { name: "Initio",         src: "/clients/initio.svg" },
-  { name: "Fanous Clinic",  src: "/clients/fanous-clinic.png" },
-  { name: "Yamin Estate",   src: "/clients/yamin-estate.png" },
-  { name: "RedBone Gym",    src: "/clients/redbone-gym.png" },
-  { name: "Saudi Hayat",    src: "/clients/saudi-hayat.png" },
-  { name: "Alfa Transport", src: "/logos/alfa-transport.png" },
-  { name: "Coach Batool",   src: "/logos/coach-batool.png" },
-  { name: "Enjaz Care",     src: "/logos/enjazcare.png" },
-  { name: "Crewhub Studio", src: "/logos/crewhub-studio.png" },
+  { name: "Coach Roshdy",    src: "/clients/coach-mohamed-roshdy.svg" },
+  { name: "Initio",          src: "/clients/initio.svg" },
+  { name: "Fanous Clinic",   src: "/clients/fanous-clinic.png" },
+  { name: "Yamin Estate",    src: "/clients/yamin-estate.png" },
+  { name: "RedBone Gym",     src: "/clients/redbone-gym.png" },
+  { name: "Saudi Hayat",     src: "/clients/saudi-hayat.png" },
+  { name: "Alfa Transport",  src: "/logos/alfa-transport.png" },
+  { name: "Coach Batool",    src: "/logos/coach-batool.png" },
+  { name: "Enjaz Care",      src: "/logos/enjazcare.png" },
+  { name: "Crewhub Studio",  src: "/logos/crewhub-studio.png" },
+  { name: "Brandlab",        src: "/clients/brandlab.png" },
+  { name: "Bedouin Trails",  src: "/clients/bedouintrails.png" },
+  { name: "Window Adv",      src: "/clients/windowadv.png" },
+  { name: "Captain Maged",   src: "/clients/captainmaged.webp" },
+  { name: "Lamat El Arabia", src: "/clients/lamat-elarabia.png" },
 ];
 
 const SERVICES = ["Web Design", "Mobile", "SEO", "Branding", "Marketing", "Data"];

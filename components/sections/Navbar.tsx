@@ -7,10 +7,12 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { label: "About",    href: "/about"    },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Blog",     href: "/blog"     },
+  { label: "About",        href: "/about"        },
+  { label: "Services",     href: "/services"     },
+  { label: "Projects",     href: "/projects"     },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Blog",         href: "/blog"         },
+  { label: "Careers",      href: "/careers"      },
 ];
 
 function DotsIcon() {
