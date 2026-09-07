@@ -212,7 +212,7 @@ export default function Navbar() {
                     className={`flex items-center gap-3 py-4 transition-colors border-b border-[rgb(22,22,22)] font-semibold tracking-[-0.04em] ${
                       pathname === link.href ? "text-white" : "text-[var(--text-body-dark)] hover:text-white"
                     }`}
-                    style={{ fontSize: "clamp(28px, 7vw, 42px)" }}
+                    style={{ fontSize: "clamp(22px, 5.5vw, 32px)" }}
                   >
                     {link.label}
                   </Link>
