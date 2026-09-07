@@ -96,6 +96,12 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
             className="flex items-center rounded-full hover:bg-white/10 transition-colors px-3 py-[5px]"
           >
             <Image
