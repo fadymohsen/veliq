@@ -193,12 +193,12 @@ export default function IntroSection() {
           {CLIENT_LOGOS.map((logo, i) => (
             <motion.div
               key={logo.name}
-              className="flex items-center justify-center rounded-[18px] h-[104px] md:h-[76px] bg-[var(--surface-card)] border border-[var(--border-subtle)] p-2"
+              className="flex items-center justify-center rounded-[18px] h-[104px] md:h-[96px] bg-[var(--surface-card)] border border-[var(--border-subtle)] p-3"
               initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 1.55 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Image src={logo.src} alt={logo.name} width={120} height={44} className="object-contain w-auto h-full max-h-[70px] md:max-h-[62px]" />
+              <Image src={logo.src} alt={logo.name} width={160} height={64} className="object-contain w-auto h-full max-h-[80px] md:max-h-[72px]" />
             </motion.div>
           ))}
         </div>
