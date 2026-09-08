@@ -287,23 +287,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
-        {/* Technologies */}
-        <div className="flex flex-col gap-6">
-          <h2 className="text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 600, letterSpacing: "-0.04em" }}>
-            Tools &amp; technologies.
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            {service.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full text-white"
-                style={{ backgroundColor: "rgb(22,22,22)", border: "1px solid rgb(40,40,40)", fontSize: "13px", fontWeight: 500, padding: "8px 18px" }}
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
 
         {/* Trust Statement */}
         <div
