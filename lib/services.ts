@@ -5,6 +5,10 @@ export type Service = {
   subtitle: string;
   desc: string;
   fullDesc: string;
+  serviceType: string;
+  metaTitle: string;
+  metaDescription: string;
+  metaKeywords: string[];
   problemHeading: string;
   problemBody: string;
   differentiators: string[];
@@ -18,6 +22,7 @@ export type Service = {
   signatureItems: string[];
   results: string[];
   whyFaq: { q: string; a: string }[];
+  faq: { q: string; a: string }[];
   features: string[];
   process: { step: string; desc: string }[];
   technologies: string[];
@@ -31,6 +36,10 @@ export const SERVICES: Service[] = [
     subtitle: "A website that earns its first 7 seconds — and every second after.",
     desc: "As a website development company, we engineer sites for the customers who actually use them: scanned in seconds, mobile-first by default, SEO-optimized from the first pixel.",
     fullDesc: "Most websites are designed for the agency that built them. As a website development company, we engineer sites for the customers who actually use them: scanned in seconds, mobile-first by default, SEO-optimized and conversion-led from the first pixel to the last form field.",
+    serviceType: "Website Development",
+    metaTitle: "Website Development Services | Mobile-First, Conversion-Led Sites | VELIQ",
+    metaDescription: "VELIQ engineers websites built for the customers who use them: mobile-first, SEO-optimized, and conversion-led from the first pixel to the last form field.",
+    metaKeywords: ["website development company Egypt", "custom website development agency Saudi Arabia", "mobile-first website design", "conversion-focused web design Cairo", "bilingual website development Arabic English", "web design agency MENA"],
     problemHeading: "The Problem We Saw",
     problemBody: "We have audited dozens of websites that won awards and lost leads. They looked beautiful in a portfolio and crawled on a phone. They had clever interactions that confused a 45-year-old buyer. They were built around the designer's ego, not the customer's task. We build websites the way clients actually use them.",
     differentiators: [
@@ -79,6 +88,18 @@ export const SERVICES: Service[] = [
       { q: "Why custom over a template?", a: "Templates are fine for a side project. For a serious operation, every layout decision you outsource to a template is a position you lose to a competitor who didn't." },
       { q: "Why is bilingual harder than it looks?", a: "Bilingual sites that 'work' often break RTL layouts, mix font hierarchies, or duplicate content in ways that hurt SEO. We architect bilingual sites with the language switch as a first-class citizen." },
     ],
+    faq: [
+      { q: "How long does a website project take?", a: "Core tier sites typically launch in 4 to 6 weeks, Precision in 6 to 10 weeks, and Mastery timelines are scoped individually since they're open-ended in pages and integrations." },
+      { q: "Who owns the website once it's built?", a: "You do. Source code, CMS access, hosting credentials, and domain stay under your business, so nothing is held hostage after launch." },
+      { q: "What do you need from us to start?", a: "Brand assets, any existing content or copy you want kept, access to your domain and hosting (or we help you set new ones up), and a single point of contact for approvals." },
+      { q: "Do you provide hosting?", a: "We can recommend and set up hosting, but it's billed separately from the build and stays in your name, not ours." },
+      { q: "What happens after launch, is there ongoing support?", a: "Mastery includes ongoing speed monitoring and technical SEO audits. Core and Precision clients can add a maintenance retainer separately, so ongoing care is a distinct, transparent line item rather than an assumption." },
+      { q: "How many revision rounds are included?", a: "Two rounds on Core, four plus partial copywriting on Precision, and unlimited on Mastery, all specified upfront so nobody's guessing what counts as a round." },
+      { q: "Can you migrate our existing content and SEO rankings?", a: "Yes. A migration plan (redirects, sitemap, indexing checks) is part of any rebuild so you don't lose the rankings your current site already earned." },
+      { q: "Do you build in Arabic and English?", a: "Yes, and bilingual isn't an afterthought translation layer. RTL layout, font hierarchy, and SEO structure are architected for it from the start, up to 3 languages on Mastery." },
+      { q: "What platform or CMS do you build on?", a: "We choose the CMS or framework based on your actual needs (content volume, your team's technical comfort, integrations required) rather than defaulting to one platform for every client." },
+      { q: "What if we need more pages or features after the project starts?", a: "Anything beyond the agreed scope is quoted separately before we build it, so there's no surprise invoice and no pressure to squeeze extra pages into a fixed-price tier that wasn't scoped for them." },
+    ],
     features: [
       "Custom web application development",
       "E-commerce solutions with payment integration",
@@ -102,13 +123,18 @@ export const SERVICES: Service[] = [
     subtitle: "Show up where the buying decision actually starts.",
     desc: "We work the queries that move revenue — fewer keywords, all commercial-intent, all tied to a documented revenue path.",
     fullDesc: "Most SEO is busywork sold as strategy — keyword lists no one searches, content no one reads, links no one clicks. We work the opposite way: fewer keywords, all of them commercial-intent, all of them tied to a documented revenue path. Then we explain every move.",
+    serviceType: "Search Engine Optimization",
+    metaTitle: "SEO, GEO & AEO Services | Rank and Get Cited by AI | VELIQ",
+    metaDescription: "VELIQ runs SEO on commercial intent, not vanity keywords, and builds for GEO and AEO so your business gets cited by ChatGPT, Perplexity, and Google AI Overviews too.",
+    metaKeywords: ["SEO agency Egypt", "SEO services Saudi Arabia", "commercial intent SEO", "technical SEO audit agency", "local SEO Cairo Riyadh", "SEO consultant MENA", "generative engine optimization agency", "answer engine optimization services", "GEO AEO agency Egypt", "AI search visibility"],
     problemHeading: "The Problem We Saw",
-    problemBody: "The SEO industry has trained clients to expect monthly reports full of vanity numbers — rankings on keywords no one buys from, traffic from countries that don't convert, 'backlinks acquired' from sites no one visits. We work the opposite way.",
+    problemBody: "The SEO industry has trained clients to expect monthly reports full of vanity numbers — rankings on keywords no one buys from, traffic from countries that don't convert, 'backlinks acquired' from sites no one visits. We work the opposite way. A naming note: this page uses 'local SEO' to mean geographic SEO — ranking in a specific city or region such as Cairo or Riyadh. That's a different thing from GEO, Generative Engine Optimization, covered below. Same three letters, unrelated meaning; we keep them separate throughout.",
     differentiators: [
       "Keyword research tied to commercial intent — not search volume. Volume is vanity. Conversion is the metric.",
       "Technical SEO audit before any content. A site with broken indexing cannot be saved by content alone.",
       "Educated reporting on every move. Every ranking shift gets a WHY: was it our work, an algorithm update, or competitor movement?",
       "Competitor tracking that names names. We tell you exactly which competitor took which keyword from you — and how we plan to take it back.",
+      "Built for GEO and AEO, not just the ten blue links. We optimize for Generative Engine Optimization (GEO) — getting your business cited inside AI-generated answers on ChatGPT, Perplexity, and Google AI Overviews — and Answer Engine Optimization (AEO), structuring content and schema so an answer engine or voice assistant can pull it directly as the answer. Traditional rankings still matter; they're no longer the only place a buyer's search ends.",
     ],
     tiers: [
       {
@@ -119,12 +145,12 @@ export const SERVICES: Service[] = [
       {
         name: "Precision",
         tagline: "Strategy + execution together.",
-        features: ["Up to 25 keywords", "Full technical SEO audit", "Bi-weekly content recommendations", "Basic backlink building + local SEO", "Monthly reporting + insights"],
+        features: ["Up to 25 keywords", "Full technical SEO audit", "Bi-weekly content recommendations", "Basic backlink building + local SEO", "GEO + AEO content structuring", "Monthly reporting + insights"],
       },
       {
         name: "Mastery",
         tagline: "Full ownership + maximum output.",
-        features: ["50+ keywords", "Full + ongoing technical SEO", "Weekly content recommendations", "Advanced backlinks + local SEO + competitor tracking", "Weekly reporting + strategy call"],
+        features: ["50+ keywords", "Full + ongoing technical SEO", "Weekly content recommendations", "Advanced backlinks + local SEO + competitor tracking", "Full GEO + AEO program with AI-citation monitoring", "Weekly reporting + strategy call"],
       },
     ],
     signatureTitle: "The 48-Hour Visibility Audit",
@@ -135,6 +161,7 @@ export const SERVICES: Service[] = [
       "Your technical SEO health score — indexing issues, broken canonicals, slow pages, mobile-usability errors.",
       "Your content gap map — pages that should exist and don't, ranked by search volume × commercial intent.",
       "Your domain authority versus the three closest competitors — with the realistic 6-month plan to close the gap.",
+      "Your AI-search visibility — whether ChatGPT, Perplexity, and Google AI Overviews currently cite you, a named competitor, or no one, for your top commercial queries.",
     ],
     results: [
       "Ranking velocity on commercial-intent keywords (movement up, not just total positions).",
@@ -146,6 +173,21 @@ export const SERVICES: Service[] = [
       { q: "Why a retainer instead of a project?", a: "Because SEO is a system, not a project. The first 90 days are technical and content. Months 4–12 are authority and competitive defense. Stop the work and your competitors take back what you earned." },
       { q: "Why so few keywords on the Core tier?", a: "Because 10 commercial-intent keywords driving revenue beat 100 vanity keywords that don't. We would rather rank you #1 on what matters than #15 on a list that looks impressive." },
       { q: "Why does local SEO matter so much?", a: "Because Google's local pack returns three results — not ten. If you are a service business and you are not in those three results, you do not exist to the customer who is buying right now." },
+      { q: "Why does GEO and AEO matter now?", a: "Because a growing share of searches never produce a click: the answer comes straight from ChatGPT, Perplexity, or Google's AI Overview. If you're not the source that answer cites, you don't exist in that result at all, no matter how well you'd have ranked on the old ten blue links." },
+    ],
+    faq: [
+      { q: "How long until we see ranking movement?", a: "Technical fixes can show indexing improvements within 2 to 4 weeks. Meaningful ranking movement on commercial-intent keywords typically takes 3 to 4 months, and competitive local terms can take 6 months or more." },
+      { q: "Is this a contract or month-to-month?", a: "A six-month minimum, because SEO compounds and a one-month engagement can't fairly be judged on rankings that take quarters to build." },
+      { q: "Do you guarantee first-page rankings?", a: "No. Any agency that guarantees a specific ranking position is promising something outside their control, since no agency controls Google's algorithm directly." },
+      { q: "What happens to our rankings if we cancel?", a: "Technical fixes and content already published stay live and continue earning value. Active link-building and competitive defense stop, which is why competitors often reclaim contested keywords within a few months of a pause." },
+      { q: "Do you write the content yourselves?", a: "Content recommendations are included at every tier. Full content production can be added or coordinated with your in-house writers, whichever fits your budget and voice." },
+      { q: "How do you choose which keywords to target?", a: "Commercial intent and realistic ranking difficulty for your current domain authority, not search volume alone. A keyword with fewer searches but real buying intent outranks a big-volume term nobody converts on." },
+      { q: "Do you build backlinks through paid link schemes?", a: "No. Backlink building follows Google's guidelines. Paid link schemes get sites penalized, and a penalty costs far more than the rankings they were meant to buy." },
+      { q: "What if a competitor outranks us on a term we're targeting?", a: "That's exactly what competitor tracking is for. We name the competitor, diagnose why they're winning that keyword, and build the specific plan to take it back rather than treating it as bad luck." },
+      { q: "Do you handle local SEO for multiple locations?", a: "Yes, including Google Business Profile optimization and location-specific landing pages for businesses operating across Egypt, Saudi Arabia, or elsewhere in the region." },
+      { q: "What reporting do we actually receive?", a: "A report tied to your tier's cadence (monthly on Core, monthly with insights on Precision, weekly plus a strategy call on Mastery), and every number includes the WHY behind it, not just the number itself." },
+      { q: "What's the difference between GEO, AEO, and traditional SEO?", a: "Traditional SEO earns a ranking position on a results page a human scrolls through. GEO (Generative Engine Optimization) gets your content cited inside an AI-generated answer on tools like ChatGPT, Perplexity, or Google AI Overviews. AEO (Answer Engine Optimization) structures your content, FAQs, and schema so an answer engine or voice assistant can pull it directly as the answer itself. We build all three together, since they share the same foundation: clean structured data, clear commercial-intent content, and verifiable authority." },
+      { q: "How do you measure GEO and AEO performance if there's no click?", a: "We track citation presence: whether your business is named as a source when we run your target queries through ChatGPT, Perplexity, and Google AI Overviews, on a recurring schedule, the same way we track keyword rankings." },
     ],
     features: [
       "Technical SEO audits & implementation",
@@ -170,6 +212,10 @@ export const SERVICES: Service[] = [
     subtitle: "Apps your users actually open — built sprint by sprint, reviewed by you at every step.",
     desc: "We build iOS and Android apps in agile sprints with a client demo at the end of every cycle. You never wait months to discover we built the wrong thing.",
     fullDesc: "Mobile apps fail in two ways: they ship late and over budget, or they ship on time and nobody uses them. The second failure is the more expensive one. We prevent it by keeping you inside the build process — every two weeks, you hold working software in your hands and tell us what to change before the next cycle begins.",
+    serviceType: "Mobile Application Development",
+    metaTitle: "Mobile App Development | iOS & Android in Agile Sprints | VELIQ",
+    metaDescription: "VELIQ builds iOS and Android apps in two-week sprints with a real device build every cycle, so you review working software, not slideshows.",
+    metaKeywords: ["mobile app development company Egypt", "iOS Android app development agency Saudi Arabia", "React Native app development", "cross platform app development MENA", "agile sprint app development", "app developer Cairo"],
     problemHeading: "The Problem We Saw",
     problemBody: "Most mobile projects are scoped in week one and reviewed in month six. By then, the market has shifted, the feedback is obsolete, and the cost of changing anything is enormous. We run short, reviewable sprints so the feedback that shapes the product happens while changing it is still cheap.",
     differentiators: [
@@ -217,6 +263,18 @@ export const SERVICES: Service[] = [
       { q: "Why UX prototypes before development?", a: "Because a user who can't find the core action in a prototype is a user who will delete your app. Prototypes are cheap. Refactoring a shipped navigation structure is not." },
       { q: "What if Apple rejects our app?", a: "We pre-audit against App Store guidelines before every submission. If a rejection happens, we handle the response and resubmission — it's covered in the engagement, not billed as extra work." },
     ],
+    faq: [
+      { q: "How long does a typical build take?", a: "Core tier apps (3 sprint cycles) usually launch in 6 weeks. Precision (6 sprints) runs 12 weeks. Mastery is continuous delivery, scoped to your roadmap rather than a fixed end date." },
+      { q: "Who owns the app and the code?", a: "You do. Source code, App Store and Play Store developer accounts, and any backend infrastructure are set up under your business, not ours." },
+      { q: "What do you need from us to start?", a: "Brand assets, access to (or creation of) your Apple Developer and Google Play accounts, and a clear list of the core user flows the app needs to support." },
+      { q: "Do you handle App Store and Play Store submission?", a: "Yes, on every tier, including provisioning, signing, metadata, and pre-submission compliance review, so a rejection doesn't stall your launch." },
+      { q: "What happens if Apple or Google rejects the app?", a: "We handle the response and resubmission as part of the engagement, not as extra billed work, since we pre-audit against store guidelines before every submission." },
+      { q: "Can you build native iOS or Android instead of React Native?", a: "Yes, when the app genuinely needs it, such as heavy AR or certain hardware integrations. We'll tell you plainly if your project is one of those cases rather than defaulting everyone into cross-platform." },
+      { q: "What's included in post-launch support?", a: "Mastery includes an ongoing performance SLA and support retainer. Core and Precision clients can add a maintenance retainer separately, scoped to bug fixes, OS updates, and minor feature requests." },
+      { q: "How do sprint reviews actually work?", a: "Every two weeks you get a real device build (TestFlight or Play Store internal track), a walkthrough of what's new, and a chance to test and request changes before the next sprint starts, not a slide deck describing progress." },
+      { q: "Do you support in-app purchases or subscriptions?", a: "Yes, from Precision tier up, including subscription billing infrastructure and the analytics to track what's actually converting." },
+      { q: "What if our requirements change mid-project?", a: "That's expected and part of why we work in two-week sprints: a change gets prioritized into the next cycle instead of derailing a six-month plan that already assumed everything upfront was right." },
+    ],
     features: [
       "iOS & Android apps (React Native)",
       "Custom native modules for advanced hardware access",
@@ -240,29 +298,32 @@ export const SERVICES: Service[] = [
     subtitle: "Content that gets watched, shared, and remembered — not scrolled past.",
     desc: "We run social accounts like a publishing operation: a content system, a posting cadence, and a feedback loop — not a monthly folder of graphics uploaded and forgotten.",
     fullDesc: "Most brands treat social media as an obligation — a monthly batch of graphics uploaded on a schedule nobody reviews for performance. We treat it as a publishing operation: research what your audience actually stops scrolling for, produce content built for how each platform's algorithm actually distributes it, and report on engagement and reach the way a media company would — not a checklist.",
+    serviceType: "Social Media Management",
+    metaTitle: "Social Media Management | Content Built to Perform | VELIQ",
+    metaDescription: "VELIQ runs social media like a publishing operation: platform-native content, a real calendar, and community management included, not billed as an afterthought.",
+    metaKeywords: ["social media agency Egypt", "social media management Saudi Arabia", "content calendar management agency", "community management agency MENA", "social media marketing Cairo", "Instagram TikTok content agency"],
     problemHeading: "The Problem We Saw",
     problemBody: "We have inherited more abandoned social accounts than we can count — beautiful grids, zero engagement, posting streaks that die the moment the agency stops caring. The pattern is always the same: content designed to please the client in a review call instead of the algorithm and the audience. A feed can look perfect and reach nobody.",
     differentiators: [
       "Platform-native content, not repurposed leftovers. What works on TikTok fails on LinkedIn. We plan and shoot for the platform first, then adapt — never the reverse.",
       "A real content calendar, reviewed monthly against performance. Posts that don't perform get diagnosed, not repeated. We kill formats that stop working, fast.",
-      "Community management included, not billed as an afterthought. Comments and DMs are where trust is won or lost in real time — we respond inside hours, not days.",
       "Every post ties back to a goal — awareness, engagement, or conversion. A post with no defined job doesn't ship.",
     ],
     tiers: [
       {
         name: "Core",
         tagline: "Consistent presence, done right.",
-        features: ["2 platforms managed", "12 posts / month", "Monthly content calendar + captions", "Basic community management", "Monthly performance report"],
+        features: ["2 platforms managed", "12 posts / month", "Monthly content calendar + captions", "Monthly performance report"],
       },
       {
         name: "Precision",
         tagline: "Content built to grow, not just exist.",
-        features: ["3 platforms managed", "20 posts / month incl. Reels/TikToks", "Content shoot day (photo + short video)", "Daily community management", "Hashtag + trend research", "Bi-weekly performance reporting"],
+        features: ["3 platforms managed", "20 posts / month incl. Reels/TikToks", "Content shoot day (photo + short video)", "Hashtag + trend research", "Bi-weekly performance reporting"],
       },
       {
         name: "Mastery",
         tagline: "A full in-house team, without the overhead.",
-        features: ["4+ platforms managed", "Daily posting cadence", "Monthly content shoot + editing suite", "Influencer / UGC coordination", "Real-time community management", "Weekly reporting + strategy call"],
+        features: ["4+ platforms managed", "Daily posting cadence", "Monthly content shoot + editing suite", "Influencer / UGC coordination", "Weekly reporting + strategy call"],
       },
     ],
     signatureTitle: "The First-3-Seconds Rule",
@@ -284,8 +345,18 @@ export const SERVICES: Service[] = [
     whyFaq: [
       { q: "Why not just post more often?", a: "Because volume without a content system produces noise, not growth. Five posts built around what your audience actually engages with outperform thirty posts that guess." },
       { q: "Why do you need a monthly shoot day instead of stock content?", a: "Because platforms and audiences can tell the difference, and algorithms increasingly favor original video over recycled stock. Authentic footage of your actual product, team, or space outperforms generic content nearly every time." },
-      { q: "Why is community management part of the package, not an add-on?", a: "Because a comment left unanswered for three days signals neglect to everyone who sees it, not just the commenter. Response time is a trust signal as visible as your logo." },
       { q: "Do you guarantee follower counts?", a: "No — and any agency that does is optimizing for a number that doesn't pay your bills. We optimize for engagement and conversion, because a smaller, engaged audience outperforms a large, silent one." },
+    ],
+    faq: [
+      { q: "Who owns the content and the accounts?", a: "You do, fully. Account access, published content, and raw footage are yours. Nothing is licensed back to us or held hostage if the engagement ends." },
+      { q: "How far in advance is content planned?", a: "On a monthly content calendar, approved before the month begins, so nothing goes live without your sign-off." },
+      { q: "How many rounds of revision do we get?", a: "Two rounds per content batch are standard across tiers. A third round is available if something's fundamentally off-brief rather than a style preference." },
+      { q: "Do you write captions in Arabic, English, or both?", a: "Both, and we match whichever register your audience actually uses, including Arabic and English code-switching where that's how your customers actually talk." },
+      { q: "What happens during a shoot day?", a: "We come to your location, or coordinate remote asset delivery, and capture a batch of photo and video content in one session, enough to fuel several weeks of posts rather than one-off content per post." },
+      { q: "Do you run paid promotion on the posts too?", a: "Boosting and paid amplification are coordinated with Media Buying if you're running that service too, so organic Social Media and paid campaigns are planned to reinforce each other instead of competing for the same audience's attention." },
+      { q: "What if engagement drops for a reason outside your control, like an algorithm change or a platform outage?", a: "We flag it in the same reporting cycle it happens, explain what changed platform-side versus what's in our control, and adjust the content mix accordingly rather than waiting quietly for it to recover." },
+      { q: "Can we combine Social Media with Marketing Strategy or Media Buying?", a: "Yes, and it's the model we'd recommend if you're running more than one channel, since Marketing Strategy is what keeps this calendar coordinated with paid and other services instead of operating in isolation." },
+      { q: "What's the minimum commitment?", a: "Three months, the minimum time needed to establish a consistent posting cadence and get a real read on what content format is working for your audience." },
     ],
     features: [
       "Platform-native content strategy (Instagram, TikTok, LinkedIn, Facebook)",
@@ -298,7 +369,7 @@ export const SERVICES: Service[] = [
     process: [
       { step: "Audit", desc: "We review your current presence, competitors, and audience behavior to identify what's working and what's wasting effort." },
       { step: "Content System", desc: "We build a content calendar, pillar themes, and a shoot schedule aligned to your goals and each platform's format." },
-      { step: "Produce & Publish", desc: "We shoot, edit, caption, and post on a consistent cadence — with community management running in parallel." },
+      { step: "Produce & Publish", desc: "We shoot, edit, caption, and post on a consistent cadence." },
       { step: "Measure & Refine", desc: "We report on engagement, reach, and conversion monthly, and adjust the content mix based on what the data says, not what we assumed." },
     ],
     technologies: ["Meta Business Suite", "TikTok Ads Manager", "CapCut", "Canva", "Later", "Notion", "Meta Creator Studio", "Google Analytics"],
@@ -310,11 +381,15 @@ export const SERVICES: Service[] = [
     subtitle: "The plan before the spend — so every channel pulls in one direction.",
     desc: "We build the strategy layer most businesses skip: one positioning, one set of priorities, and a channel plan that tells every other service — web, SEO, social, ads — what to actually do.",
     fullDesc: "Most businesses buy channels before they buy a strategy: a website here, some ads there, a social account nobody planned for. Each piece might be well executed, but none of them are pulling toward the same goal. We build the strategy layer first — positioning, priorities, and a channel plan — so every dollar spent afterward compounds instead of competing with itself.",
+    serviceType: "Marketing Strategy Consulting",
+    metaTitle: "Marketing Strategy Services | One Plan, Every Channel | VELIQ",
+    metaDescription: "VELIQ builds the strategy layer most businesses skip: positioning, priorities, and a channel plan that every other service, web, SEO, social, and ads, works from.",
+    metaKeywords: ["marketing strategy agency Egypt", "marketing strategy consulting Saudi Arabia", "go-to-market strategy MENA", "channel strategy consulting", "positioning workshop agency", "marketing consultant Cairo"],
     problemHeading: "The Problem We Saw",
     problemBody: "We meet businesses running five marketing channels with five different messages, no shared metric of success, and no one accountable for how they fit together. The result is wasted spend: a social team celebrating engagement while a sales team wonders why leads are not qualified. Strategy is the layer that makes every channel accountable to the same number.",
     differentiators: [
       "Positioning before tactics. We define who you're for and why you win before recommending a single channel.",
-      "One shared scorecard across every channel. Web, SEO, social, and ads all report against the same defined metrics — no more five departments claiming five different kinds of success.",
+      "One shared scorecard across every channel. Web, SEO, social, and ads all report against the same defined metrics — no more five departments claiming five different kinds of success, and no gap between what Media Buying calls a 'ceiling' and what SEO calls a 'target': one number, agreed here, that every other service works to.",
       "Channel prioritization based on your actual sales cycle and margin — not what's trending. A channel that doesn't fit your business model doesn't make the plan, no matter how popular it is.",
       "Quarterly strategy reviews, not a document that ships once and gets ignored. Markets shift; the plan has to be a living process, not a PDF.",
     ],
@@ -355,6 +430,18 @@ export const SERVICES: Service[] = [
       { q: "Why pay for strategy separately from execution?", a: "Because an agency executing without a strategy is optimizing for its own channel's metric, not your business outcome. Strategy sits above any single channel and keeps every executor honest to the same goal." },
       { q: "Why quarterly reviews instead of an annual plan?", a: "Because markets, competitors, and platforms change faster than a year. A plan that doesn't get revisited quarterly is a plan that's wrong by month four and nobody notices." },
       { q: "Do we need this if we already have an in-house marketing team?", a: "Often yes — an outside strategic view catches blind spots an internal team is too close to see, and gives your team a documented plan to execute against instead of competing priorities from different stakeholders." },
+      { q: "How does this connect to Media Buying's ceiling or SEO's targets?", a: "Those numbers still get set inside each service. Strategy is where they get checked against each other, so a paid media ceiling and an SEO target pull toward the same quarter's priority instead of standing in for two separate ideas of success." },
+    ],
+    faq: [
+      { q: "How long does the first strategic plan take to build?", a: "Typically two to three weeks from discovery to a first written roadmap, depending on how many channels and how much existing data we're auditing." },
+      { q: "Do you also execute the plan, or just write it?", a: "Both are possible. We can execute directly through VELIQ's own services, coordinate your existing vendors against the plan, or hand you the document to run internally, whichever fits your team." },
+      { q: "What if we already have a marketing team?", a: "Then this becomes the strategic layer they execute against, and the coordination point between your team and any outside vendors. We're not replacing anyone, we're giving everyone one direction to pull in." },
+      { q: "How is progress measured?", a: "Against the shared KPI scorecard defined in the plan itself, reviewed at the cadence your tier includes: a monthly check-in on Precision, a weekly sync on Mastery." },
+      { q: "What happens if the market shifts mid-quarter?", a: "We flag it as soon as it shows up in the data and bring a revised recommendation to the next scheduled review, rather than waiting for the quarter to formally end." },
+      { q: "Can this replace a CMO or marketing director?", a: "For many small and mid-size businesses, yes, in practice. For larger organizations, it usually sits alongside internal leadership as the outside strategic check." },
+      { q: "How much input do we need to give upfront?", a: "A single strategy session with your founders or leadership team at the start. Ongoing input scales with your tier, from one call per quarter to a weekly sync." },
+      { q: "What if we're not ready to commit budget to every channel in the plan?", a: "The plan prioritizes what to fund first based on opportunity, so you're never expected to fund everything at once, just what earns its place this quarter." },
+      { q: "Can we cancel or pause the engagement?", a: "Yes, with 30 days' notice. You keep every strategic document and roadmap we've built regardless, since they're yours." },
     ],
     features: [
       "Brand positioning & messaging strategy",
@@ -379,6 +466,10 @@ export const SERVICES: Service[] = [
     subtitle: "Every dollar tracked back to a lead, a sale, or cut.",
     desc: "We plan and run paid media across Meta, Google, and TikTok with one rule: if a dollar can't be traced to a result, it doesn't stay in the budget.",
     fullDesc: "Paid media fails most often not from bad creative but from bad accountability — budgets spread across platforms with no shared measurement, optimizing for cheap clicks instead of qualified leads. We plan and run paid media with one non-negotiable rule: every dollar is tracked to a lead, a sale, or it gets reallocated.",
+    serviceType: "Paid Media Management",
+    metaTitle: "Media Buying Services | Accountable Paid Media | VELIQ",
+    metaDescription: "VELIQ runs paid media against a cost-per-result ceiling agreed before launch, with verified tracking, weekly optimization, and full spend transparency.",
+    metaKeywords: ["media buying agency Egypt", "paid media management Saudi Arabia", "Meta Google TikTok ads agency", "performance marketing MENA", "cost per acquisition tracking", "PPC agency Cairo"],
     problemHeading: "The Problem We Saw",
     problemBody: "We've audited ad accounts burning thousands of dollars a month on 'engagement' campaigns that never intended to sell anything, tracked with pixels that were never verified, reported with screenshots instead of attribution. The advertiser rarely knows what's actually working — only that money is leaving the account.",
     differentiators: [
@@ -424,6 +515,14 @@ export const SERVICES: Service[] = [
       { q: "Why do you test multiple creatives per campaign?", a: "Because ad fatigue is real and fast — a single creative's performance decays within days on some platforms. Testing isn't optional overhead, it's how you keep cost-per-result from climbing." },
       { q: "How is this different from just boosting posts?", a: "Boosting optimizes for engagement on a post. Media buying builds a funnel — awareness, retargeting, conversion — with tracking that ties spend to revenue, not likes." },
       { q: "Do you take a percentage of ad spend?", a: "Management fees are agreed upfront and disclosed separately from ad spend, so you always know exactly what's going to the platform versus to us." },
+    ],
+    faq: [
+      { q: "Why does verified tracking matter more now than it used to?", a: "Because since Apple's App Tracking Transparency changes and third-party cookie deprecation, a platform's own dashboard quietly undercounts real conversions, sometimes badly." },
+      { q: "How long is the contract?", a: "Month to month after an initial three month minimum, since paid media needs at least that long to gather enough data to optimize honestly." },
+      { q: "Who owns the ad accounts?", a: "You do. Ad accounts, pixels, and historical data stay under your business, not ours." },
+      { q: "How soon will we see results?", a: "Tracking and first campaigns launch within two weeks; meaningful cost-per-result signal usually needs three to four weeks of live spend." },
+      { q: "Do you produce the ad creative too?", a: "Yes, creative production can be included or coordinated with your in-house team or our Social Media service." },
+      { q: "Is the management fee separate from ad spend?", a: "Always. You fund the platform spend directly, and our management fee is billed and disclosed separately." },
     ],
     features: [
       "Meta, Google, and TikTok ads management",

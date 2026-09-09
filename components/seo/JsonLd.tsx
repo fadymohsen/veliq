@@ -40,11 +40,14 @@ export const organizationSchema = {
   knowsLanguage: ["en", "ar"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Website Development & SEO Services",
+    name: "Website Development, SEO & Marketing Services",
     itemListElement: [
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Development", description: "Custom website development with SEO built in from day one" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Support", description: "Ongoing website maintenance, monitoring, and performance optimization" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO", description: "Technical SEO, on-page optimization, and link building for commercial-intent keywords" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile Applications", description: "iOS and Android app development in agile, client-reviewed sprints" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO", description: "Technical SEO, GEO/AEO, and content for commercial-intent keywords and AI citation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media", description: "Platform-native content, calendar, and community management" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Marketing Strategy", description: "Positioning, priorities, and a channel plan every other service works from" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Media Buying", description: "Accountable paid media across Meta, Google, and TikTok" } },
     ],
   },
 };
@@ -73,7 +76,7 @@ export const localBusinessSchema = {
     longitude: 31.2357,
   },
   priceRange: "$$",
-  serviceType: ["Website Development", "Website Development with SEO", "SEO", "Website Support"],
+  serviceType: ["Website Development", "Website Development with SEO", "SEO", "Mobile Application Development", "Social Media Management", "Marketing Strategy Consulting", "Paid Media Management"],
   areaServed: [
     { "@type": "Country", name: "Egypt" },
     { "@type": "Country", name: "Saudi Arabia" },
@@ -88,6 +91,7 @@ export function serviceSchema(service: {
   slug: string;
   desc: string;
   fullDesc: string;
+  serviceType?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -99,14 +103,19 @@ export function serviceSchema(service: {
       "@type": "Organization",
       name: "VELIQ",
       url: "https://www.veliq.co",
+      logo: "https://www.veliq.co/branding/colored-logo.png",
+      sameAs: [
+        "https://www.instagram.com/veliq.co",
+        "https://www.facebook.com/veliq.co/",
+        "https://www.linkedin.com/company/veliq-co",
+      ],
     },
     areaServed: [
       { "@type": "Country", name: "Egypt" },
       { "@type": "Country", name: "Saudi Arabia" },
-      { "@type": "Country", name: "United Arab Emirates" },
-      { "@type": "Country", name: "United States" },
+      { "@type": "Place", name: "MENA region" },
     ],
-    serviceType: service.title,
+    serviceType: service.serviceType ?? service.title,
   };
 }
 

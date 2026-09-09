@@ -67,10 +67,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
+  const url = `https://www.veliq.co/services/${slug}`;
   return {
-    title: `${service.title}`,
-    description: service.desc,
-    alternates: { canonical: `https://www.veliq.co/services/${slug}` },
+    title: { absolute: service.metaTitle },
+    description: service.metaDescription,
+    keywords: service.metaKeywords,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      title: service.metaTitle,
+      description: service.metaDescription,
+      url,
+      siteName: "VELIQ",
+      locale: "en_US",
+      images: [{ url: `https://www.veliq.co/og/${slug}.jpg`, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: service.metaTitle,
+      description: service.metaDescription,
+      images: [`https://www.veliq.co/og/${slug}.jpg`],
+    },
   };
 }
 
@@ -82,7 +99,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   return (
     <main className="bg-black min-h-screen pt-16">
       <JsonLd data={serviceSchema(service)} />
-      <JsonLd data={faqSchema(service.whyFaq.map((f) => ({ q: f.q, a: f.a })))} />
+      <JsonLd data={faqSchema([...service.whyFaq, ...service.faq])} />
       <JsonLd data={breadcrumbSchema([
         { name: "Home", url: "https://www.veliq.co" },
         { name: "Services", url: "https://www.veliq.co/services" },
@@ -256,6 +273,27 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               >
                 <h3 className="text-white" style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "-0.02em" }}>
                   WHY: {faq.q}
+                </h3>
+                <p style={{ fontSize: "14px", color: "rgb(180,180,180)", lineHeight: 1.7 }}>{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Frequently Asked Questions */}
+        <div className="flex flex-col gap-8">
+          <h2 className="text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 600, letterSpacing: "-0.04em" }}>
+            Frequently asked questions.
+          </h2>
+          <div className="flex flex-col gap-4">
+            {service.faq.map((faq) => (
+              <div
+                key={faq.q}
+                className="flex flex-col gap-3 p-6 rounded-[16px]"
+                style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
+              >
+                <h3 className="text-white" style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "-0.02em" }}>
+                  {faq.q}
                 </h3>
                 <p style={{ fontSize: "14px", color: "rgb(180,180,180)", lineHeight: 1.7 }}>{faq.a}</p>
               </div>
