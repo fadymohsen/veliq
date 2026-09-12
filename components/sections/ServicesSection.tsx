@@ -65,11 +65,11 @@ function IconMediaBuying() {
 /* Data */
 const SERVICES = [
   { id: "01", title: "Web Dev",       slug: "website-development",  Icon: IconWebDev,      summary: "Fast, beautiful websites built to convert and scale from day one." },
-  { id: "02", title: "Mobile Apps",   slug: "mobile-applications",  Icon: IconMobileApp,   summary: "iOS & Android apps delivered sprint by sprint — on your device, not a simulator." },
+  { id: "02", title: "Mobile Apps",   slug: "mobile-applications",  Icon: IconMobileApp,   summary: "iOS & Android apps delivered sprint by sprint, on your device, not a simulator." },
   { id: "03", title: "SEO",           slug: "seo",                  Icon: IconSEO,         summary: "Rank higher and drive qualified traffic with technical SEO & content." },
   { id: "04", title: "Social Media",  slug: "social-media",         Icon: IconSocial,      summary: "Platform-native content and community management built to actually get watched." },
   { id: "05", title: "Marketing Strategy", slug: "marketing-strategy", Icon: IconStrategy, summary: "The positioning and channel plan every other service executes against." },
-  { id: "06", title: "Media Buying",  slug: "media-buying",         Icon: IconMediaBuying, summary: "Paid media across Meta, Google & TikTok — tracked to leads and sales, not clicks." },
+  { id: "06", title: "Media Buying",  slug: "media-buying",         Icon: IconMediaBuying, summary: "Paid media across Meta, Google & TikTok, tracked to leads and sales, not clicks." },
 ] as const;
 
 /* Fan geometry — generated for N cards, arched + rotated outward from center */

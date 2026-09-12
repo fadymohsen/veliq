@@ -15,7 +15,7 @@ const FaqSection = dynamic(() => import("@/components/sections/FaqSection"));
 const CtaSection = dynamic(() => import("@/components/sections/CtaSection"));
 
 const HOME_FAQS = [
-  { q: "What specific services do you provide?", a: "We offer six focused services: Website Development, Mobile App Development, SEO, Social Media, Marketing Strategy, and Media Buying — all under one dedicated team." },
+  { q: "What specific services do you provide?", a: "We offer six focused services: Website Development, Mobile App Development, SEO, Social Media, Marketing Strategy, and Media Buying, all under one dedicated team." },
   { q: "How long does a typical project take?", a: "A standard 5-page marketing site typically takes 3-7 days from kickoff to launch. Comprehensive branding and complex platform migrations usually range from 2-4 weeks." },
   { q: "Can I update the website myself after launch?", a: "Absolutely. We build websites with user-friendly content management in mind. Once we launch, we provide training and documentation showing you exactly how to edit text, swap images, and publish blog posts without writing code." },
   { q: "How do payments and deposits work?", a: "We require a 50% deposit to secure your slot in our production calendar. The remaining 50% is due upon project completion, just before we hand over the final credentials." },

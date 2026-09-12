@@ -167,7 +167,7 @@ export default function MissionVisionSection() {
             Icon={MissionIcon}
             accentColor={INDIGO}
             title="Engineering Seamless Brand Experiences"
-            body="VELIQ exists to engineer seamless brand experiences — combining velocity, intelligence, and creative precision so that every web, app, design, and marketing channel our clients own moves in one unified direction: forward."
+            body="VELIQ exists to engineer seamless brand experiences, combining velocity, intelligence, and creative precision so that every web, app, design, and marketing channel our clients own moves in one unified direction: forward."
             tags={["Velocity", "Intelligence", "Precision"]}
             delay={0.1}
           />
@@ -177,7 +177,7 @@ export default function MissionVisionSection() {
             Icon={VisionIcon}
             accentColor="rgb(129,140,248)"
             title="The Most Trusted Growth Architecture Firm"
-            body="To become the most trusted growth architecture firm for elite brands across four continents — where every digital touchpoint is a deliberate act of precision, and every client engagement raises the standard for what great work looks like."
+            body="To become the most trusted growth architecture firm for elite brands across four continents, where every digital touchpoint is a deliberate act of precision, and every client engagement raises the standard for what great work looks like."
             tags={["Four Continents", "Elite Brands", "Deliberate Precision"]}
             delay={0.22}
           />

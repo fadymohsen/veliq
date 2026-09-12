@@ -28,7 +28,7 @@ export default async function OgImage() {
             Get in Touch
           </div>
           <div style={{ fontSize: "24px", color: "#a5b4fc", lineHeight: 1.4, maxWidth: "800px" }}>
-            Book a free discovery meeting — we'll get back to you within 24 hours.
+            Book a free discovery meeting, and we'll get back to you within 24 hours.
           </div>
         </div>
       </div>

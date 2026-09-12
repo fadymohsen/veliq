@@ -9,10 +9,10 @@ import AuditCtaSection from "./AuditCtaSection";
 export const metadata: Metadata = {
   title: "Website Development with SEO Built In",
   description:
-    "VELIQ is a website development company that builds SEO into every website from day one. Custom web development with technical SEO, Core Web Vitals optimization, and structured data — serving Egypt, Saudi Arabia, UAE, and the US.",
+    "VELIQ is a website development company that builds SEO into every website from day one. Custom web development with technical SEO, Core Web Vitals optimization, and structured data, serving Egypt, Saudi Arabia, UAE, and the US.",
   alternates: { canonical: "https://www.veliq.co/website-development-with-seo" },
   openGraph: {
-    title: "Website Development with SEO Built In — VELIQ",
+    title: "Website Development with SEO Built In | VELIQ",
     description: "A website development company that builds SEO-optimized websites from the ground up. No retrofitting, no afterthoughts.",
     url: "https://www.veliq.co/website-development-with-seo",
   },
@@ -27,7 +27,7 @@ const JOURNEY_STOPS: JourneyStop[] = [
   },
   {
     title: "SEO Architecture from Day One",
-    desc: "Clean URL structures, semantic HTML, proper heading hierarchy, and crawlable site architecture — built into the foundation, not bolted on after launch.",
+    desc: "Clean URL structures, semantic HTML, proper heading hierarchy, and crawlable site architecture, built into the foundation instead of bolted on after launch.",
   },
   {
     title: "Core Web Vitals by Default",
@@ -35,7 +35,7 @@ const JOURNEY_STOPS: JourneyStop[] = [
   },
   {
     title: "Structured Data Built In",
-    desc: "JSON-LD schema markup for your business, services, FAQs, and articles — enabling rich results and better search visibility from launch day.",
+    desc: "JSON-LD schema markup for your business, services, FAQs, and articles, enabling rich results and better search visibility from launch day.",
   },
   {
     title: "Mobile-First Development",
@@ -43,7 +43,7 @@ const JOURNEY_STOPS: JourneyStop[] = [
   },
   {
     title: "Conversion-Led Design",
-    desc: "Every page has one job. Strategic CTA placement, clear user journeys, and copy that converts — not just a pretty design that wins awards and loses leads.",
+    desc: "Every page has one job. Strategic CTA placement, clear user journeys, and copy that converts, not just a pretty design that wins awards and loses leads.",
   },
   {
     title: "Ongoing Support & SEO Growth",
@@ -70,15 +70,15 @@ const JOURNEY_STOPS: JourneyStop[] = [
 const FAQS = [
   {
     q: "Why should website development and SEO happen together?",
-    a: "Because SEO is not something you add after a website is built. The most impactful SEO factors — site architecture, URL structure, page speed, mobile usability, and internal linking — are all determined during development. Retrofitting SEO onto a finished site is slower, more expensive, and less effective than building it in from the start.",
+    a: "Because SEO is not something you add after a website is built. The most impactful SEO factors, including site architecture, URL structure, page speed, mobile usability, and internal linking, are all determined during development. Retrofitting SEO onto a finished site is slower, more expensive, and less effective than building it in from the start.",
   },
   {
     q: "What makes VELIQ different from other website development companies?",
-    a: "We are a website development company that treats SEO as a core development requirement, not an upsell. Every site we build includes technical SEO foundations, Core Web Vitals optimization, structured data markup, and a content architecture designed for search visibility. Most agencies build first and optimize later — we do both simultaneously.",
+    a: "We are a website development company that treats SEO as a core development requirement, not an upsell. Every site we build includes technical SEO foundations, Core Web Vitals optimization, structured data markup, and a content architecture designed for search visibility. Most agencies build first and optimize later. We do both at the same time.",
   },
   {
     q: "How long does a website with SEO take to build?",
-    a: "A standard 5-page website with full SEO optimization takes 1-2 weeks. More complex projects with multiple service pages, blog infrastructure, and multilingual support typically take 2-4 weeks. SEO results begin showing within 30-90 days of launch.",
+    a: "A standard 5-page website with full SEO optimization takes 1 to 2 weeks. More complex projects with multiple service pages, blog infrastructure, and multilingual support typically take 2 to 4 weeks. SEO results begin showing within 30 to 90 days of launch.",
   },
   {
     q: "Do you work with businesses outside Egypt?",
@@ -86,7 +86,7 @@ const FAQS = [
   },
   {
     q: "What technologies do you use for website development?",
-    a: "We build with Next.js, React, TypeScript, and Tailwind CSS — deployed on Vercel for maximum performance. This modern stack delivers server-side rendering, automatic code splitting, and edge caching that template-based platforms cannot match.",
+    a: "We build with Next.js, React, TypeScript, and Tailwind CSS, deployed on Vercel for maximum performance. This modern stack delivers server-side rendering, automatic code splitting, and edge caching that template-based platforms cannot match.",
   },
   {
     q: "Do you offer ongoing SEO after the website launches?",
@@ -114,7 +114,7 @@ export default function WebDevWithSeoPage() {
           </span>
         </h1>
         <p style={{ fontSize: "clamp(0.95rem, 1.5vw, 1.1rem)", fontWeight: 400, lineHeight: 1.7, color: "rgba(255,255,255,0.5)", maxWidth: "56ch" }}>
-          Most websites are built first and optimized later. We do both at the same time. Every website we develop is engineered for search engines from the first line of code — so you launch with speed, structure, and rankings from day one.
+          Most websites are built first and optimized later. We do both at the same time. Every website we develop is engineered for search engines from the first line of code, so you launch with speed, structure, and rankings from day one.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <Link
@@ -139,7 +139,7 @@ export default function WebDevWithSeoPage() {
       <JourneyMapSection
         stops={JOURNEY_STOPS}
         heading="From problem to launch, one route."
-        subheading="SEO is woven into every stop along the way — not added as a final checkbox."
+        subheading="SEO is woven into every stop along the way, not added as a final checkbox."
       />
 
       {/* CTA */}

@@ -320,7 +320,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
           email: form.email.trim(),
           notes: form.notes.trim() || null,
           plan: planInfo.name,
-          planDetails: `${planInfo.category} — ${averagePrice(planInfo.price)} ${planInfo.suffix}`,
+          planDetails: `${planInfo.category}: ${averagePrice(planInfo.price)} ${planInfo.suffix}`,
           paymentMethod,
           website: form.website,
           formLoadedAt: formLoadedAt.current,
@@ -375,7 +375,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
               Thanks for choosing <span className="text-white font-medium">{planInfo.name}</span>. We&apos;ve received your request and will get back to you within 24 hours.
             </p>
             <p style={{ fontSize: 13, color: "rgba(255,255,255,0.3)" }}>
-              Check your inbox — a confirmation email is on its way.
+              Check your inbox. A confirmation email is on its way.
             </p>
             <Link
               href="/"

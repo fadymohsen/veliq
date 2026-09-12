@@ -22,7 +22,7 @@ const CLIENT_LOGOS = [
 ];
 
 const SERVICES = ["Web Design", "Mobile", "SEO", "Branding", "Marketing", "Data"];
-const COUNTRIES = ["Egypt", "Saudi Arabia", "UAE", "United States"];
+const COUNTRIES = ["Egypt", "Saudi Arabia", "United States"];
 
 function Operator({ text, delay, inView }: { text: string; delay: number; inView: boolean }) {
   return (
@@ -117,7 +117,7 @@ export default function IntroSection() {
             <p className="text-[var(--text-body-alt)] leading-[1.85]" style={{ fontSize: "clamp(0.95rem, 1.35vw, 17px)" }}>
               Every client gets a dedicated team that owns their digital presence,
               thinks with them, and moves with the precision their business deserves.
-              We are not just an agency — we are your growth architecture firm.
+              We are not just an agency. We are your growth architecture firm.
             </p>
             <div className="flex flex-col gap-3">
               <div className="divider" style={{ backgroundColor: "rgb(24,24,24)" }} />
@@ -172,7 +172,7 @@ export default function IntroSection() {
             >
               <span className="section-label">Countries Served</span>
               <div className="flex items-end justify-between">
-                <span className="stat-value" style={{ fontSize: "clamp(3rem,5vw,64px)" }}>4</span>
+                <span className="stat-value" style={{ fontSize: "clamp(3rem,5vw,64px)" }}>3</span>
                 <div className="flex flex-col items-end gap-[5px]">
                   {COUNTRIES.map((c) => (
                     <span key={c} className="text-xs font-medium text-[var(--text-label)]">{c}</span>

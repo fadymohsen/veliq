@@ -54,7 +54,7 @@ function PhoneMockup({ url, title, previewImage, previewImageMobile }: { url: st
           {previewImageMobile ? (
             <Image
               src={previewImageMobile}
-              alt={`${title} — mobile preview`}
+              alt={`${title} mobile preview`}
               fill
               sizes={`${SCR_W}px`}
               style={{ objectFit: "cover", objectPosition: "top" }}
@@ -62,7 +62,7 @@ function PhoneMockup({ url, title, previewImage, previewImageMobile }: { url: st
           ) : previewImage ? (
             <Image
               src={previewImage}
-              alt={`${title} — mobile preview`}
+              alt={`${title} mobile preview`}
               fill
               sizes={`${SCR_W}px`}
               style={{ objectFit: "cover", objectPosition: "top" }}
@@ -166,7 +166,7 @@ function LaptopMockup({ url, title, previewImage }: { url: string; title: string
         {previewImage ? (
           <Image
             src={previewImage}
-            alt={`${title} — desktop preview`}
+            alt={`${title} desktop preview`}
             fill
             sizes={`${SCR_W}px`}
             style={{ objectFit: "cover", objectPosition: "top" }}

@@ -10,7 +10,7 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const FEATURES = [
   {
     title: "SEO Architecture from Day One",
-    desc: "Clean URL structures, semantic HTML, proper heading hierarchy, and crawlable site architecture — built into the foundation.",
+    desc: "Clean URL structures, semantic HTML, proper heading hierarchy, and crawlable site architecture, built into the foundation.",
   },
   {
     title: "Core Web Vitals by Default",
@@ -18,7 +18,7 @@ const FEATURES = [
   },
   {
     title: "Structured Data Built In",
-    desc: "JSON-LD schema markup for your business, services, FAQs, and articles — enabling rich results from launch day.",
+    desc: "JSON-LD schema markup for your business, services, FAQs, and articles, enabling rich results from launch day.",
   },
   {
     title: "Mobile-First Development",
@@ -26,7 +26,7 @@ const FEATURES = [
   },
   {
     title: "Conversion-Led Design",
-    desc: "Strategic CTA placement, clear user journeys, and copy that converts — not just a pretty design that loses leads.",
+    desc: "Strategic CTA placement, clear user journeys, and copy that converts, not just a pretty design that loses leads.",
   },
   {
     title: "Ongoing Support & SEO Growth",
@@ -275,8 +275,8 @@ export default function SeoDevSection() {
           </h2>
           <p className="text-[var(--text-body)] text-[15px] leading-[1.7]">
             Most websites are built first and optimized later. We do both at the same time.
-            Every site we develop is engineered for search engines from the first line of code — so
-            you launch with speed, structure, and rankings from day one.
+            Every site we develop is engineered for search engines from the first line of code,
+            so you launch with speed, structure, and rankings from day one.
           </p>
         </motion.div>
 

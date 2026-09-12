@@ -60,7 +60,7 @@ export async function POST(req: Request) {
       from: `VELIQ <${SENDER_EMAIL}>`,
       to: [ADMIN_EMAIL],
       replyTo: email.trim(),
-      subject: `New Order: ${safePlan} — ${safeName}`,
+      subject: `New Order: ${safePlan} from ${safeName}`,
       html: `
     <!DOCTYPE html><html><head><meta charset="utf-8"></head>
     <body style="margin:0;padding:0;background:#f1f5f9;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
@@ -99,7 +99,7 @@ export async function POST(req: Request) {
         from: `VELIQ <${SENDER_EMAIL}>`,
         to: [email.trim()],
         replyTo: ADMIN_EMAIL,
-        subject: `Order Received — ${safePlan}`,
+        subject: `Order Received: ${safePlan}`,
         html: `
       <!DOCTYPE html><html><head><meta charset="utf-8"></head>
       <body style="margin:0;padding:0;background:#f1f5f9;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif">

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { SERVICES, getService } from "@/lib/services";
 import { PROJECTS } from "@/lib/projects";
 import { BLOG_POSTS } from "@/lib/blog";
@@ -136,6 +137,18 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <p className="text-[rgb(201,201,201)]" style={{ fontSize: "17px", lineHeight: 1.75, maxWidth: "56ch" }}>
             {service.fullDesc}
           </p>
+        </div>
+
+        {/* Cover image */}
+        <div
+          className="relative w-full overflow-hidden"
+          style={{ aspectRatio: "21/9", borderRadius: "24px", border: "1px solid rgb(28,28,28)" }}
+        >
+          <Image src={service.image} alt={service.title} fill sizes="(max-width: 1200px) 100vw, 1200px" className="object-cover" priority />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.55) 100%)" }}
+          />
         </div>
 
         {/* The Problem We Saw */}
@@ -332,7 +345,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           style={{ backgroundColor: "rgb(14,14,14)", border: "1px solid rgb(28,28,28)" }}
         >
           <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, fontStyle: "italic" }}>
-            &ldquo;After our discovery meeting, we recommend the tier that fits your actual needs — not the one that fits our revenue targets.&rdquo;
+            &ldquo;After our discovery meeting, we recommend the tier that fits your actual needs, not the one that fits our revenue targets.&rdquo;
           </p>
         </div>
 

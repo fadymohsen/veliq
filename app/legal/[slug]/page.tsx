@@ -96,7 +96,7 @@ const PAGES: Record<string, LegalPage> = {
       },
       {
         heading: "3. Intellectual Property",
-        body: "All content on this website — including text, graphics, logos, icons, images, and software — is the property of VELIQ or its content suppliers and is protected by international copyright laws.",
+        body: "All content on this website, including text, graphics, logos, icons, images, and software, is the property of VELIQ or its content suppliers and is protected by international copyright laws.",
         bullets: [
           "You may not reproduce, distribute, or create derivative works from our website content without written permission.",
           "Ownership of project deliverables will be defined in individual project agreements.",
@@ -115,7 +115,7 @@ const PAGES: Record<string, LegalPage> = {
       },
       {
         heading: "5. Project Agreements",
-        body: "Specific project terms — including scope, payment schedules, milestones, revision policies, and delivery timelines — will be outlined in separate project proposals or contracts. In the event of a conflict between these Terms of Service and a project agreement, the project agreement shall prevail for matters related to that specific project.",
+        body: "Specific project terms, including scope, payment schedules, milestones, revision policies, and delivery timelines, will be outlined in separate project proposals or contracts. In the event of a conflict between these Terms of Service and a project agreement, the project agreement shall prevail for matters related to that specific project.",
       },
       {
         heading: "6. Payment Terms",
@@ -182,7 +182,7 @@ const PAGES: Record<string, LegalPage> = {
         bullets: [
           "You may cancel your subscription at any time before the next billing cycle.",
           "No refunds are issued for the current billing period once payment has been processed.",
-          "Cancellation takes effect at the end of the current billing period — you retain access until then.",
+          "Cancellation takes effect at the end of the current billing period. You retain access until then.",
           "Annual plans may be eligible for a pro-rated refund if cancelled within the first 30 days.",
         ],
       },

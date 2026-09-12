@@ -46,11 +46,11 @@ const SOCIALS = [
 const FAQS = [
   {
     q: "How quickly can you start on my project?",
-    a: "Most projects kick off within 1–2 weeks of signing. We'll schedule a discovery call to understand your needs and align on timelines before we begin.",
+    a: "Most projects kick off within 1 to 2 weeks of signing. We'll schedule a discovery call to understand your needs and align on timelines before we begin.",
   },
   {
     q: "What's your typical project timeline?",
-    a: "It depends on scope. A marketing campaign might take 2–4 weeks, while a full web application could take 2–4 months. We'll give you a clear timeline during our proposal phase.",
+    a: "It depends on scope. A marketing campaign might take 2 to 4 weeks, while a full web application could take 2 to 4 months. We'll give you a clear timeline during our proposal phase.",
   },
   {
     q: "Do you work with startups or only established businesses?",

@@ -28,7 +28,7 @@ export default async function OgImage() {
             About Us
           </div>
           <div style={{ fontSize: "24px", color: "#a5b4fc", lineHeight: 1.4, maxWidth: "800px" }}>
-            A website development company in Cairo, Egypt — serving clients across Egypt, Saudi Arabia, UAE, and the US.
+            A website development company in Cairo, Egypt, serving clients across Egypt, Saudi Arabia, UAE, and the US.
           </div>
         </div>
       </div>

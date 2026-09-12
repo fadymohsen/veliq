@@ -61,7 +61,7 @@ export async function POST(req: Request) {
       from: `VELIQ <${SENDER_EMAIL}>`,
       to: [ADMIN_EMAIL],
       replyTo: email.trim(),
-      subject: `New SEO Audit Request — ${safeName}`,
+      subject: `New SEO Audit Request from ${safeName}`,
       html: `
     <!DOCTYPE html><html><head><meta charset="utf-8"></head>
     <body style="margin:0;padding:0;background:#f1f5f9;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
@@ -110,7 +110,7 @@ export async function POST(req: Request) {
             </td></tr>
             <tr><td style="padding:36px 40px 0">
               <h2 style="margin:0;color:#0f172a;font-size:22px;font-weight:700">Hi ${safeName},</h2>
-              <p style="margin:12px 0 0;color:#475569;font-size:15px;line-height:1.7">Thanks for requesting a free SEO visibility audit for <strong>${safeWebsite}</strong>. We're on it — you'll receive your custom report within 48 hours.</p>
+              <p style="margin:12px 0 0;color:#475569;font-size:15px;line-height:1.7">Thanks for requesting a free SEO visibility audit for <strong>${safeWebsite}</strong>. We're on it, and you'll receive your custom report within 48 hours.</p>
             </td></tr>
             <tr><td style="padding:28px 40px 0">
               <div style="background:#f8fafc;border-radius:12px;padding:24px;border-left:4px solid #4338ca">

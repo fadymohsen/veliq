@@ -134,7 +134,7 @@ export default function HeroSection() {
           className="text-[rgb(190,190,190)] max-w-[480px] px-2"
           style={{ fontSize: "clamp(15px, 4vw, 17px)", lineHeight: 1.6 }}
         >
-          Websites that rank, convert, and grow — built by a team obsessed with getting it right.
+          Websites, apps, and marketing, engineered by a team obsessed with getting it right.
         </motion.p>
 
         {/* CTAs */}

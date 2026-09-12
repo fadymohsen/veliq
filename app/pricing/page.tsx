@@ -114,7 +114,7 @@ export default function PricingPage() {
             Let&apos;s talk about your project.
           </h1>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.5)", lineHeight: 1.65, maxWidth: 460 }}>
-            Tell us what you&apos;re building and how to reach you — we&apos;ll get back to you within one business day.
+            Tell us what you&apos;re building and how to reach you. We&apos;ll get back to you within one business day.
           </p>
         </div>
 

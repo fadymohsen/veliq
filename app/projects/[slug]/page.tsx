@@ -166,7 +166,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="w-full max-w-[1200px] flex flex-col md:flex-row gap-1">
         {[project.image1, project.image2].map((src, i) => (
           <div key={i} className="relative flex-1 overflow-hidden" style={{ aspectRatio: "1.246", borderRadius: "25px" }}>
-            <Image src={src} alt={`${project.title} website design — screenshot ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" priority={i === 0} />
+            <Image src={src} alt={`${project.title} website design, screenshot ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" priority={i === 0} />
           </div>
         ))}
       </div>
@@ -212,7 +212,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <section className="w-full max-w-[1520px] flex flex-col gap-[10px]">
         {project.gallery.map((src, i) => (
           <div key={i} className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 9", borderRadius: "25px" }}>
-            <Image src={src} alt={`${project.title} website — full page view ${i + 1}`} fill sizes="100vw" className="object-cover" />
+            <Image src={src} alt={`${project.title} website, full page view ${i + 1}`} fill sizes="100vw" className="object-cover" />
           </div>
         ))}
       </section>
@@ -231,7 +231,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             Want results like these for your business?
           </h2>
           <p style={{ fontSize: "16px", color: "rgb(160,160,160)", lineHeight: 1.6, maxWidth: "50ch" }}>
-            Book a free discovery meeting. We'll assess your needs and recommend the right approach — no commitment required.
+            Book a free discovery meeting. We'll assess your needs and recommend the right approach, no commitment required.
           </p>
           <div className="flex items-center gap-4 flex-wrap justify-center mt-2">
             <Link

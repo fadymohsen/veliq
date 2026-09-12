@@ -57,7 +57,7 @@ export default function ServicesPage() {
         <div className="flex flex-col gap-4">
           <h1 className="heading-1 text-white">Services.</h1>
           <p className="para-32 text-[rgb(201,201,201)] max-w-2xl">
-            Six focused disciplines. One dedicated team. Every channel aligned to one direction — your growth.
+            Six focused disciplines. One dedicated team. Every channel aligned to one direction: your growth.
           </p>
         </div>
 
@@ -111,7 +111,7 @@ export default function ServicesPage() {
               Website Development with SEO Built In
             </h2>
             <p className="text-[rgb(160,160,160)]" style={{ fontSize: "14px", lineHeight: 1.5 }}>
-              Learn how we combine web development and technical SEO from day one — so your site ranks from the moment it launches.
+              Learn how we combine web development and technical SEO from day one, so your site ranks from the moment it launches.
             </p>
           </div>
           <svg

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Checkout — VELIQ",
+  title: "Checkout | VELIQ",
   description: "Complete your order and get started with VELIQ.",
   robots: { index: false, follow: false },
 };

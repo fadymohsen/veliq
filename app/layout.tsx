@@ -28,15 +28,15 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.veliq.co"),
   title: {
-    default: "VELIQ — Website Development Company with SEO",
-    template: "%s — VELIQ",
+    default: "VELIQ | Website Development Company with SEO",
+    template: "%s | VELIQ",
   },
   description:
     "VELIQ builds SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US. Custom web development, technical SEO, and ongoing support.",
   keywords: ["website development company", "website development with SEO", "web development agency", "website development company in Egypt", "SEO-friendly website development", "custom website development", "website support", "web development Cairo", "SEO services Egypt", "website development Saudi Arabia"],
   authors: [{ name: "VELIQ", url: "https://www.veliq.co" }],
   openGraph: {
-    title: "VELIQ — Website Development Company with SEO",
+    title: "VELIQ | Website Development Company with SEO",
     description: "Website development company building SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US.",
     url: "https://www.veliq.co",
     siteName: "VELIQ",
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "VELIQ — Website Development Company with SEO",
+        alt: "VELIQ | Website Development Company with SEO",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VELIQ — Website Development Company with SEO",
+    title: "VELIQ | Website Development Company with SEO",
     description: "Website development company building SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US.",
     images: ["/og-image.png"],
   },

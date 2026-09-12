@@ -8,10 +8,10 @@ import { COUNTRY_CODES, validatePhone, findCountryByCode } from "@/lib/country-c
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const AUDIT_ITEMS = [
-  "Your top 20 commercial-intent keywords — and where you actually rank",
-  "Technical SEO health score — indexing issues, speed, mobile-usability",
-  "Your content gap map — pages that should exist and don't",
-  "Competitor comparison — domain authority vs your 3 closest competitors",
+  "Your top 20 commercial-intent keywords, and where you actually rank",
+  "Technical SEO health score: indexing issues, speed, mobile-usability",
+  "Your content gap map, pages that should exist and don't",
+  "Competitor comparison: domain authority versus your 3 closest competitors",
 ];
 
 function CloseIcon() {
@@ -262,8 +262,8 @@ export default function LeadMagnetSection() {
                 </h2>
                 <p className="text-[var(--text-body)] text-base md:text-[15px] leading-[1.7] max-w-[48ch]">
                   Most websites are built first and optimized later. We do both at the same time.
-                  Every site we develop is engineered for search engines from the first line of code — so
-                  you launch with speed, structure, and rankings from day one.
+                  Every site we develop is engineered for search engines from the first line of code,
+                  so you launch with speed, structure, and rankings from day one.
                 </p>
               </div>
 

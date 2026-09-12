@@ -136,7 +136,7 @@ export async function POST(req: Request) {
       from: `VELIQ <${SENDER_EMAIL}>`,
       to: ADMIN_EMAIL,
       replyTo: email,
-      subject: `Quote Request — ${safeName}${safeBusinessName !== "—" ? ` · ${safeBusinessName}` : ""}`,
+      subject: `Quote Request: ${safeName}${safeBusinessName !== "—" ? ` · ${safeBusinessName}` : ""}`,
       html,
     });
 

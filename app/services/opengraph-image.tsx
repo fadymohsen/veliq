@@ -28,7 +28,7 @@ export default async function OgImage() {
             Our Services
           </div>
           <div style={{ fontSize: "24px", color: "#a5b4fc", lineHeight: 1.4, maxWidth: "800px" }}>
-            Website Development, SEO, and Ongoing Support — built for growth.
+            Website, mobile, SEO, social, strategy, and paid media, all built for growth.
           </div>
         </div>
       </div>

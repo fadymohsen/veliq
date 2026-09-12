@@ -44,7 +44,7 @@ function BrowserCard({ project, index }: { project: (typeof PROJECTS)[number]; i
           <div className="relative w-full overflow-hidden bg-[var(--surface-card-alt)]" style={{ aspectRatio: "16 / 9" }}>
             <Image
               src={project.preview}
-              alt={`${project.title} website screenshot — ${project.description.slice(0, 80)}`}
+              alt={`${project.title} website screenshot: ${project.description.slice(0, 80)}`}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover object-top transition-transform duration-700 group-hover:scale-105"

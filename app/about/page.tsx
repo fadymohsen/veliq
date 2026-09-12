@@ -10,10 +10,8 @@ const INDIGO = "rgb(99,102,241)";
 
 /* ── Data ─────────────────────────────────────────────────────────── */
 const STATS = [
-  { value: "4",    label: "Countries" },
+  { value: "3",    label: "Countries" },
   { value: "15+",  label: "Happy Clients" },
-  { value: "100%", label: "Satisfaction" },
-  { value: "4.8×", label: "Avg ROAS" },
 ];
 
 /* Equation tokens — "Elite" is ONE token rendered with two inner spans.
@@ -44,9 +42,9 @@ const VALUES = [
 ];
 
 const PROBLEMS = [
-  { problem: '"Nothing is connected"',              solution: "Full-channel alignment under one dedicated team: web, social, ads, brand — all moving together." },
-  { problem: '"I don\'t know what they\'re doing"', solution: "Radical transparency through educated reporting. Weekly pulse + monthly strategy + quarterly review." },
-  { problem: '"I can\'t measure the growth"',       solution: "Outcome-based KPIs tied to real business metrics: bookings, qualified leads, revenue — not vanity numbers." },
+  { problem: '"Nothing is connected"',              solution: "Full-channel alignment under one dedicated team: web, social, ads, and brand, all moving together." },
+  { problem: '"I don\'t know what they\'re doing"', solution: "Radical transparency through educated reporting. Weekly pulse, monthly strategy, and quarterly review." },
+  { problem: '"I can\'t measure the growth"',       solution: "Outcome-based KPIs tied to real business metrics: bookings, qualified leads, and revenue, not vanity numbers." },
 ];
 
 /* ── Shared animation helpers ─────────────────────────────────────── */
@@ -132,7 +130,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 16 }} animate={heroIn ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.22, ease }}
           >
-            Every channel. One direction. We don&apos;t manage your marketing — we own it with you.
+            Every channel. One direction. We don&apos;t just manage your marketing. We own it with you.
           </motion.p>
         </div>
 
@@ -310,7 +308,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {[
             { label: "Mission", title: "Engineering Seamless Brand Experiences", body: "VELIQ exists to engineer seamless brand experiences, combining velocity, intelligence, and creative precision, so that every web, app, design, and marketing channel our clients own moves in one unified direction: forward." },
-            { label: "Vision",  title: "The Most Trusted Growth Architecture Firm", body: "To become the most trusted growth architecture firm for elite brands across four continents, where every digital touchpoint is a deliberate act of precision — and every client engagement raises the standard for what great work looks like." },
+            { label: "Vision",  title: "The Most Trusted Growth Architecture Firm", body: "To become the most trusted growth architecture firm for elite brands across four continents, where every digital touchpoint is a deliberate act of precision, and every client engagement raises the standard for what great work looks like." },
           ].map((card, i) => (
             <motion.div
               key={card.label}

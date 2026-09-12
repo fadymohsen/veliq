@@ -192,7 +192,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       Get a free quote for your project
                     </h3>
                     <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.65, margin: 0 }}>
-                      Tell us what you&apos;re building — we respond within one business day.
+                      Tell us what you&apos;re building. We respond within one business day.
                     </p>
                     <Link
                       href="/pricing"
@@ -297,7 +297,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 Let&apos;s build something together.
               </h3>
               <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>
-                Tell us about your project — we get back to you within one business day.
+                Tell us about your project. We get back to you within one business day.
               </p>
             </div>
             <div className="flex items-center gap-3 shrink-0">
