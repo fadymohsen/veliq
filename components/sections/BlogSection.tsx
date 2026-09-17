@@ -58,12 +58,12 @@ function BlogCard({ post, index, inView }: { post: (typeof BLOG_POSTS)[number]; 
         <div className="flex flex-col gap-1.5 flex-1">
           <span className="para-12 text-[rgb(124,124,124)]">{post.date} &middot; {post.readTime}</span>
           <h3
-            className="text-white group-hover:text-[rgb(201,201,201)] transition-colors"
+            className="text-white group-hover:text-[rgb(201,201,201)] transition-colors truncate"
             style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.03em", lineHeight: "1.3em" }}
           >
             {post.title}
           </h3>
-          <p className="text-[rgb(124,124,124)] line-clamp-2" style={{ fontSize: "13px", lineHeight: 1.55 }}>
+          <p className="text-[rgb(124,124,124)] line-clamp-3" style={{ fontSize: "13px", lineHeight: 1.55 }}>
             {post.excerpt}
           </p>
         </div>
