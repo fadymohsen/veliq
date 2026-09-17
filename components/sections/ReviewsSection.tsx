@@ -5,7 +5,7 @@ import Link from "next/link";
 import { HOMEPAGE_REVIEWS } from "@/lib/reviews";
 import ReviewCard from "@/components/ui/ReviewCard";
 
-const AUTO_SWIPE_MS = 3000;
+const AUTO_SWIPE_MS = 6000;
 const RESUME_AFTER_MS = 5000;
 
 export default function ReviewsSection() {
@@ -48,12 +48,12 @@ export default function ReviewsSection() {
           <div className="flex flex-col gap-2">
             <h2 className="heading-1 text-white">Reviews.</h2>
             <p className="para-32 text-[var(--text-secondary)]">
-              5.0 rating on Google.
+              5.0 rating on Google &middot; {HOMEPAGE_REVIEWS.length} reviews
             </p>
           </div>
           <Link
             href="/reviews"
-            className="btn-outline text-sm hidden md:inline-flex"
+            className="btn-outline text-sm inline-flex"
           >
             See all reviews
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -84,16 +84,6 @@ export default function ReviewsSection() {
           ))}
         </div>
 
-        {/* CTA — mobile only */}
-        <Link
-          href="/reviews"
-          className="btn-outline text-sm self-start md:hidden"
-        >
-          See all reviews
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </Link>
       </div>
     </section>
   );

@@ -21,7 +21,7 @@ const DESKTOP_SHOTS: Shot[] = [
   { src: "/uploads/fanous-clinic-screen.jpg", col: "3", row: "3", rotate: -3 },
 ];
 
-// 2 columns x 5 rows — same rule: one uniform cell per tile, never overlapping.
+// 2 columns x 3 rows — 6 shots, lighter load on mobile.
 const MOBILE_SHOTS: Shot[] = [
   { src: "/uploads/brandlab-screen.png", col: "1", row: "1", rotate: -4 },
   { src: "/uploads/coach-shiko-screen.jpg", col: "2", row: "1", rotate: 4 },
@@ -29,9 +29,6 @@ const MOBILE_SHOTS: Shot[] = [
   { src: "/uploads/yamin-estate-screen.jpg", col: "2", row: "2", rotate: -3 },
   { src: "/uploads/captain-maged-1.png", col: "1", row: "3", rotate: 2 },
   { src: "/uploads/redbone-gym-screen.jpg", col: "2", row: "3", rotate: -4 },
-  { src: "/uploads/saudi-hayat-screen.jpg", col: "1", row: "4", rotate: 4 },
-  { src: "/uploads/enjazcare-screen.png", col: "2", row: "4", rotate: -3 },
-  { src: "/uploads/fanous-clinic-screen.jpg", col: "1", row: "5", rotate: 3 },
 ];
 
 function BackgroundShots({
@@ -80,7 +77,7 @@ export default function HeroSection() {
     >
       {/* Full-bleed grid of project screenshots — each tile isolated, never overlapping */}
       <BackgroundShots shots={DESKTOP_SHOTS} gridCols={3} gridRows={3} className="hidden md:grid" opacity={0.85} />
-      <BackgroundShots shots={MOBILE_SHOTS} gridCols={2} gridRows={5} className="md:hidden" opacity={0.9} />
+      <BackgroundShots shots={MOBILE_SHOTS} gridCols={2} gridRows={3} className="md:hidden" opacity={0.6} />
 
       {/* Dark overlay for legibility */}
       <div

@@ -139,12 +139,12 @@ export default function BlogPage() {
                   <PostThumb category={post.category} image={post.image} title={post.title} index={i + 1} />
                   <div className="flex flex-col gap-1.5 flex-1">
                     <span className="para-12 text-[rgb(124,124,124)]">{post.date} &middot; {post.readTime}</span>
-                    <h2
+                    <h3
                       className="text-white group-hover:text-[rgb(201,201,201)] transition-colors"
                       style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.03em", lineHeight: "1.3em" }}
                     >
                       {post.title}
-                    </h2>
+                    </h3>
                     <p className="text-[rgb(124,124,124)] line-clamp-2" style={{ fontSize: "13px", lineHeight: 1.55 }}>
                       {post.excerpt}
                     </p>

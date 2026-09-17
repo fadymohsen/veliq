@@ -27,14 +27,14 @@ export default function WhatsAppButton() {
         style={{
           width: 58,
           height: 58,
-          background: "linear-gradient(135deg, #818CF8 0%, #6366F1 100%)",
-          boxShadow: "0 8px 28px rgba(99,102,241,0.5)",
+          background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
+          boxShadow: "0 8px 28px rgba(37,211,102,0.45)",
         }}
       >
         {/* Pulsing ring */}
         <span
           className="absolute inset-0 rounded-full animate-ping"
-          style={{ background: "rgba(99,102,241,0.35)", animationDuration: "2.4s" }}
+          style={{ background: "rgba(37,211,102,0.35)", animationDuration: "2.4s" }}
         />
         {/* WhatsApp glyph */}
         <svg viewBox="0 0 32 32" width="30" height="30" fill="#fff" style={{ position: "relative" }} aria-hidden="true">

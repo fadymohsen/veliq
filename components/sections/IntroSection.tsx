@@ -102,6 +102,17 @@ export default function IntroSection() {
           </div>
         </div>
 
+        {/* Equation subtext */}
+        <motion.p
+          className="text-center text-[var(--text-body-alt)] mx-auto"
+          style={{ fontSize: "clamp(0.9rem, 1.2vw, 15px)", maxWidth: "48ch", lineHeight: 1.7 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Three forces, one outcome. Every project we take on is built on the principle that speed without precision breaks things, and precision without momentum stalls them.
+        </motion.p>
+
         {/* Bento grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
           {/* Manifesto */}

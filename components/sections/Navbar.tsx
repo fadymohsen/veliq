@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: "Services",     href: "/services"     },
   { label: "Projects",     href: "/projects"     },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Pricing",      href: "/pricing"      },
   { label: "Blog",         href: "/blog"         },
   { label: "Careers",      href: "/careers"      },
 ];
@@ -152,7 +153,7 @@ export default function Navbar() {
             ) : (
               <motion.div
                 key="compact"
-                className="hidden md:flex items-center overflow-hidden"
+                className="hidden md:flex items-center gap-2 overflow-hidden"
                 initial={{ opacity: 0, width: 0 }}
                 animate={{ opacity: 1, width: "auto" }}
                 exit={{ opacity: 0, width: 0 }}
@@ -161,6 +162,13 @@ export default function Navbar() {
                 <div className="flex items-center gap-px text-white/60 px-[10px] py-[7px]">
                   <DotsIcon />
                 </div>
+                {NAV_LINKS.some((l) => pathname === l.href) && (
+                  <span
+                    className="text-[11px] font-semibold text-white/70 pr-[10px] truncate max-w-[120px]"
+                  >
+                    {NAV_LINKS.find((l) => pathname === l.href)?.label}
+                  </span>
+                )}
               </motion.div>
             )}
           </AnimatePresence>

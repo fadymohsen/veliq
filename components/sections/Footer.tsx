@@ -7,6 +7,8 @@ const MENU_LINKS = [
   { label: "Services",     href: "/services" },
   { label: "Projects",     href: "/projects" },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Pricing",      href: "/pricing" },
+  { label: "Reviews",      href: "/reviews" },
   { label: "Blog",         href: "/blog" },
   { label: "Careers",      href: "/careers" },
 ];

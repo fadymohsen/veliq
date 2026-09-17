@@ -9,7 +9,7 @@ const SENDER_EMAIL = "admin@veliq.co";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, message, website, formLoadedAt, captchaToken, captchaAnswer } = body;
+    const { name, email, phone, service, message, website, formLoadedAt, captchaToken, captchaAnswer } = body;
 
     // Honeypot: hidden field bots fill in, humans never see.
     if (typeof website === "string" && website.trim().length > 0) {
@@ -42,6 +42,8 @@ export async function POST(req: Request) {
 
     const safeName = escapeHtml(name.trim());
     const safeEmail = escapeHtml(email.trim());
+    const safePhone = phone ? escapeHtml(phone.trim()) : "";
+    const safeService = service ? escapeHtml(service.trim()) : "";
     const safeMessage = escapeHtml(message.trim()).replace(/\n/g, "<br>");
 
     const date = new Date().toLocaleDateString("en-US", {
@@ -91,13 +93,29 @@ export async function POST(req: Request) {
                       </td>
                     </tr>
                     <tr>
-                      <td style="padding:16px 20px">
+                      <td style="padding:16px 20px${safePhone || safeService ? ";border-bottom:1px solid #e2e8f0" : ""}">
                         <span style="color:#64748b;font-size:13px;font-weight:500">Email</span>
                       </td>
-                      <td style="padding:16px 20px">
+                      <td style="padding:16px 20px${safePhone || safeService ? ";border-bottom:1px solid #e2e8f0" : ""}">
                         <a href="mailto:${safeEmail}" style="color:#4338ca;font-size:14px;font-weight:600;text-decoration:none">${safeEmail}</a>
                       </td>
                     </tr>
+                    ${safePhone ? `<tr>
+                      <td style="padding:16px 20px${safeService ? ";border-bottom:1px solid #e2e8f0" : ""}">
+                        <span style="color:#64748b;font-size:13px;font-weight:500">WhatsApp</span>
+                      </td>
+                      <td style="padding:16px 20px${safeService ? ";border-bottom:1px solid #e2e8f0" : ""}">
+                        <a href="https://wa.me/${safePhone.replace(/[^0-9]/g, "")}" style="color:#4338ca;font-size:14px;font-weight:600;text-decoration:none">${safePhone}</a>
+                      </td>
+                    </tr>` : ""}
+                    ${safeService ? `<tr>
+                      <td style="padding:16px 20px">
+                        <span style="color:#64748b;font-size:13px;font-weight:500">Service</span>
+                      </td>
+                      <td style="padding:16px 20px">
+                        <span style="color:#0f172a;font-size:14px;font-weight:600">${safeService}</span>
+                      </td>
+                    </tr>` : ""}
                   </table>
                 </td>
               </tr>

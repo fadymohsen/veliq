@@ -63,7 +63,7 @@ const FAQS = [
 ];
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
@@ -89,7 +89,7 @@ export default function ContactPage() {
       setSent(true);
       setTimeout(() => {
         setSent(false);
-        setForm({ name: "", email: "", message: "" });
+        setForm({ name: "", email: "", phone: "", service: "", message: "" });
       }, 5000);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
@@ -200,8 +200,8 @@ export default function ContactPage() {
                 </h3>
 
                 {[
-                  { id: "name",    label: "Full name",      type: "text",  placeholder: "Your name" },
-                  { id: "email",   label: "Email",           type: "email", placeholder: "you@company.com" },
+                  { id: "name",  label: "Full name", type: "text",  placeholder: "Your name",       required: true },
+                  { id: "email", label: "Email",      type: "email", placeholder: "you@company.com", required: true },
                 ].map((field) => (
                   <div key={field.id} className="flex flex-col gap-2">
                     <label htmlFor={`contact-${field.id}`} className="para-14 text-[rgb(201,201,201)]">{field.label}</label>
@@ -209,7 +209,7 @@ export default function ContactPage() {
                       id={`contact-${field.id}`}
                       type={field.type}
                       placeholder={field.placeholder}
-                      required
+                      required={field.required}
                       value={form[field.id as keyof typeof form]}
                       onChange={(e) => setForm((f) => ({ ...f, [field.id]: e.target.value }))}
                       className="bg-[rgb(20,20,20)] text-white rounded-[12px] px-5 py-4 para-16 outline-none border border-transparent transition-colors"
@@ -219,6 +219,44 @@ export default function ContactPage() {
                     />
                   </div>
                 ))}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="contact-phone" className="para-14 text-[rgb(201,201,201)]">WhatsApp number <span className="text-[rgb(124,124,124)]">(optional)</span></label>
+                    <input
+                      id="contact-phone"
+                      type="tel"
+                      placeholder="+20 1XX XXX XXXX"
+                      value={form.phone}
+                      onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
+                      className="bg-[rgb(20,20,20)] text-white rounded-[12px] px-5 py-4 para-16 outline-none border border-transparent transition-colors"
+                      style={{ borderColor: "rgb(40,40,40)" }}
+                      onFocus={(e) => (e.target.style.borderColor = "rgb(99,102,241)")}
+                      onBlur={(e) => (e.target.style.borderColor = "rgb(40,40,40)")}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="contact-service" className="para-14 text-[rgb(201,201,201)]">Service interest <span className="text-[rgb(124,124,124)]">(optional)</span></label>
+                    <select
+                      id="contact-service"
+                      value={form.service}
+                      onChange={(e) => setForm((f) => ({ ...f, service: e.target.value }))}
+                      className="bg-[rgb(20,20,20)] text-white rounded-[12px] px-5 py-4 para-16 outline-none border border-transparent transition-colors appearance-none"
+                      style={{ borderColor: "rgb(40,40,40)" }}
+                      onFocus={(e) => (e.target.style.borderColor = "rgb(99,102,241)")}
+                      onBlur={(e) => (e.target.style.borderColor = "rgb(40,40,40)")}
+                    >
+                      <option value="">Select a service…</option>
+                      <option value="Website Development">Website Development</option>
+                      <option value="Website Support">Website Support</option>
+                      <option value="SEO">SEO</option>
+                      <option value="Mobile App">Mobile App</option>
+                      <option value="Branding">Branding</option>
+                      <option value="Marketing">Marketing</option>
+                      <option value="Not sure yet">Not sure yet</option>
+                    </select>
+                  </div>
+                </div>
 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="contact-message" className="para-14 text-[rgb(201,201,201)]">Project brief</label>
