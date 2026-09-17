@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { PROJECTS } from "@/lib/projects";
 import { SERVICES } from "@/lib/services";
 import { BLOG_POSTS } from "@/lib/blog";
+import { CAREERS } from "@/lib/careers";
+import { CASE_STUDIES } from "@/lib/case-studies";
 
 const BASE = "https://www.veliq.co";
 
@@ -18,6 +20,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/legal/privacy`, lastModified: new Date("2026-06-30"), changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/legal/terms`, lastModified: new Date("2026-06-30"), changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/legal/refund`, lastModified: new Date("2026-06-30"), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE}/careers`, lastModified: new Date("2026-07-01"), changeFrequency: "weekly" as const, priority: 0.6 },
+    { url: `${BASE}/case-studies`, lastModified: new Date("2026-07-21"), changeFrequency: "monthly" as const, priority: 0.7 },
   ];
 
   const projectPages: MetadataRoute.Sitemap = PROJECTS.map((p) => ({
@@ -41,5 +45,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...projectPages, ...servicePages, ...blogPages];
+  const careerPages: MetadataRoute.Sitemap = CAREERS.map((c) => ({
+    url: `${BASE}/careers/${c.slug}`,
+    lastModified: new Date("2026-07-01"),
+    changeFrequency: "weekly" as const,
+    priority: 0.5,
+  }));
+
+  const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDIES.map((cs) => ({
+    url: `${BASE}/case-studies/${cs.slug}`,
+    lastModified: new Date("2026-07-01"),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...projectPages, ...servicePages, ...blogPages, ...careerPages, ...caseStudyPages];
 }

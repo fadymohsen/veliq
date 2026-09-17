@@ -3,10 +3,12 @@ import Image from "next/image";
 import BackToTopButton from "@/components/ui/BackToTopButton";
 
 const MENU_LINKS = [
-  { label: "About",    href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Blog",     href: "/blog" },
+  { label: "About",        href: "/about" },
+  { label: "Services",     href: "/services" },
+  { label: "Projects",     href: "/projects" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Blog",         href: "/blog" },
+  { label: "Careers",      href: "/careers" },
 ];
 
 const LEGAL_LINKS = [

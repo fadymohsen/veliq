@@ -4,8 +4,8 @@ import ProjectCard from "@/components/ui/ProjectCard";
 import { PROJECTS } from "@/lib/projects";
 
 export const metadata = {
-  title: "Projects",
-  description: "Real client projects across web development, SEO, mobile, brand strategy, and digital marketing.",
+  title: "Website Development Portfolio",
+  description: "Real client projects across web development, SEO, mobile, brand strategy, and digital marketing — built by VELIQ for businesses in Egypt, Saudi Arabia, UAE, and the US.",
   alternates: { canonical: "https://www.veliq.co/projects" },
 };
 

@@ -24,7 +24,7 @@ const CATEGORY_COVER: Record<string, { accent: string }> = {
   "Digital Marketing": { accent: "#4ade80" },
 };
 
-function BlogCoverImage({ category, image }: { category: string; image: string }) {
+function BlogCoverImage({ category, image, title }: { category: string; image: string; title: string }) {
   const cover = CATEGORY_COVER[category] ?? CATEGORY_COVER["Web Development"];
   return (
     <div
@@ -33,7 +33,7 @@ function BlogCoverImage({ category, image }: { category: string; image: string }
     >
       <Image
         src={image}
-        alt=""
+        alt={title}
         fill
         sizes="(max-width: 1024px) 100vw, 700px"
         className="object-cover"
@@ -90,6 +90,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: post.title,
     description: post.excerpt,
     alternates: { canonical: `https://www.veliq.co/blog/${slug}` },
+    openGraph: {
+      title: `${post.title} — VELIQ Blog`,
+      description: post.excerpt,
+      url: `https://www.veliq.co/blog/${slug}`,
+      type: "article",
+      publishedTime: post.date,
+      images: [{ url: `/blog/${slug}/opengraph-image`, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} — VELIQ Blog`,
+      description: post.excerpt,
+      images: [`/blog/${slug}/opengraph-image`],
+    },
   };
 }
 
@@ -112,7 +126,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <main className="bg-black min-h-screen pt-16">
-      <JsonLd data={articleSchema(post)} />
+      <JsonLd data={articleSchema({ ...post, author: post.author })} />
       <JsonLd data={breadcrumbSchema([
         { name: "Home", url: "https://www.veliq.co" },
         { name: "Blog", url: "https://www.veliq.co/blog" },
@@ -139,7 +153,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </Link>
 
           {/* Cover image */}
-          <BlogCoverImage category={post.category} image={post.image} />
+          <BlogCoverImage category={post.category} image={post.image} title={post.title} />
 
           {/* Header */}
           <div className="flex flex-col gap-5">
@@ -240,9 +254,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     >
                       Q
                     </span>
-                    <p className="text-white" style={{ fontSize: "16px", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.5 }}>
+                    <h3 className="text-white" style={{ fontSize: "16px", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.5 }}>
                       {text}
-                    </p>
+                    </h3>
                   </div>
                 );
               } else {

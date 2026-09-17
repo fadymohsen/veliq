@@ -7,10 +7,12 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { label: "About",    href: "/about"    },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Blog",     href: "/blog"     },
+  { label: "About",        href: "/about"        },
+  { label: "Services",     href: "/services"     },
+  { label: "Projects",     href: "/projects"     },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Blog",         href: "/blog"         },
+  { label: "Careers",      href: "/careers"      },
 ];
 
 function DotsIcon() {
@@ -94,6 +96,12 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
             className="flex items-center rounded-full hover:bg-white/10 transition-colors px-3 py-[5px]"
           >
             <Image
@@ -210,7 +218,7 @@ export default function Navbar() {
                     className={`flex items-center gap-3 py-4 transition-colors border-b border-[rgb(22,22,22)] font-semibold tracking-[-0.04em] ${
                       pathname === link.href ? "text-white" : "text-[var(--text-body-dark)] hover:text-white"
                     }`}
-                    style={{ fontSize: "clamp(28px, 7vw, 42px)" }}
+                    style={{ fontSize: "clamp(22px, 5.5vw, 32px)" }}
                   >
                     {link.label}
                   </Link>

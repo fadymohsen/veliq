@@ -9,16 +9,21 @@ const EQ_WEIGHT = 600;
 const EQ_TRACKING = "-0.05em";
 
 const CLIENT_LOGOS = [
-  { name: "Coach Roshdy",   src: "/clients/coach-mohamed-roshdy.svg" },
-  { name: "Initio",         src: "/clients/initio.svg" },
-  { name: "Fanous Clinic",  src: "/clients/fanous-clinic.png" },
-  { name: "Yamin Estate",   src: "/clients/yamin-estate.png" },
-  { name: "RedBone Gym",    src: "/clients/redbone-gym.png" },
-  { name: "Saudi Hayat",    src: "/clients/saudi-hayat.png" },
-  { name: "Alfa Transport", src: "/logos/alfa-transport.png" },
-  { name: "Coach Batool",   src: "/logos/coach-batool.png" },
-  { name: "Enjaz Care",     src: "/logos/enjazcare.png" },
-  { name: "Crewhub Studio", src: "/logos/crewhub-studio.png" },
+  { name: "Coach Roshdy",    src: "/clients/coach-mohamed-roshdy.svg" },
+  { name: "Initio",          src: "/clients/initio.svg" },
+  { name: "Fanous Clinic",   src: "/clients/fanous-clinic.png" },
+  { name: "Yamin Estate",    src: "/clients/yamin-estate.png" },
+  { name: "RedBone Gym",     src: "/clients/redbone-gym.png" },
+  { name: "Saudi Hayat",     src: "/clients/saudi-hayat.png" },
+  { name: "Alfa Transport",  src: "/logos/alfa-transport.png" },
+  { name: "Coach Batool",    src: "/logos/coach-batool.png" },
+  { name: "Enjaz Care",      src: "/logos/enjazcare.png" },
+  { name: "Crewhub Studio",  src: "/logos/crewhub-studio.png" },
+  { name: "Brandlab",        src: "/clients/brandlab.png", scale: 1.25 },
+  { name: "Bedouin Trails",  src: "/clients/bedouintrails.png" },
+  { name: "Window Adv",      src: "/clients/windowadv.png" },
+  { name: "Captain Maged",   src: "/clients/captainmaged.webp" },
+  { name: "Lamat El Arabia", src: "/clients/lamat-elarabia.png", scale: 1.4 },
 ];
 
 const SERVICES = ["Web Design", "Mobile", "SEO", "Branding", "Marketing", "Data"];
@@ -188,12 +193,12 @@ export default function IntroSection() {
           {CLIENT_LOGOS.map((logo, i) => (
             <motion.div
               key={logo.name}
-              className="flex items-center justify-center rounded-[18px] h-[104px] md:h-[76px] bg-[var(--surface-card)] border border-[var(--border-subtle)] p-2"
+              className="flex items-center justify-center rounded-[18px] h-[104px] md:h-[96px] bg-[var(--surface-card)] border border-[var(--border-subtle)] p-3"
               initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 1.55 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Image src={logo.src} alt={logo.name} width={120} height={44} className="object-contain w-auto h-full max-h-[70px] md:max-h-[62px]" />
+              <Image src={logo.src} alt={logo.name} width={160} height={64} className="object-contain w-auto h-full max-h-[80px] md:max-h-[72px]" style={"scale" in logo ? { transform: `scale(${logo.scale})` } : undefined} />
             </motion.div>
           ))}
         </div>

@@ -111,10 +111,16 @@ export default function PricingPage() {
             className="text-white"
             style={{ fontSize: "clamp(2.2rem, 6vw, 3.5rem)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.05 }}
           >
-            Let&apos;s talk about your project.
+            Website Development & SEO Pricing
           </h1>
+          <p
+            className="text-white"
+            style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)", fontWeight: 500, letterSpacing: "-0.02em", opacity: 0.6 }}
+          >
+            Tell us what you&apos;re building — we&apos;ll get back to you within one business day.
+          </p>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.5)", lineHeight: 1.65, maxWidth: 460 }}>
-            Tell us what you&apos;re building and how to reach you. We&apos;ll get back to you within one business day.
+            Simple, transparent pricing. No hidden fees. We recommend the right tier after a free discovery meeting.
           </p>
         </div>
 

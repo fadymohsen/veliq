@@ -53,7 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VELIQ | Website Development Company with SEO",
+    site: "@veliq_co",
+    title: "VELIQ — Website Development Company with SEO",
     description: "Website development company building SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US.",
     images: ["/og-image.png"],
   },
@@ -63,6 +64,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.veliq.co",
+    languages: {
+      "x-default": "https://www.veliq.co",
+    },
   },
 };
 
