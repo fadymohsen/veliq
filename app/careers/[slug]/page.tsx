@@ -3,7 +3,7 @@ import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 import { CAREERS, getCareer } from "@/lib/careers";
-import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
+import { JsonLd, breadcrumbSchema, jobPostingSchema } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
   return CAREERS.map((c) => ({ slug: c.slug }));
@@ -55,6 +55,14 @@ export default async function CareerDetailPage({ params }: { params: Promise<{ s
         { name: "Careers", url: "https://www.veliq.co/careers" },
         { name: career.title, url: `https://www.veliq.co/careers/${career.slug}` },
       ])} />
+      <JsonLd data={jobPostingSchema({
+        title: career.title,
+        slug: career.slug,
+        description: career.description,
+        type: career.type,
+        location: career.location,
+        posted: career.posted,
+      })} />
 
       <div className="section-padding max-w-[800px] mx-auto flex flex-col gap-10">
 

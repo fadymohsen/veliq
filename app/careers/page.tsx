@@ -2,11 +2,24 @@ import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 import { CAREERS } from "@/lib/careers";
+import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata = {
-  title: "Careers",
+  title: "Careers at VELIQ | Website Development Jobs",
   description: "Join VELIQ — open positions in engineering, design, marketing, and operations. Build websites and digital experiences that actually move the needle.",
   alternates: { canonical: "https://www.veliq.co/careers" },
+  openGraph: {
+    title: "Careers at VELIQ — Website Development Jobs",
+    description: "Join VELIQ — open positions in engineering, design, marketing, and operations. Build websites and digital experiences that actually move the needle.",
+    url: "https://www.veliq.co/careers",
+    images: [{ url: "https://www.veliq.co/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "Careers at VELIQ — Website Development Jobs",
+    description: "Open positions in engineering, design, marketing, and operations at VELIQ.",
+    images: ["https://www.veliq.co/og-image.png"],
+  },
 };
 
 const DEPT_COLORS: Record<string, string> = {
@@ -21,6 +34,10 @@ export default function CareersPage() {
 
   return (
     <main className="bg-black min-h-screen pt-16">
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://www.veliq.co" },
+        { name: "Careers", url: "https://www.veliq.co/careers" },
+      ])} />
       <section className="section-padding max-w-[1200px] mx-auto flex flex-col gap-16">
 
         <Reveal>

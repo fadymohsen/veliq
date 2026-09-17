@@ -9,6 +9,18 @@ export const metadata = {
   title: "Web Development & SEO Blog",
   description: "Insights on web development, SEO, mobile apps, data analytics, brand strategy, and digital marketing from the VELIQ team.",
   alternates: { canonical: "https://www.veliq.co/blog" },
+  openGraph: {
+    title: "Web Development & SEO Blog — VELIQ",
+    description: "Insights on web development, SEO, mobile apps, data analytics, brand strategy, and digital marketing from the VELIQ team.",
+    url: "https://www.veliq.co/blog",
+    images: [{ url: "https://www.veliq.co/blog/opengraph-image", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "Web Development & SEO Blog — VELIQ",
+    description: "Insights on web development, SEO, mobile apps, and digital marketing from the VELIQ team.",
+    images: ["https://www.veliq.co/blog/opengraph-image"],
+  },
 };
 
 const ACCENT_MAP: Record<string, string> = {

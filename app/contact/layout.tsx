@@ -12,6 +12,18 @@ export const metadata: Metadata = {
   title: "Contact VELIQ | Website Development Company",
   description: "Get in touch with VELIQ for custom website development, SEO, and ongoing support. We'll get back to you within 24 hours.",
   alternates: { canonical: "https://www.veliq.co/contact" },
+  openGraph: {
+    title: "Contact VELIQ — Website Development Company",
+    description: "Get in touch with VELIQ for custom website development, SEO, and ongoing support. We respond within 24 hours.",
+    url: "https://www.veliq.co/contact",
+    images: [{ url: "https://www.veliq.co/contact/opengraph-image", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "Contact VELIQ — Website Development Company",
+    description: "Get in touch with VELIQ for custom website development, SEO, and ongoing support. We respond within 24 hours.",
+    images: ["https://www.veliq.co/contact/opengraph-image"],
+  },
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {

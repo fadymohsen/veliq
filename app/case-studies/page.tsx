@@ -3,11 +3,24 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { CASE_STUDIES } from "@/lib/case-studies";
+import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata = {
-  title: "Case Studies",
+  title: "Client Case Studies | Web Development & SEO Results",
   description: "In-depth case studies showing how VELIQ helped real businesses grow through web development, SEO, and digital strategy.",
   alternates: { canonical: "https://www.veliq.co/case-studies" },
+  openGraph: {
+    title: "Client Case Studies — VELIQ",
+    description: "In-depth case studies showing how VELIQ helped real businesses grow through web development, SEO, and digital strategy.",
+    url: "https://www.veliq.co/case-studies",
+    images: [{ url: "https://www.veliq.co/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "Client Case Studies — VELIQ",
+    description: "Real results: web development, SEO, and digital strategy case studies from VELIQ clients.",
+    images: ["https://www.veliq.co/og-image.png"],
+  },
 };
 
 const CATEGORY_ACCENT: Record<string, string> = {
@@ -22,6 +35,10 @@ export default function CaseStudiesPage() {
 
   return (
     <main className="bg-black min-h-screen pt-16">
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://www.veliq.co" },
+        { name: "Case Studies", url: "https://www.veliq.co/case-studies" },
+      ])} />
       <section className="section-padding max-w-[1200px] mx-auto flex flex-col gap-16">
 
         <Reveal>

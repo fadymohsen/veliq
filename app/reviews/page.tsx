@@ -7,6 +7,18 @@ export const metadata = {
   title: "Client Reviews — 5.0 Stars",
   description: `5.0 rating from ${REVIEWS.length} client reviews on Google. See what businesses in Egypt, Saudi Arabia, UAE, and the US say about working with VELIQ.`,
   alternates: { canonical: "https://www.veliq.co/reviews" },
+  openGraph: {
+    title: "Client Reviews — 5.0 Stars | VELIQ",
+    description: `5.0 rating from ${REVIEWS.length} client reviews on Google. See what businesses across Egypt, Saudi Arabia, UAE, and the US say about VELIQ.`,
+    url: "https://www.veliq.co/reviews",
+    images: [{ url: "https://www.veliq.co/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "Client Reviews — 5.0 Stars | VELIQ",
+    description: `5.0 rating from ${REVIEWS.length} Google reviews. See what our clients say.`,
+    images: ["https://www.veliq.co/og-image.png"],
+  },
 };
 
 export default function ReviewsPage() {

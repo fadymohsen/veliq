@@ -15,6 +15,13 @@ export const metadata: Metadata = {
     title: "Website Development with SEO Built In | VELIQ",
     description: "A website development company that builds SEO-optimized websites from the ground up. No retrofitting, no afterthoughts.",
     url: "https://www.veliq.co/website-development-with-seo",
+    images: [{ url: "https://www.veliq.co/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "Website Development with SEO Built In | VELIQ",
+    description: "A website development company that builds SEO-optimized websites from the ground up. No retrofitting, no afterthoughts.",
+    images: ["https://www.veliq.co/og-image.png"],
   },
 };
 

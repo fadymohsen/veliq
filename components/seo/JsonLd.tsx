@@ -192,6 +192,40 @@ export function articleSchema(post: {
   };
 }
 
+export function jobPostingSchema(job: {
+  title: string;
+  slug: string;
+  description: string;
+  type: string;
+  location: string;
+  posted: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: job.title,
+    description: job.description,
+    url: `https://www.veliq.co/careers/${job.slug}`,
+    datePosted: new Date(job.posted).toISOString().split("T")[0],
+    employmentType: job.type.toUpperCase().replace(/-/g, "_"),
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "VELIQ",
+      sameAs: "https://www.veliq.co",
+      logo: "https://www.veliq.co/branding/colored-logo.png",
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Cairo",
+        addressCountry: "EG",
+      },
+    },
+    applicantLocationRequirements: { "@type": "Country", name: "Egypt" },
+  };
+}
+
 export function breadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",

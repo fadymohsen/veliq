@@ -1,6 +1,7 @@
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { SERVICES } from "@/lib/services";
+import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 
 const ICONS: Record<string, React.ReactNode> = {
   "website-development": (
@@ -47,11 +48,27 @@ export const metadata = {
   title: "Website Development, Apps, SEO, Social & Marketing Services",
   description: "VELIQ offers website development, mobile app development, SEO, social media, marketing strategy, and media buying across Egypt, Saudi Arabia, UAE, and the US.",
   alternates: { canonical: "https://www.veliq.co/services" },
+  openGraph: {
+    title: "Services — Website Development, SEO & More | VELIQ",
+    description: "Six focused disciplines. Website development, mobile apps, SEO, social media, marketing strategy, and media buying — one dedicated team across Egypt, Saudi Arabia, UAE, and the US.",
+    url: "https://www.veliq.co/services",
+    images: [{ url: "https://www.veliq.co/services/opengraph-image", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "Services — Website Development, SEO & More | VELIQ",
+    description: "Six focused disciplines. One dedicated team across Egypt, Saudi Arabia, UAE, and the US.",
+    images: ["https://www.veliq.co/services/opengraph-image"],
+  },
 };
 
 export default function ServicesPage() {
   return (
     <main className="bg-black min-h-screen pt-16">
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://www.veliq.co" },
+        { name: "Services", url: "https://www.veliq.co/services" },
+      ])} />
       <section className="section-padding max-w-[1200px] mx-auto flex flex-col gap-16">
 
         <div className="flex flex-col gap-4">
