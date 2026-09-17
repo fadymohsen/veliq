@@ -20,10 +20,10 @@ const CLIENT_LOGOS = [
   { name: "Enjaz Care",      src: "/logos/enjazcare.png" },
   { name: "Crewhub Studio",  src: "/logos/crewhub-studio.png" },
   { name: "Brandlab",        src: "/clients/brandlab.png" },
-  { name: "Bedouin Trails",  src: "/clients/bedouintrails.png" },
+  { name: "Bedouin Trails",  src: "/clients/bedouintrails.png", scale: 1.35 },
   { name: "Window Adv",      src: "/clients/windowadv.png" },
   { name: "Captain Maged",   src: "/clients/captainmaged.webp" },
-  { name: "Lamat El Arabia", src: "/clients/lamat-elarabia.png" },
+  { name: "Lamat El Arabia", src: "/clients/lamat-elarabia.png", scale: 1.3 },
 ];
 
 const SERVICES = ["Web Design", "Mobile", "SEO", "Branding", "Marketing", "Data"];
@@ -198,7 +198,7 @@ export default function IntroSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 1.55 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Image src={logo.src} alt={logo.name} width={160} height={64} className="object-contain w-auto h-full max-h-[80px] md:max-h-[72px]" />
+              <Image src={logo.src} alt={logo.name} width={160} height={64} className="object-contain w-auto h-full max-h-[80px] md:max-h-[72px]" style={logo.scale ? { transform: `scale(${logo.scale})` } : undefined} />
             </motion.div>
           ))}
         </div>
