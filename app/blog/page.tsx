@@ -3,10 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { BLOG_POSTS } from "@/lib/blog";
+import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata = {
-  title: "Blog",
-  description: "Insights on web development, SEO, mobile apps, data analytics, brand strategy, and digital marketing.",
+  title: "Web Development & SEO Blog",
+  description: "Insights on web development, SEO, mobile apps, data analytics, brand strategy, and digital marketing from the VELIQ team.",
   alternates: { canonical: "https://www.veliq.co/blog" },
 };
 
@@ -19,7 +20,7 @@ const ACCENT_MAP: Record<string, string> = {
   "Digital Marketing": "#22c55e",
 };
 
-function PostThumb({ category, image, featured = false, index = 0 }: { category: string; image: string; size?: number; featured?: boolean; index?: number }) {
+function PostThumb({ category, image, title, featured = false, index = 0 }: { category: string; image: string; title: string; size?: number; featured?: boolean; index?: number }) {
   const accent = ACCENT_MAP[category] ?? "#6366f1";
   return (
     <div
@@ -28,7 +29,7 @@ function PostThumb({ category, image, featured = false, index = 0 }: { category:
     >
       <Image
         src={image}
-        alt=""
+        alt={title}
         fill
         sizes={featured ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
         className="object-cover"
@@ -58,6 +59,10 @@ export default function BlogPage() {
 
   return (
     <main className="bg-black min-h-screen pt-16">
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://www.veliq.co" },
+        { name: "Blog", url: "https://www.veliq.co/blog" },
+      ])} />
       <section className="section-padding max-w-[1200px] mx-auto flex flex-col gap-16">
         <Reveal>
           <div className="flex flex-col gap-4 max-w-[640px]">
@@ -77,7 +82,7 @@ export default function BlogPage() {
                 className="group grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-12 rounded-[20px] p-3 lg:p-4 -m-3 lg:-m-4 transition-colors hover:bg-white/[0.02]"
               >
                 <div className="relative">
-                  <PostThumb category={featured.category} image={featured.image} featured index={0} />
+                  <PostThumb category={featured.category} image={featured.image} title={featured.title} featured index={0} />
                   <span
                     className="absolute top-3 right-3 px-3 py-1.5 rounded-full text-white uppercase"
                     style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", backgroundColor: "rgb(99,102,241)" }}
@@ -119,7 +124,7 @@ export default function BlogPage() {
             {rest.map((post, i) => (
               <Reveal key={post.slug} delay={Math.min(i * 0.06, 0.3)}>
                 <Link href={`/blog/${post.slug}`} className="group flex flex-col gap-4 h-full">
-                  <PostThumb category={post.category} image={post.image} index={i + 1} />
+                  <PostThumb category={post.category} image={post.image} title={post.title} index={i + 1} />
                   <div className="flex flex-col gap-1.5 flex-1">
                     <span className="para-12 text-[rgb(124,124,124)]">{post.date} &middot; {post.readTime}</span>
                     <h2

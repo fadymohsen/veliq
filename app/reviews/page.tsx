@@ -1,15 +1,21 @@
 import Footer from "@/components/sections/Footer";
 import ReviewCard from "@/components/ui/ReviewCard";
 import { REVIEWS } from "@/lib/reviews";
+import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata = {
-  title: "Reviews",
-  description: `5.0 rating from ${REVIEWS.length} client reviews on Google.`,
+  title: "Client Reviews — 5.0 Stars",
+  description: `5.0 rating from ${REVIEWS.length} client reviews on Google. See what businesses in Egypt, Saudi Arabia, UAE, and the US say about working with VELIQ.`,
+  alternates: { canonical: "https://www.veliq.co/reviews" },
 };
 
 export default function ReviewsPage() {
   return (
     <main className="bg-black min-h-screen pt-16">
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://www.veliq.co" },
+        { name: "Reviews", url: "https://www.veliq.co/reviews" },
+      ])} />
       <section className="section-padding max-w-[1200px] mx-auto flex flex-col gap-16">
         <div className="flex flex-col gap-4">
           <h1 className="heading-1 text-white">Reviews.</h1>

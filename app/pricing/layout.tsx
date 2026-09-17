@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Website Development & SEO Pricing",
@@ -7,5 +8,13 @@ export const metadata: Metadata = {
 };
 
 export default function PricingLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://www.veliq.co" },
+        { name: "Pricing", url: "https://www.veliq.co/pricing" },
+      ])} />
+      {children}
+    </>
+  );
 }

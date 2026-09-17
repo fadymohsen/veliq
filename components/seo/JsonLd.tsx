@@ -38,6 +38,13 @@ export const organizationSchema = {
   numberOfEmployees: { "@type": "QuantitativeValue", minValue: 5, maxValue: 15 },
   slogan: "Built for those who don't settle.",
   knowsLanguage: ["en", "ar"],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "11",
+    bestRating: "5",
+    worstRating: "1",
+  },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Website Development & SEO Services",
@@ -69,8 +76,8 @@ export const localBusinessSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 30.0444,
-    longitude: 31.2357,
+    latitude: 30.0986,
+    longitude: 31.2507,
   },
   priceRange: "$$",
   serviceType: ["Website Development", "Website Development with SEO", "SEO", "Website Support"],
@@ -81,6 +88,21 @@ export const localBusinessSchema = {
     { "@type": "Country", name: "United States" },
   ],
   knowsLanguage: ["en", "ar"],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "11",
+    bestRating: "5",
+    worstRating: "1",
+  },
 };
 
 export function serviceSchema(service: {
@@ -131,6 +153,7 @@ export function articleSchema(post: {
   excerpt: string;
   date: string;
   category: string;
+  author?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -142,9 +165,9 @@ export function articleSchema(post: {
     dateModified: post.date,
     image: `https://www.veliq.co/blog/${post.slug}/opengraph-image`,
     author: {
-      "@type": "Organization",
-      name: "VELIQ",
-      url: "https://www.veliq.co",
+      "@type": "Person",
+      name: post.author ?? "VELIQ Team",
+      url: "https://www.veliq.co/about",
     },
     publisher: {
       "@type": "Organization",

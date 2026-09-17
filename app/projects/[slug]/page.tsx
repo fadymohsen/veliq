@@ -21,6 +21,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: project.title,
     description: project.description,
     alternates: { canonical: `https://www.veliq.co/projects/${slug}` },
+    openGraph: {
+      title: `${project.title} — VELIQ Portfolio`,
+      description: project.description,
+      url: `https://www.veliq.co/projects/${slug}`,
+      images: [{ url: `/projects/${slug}/opengraph-image`, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — VELIQ Portfolio`,
+      description: project.description,
+      images: [`/projects/${slug}/opengraph-image`],
+    },
   };
 }
 
