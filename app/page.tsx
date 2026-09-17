@@ -72,7 +72,25 @@ export default function Home() {
         </Suspense>
 
         {/* 7.5. Blog — latest articles */}
-        <Suspense>
+        <Suspense fallback={
+          <section className="w-full bg-black section-padding">
+            <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-16">
+              <div className="h-10 w-24 rounded-lg bg-[rgb(18,18,18)] animate-pulse" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+                {[0, 1, 2].map((i) => (
+                  <div key={i} className="flex flex-col gap-4">
+                    <div className="w-full rounded-[15px] bg-[rgb(18,18,18)] animate-pulse" style={{ aspectRatio: "1.6" }} />
+                    <div className="flex flex-col gap-2">
+                      <div className="h-3 w-24 rounded bg-[rgb(24,24,24)] animate-pulse" />
+                      <div className="h-5 w-full rounded bg-[rgb(24,24,24)] animate-pulse" />
+                      <div className="h-5 w-3/4 rounded bg-[rgb(24,24,24)] animate-pulse" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        }>
           <BlogSection />
         </Suspense>
 

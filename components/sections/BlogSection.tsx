@@ -18,14 +18,15 @@ const ACCENT_MAP: Record<string, string> = {
   "Digital Marketing":  "#22c55e",
 };
 
-function BlogCard({ post, index }: { post: (typeof BLOG_POSTS)[number]; index: number }) {
+const FEATURED_POSTS = BLOG_POSTS.slice(0, 3);
+
+function BlogCard({ post, index, inView }: { post: (typeof BLOG_POSTS)[number]; index: number; inView: boolean }) {
   const accent = ACCENT_MAP[post.category] ?? "#6366f1";
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -80px 0px" }}
-      transition={{ duration: 0.7, delay: index * 0.08, ease: EASE }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay: 0.2 + index * 0.08, ease: EASE }}
     >
       <Link href={`/blog/${post.slug}`} className="group flex flex-col gap-4 h-full">
         <div
@@ -34,7 +35,7 @@ function BlogCard({ post, index }: { post: (typeof BLOG_POSTS)[number]; index: n
         >
           <Image
             src={post.image}
-            alt=""
+            alt={post.title}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -75,8 +76,6 @@ export default function BlogSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -120px 0px" });
 
-  const featured = BLOG_POSTS.slice(0, 3);
-
   return (
     <section ref={ref} className="w-full bg-black section-padding">
       <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-16">
@@ -97,8 +96,8 @@ export default function BlogSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
-          {featured.map((post, i) => (
-            <BlogCard key={post.slug} post={post} index={i} />
+          {FEATURED_POSTS.map((post, i) => (
+            <BlogCard key={post.slug} post={post} index={i} inView={inView} />
           ))}
         </div>
 
