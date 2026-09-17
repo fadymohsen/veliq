@@ -19,7 +19,7 @@ const CLIENT_LOGOS = [
   { name: "Coach Batool",    src: "/logos/coach-batool.png" },
   { name: "Enjaz Care",      src: "/logos/enjazcare.png" },
   { name: "Crewhub Studio",  src: "/logos/crewhub-studio.png" },
-  { name: "Brandlab",        src: "/clients/brandlab.png" },
+  { name: "Brandlab",        src: "/clients/brandlab.png", scale: 1.25 },
   { name: "Bedouin Trails",  src: "/clients/bedouintrails.png" },
   { name: "Window Adv",      src: "/clients/windowadv.png" },
   { name: "Captain Maged",   src: "/clients/captainmaged.webp" },
