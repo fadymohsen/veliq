@@ -189,7 +189,7 @@ export default function IntroSection() {
         </div>
 
         {/* Logos */}
-        <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-2">
+        <div className="w-full grid grid-cols-3 md:grid-cols-5 gap-2">
           {CLIENT_LOGOS.map((logo, i) => (
             <motion.div
               key={logo.name}
