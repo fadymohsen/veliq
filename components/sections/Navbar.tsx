@@ -10,10 +10,8 @@ const NAV_LINKS = [
   { label: "About",        href: "/about"        },
   { label: "Services",     href: "/services"     },
   { label: "Projects",     href: "/projects"     },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "Pricing",      href: "/pricing"      },
   { label: "Blog",         href: "/blog"         },
-  { label: "Careers",      href: "/careers"      },
 ];
 
 function DotsIcon() {
