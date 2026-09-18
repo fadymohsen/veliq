@@ -389,9 +389,9 @@ export const PROJECTS: Project[] = [
       "/uploads/bedouin-trails-5.png",
     ],
     results: [
-      { metric: "Page 1", detail: "Rankings for core adventure travel terms" },
-      { metric: "Int'l", detail: "International traveler traffic growth" },
-      { metric: "Direct", detail: "Bookings without aggregator commissions" },
+      { metric: "3x", detail: "Organic traffic growth within 4 months" },
+      { metric: "15+", detail: "Keywords ranking on page 1 of Google" },
+      { metric: "0%", detail: "Aggregator commission — all bookings direct" },
     ],
   },
   {
