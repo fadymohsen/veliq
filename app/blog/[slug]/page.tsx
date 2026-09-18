@@ -5,6 +5,7 @@ import Image from "next/image";
 import { BLOG_POSTS, getBlogPost } from "@/lib/blog";
 import { getService } from "@/lib/services";
 import { JsonLd, articleSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+import OpenPopupButton from "@/components/ui/OpenPopupButton";
 
 const CATEGORY_TO_SERVICE: Record<string, string> = {
   "Web Development": "website-development",
@@ -315,13 +316,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </p>
             </div>
             <div className="flex items-center gap-3 shrink-0">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-80 transition-opacity"
+              <OpenPopupButton
+                className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-80 transition-opacity cursor-pointer"
                 style={{ border: "1px solid rgba(99,102,241,0.4)", fontSize: "13px", fontWeight: 500, padding: "10px 18px", color: "rgba(255,255,255,0.8)" }}
               >
                 Contact Us
-              </Link>
+              </OpenPopupButton>
               <Link
                 href="/pricing"
                 className="inline-flex items-center gap-2 rounded-full text-white hover:brightness-110 transition-all"

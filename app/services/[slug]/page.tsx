@@ -7,6 +7,7 @@ import { PROJECTS } from "@/lib/projects";
 import { BLOG_POSTS } from "@/lib/blog";
 import ProjectCard from "@/components/ui/ProjectCard";
 import { JsonLd, serviceSchema, faqSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+import OpenPopupButton from "@/components/ui/OpenPopupButton";
 
 const SERVICE_TO_CATEGORIES: Record<string, string[]> = {
   "website-development": ["Web Development", "Mobile Development", "Brand Strategy"],
@@ -477,13 +478,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           >
             ← All Services
           </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-90 transition-opacity"
+          <OpenPopupButton
+            className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-90 transition-opacity cursor-pointer"
             style={{ backgroundColor: INDIGO, fontSize: "14px", fontWeight: 600, padding: "12px 28px" }}
           >
             Book Discovery Meeting →
-          </Link>
+          </OpenPopupButton>
         </div>
       </article>
       <Footer />

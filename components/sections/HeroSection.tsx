@@ -141,12 +141,15 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
         >
-          <Link href="/contact" className="btn-primary text-[15px] w-full sm:w-auto justify-center">
+          <button
+            onClick={() => { if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("veliq:open-popup", { detail: { service: "" } })); }}
+            className="btn-primary text-[15px] w-full sm:w-auto justify-center cursor-pointer"
+          >
             Start Your Project
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </Link>
+          </button>
           <Link href="/projects" className="btn-outline w-full sm:w-auto justify-center">
             View Our Work
           </Link>

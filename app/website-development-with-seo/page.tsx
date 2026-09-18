@@ -5,6 +5,7 @@ import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
 import JourneyMapSection, { type JourneyStop } from "@/components/sections/JourneyMapSection";
 import FadeIn from "@/components/ui/FadeIn";
 import AuditCtaSection from "./AuditCtaSection";
+import OpenPopupButton from "@/components/ui/OpenPopupButton";
 
 export const metadata: Metadata = {
   title: "Website Development with SEO Built In",
@@ -124,14 +125,13 @@ export default function WebDevWithSeoPage() {
           Most websites are built first and optimized later. We do both at the same time. Every website we develop is engineered for search engines from the first line of code, so you launch with speed, structure, and rankings from day one.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-3">
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-full text-white hover:brightness-110 transition-all"
+          <OpenPopupButton
+            className="inline-flex items-center gap-2 rounded-full text-white hover:brightness-110 transition-all cursor-pointer"
             style={{ backgroundColor: INDIGO, fontSize: 14, fontWeight: 600, padding: "14px 32px" }}
           >
             Start Your Project
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-          </Link>
+          </OpenPopupButton>
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 rounded-full text-white hover:bg-white/5 transition-all"

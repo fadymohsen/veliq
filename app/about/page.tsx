@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import Footer from "@/components/sections/Footer";
+import { openContactPopup } from "@/lib/popup";
 
 /* ── Palette — restrained: neutrals + one accent, Vercel-style ──────── */
 const INDIGO = "rgb(99,102,241)";
@@ -402,13 +403,13 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 16 }} animate={ctaIn ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.42, ease }}
         >
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-full text-white"
+          <button
+            onClick={openContactPopup}
+            className="inline-flex items-center gap-2 rounded-full text-white cursor-pointer"
             style={{ backgroundColor: INDIGO, fontSize: "15px", fontWeight: 600, padding: "14px 36px", letterSpacing: "-0.01em" }}
           >
             Get in Touch →
-          </Link>
+          </button>
         </motion.div>
       </section>
 
