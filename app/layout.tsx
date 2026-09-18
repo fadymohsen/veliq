@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/sections/Navbar";
 import GlobalBackground from "@/components/ui/GlobalBackground";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import ContactPopup from "@/components/ui/ContactPopup";
 import { SplashScreen } from "@/components/ui/ClientOnly";
 import { JsonLd, organizationSchema, localBusinessSchema } from "@/components/seo/JsonLd";
 
@@ -121,6 +122,7 @@ export default function RootLayout({
         <Navbar />
         <div id="main" tabIndex={-1}>{children}</div>
         <WhatsAppButton />
+        <ContactPopup />
       </body>
     </html>
   );

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { openContactPopup } from "@/lib/popup";
 
 const NAV_LINKS = [
   { label: "About",        href: "/about"        },
@@ -141,12 +142,12 @@ export default function Navbar() {
 
                 <div className="w-px h-4 mx-1 bg-white/12" />
 
-                <Link
-                  href="/contact"
-                  className="flex items-center rounded-full text-white bg-[var(--accent-indigo)] text-[13px] font-semibold px-[18px] py-[7px] whitespace-nowrap hover:brightness-110 transition-all"
+                <button
+                  onClick={openContactPopup}
+                  className="flex items-center rounded-full text-white bg-[var(--accent-indigo)] text-[13px] font-semibold px-[18px] py-[7px] whitespace-nowrap hover:brightness-110 transition-all cursor-pointer"
                 >
                   Contact
-                </Link>
+                </button>
               </motion.div>
             ) : (
               <motion.div
@@ -237,12 +238,12 @@ export default function Navbar() {
                 transition={{ duration: 0.3, delay: NAV_LINKS.length * 0.05 }}
                 className="mt-6"
               >
-                <Link
-                  href="/contact"
-                  className="flex items-center justify-center rounded-full text-white font-semibold w-full bg-[var(--accent-indigo)] text-base py-4 hover:brightness-110 transition-all"
+                <button
+                  onClick={() => { setMobileOpen(false); openContactPopup(); }}
+                  className="flex items-center justify-center rounded-full text-white font-semibold w-full bg-[var(--accent-indigo)] text-base py-4 hover:brightness-110 transition-all cursor-pointer"
                 >
                   Contact Us
-                </Link>
+                </button>
               </motion.div>
             </nav>
 

@@ -8,6 +8,7 @@ import DeviceMockups from "@/components/ui/DeviceMockups";
 import { PROJECTS, getProject, getOtherProjects } from "@/lib/projects";
 import { SERVICES } from "@/lib/services";
 import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
+import OpenPopupButton from "@/components/ui/OpenPopupButton";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ slug: p.slug }));
@@ -246,13 +247,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             Book a free discovery meeting. We'll assess your needs and recommend the right approach, no commitment required.
           </p>
           <div className="flex items-center gap-4 flex-wrap justify-center mt-2">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-90 transition-opacity"
+            <OpenPopupButton
+              className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-90 transition-opacity cursor-pointer"
               style={{ backgroundColor: "rgb(99,102,241)", fontSize: "14px", fontWeight: 600, padding: "12px 28px" }}
             >
               Get in Touch →
-            </Link>
+            </OpenPopupButton>
           </div>
         </div>
       </section>

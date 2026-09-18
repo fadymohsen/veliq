@@ -2,6 +2,7 @@ import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { SERVICES } from "@/lib/services";
 import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
+import OpenPopupButton from "@/components/ui/OpenPopupButton";
 
 const ICONS: Record<string, React.ReactNode> = {
   "website-development": (
@@ -160,13 +161,12 @@ export default function ServicesPage() {
             >
               Read the Blog →
             </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-90 transition-opacity"
+            <OpenPopupButton
+              className="inline-flex items-center gap-2 rounded-full text-white hover:opacity-90 transition-opacity cursor-pointer"
               style={{ backgroundColor: "rgb(99,102,241)", fontSize: "13px", fontWeight: 600, padding: "10px 20px" }}
             >
               Book a Meeting →
-            </Link>
+            </OpenPopupButton>
           </div>
         </div>
       </section>

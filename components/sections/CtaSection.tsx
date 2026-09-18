@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Button from "@/components/ui/Button";
+import { openContactPopup } from "@/lib/popup";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const EASE_ALT = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -94,7 +95,7 @@ export default function CtaSection() {
           </div>
           <Button
             label="Contact us"
-            href="/contact"
+            onClick={openContactPopup}
             bgColor="rgb(0,0,0)"
             textColor="rgb(255,255,255)"
           />
