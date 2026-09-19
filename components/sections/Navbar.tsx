@@ -145,7 +145,7 @@ export default function Navbar() {
                 <div className="w-px h-4 mx-1 bg-white/12" />
 
                 <button
-                  onClick={openContactPopup}
+                  onClick={() => openContactPopup()}
                   className="flex items-center rounded-full text-white bg-[var(--accent-indigo)] text-[13px] font-semibold px-[18px] py-[7px] whitespace-nowrap hover:brightness-110 transition-all cursor-pointer"
                 >
                   Contact

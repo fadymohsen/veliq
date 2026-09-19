@@ -95,7 +95,7 @@ export default function CtaSection() {
           </div>
           <Button
             label="Contact us"
-            onClick={openContactPopup}
+            onClick={() => openContactPopup()}
             bgColor="rgb(0,0,0)"
             textColor="rgb(255,255,255)"
           />
