@@ -404,7 +404,7 @@ export default function AboutPage() {
           transition={{ duration: 0.7, delay: 0.42, ease }}
         >
           <button
-            onClick={openContactPopup}
+            onClick={() => openContactPopup()}
             className="inline-flex items-center gap-2 rounded-full text-white cursor-pointer"
             style={{ backgroundColor: INDIGO, fontSize: "15px", fontWeight: 600, padding: "14px 36px", letterSpacing: "-0.01em" }}
           >
