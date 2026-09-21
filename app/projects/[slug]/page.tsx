@@ -187,6 +187,52 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {/* ── Solution ── */}
       <ContentBlock label="Solution" heading={project.solutionHeading} body={project.solutionBody} />
 
+      {/* ── Journey ── */}
+      {project.journey && project.journey.length > 0 && (
+        <section className="w-full max-w-[1200px] py-[60px]">
+          <div className="flex flex-col gap-10">
+            <HighlighterTag label="The Journey" />
+            <div className="flex flex-col gap-0">
+              {project.journey.map((j, i) => (
+                <div
+                  key={i}
+                  className="relative flex gap-6 md:gap-10"
+                >
+                  {/* Timeline line + dot */}
+                  <div className="flex flex-col items-center">
+                    <div
+                      className="shrink-0 rounded-full"
+                      style={{
+                        width: "14px",
+                        height: "14px",
+                        backgroundColor: "rgb(99,102,241)",
+                        marginTop: "6px",
+                      }}
+                    />
+                    {i < project.journey!.length - 1 && (
+                      <div className="flex-1 w-px" style={{ backgroundColor: "rgb(38,38,38)" }} />
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex flex-col gap-2 pb-10">
+                    <span style={{ fontSize: "13px", fontWeight: 500, color: "rgb(99,102,241)", letterSpacing: "-0.2px" }}>
+                      {j.date}
+                    </span>
+                    <h3 className="text-white" style={{ fontSize: "20px", fontWeight: 600, letterSpacing: "-0.02em" }}>
+                      {j.step}
+                    </h3>
+                    <p style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.6, color: "rgb(201,201,201)", maxWidth: "60ch" }}>
+                      {j.body}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── Results ── */}
       {project.results && project.results.length > 0 && (
         <section className="w-full max-w-[1200px] py-[60px]">

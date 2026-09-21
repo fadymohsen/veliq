@@ -17,6 +17,7 @@ export type Project = {
   image2: string;
   gallery: string[];
   results?: { metric: string; detail: string }[];
+  journey?: { step: string; date: string; body: string }[];
 };
 
 export const PROJECTS: Project[] = [
@@ -237,12 +238,12 @@ export const PROJECTS: Project[] = [
     client: "Coach Shiko",
     year: "2026",
     url: "https://www.coachmohamedroshdy.com",
-    description: "An SEO-driven lead generation system that took a business coach from zero organic leads to 40+ qualified inquiries per month.",
+    description: "Turning a 1M-follower audience into a tracked revenue engine — with the website and backend infrastructure to capture every transaction.",
     preview: "/uploads/coach-shiko-screen.webp",
-    problemHeading: "A business development coach with strong testimonials was getting zero organic leads despite years of results.",
-    problemBody: "Despite years of results and glowing client reviews, Coach Shiko's website had no SEO foundation, no clear positioning, and no mechanism to capture interested visitors. All leads came from expensive paid referrals and one-to-one networking events.",
-    solutionHeading: "We rebuilt his digital presence around his core methodology and built an SEO-driven lead generation system.",
-    solutionBody: "We crafted a positioning-first website built around his proprietary coaching framework, supported by keyword-optimized content and a free resource funnel. Organic inquiries grew from zero to 40+ per month within five months of launch.",
+    problemHeading: "Coach Shiko had the audience. He didn\u2019t have the infrastructure.",
+    problemBody: "With almost 1 million followers on Instagram and a highly active presence across social media, visibility was never the issue. But he had no website, no system to capture the transactions his following was generating, and no dashboard to see what was actually converting. His reach was scaling in public, with nothing behind it to turn that attention into tracked, manageable business.",
+    solutionHeading: "We didn\u2019t build him an audience \u2014 he already had one. We built the infrastructure to run a business behind it.",
+    solutionBody: "VELIQ designed and built Coach Shiko\u2019s website along with the backend infrastructure to capture every transaction generated through the site and route it into a single dashboard \u2014 so he can see leads, bookings, and revenue in real time, instead of guessing at what his following is actually converting into. Every phase was built in partnership with him, reviewed and approved before we moved forward, so what launched in April was exactly what he needed.",
     image1: "/uploads/coach-shiko-1.webp",
     image2: "/uploads/coach-shiko-2.webp",
     gallery: [
@@ -251,9 +252,36 @@ export const PROJECTS: Project[] = [
       "/uploads/coach-shiko-5.webp",
     ],
     results: [
-      { metric: "40+", detail: "Qualified organic inquiries per month" },
-      { metric: "0→40", detail: "From zero organic leads in 5 months" },
-      { metric: "SEO", detail: "Driven growth, no paid ads required" },
+      { metric: "300+", detail: "Qualified leads generated" },
+      { metric: "EGP 500K+", detail: "Revenue generated through the site" },
+      { metric: "200K+", detail: "Site sessions" },
+    ],
+    journey: [
+      {
+        step: "Discovery",
+        date: "February 2026",
+        body: "We started from zero infrastructure \u2014 no website, no way to capture or track what his large following was already generating. The journey began with a meeting with Coach Shiko to understand exactly what he needed the site and backend to do for his business: his goals, his audience, and his method.",
+      },
+      {
+        step: "Blueprint & Sign-off",
+        date: "February \u2013 March 2026",
+        body: "We took the time to prepare the site\u2019s skeleton and shape the overall direction, then brought it back to him in a dedicated review meeting to confirm everything before moving into execution.",
+      },
+      {
+        step: "Execution, in Lockstep",
+        date: "March \u2013 April 2026",
+        body: "We built the site phase by phase, in continuous alignment with Coach Shiko throughout. After every phase, we held a review session with him \u2014 nothing moved forward without his green light.",
+      },
+      {
+        step: "Launch",
+        date: "April 2026",
+        body: "The site went live: built around his methodology, connected to the transaction infrastructure, and structured to capture and track every lead his audience sent to it.",
+      },
+      {
+        step: "Ongoing Care",
+        date: "April 2026 \u2013 Present",
+        body: "Launch wasn\u2019t the finish line. We stayed in the backend, proactively checking that everything kept working \u2014 whether he asked us to or not. When he flagged something, we moved on it immediately.",
+      },
     ],
   },
   {
