@@ -3,6 +3,8 @@ import { SERVICES } from "@/lib/services";
 import { readFile } from "fs/promises";
 import { join } from "path";
 
+import sharp from "sharp";
+
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -13,8 +15,8 @@ export default async function OgImage() {
   for (const photo of photos) {
     try {
       const buf = await readFile(join(process.cwd(), "public", photo));
-      const ext = photo.endsWith(".png") ? "png" : "jpeg";
-      imgSrcs.push(`data:image/${ext};base64,${buf.toString("base64")}`);
+      const pngBuf = await sharp(buf).png().toBuffer();
+      imgSrcs.push(`data:image/png;base64,${pngBuf.toString("base64")}`);
     } catch {
       imgSrcs.push(undefined);
     }

@@ -6,7 +6,6 @@ import Navbar from "@/components/sections/Navbar";
 import GlobalBackground from "@/components/ui/GlobalBackground";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import ContactPopup from "@/components/ui/ContactPopup";
-import { SplashScreen } from "@/components/ui/ClientOnly";
 import { JsonLd, organizationSchema, localBusinessSchema } from "@/components/seo/JsonLd";
 
 const GA_ID = "G-9ZJEFXDNWM";
@@ -117,7 +116,6 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SplashScreen />
         <GlobalBackground />
         <Navbar />
         <div id="main" tabIndex={-1}>{children}</div>

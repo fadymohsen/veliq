@@ -33,7 +33,7 @@ export const SERVICES: Service[] = [
   {
     slug: "website-development",
     icon: "W",
-    image: "/services/Web.jpeg",
+    image: "/services/Web.webp",
     title: "Website Development",
     subtitle: "A website that earns its first 7 seconds, and every second after.",
     desc: "As a website development company, we engineer sites for the customers who actually use them: scanned in seconds, mobile-first by default, SEO-optimized from the first pixel.",
@@ -121,7 +121,7 @@ export const SERVICES: Service[] = [
   {
     slug: "seo",
     icon: "E",
-    image: "/services/SEO.jpeg",
+    image: "/services/SEO.webp",
     title: "SEO",
     subtitle: "Show up where the buying decision actually starts.",
     desc: "We work the queries that move revenue: fewer keywords, all commercial-intent, all tied to a documented revenue path.",
@@ -211,7 +211,7 @@ export const SERVICES: Service[] = [
   {
     slug: "mobile-applications",
     icon: "M",
-    image: "/services/Mobile App.jpeg",
+    image: "/services/Mobile App.webp",
     title: "Mobile Applications",
     subtitle: "Apps your users actually open, built sprint by sprint, reviewed by you at every step.",
     desc: "We build iOS and Android apps in agile sprints with a client demo at the end of every cycle. You never wait months to discover we built the wrong thing.",
@@ -298,7 +298,7 @@ export const SERVICES: Service[] = [
   {
     slug: "social-media",
     icon: "SM",
-    image: "/services/Social Media.jpeg",
+    image: "/services/Social Media.webp",
     title: "Social Media",
     subtitle: "Content that gets watched, shared, and remembered, not scrolled past.",
     desc: "We run social accounts like a publishing operation: a content system, a posting cadence, and a feedback loop, not a monthly folder of graphics uploaded and forgotten.",
@@ -382,7 +382,7 @@ export const SERVICES: Service[] = [
   {
     slug: "marketing-strategy",
     icon: "MS",
-    image: "/services/Marketing Strategy.jpeg",
+    image: "/services/Marketing Strategy.webp",
     title: "Marketing Strategy",
     subtitle: "The plan before the spend, so every channel pulls in one direction.",
     desc: "We build the strategy layer most businesses skip: one positioning, one set of priorities, and a channel plan that tells every other service, web, SEO, social, and ads, what to actually do.",
@@ -468,7 +468,7 @@ export const SERVICES: Service[] = [
   {
     slug: "media-buying",
     icon: "MB",
-    image: "/services/Media Buying.jpeg",
+    image: "/services/Media Buying.webp",
     title: "Media Buying",
     subtitle: "Every dollar tracked back to a lead, a sale, or a cut.",
     desc: "We plan and run paid media across Meta, Google, and TikTok with one rule: if a dollar can't be traced to a result, it doesn't stay in the budget.",

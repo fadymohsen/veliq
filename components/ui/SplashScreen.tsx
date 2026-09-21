@@ -21,11 +21,11 @@ export default function SplashScreen() {
 
   useEffect(() => {
     if (phase === "done") return;
-    const revealTimer = setTimeout(() => setPhase("reveal"), 1400);
+    const revealTimer = setTimeout(() => setPhase("reveal"), 350);
     const doneTimer = setTimeout(() => {
       setPhase("done");
       sessionStorage.setItem("veliq-splash-seen", "1");
-    }, 2000);
+    }, 650);
     return () => {
       clearTimeout(revealTimer);
       clearTimeout(doneTimer);

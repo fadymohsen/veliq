@@ -3,6 +3,8 @@ import { SERVICES, getService } from "@/lib/services";
 import { readFile } from "fs/promises";
 import { join } from "path";
 
+import sharp from "sharp";
+
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -28,8 +30,8 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
   if (service?.image) {
     try {
       const buf = await readFile(join(process.cwd(), "public", service.image));
-      const ext = service.image.endsWith(".png") ? "png" : "jpeg";
-      imgSrc = `data:image/${ext};base64,${buf.toString("base64")}`;
+      const pngBuf = await sharp(buf).png().toBuffer();
+      imgSrc = `data:image/png;base64,${pngBuf.toString("base64")}`;
     } catch {
       imgSrc = undefined;
     }

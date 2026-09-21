@@ -8,6 +8,7 @@ import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { SERVICES } from "@/lib/services";
 import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
+import SplashScreen from "@/components/ui/SplashScreen";
 
 const LeadMagnetSection = dynamic(() => import("@/components/sections/LeadMagnetSection"));
 const BlogSection = dynamic(() => import("@/components/sections/BlogSection"));
@@ -25,6 +26,7 @@ const HOME_FAQS = [
 export default function Home() {
   return (
     <main className="bg-black">
+      <SplashScreen />
       <JsonLd data={faqSchema(HOME_FAQS)} />
 
       {/* 1. Hero — clear value prop + primary CTA */}

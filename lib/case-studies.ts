@@ -22,7 +22,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     category: "Website Development",
     industry: "Logistics & Transport",
     excerpt: "A Saudi fleet operator managing 120+ vehicles across three countries had no digital presence that matched the scale of their operations. We built a bilingual platform that became their primary sales tool.",
-    image: "/uploads/alfa-transport-screen.jpg",
+    image: "/uploads/alfa-transport-screen.webp",
     challenge:
       "Alfa Transport was managing a fleet of 120+ vehicles across Saudi Arabia, Egypt, and the UAE with nothing but a basic contact page. Enterprise clients couldn't verify credentials, request quotes, or assess fleet capabilities online. The company was losing contracts to competitors with modern digital presences, despite offering superior logistics services. Their sales team spent hours on phone calls answering questions that a well-built website would handle in seconds.",
     approach:
@@ -44,7 +44,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     category: "Website Development",
     industry: "Real Estate",
     excerpt: "A premium residential developer was losing buyers to competitors with superior online property showcases. We built an immersive platform that converted browsers into committed buyers before they ever visited the showroom.",
-    image: "/uploads/yamin-estate-screen.jpg",
+    image: "/uploads/yamin-estate-screen.webp",
     challenge:
       "Yamin Estate was launching a premium residential development, but their digital presence couldn't convey the quality of the properties. Prospective buyers were visiting competitor sites with immersive virtual tours and 3D renders, choosing them without ever booking an in-person visit with Yamin. The sales team was spending significant time on showroom visits that didn't convert because buyers had already formed preferences based on competitors' superior online experiences.",
     approach:
@@ -66,7 +66,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     category: "Website Development",
     industry: "Healthcare",
     excerpt: "A regional healthcare provider with clinics across three Saudi cities had disconnected online properties that confused patients. We unified everything into a single authoritative platform.",
-    image: "/uploads/saudi-hayat-screen.jpg",
+    image: "/uploads/saudi-hayat-screen.webp",
     challenge:
       "Saudi Hayat operated clinics across three Saudi cities, but each had a separate, inconsistent web presence. Patients couldn't find unified information about services, doctors, or locations. The brand that should project trust and authority was instead projecting fragmentation. Online appointment bookings were almost nonexistent — most patients called each clinic directly, leading to long hold times and a poor first impression.",
     approach:
@@ -88,7 +88,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     category: "SEO",
     industry: "Business Coaching",
     excerpt: "A business development coach with years of results and strong testimonials was getting zero organic leads. We rebuilt his digital presence around SEO and generated 40+ qualified inquiries per month within five months.",
-    image: "/uploads/coach-shiko-screen.jpg",
+    image: "/uploads/coach-shiko-screen.webp",
     challenge:
       "Despite years of transformative coaching results and glowing client reviews, Coach Shiko's website had no SEO foundation, no clear positioning, and no mechanism to capture interested visitors. All leads came from expensive paid referrals and one-to-one networking events. His cost per acquisition was unsustainably high, and his growth was capped by the number of events he could physically attend.",
     approach:
