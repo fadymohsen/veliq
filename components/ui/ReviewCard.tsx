@@ -1,4 +1,5 @@
 import type { Review } from "@/lib/reviews";
+import Image from "next/image";
 
 function GoogleG() {
   return (
@@ -84,12 +85,13 @@ export default function ReviewCard({ review, clampText = true }: { review: Revie
       <div className="flex items-center justify-between gap-3 px-6 py-4">
         <div className="flex items-center gap-3 min-w-0">
           {review.avatar ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={review.avatar}
               alt={review.name}
+              width={36}
+              height={36}
               className="shrink-0 rounded-full object-cover"
-              style={{ width: 36, height: 36 }}
+              loading="lazy"
             />
           ) : (
             <span

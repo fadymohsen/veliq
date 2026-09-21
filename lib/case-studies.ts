@@ -110,7 +110,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     category: "Website Development",
     industry: "Fitness",
     excerpt: "A premium gym with top-tier equipment and certified trainers was competing on price against budget chains. We repositioned their brand and built a high-converting digital experience that justified premium pricing.",
-    image: "/uploads/redbone-gym-screen.jpg",
+    image: "/uploads/redbone-gym-screen.webp",
     challenge:
       "RedBone Gym had genuinely superior facilities — top-tier equipment, certified trainers, and documented client transformation results. But their digital presence made them look like any other local gym. The outdated website had no booking system, no compelling visual identity, and no mechanism to communicate the premium experience that justified their higher pricing. They were losing potential members to budget chains that simply looked better online.",
     approach:

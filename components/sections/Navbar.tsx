@@ -34,16 +34,22 @@ export default function Navbar() {
 
   useEffect(() => {
     let lastY = window.scrollY;
+    let ticking = false;
     const onScroll = () => {
-      const y = window.scrollY;
-      if (y < 40) {
-        setCompact(false);
-      } else if (y > lastY + 4) {
-        setCompact(true);
-      } else if (y < lastY - 4) {
-        setCompact(false);
-      }
-      lastY = y;
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y < 40) {
+          setCompact(false);
+        } else if (y > lastY + 4) {
+          setCompact(true);
+        } else if (y < lastY - 4) {
+          setCompact(false);
+        }
+        lastY = y;
+        ticking = false;
+      });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);

@@ -311,6 +311,7 @@ body {
   transform-style: preserve-3d;
   transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 15px;
+  will-change: transform;
 }
 .service-card:hover .service-card-inner,
 .service-card.is-flipped .service-card-inner {

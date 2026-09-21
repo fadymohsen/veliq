@@ -10,25 +10,25 @@ type Shot = { src: string; col: string; row: string; rotate: number };
 
 // 3 columns x 3 rows — every tile is one uniform cell, gap keeps tiles from ever touching.
 const DESKTOP_SHOTS: Shot[] = [
-  { src: "/uploads/brandlab-screen.png", col: "1", row: "1", rotate: -3 },
-  { src: "/uploads/coach-shiko-screen.jpg", col: "2", row: "1", rotate: 4 },
-  { src: "/uploads/captain-maged-1.png", col: "3", row: "1", rotate: -4 },
-  { src: "/uploads/initio-screen.jpg", col: "1", row: "2", rotate: 3 },
-  { src: "/uploads/yamin-estate-screen.jpg", col: "2", row: "2", rotate: -2 },
-  { src: "/uploads/redbone-gym-screen.jpg", col: "3", row: "2", rotate: 5 },
-  { src: "/uploads/saudi-hayat-screen.jpg", col: "1", row: "3", rotate: -5 },
-  { src: "/uploads/enjazcare-screen.png", col: "2", row: "3", rotate: 3 },
-  { src: "/uploads/fanous-clinic-screen.jpg", col: "3", row: "3", rotate: -3 },
+  { src: "/uploads/brandlab-screen.webp", col: "1", row: "1", rotate: -3 },
+  { src: "/uploads/coach-shiko-screen.webp", col: "2", row: "1", rotate: 4 },
+  { src: "/uploads/captain-maged-1.webp", col: "3", row: "1", rotate: -4 },
+  { src: "/uploads/initio-screen.webp", col: "1", row: "2", rotate: 3 },
+  { src: "/uploads/yamin-estate-screen.webp", col: "2", row: "2", rotate: -2 },
+  { src: "/uploads/redbone-gym-screen.webp", col: "3", row: "2", rotate: 5 },
+  { src: "/uploads/saudi-hayat-screen.webp", col: "1", row: "3", rotate: -5 },
+  { src: "/uploads/enjazcare-screen.webp", col: "2", row: "3", rotate: 3 },
+  { src: "/uploads/fanous-clinic-screen.webp", col: "3", row: "3", rotate: -3 },
 ];
 
 // 2 columns x 3 rows — 6 shots, lighter load on mobile.
 const MOBILE_SHOTS: Shot[] = [
-  { src: "/uploads/brandlab-screen.png", col: "1", row: "1", rotate: -4 },
-  { src: "/uploads/coach-shiko-screen.jpg", col: "2", row: "1", rotate: 4 },
-  { src: "/uploads/initio-screen.jpg", col: "1", row: "2", rotate: 3 },
-  { src: "/uploads/yamin-estate-screen.jpg", col: "2", row: "2", rotate: -3 },
-  { src: "/uploads/captain-maged-1.png", col: "1", row: "3", rotate: 2 },
-  { src: "/uploads/redbone-gym-screen.jpg", col: "2", row: "3", rotate: -4 },
+  { src: "/uploads/brandlab-screen.webp", col: "1", row: "1", rotate: -4 },
+  { src: "/uploads/coach-shiko-screen.webp", col: "2", row: "1", rotate: 4 },
+  { src: "/uploads/initio-screen.webp", col: "1", row: "2", rotate: 3 },
+  { src: "/uploads/yamin-estate-screen.webp", col: "2", row: "2", rotate: -3 },
+  { src: "/uploads/captain-maged-1.webp", col: "1", row: "3", rotate: 2 },
+  { src: "/uploads/redbone-gym-screen.webp", col: "2", row: "3", rotate: -4 },
 ];
 
 function BackgroundShots({
@@ -63,7 +63,7 @@ function BackgroundShots({
           animate={{ opacity, scale: 1 }}
           transition={{ duration: 1, delay: 0.15 + i * 0.06, ease: EASE }}
         >
-          <Image src={shot.src} alt="" fill sizes="40vw" className="object-contain" />
+          <Image src={shot.src} alt="" fill sizes="(max-width: 768px) 45vw, 30vw" loading="lazy" className="object-contain" />
         </motion.div>
       ))}
     </div>

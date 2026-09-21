@@ -203,6 +203,7 @@ export default function ServicesSection() {
                   height: `${CH}px`,
                   transformOrigin: "center bottom",
                   zIndex: 10 - i,
+                  willChange: "transform",
                   x: slots[i].x,
                   y: slots[i].y,
                   rotate: slots[i].r,

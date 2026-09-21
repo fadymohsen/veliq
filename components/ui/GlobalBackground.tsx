@@ -69,7 +69,7 @@ export default function GlobalBackground() {
             position: "absolute", top: g.top, left: "50%", transform: "translateX(-50%)",
             width: g.w, height: g.w,
             background: `radial-gradient(circle, ${g.c} 0%, ${g.c2} 38%, transparent 66%)`,
-            borderRadius: "50%", filter: "blur(10px)",
+            borderRadius: "50%", filter: "blur(4px)",
           }} />
         ))}
       </div>
