@@ -399,3 +399,9 @@ export const BLOG_POSTS: BlogPost[] = [
 export function getBlogPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
 }
+
+export type BlogPostMeta = Omit<BlogPost, "content">;
+
+export const BLOG_POST_METAS: BlogPostMeta[] = BLOG_POSTS.map(
+  ({ content: _, ...meta }) => meta
+);

@@ -2,7 +2,6 @@ import { ImageResponse } from "next/og";
 import { SERVICES } from "@/lib/services";
 import { readFile } from "fs/promises";
 import { join } from "path";
-
 import sharp from "sharp";
 
 export const size = { width: 1200, height: 630 };
@@ -15,8 +14,8 @@ export default async function OgImage() {
   for (const photo of photos) {
     try {
       const buf = await readFile(join(process.cwd(), "public", photo));
-      const pngBuf = await sharp(buf).png().toBuffer();
-      imgSrcs.push(`data:image/png;base64,${pngBuf.toString("base64")}`);
+      const jpegBuf = await sharp(buf).jpeg({ quality: 70 }).toBuffer();
+      imgSrcs.push(`data:image/jpeg;base64,${jpegBuf.toString("base64")}`);
     } catch {
       imgSrcs.push(undefined);
     }

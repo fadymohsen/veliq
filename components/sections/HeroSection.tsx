@@ -63,7 +63,7 @@ function BackgroundShots({
           animate={{ opacity, scale: 1 }}
           transition={{ duration: 1, delay: 0.15 + i * 0.06, ease: EASE }}
         >
-          <Image src={shot.src} alt="" fill sizes="(max-width: 768px) 45vw, 30vw" loading="lazy" className="object-contain" />
+          <Image src={shot.src} alt="" fill sizes="(max-width: 768px) 45vw, 30vw" className="object-contain" />
         </motion.div>
       ))}
     </div>

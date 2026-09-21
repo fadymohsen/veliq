@@ -69,7 +69,7 @@ export default function Home() {
         <ProjectsSection />
 
         {/* 5. SEO dev features + Lead magnet */}
-        <Suspense>
+        <Suspense fallback={<div className="w-full section-padding" />}>
           <LeadMagnetSection />
         </Suspense>
 
@@ -97,12 +97,12 @@ export default function Home() {
         </Suspense>
 
         {/* 8. FAQ */}
-        <Suspense>
+        <Suspense fallback={<div className="w-full section-padding" />}>
           <FaqSection />
         </Suspense>
 
         {/* 9. Final CTA */}
-        <Suspense>
+        <Suspense fallback={<div className="w-full section-padding" />}>
           <CtaSection />
         </Suspense>
 

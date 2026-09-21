@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import { BLOG_POSTS } from "@/lib/blog";
+import { BLOG_POST_METAS, type BlogPostMeta } from "@/lib/blog";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -18,9 +18,9 @@ const ACCENT_MAP: Record<string, string> = {
   "Digital Marketing":  "#22c55e",
 };
 
-const FEATURED_POSTS = BLOG_POSTS.slice(0, 3);
+const FEATURED_POSTS = BLOG_POST_METAS.slice(0, 3);
 
-function BlogCard({ post, index, inView }: { post: (typeof BLOG_POSTS)[number]; index: number; inView: boolean }) {
+function BlogCard({ post, index, inView }: { post: BlogPostMeta; index: number; inView: boolean }) {
   const accent = ACCENT_MAP[post.category] ?? "#6366f1";
   return (
     <motion.div
@@ -88,7 +88,7 @@ export default function BlogSection() {
         >
           <div className="flex items-start gap-3">
             <h2 className="heading-1 text-white">Blog.</h2>
-            <span className="para-12 text-[var(--text-secondary)] mt-4">({BLOG_POSTS.length})</span>
+            <span className="para-12 text-[var(--text-secondary)] mt-4">({BLOG_POST_METAS.length})</span>
           </div>
           <div className="hidden md:block">
             <Button label="All Articles" href="/blog" variant="outline" />
