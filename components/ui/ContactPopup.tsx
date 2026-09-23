@@ -241,8 +241,8 @@ export default function ContactPopup() {
                         <select
                           value={form.service}
                           onChange={(e) => setForm((f) => ({ ...f, service: e.target.value }))}
-                          className={`${inputBase} ${inputFocusClass}`}
-                          style={{ ...inputStyle, color: form.service ? "white" : "rgba(255,255,255,0.3)" }}
+                          className={`${inputBase} ${inputFocusClass} pr-8 appearance-none bg-[length:12px] bg-[right_12px_center] bg-no-repeat`}
+                          style={{ ...inputStyle, color: form.service ? "white" : "rgba(255,255,255,0.3)", backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")" }}
                         >
                           <option value="" disabled>Service interested in</option>
                           {SERVICES.map((s) => (
