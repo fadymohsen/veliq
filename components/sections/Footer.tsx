@@ -6,15 +6,12 @@ const MENU_LINKS = [
   { label: "About",        href: "/about" },
   { label: "Services",     href: "/services" },
   { label: "Projects",     href: "/projects" },
-  { label: "Pricing",      href: "/pricing" },
-  { label: "Reviews",      href: "/reviews" },
   { label: "Blog",         href: "/blog" },
 ];
 
 const LEGAL_LINKS = [
   { label: "Privacy Policy",      href: "/legal/privacy" },
   { label: "Terms & Conditions",  href: "/legal/terms" },
-  { label: "Refund Policy",       href: "/legal/refund" },
 ];
 
 const SOCIAL_LINKS = [
@@ -82,9 +79,7 @@ export default function Footer() {
             >
               +20 155 116 4671
             </a>
-            <span className="text-sm text-[var(--text-body-light)]">
-              8 Samoiel Markos, St, Shobra, Cairo
-            </span>
+
           </div>
 
           <BackToTopButton />

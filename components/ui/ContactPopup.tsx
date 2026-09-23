@@ -83,12 +83,12 @@ export default function ContactPopup() {
   }
 
   const inputBase =
-    "w-full rounded-[10px] px-4 py-3 text-white text-[14px] outline-none transition-colors";
+    "w-full rounded-xl px-4 py-3 text-white text-[14px] outline-none transition-all duration-200 placeholder:text-white/30";
   const inputStyle = {
-    backgroundColor: "rgb(18,18,18)",
-    border: "1px solid rgb(36,36,36)",
+    backgroundColor: "rgba(255,255,255,0.04)",
+    border: "1px solid rgba(255,255,255,0.08)",
   };
-  const inputFocusClass = "focus:border-[rgb(99,102,241)]";
+  const inputFocusClass = "focus:border-[rgba(99,102,241,0.6)] focus:bg-[rgba(99,102,241,0.04)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)]";
 
   return (
     <AnimatePresence>
@@ -97,7 +97,7 @@ export default function ContactPopup() {
           {/* Backdrop */}
           <motion.div
             key="backdrop"
-            className="fixed inset-0 z-[9998] bg-black/70 backdrop-blur-sm"
+            className="fixed inset-0 z-[9998] bg-black/80 backdrop-blur-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -113,51 +113,70 @@ export default function ContactPopup() {
             aria-modal="true"
             aria-label="Contact us"
             className="fixed inset-0 z-[9999] flex items-center justify-center px-4 py-6 pointer-events-none"
-            initial={{ opacity: 0, scale: 0.96, y: 16 }}
+            initial={{ opacity: 0, scale: 0.94, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 16 }}
-            transition={{ duration: 0.26, ease: EASE }}
+            exit={{ opacity: 0, scale: 0.94, y: 20 }}
+            transition={{ duration: 0.3, ease: EASE }}
           >
             <div
-              className="relative pointer-events-auto w-full max-w-[520px] rounded-[20px] overflow-hidden"
-              style={{ backgroundColor: "rgb(10,10,10)", border: "1px solid rgb(28,28,28)" }}
+              className="relative pointer-events-auto w-full max-w-[520px] rounded-2xl overflow-hidden shadow-2xl"
+              style={{
+                backgroundColor: "rgb(12,12,14)",
+                border: "1px solid rgba(255,255,255,0.06)",
+                boxShadow: "0 0 80px rgba(99,102,241,0.08), 0 24px 48px rgba(0,0,0,0.5)",
+              }}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Top accent gradient bar */}
+              <div
+                className="h-[2px] w-full"
+                style={{ background: "linear-gradient(90deg, rgb(168,85,247), rgb(99,102,241), rgb(34,211,238))" }}
+              />
+
               {/* Close button */}
               <button
                 onClick={close}
-                className="absolute top-4 right-4 z-10 flex items-center justify-center w-8 h-8 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors"
+                className="absolute top-5 right-5 z-10 flex items-center justify-center w-8 h-8 rounded-full text-white/30 hover:text-white hover:bg-white/10 transition-all duration-200"
                 aria-label="Close"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
 
-              <div className="p-8">
+              <div className="p-8 pt-7">
                 {sent ? (
                   /* Success state */
                   <div className="flex flex-col items-center gap-5 py-8 text-center">
-                    <div
-                      className="w-14 h-14 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: "rgb(99,102,241,0.15)", border: "1px solid rgb(99,102,241,0.3)" }}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
+                      className="w-16 h-16 rounded-full flex items-center justify-center"
+                      style={{
+                        background: "linear-gradient(135deg, rgba(168,85,247,0.15), rgba(99,102,241,0.15))",
+                        border: "1px solid rgba(99,102,241,0.2)",
+                      }}
                     >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(99,102,241)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgb(129,140,248)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M20 6L9 17l-5-5" />
                       </svg>
-                    </div>
+                    </motion.div>
                     <div className="flex flex-col gap-2">
                       <h3 className="text-white font-semibold" style={{ fontSize: "20px", letterSpacing: "-0.03em" }}>
                         Message sent!
                       </h3>
-                      <p className="text-[rgb(160,160,160)]" style={{ fontSize: "14px", lineHeight: 1.6 }}>
+                      <p className="text-white/40" style={{ fontSize: "14px", lineHeight: 1.6 }}>
                         We&apos;ll get back to you within 24 hours.
                       </p>
                     </div>
                     <button
                       onClick={close}
-                      className="mt-2 rounded-full text-white font-semibold px-6 py-2.5 text-sm transition-opacity hover:opacity-80"
-                      style={{ backgroundColor: "rgb(99,102,241)" }}
+                      className="mt-2 rounded-full text-white font-medium px-8 py-2.5 text-sm transition-all duration-200 hover:opacity-90 hover:shadow-lg"
+                      style={{
+                        background: "linear-gradient(135deg, rgb(168,85,247), rgb(99,102,241))",
+                        boxShadow: "0 4px 16px rgba(99,102,241,0.3)",
+                      }}
                     >
                       Close
                     </button>
@@ -165,17 +184,17 @@ export default function ContactPopup() {
                 ) : (
                   <>
                     {/* Header */}
-                    <div className="flex flex-col gap-1 mb-7">
-                      <h2 className="text-white font-semibold" style={{ fontSize: "22px", letterSpacing: "-0.04em" }}>
+                    <div className="flex flex-col gap-2 mb-7">
+                      <h2 className="text-white font-semibold" style={{ fontSize: "24px", letterSpacing: "-0.04em" }}>
                         Let&apos;s talk.
                       </h2>
-                      <p className="text-[rgb(124,124,124)]" style={{ fontSize: "13px" }}>
+                      <p className="text-white/35" style={{ fontSize: "14px", lineHeight: 1.5 }}>
                         Tell us what you need — we&apos;ll reply within 24 hours.
                       </p>
                     </div>
 
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-3" noValidate>
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-3.5" noValidate>
                       {/* Honeypot */}
                       <input
                         type="text"
@@ -188,7 +207,7 @@ export default function ContactPopup() {
                         autoComplete="off"
                       />
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                         <input
                           ref={firstInputRef}
                           type="text"
@@ -210,7 +229,7 @@ export default function ContactPopup() {
                         />
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                         <input
                           type="tel"
                           placeholder="Phone (optional)"
@@ -223,7 +242,7 @@ export default function ContactPopup() {
                           value={form.service}
                           onChange={(e) => setForm((f) => ({ ...f, service: e.target.value }))}
                           className={`${inputBase} ${inputFocusClass}`}
-                          style={{ ...inputStyle, color: form.service ? "white" : "rgb(124,124,124)" }}
+                          style={{ ...inputStyle, color: form.service ? "white" : "rgba(255,255,255,0.3)" }}
                         >
                           <option value="" disabled>Service interested in</option>
                           {SERVICES.map((s) => (
@@ -249,8 +268,11 @@ export default function ContactPopup() {
                       <button
                         type="submit"
                         disabled={sending}
-                        className="w-full rounded-full text-white font-semibold py-3 text-[14px] transition-opacity hover:opacity-90 disabled:opacity-60 mt-1"
-                        style={{ backgroundColor: "rgb(99,102,241)" }}
+                        className="w-full rounded-xl text-white font-semibold py-3.5 text-[14px] transition-all duration-200 hover:shadow-lg disabled:opacity-60 mt-1 cursor-pointer"
+                        style={{
+                          background: "linear-gradient(135deg, rgb(168,85,247), rgb(99,102,241))",
+                          boxShadow: "0 4px 20px rgba(99,102,241,0.25)",
+                        }}
                       >
                         {sending ? "Sending…" : "Send message"}
                       </button>
