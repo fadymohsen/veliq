@@ -5,7 +5,7 @@ export default function GlobalBackground() {
       <div
         aria-hidden="true"
         className="hidden md:block fixed inset-0 pointer-events-none overflow-hidden"
-        style={{ zIndex: 2, contain: "strict" }}
+        style={{ zIndex: 2, contain: "layout paint" }}
       >
         {/* Indigo — top-left corner */}
         <div style={{
@@ -55,7 +55,7 @@ export default function GlobalBackground() {
       <div
         aria-hidden="true"
         className="md:hidden absolute inset-0 pointer-events-none overflow-hidden"
-        style={{ zIndex: 2, contain: "strict" }}
+        style={{ zIndex: 2, contain: "layout paint" }}
       >
         {[
           { top: "4%",  c: "rgba(99,102,241,0.22)",  c2: "rgba(168,85,247,0.10)", w: "150vw" },
