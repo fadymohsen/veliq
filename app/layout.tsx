@@ -5,7 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/sections/Navbar";
 import GlobalBackground from "@/components/ui/GlobalBackground";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
-import ContactPopup from "@/components/ui/ContactPopup";
+import LazyContactPopup from "@/components/ui/LazyContactPopup";
 import { JsonLd, organizationSchema, localBusinessSchema } from "@/components/seo/JsonLd";
 
 const GA_ID = "G-9ZJEFXDNWM";
@@ -73,6 +73,36 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable} h-full`}>
       <head>
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={localBusinessSchema} />
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              prerender: [{ where: { href_matches: "/*" }, eagerness: "moderate" }],
+              prefetch: [{ where: { href_matches: "/*" }, eagerness: "conservative" }],
+            }),
+          }}
+        />
+      </head>
+      <body className="relative bg-black text-white min-h-full antialiased overflow-x-hidden">
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:rounded-full focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+          style={{ backgroundColor: "rgb(99,102,241)" }}
+        >
+          Skip to content
+        </a>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
@@ -94,30 +124,11 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','${GTM_ID}');
           `}
         </Script>
-        <JsonLd data={organizationSchema} />
-        <JsonLd data={localBusinessSchema} />
-      </head>
-      <body className="relative bg-black text-white min-h-full antialiased overflow-x-hidden">
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:rounded-full focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
-          style={{ backgroundColor: "rgb(99,102,241)" }}
-        >
-          Skip to content
-        </a>
         <GlobalBackground />
         <Navbar />
         <div id="main" tabIndex={-1}>{children}</div>
         <WhatsAppButton />
-        <ContactPopup />
+        <LazyContactPopup />
       </body>
     </html>
   );

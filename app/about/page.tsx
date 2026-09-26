@@ -136,12 +136,13 @@ export default function AboutPage() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="flex flex-wrap justify-center gap-3">
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
-              className="flex flex-col gap-2 rounded-[20px]"
+              className="flex flex-col items-center text-center gap-2 rounded-[20px]"
               style={{
+                width: "clamp(200px, 40%, 300px)",
                 border: "1px solid rgb(26,26,26)",
                 background: i % 4 === 0
                   ? "linear-gradient(90deg, rgba(99,102,241,0.15) 0%, rgba(45,212,191,0.15) 100%)"

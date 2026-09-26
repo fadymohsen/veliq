@@ -31,10 +31,10 @@ export default function WhatsAppButton() {
           boxShadow: "0 8px 28px rgba(37,211,102,0.45)",
         }}
       >
-        {/* Pulsing ring */}
+        {/* Subtle ring */}
         <span
-          className="absolute inset-0 rounded-full animate-ping"
-          style={{ background: "rgba(37,211,102,0.35)", animationDuration: "2.4s" }}
+          className="absolute inset-0 rounded-full"
+          style={{ background: "rgba(37,211,102,0.15)" }}
         />
         {/* WhatsApp glyph */}
         <svg viewBox="0 0 32 32" width="30" height="30" fill="#fff" style={{ position: "relative" }} aria-hidden="true">

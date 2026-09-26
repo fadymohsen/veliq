@@ -36,9 +36,10 @@ function BlogCoverImage({ category, image, title }: { category: string; image: s
         src={image}
         alt={title}
         fill
-        sizes="(max-width: 1024px) 100vw, 700px"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 700px"
         className="object-cover"
         priority
+        fetchPriority="high"
       />
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-12" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.45) 100%)" }}>
@@ -50,7 +51,7 @@ function BlogCoverImage({ category, image, title }: { category: string; image: s
         <div className="flex items-end justify-between gap-4">
           <div
             className="px-4 py-2 rounded-full text-white font-semibold"
-            style={{ fontSize: 12, letterSpacing: "0.5px", border: `1px solid ${cover.accent}55`, color: cover.accent, background: "rgba(0,0,0,0.4)", backdropFilter: "blur(6px)" }}
+            style={{ fontSize: 12, letterSpacing: "0.5px", border: `1px solid ${cover.accent}55`, color: cover.accent, background: "rgba(0,0,0,0.6)" }}
           >
             {category}
           </div>

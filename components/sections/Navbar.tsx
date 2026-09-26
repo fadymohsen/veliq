@@ -92,7 +92,7 @@ export default function Navbar() {
       <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <motion.nav
           aria-label="Main navigation"
-          className="pointer-events-auto flex items-center rounded-full bg-[rgba(18,18,18,0.96)] backdrop-blur-[18px] border border-white/[0.07] shadow-[0_4px_32px_rgba(0,0,0,0.45)] p-[6px] gap-[2px]"
+          className="pointer-events-auto flex items-center rounded-full bg-[rgba(18,18,18,0.98)] border border-white/[0.07] shadow-[0_4px_32px_rgba(0,0,0,0.45)] p-[6px] gap-[2px] md:bg-[rgba(18,18,18,0.96)] md:backdrop-blur-[18px]"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}

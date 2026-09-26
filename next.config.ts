@@ -9,7 +9,7 @@ const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value:
-      "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://framerusercontent.com; font-src 'self'; connect-src 'self'; " +
+      "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://framerusercontent.com https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; " +
       // Project case-study pages embed live client sites in device mockups —
       // without frame-src, CSP falls back to default-src 'self' and silently
       // blocks every one of those iframes (looks like "broken" mockup photos).

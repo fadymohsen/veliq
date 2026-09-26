@@ -1,0 +1,26 @@
+# VELIQ
+
+> VELIQ is a global boutique web development and SEO agency operating across Egypt, Saudi Arabia, UAE, and the United States.
+
+## Services
+
+- [Website Development](https://www.veliq.co/services/website-development): Custom website design and development with SEO built in from day one.
+- [Website Support](https://www.veliq.co/services/website-support): Ongoing maintenance, updates, and technical support for existing websites.
+- [SEO](https://www.veliq.co/services/seo): Technical SEO, on-page optimization, and content strategy to drive organic growth.
+
+## Pages
+
+- [Home](https://www.veliq.co/)
+- [About](https://www.veliq.co/about)
+- [Services](https://www.veliq.co/services)
+- [Projects](https://www.veliq.co/projects)
+- [Blog](https://www.veliq.co/blog)
+- [Pricing](https://www.veliq.co/pricing)
+- [Contact](https://www.veliq.co/contact)
+- [Reviews](https://www.veliq.co/reviews)
+- [Website Development with SEO](https://www.veliq.co/website-development-with-seo)
+
+## Contact
+
+- Email: admin@veliq.co
+- Website: https://www.veliq.co
