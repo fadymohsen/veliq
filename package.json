@@ -16,6 +16,15 @@
     "resend": "^6.16.0",
     "sharp": "0.34.5"
   },
+  "browserslist": [
+    "chrome >= 92",
+    "edge >= 92",
+    "firefox >= 90",
+    "safari >= 15.4",
+    "ios_saf >= 15.4",
+    "samsung >= 17",
+    "not dead"
+  ],
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

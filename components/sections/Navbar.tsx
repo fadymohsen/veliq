@@ -111,7 +111,7 @@ export default function Navbar() {
             className="flex items-center rounded-full hover:bg-white/10 transition-colors px-3 py-[5px]"
           >
             <Image
-              src="/branding/colored-logo.png"
+              src="/branding/colored-logo-sm.png"
               alt="VELIQ"
               width={72}
               height={24}

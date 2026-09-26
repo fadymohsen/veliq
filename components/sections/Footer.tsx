@@ -159,7 +159,7 @@ export default function Footer() {
       {/* Bottom brand row */}
       <div className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-8 py-6">
         <Image
-          src="/branding/colored-logo.png"
+          src="/branding/colored-logo-sm.png"
           alt="VELIQ"
           width={100}
           height={32}
