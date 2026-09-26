@@ -90,10 +90,9 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-        <motion.nav
+        <nav
           aria-label="Main navigation"
           className="pointer-events-auto flex items-center rounded-full bg-[rgba(18,18,18,0.98)] border border-white/[0.07] shadow-[0_4px_32px_rgba(0,0,0,0.45)] p-[6px] gap-[2px] md:bg-[rgba(18,18,18,0.96)] md:backdrop-blur-[18px]"
-          initial={false}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
@@ -176,29 +175,26 @@ export default function Navbar() {
             )}
           </AnimatePresence>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger — CSS transitions instead of Framer Motion */}
           <button
             className="md:hidden flex flex-col items-center justify-center gap-[5px] cursor-pointer w-11 h-11"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            <motion.span
-              className="block bg-white origin-center w-4 h-[1.5px]"
-              animate={mobileOpen ? { rotate: 45, y: 6.5 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.2 }}
+            <span
+              className="block bg-white origin-center w-4 h-[1.5px] transition-transform duration-200"
+              style={mobileOpen ? { transform: "rotate(45deg) translateY(6.5px)" } : undefined}
             />
-            <motion.span
-              className="block bg-white w-4 h-[1.5px]"
-              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 0.15 }}
+            <span
+              className="block bg-white w-4 h-[1.5px] transition-opacity duration-150"
+              style={mobileOpen ? { opacity: 0 } : undefined}
             />
-            <motion.span
-              className="block bg-white origin-center w-4 h-[1.5px]"
-              animate={mobileOpen ? { rotate: -45, y: -6.5 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.2 }}
+            <span
+              className="block bg-white origin-center w-4 h-[1.5px] transition-transform duration-200"
+              style={mobileOpen ? { transform: "rotate(-45deg) translateY(-6.5px)" } : undefined}
             />
           </button>
-        </motion.nav>
+        </nav>
       </header>
 
       {/* Full-page mobile menu */}
