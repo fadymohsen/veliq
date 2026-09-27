@@ -135,9 +135,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <p style={{ fontSize: "20px", fontWeight: 500, color: INDIGO, letterSpacing: "-0.01em" }}>
             {service.subtitle}
           </p>
-          <p className="text-[rgb(201,201,201)]" style={{ fontSize: "17px", lineHeight: 1.75, maxWidth: "56ch" }}>
-            {service.fullDesc}
-          </p>
         </div>
 
         {/* Cover image */}
@@ -151,6 +148,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.55) 100%)" }}
           />
         </div>
+
+        <p className="text-[rgb(201,201,201)]" style={{ fontSize: "17px", lineHeight: 1.75, maxWidth: "56ch" }}>
+          {service.fullDesc}
+        </p>
 
         {/* The Problem We Saw */}
         <div className="flex flex-col gap-6">
