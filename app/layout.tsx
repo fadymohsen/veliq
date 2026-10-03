@@ -58,10 +58,6 @@ export const metadata: Metadata = {
     description: "Website development company building SEO-optimized websites for businesses in Egypt, Saudi Arabia, UAE, and the US.",
     images: ["/og-image.png"],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
   alternates: {
     canonical: "https://www.veliq.co",
   },

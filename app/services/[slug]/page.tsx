@@ -353,7 +353,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
         {/* Related Projects */}
         {(() => {
-          const related = PROJECTS.filter((p) => p.category === service.title).slice(0, 4);
+          const related = PROJECTS.filter((p) => p.category === service.title);
           if (related.length === 0) return null;
           return (
             <div className="flex flex-col gap-8">
@@ -372,7 +372,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         {/* Related Blog Posts */}
         {(() => {
           const categories = SERVICE_TO_CATEGORIES[service.slug] ?? [];
-          const relatedPosts = BLOG_POSTS.filter((p) => categories.includes(p.category)).slice(0, 3);
+          const relatedPosts = BLOG_POSTS.filter((p) => categories.includes(p.category));
           if (relatedPosts.length === 0) return null;
           return (
             <div className="flex flex-col gap-8">

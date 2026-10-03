@@ -33,6 +33,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/services/website-support",
+        destination: "/services/website-development",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
