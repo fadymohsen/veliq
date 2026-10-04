@@ -7,6 +7,11 @@ import { CASE_STUDIES, getCaseStudy } from "@/lib/case-studies";
 import { getService } from "@/lib/services";
 import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 
+// Only slugs from generateStaticParams exist. Unknown slugs must 404 at routing
+// time: the segment's loading.tsx would otherwise start streaming a 200
+// before notFound() runs, producing a soft 404.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return CASE_STUDIES.map((cs) => ({ slug: cs.slug }));
 }
