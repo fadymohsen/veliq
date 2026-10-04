@@ -4,7 +4,8 @@ import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
-  robots: { index: false, follow: false },
+  // No `robots` here: Next.js already injects <meta name="robots" content="noindex">
+  // on every 404, so declaring it again would emit a second robots tag.
   alternates: { canonical: null },
 };
 

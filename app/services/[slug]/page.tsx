@@ -61,6 +61,11 @@ const ICONS: Record<string, React.ReactNode> = {
 
 const INDIGO = "rgb(99,102,241)";
 
+// Only slugs from generateStaticParams exist. Unknown slugs must 404 at routing
+// time: the segment's loading.tsx would otherwise start streaming a 200
+// before notFound() runs, producing a soft 404.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
 }

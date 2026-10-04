@@ -80,6 +80,11 @@ function renderLinks(text: string) {
   });
 }
 
+// Only slugs from generateStaticParams exist. Unknown slugs must 404 at routing
+// time: the segment's loading.tsx would otherwise start streaming a 200
+// before notFound() runs, producing a soft 404.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
 }
