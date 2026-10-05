@@ -30,7 +30,7 @@ export default function ReviewsPage() {
       ])} />
       <section className="section-padding max-w-[1200px] mx-auto flex flex-col gap-16">
         <div className="flex flex-col gap-4">
-          <h1 className="heading-1 text-white">Reviews.</h1>
+          <h1 className="heading-1 text-white">Reviews</h1>
           <p className="para-32 text-[var(--text-secondary)] max-w-2xl">
             5.0 rating from {REVIEWS.length} reviews on Google.
           </p>

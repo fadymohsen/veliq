@@ -104,7 +104,7 @@ export default function ContactPage() {
 
         {/* Heading */}
         <div className="flex flex-col gap-4">
-          <h1 className="heading-1 text-white">Let&apos;s talk.</h1>
+          <h1 className="heading-1 text-white">Let&apos;s talk</h1>
           <p className="para-32 text-[rgb(201,201,201)] max-w-xl">
             Have a project in mind? We&apos;d love to hear about it. We&apos;ll get back to you within 24 hours.
           </p>

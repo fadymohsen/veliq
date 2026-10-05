@@ -270,7 +270,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ plan: strin
     return (
       <main className="bg-black min-h-screen pt-16">
         <section className="section-padding max-w-[600px] mx-auto flex flex-col gap-6 items-center text-center">
-          <h1 className="heading-1 text-white">Plan not found.</h1>
+          <h1 className="heading-1 text-white">Plan not found</h1>
           <p className="para-18" style={{ color: "rgba(255,255,255,0.5)" }}>
             The plan you&apos;re looking for doesn&apos;t exist.
           </p>

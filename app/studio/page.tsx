@@ -27,7 +27,7 @@ export default function StudioPage() {
         { name: "Studio", url: "https://www.veliq.co/studio" },
       ])} />
       <section className="section-padding max-w-[1200px] mx-auto">
-        <h1 className="heading-1 text-white">Studio.</h1>
+        <h1 className="heading-1 text-white">Studio</h1>
         <p className="para-32 text-[rgb(201,201,201)] mt-8 max-w-2xl">
           We are a design and automation lab dedicated to removing friction. By
           integrating advanced AI and kinetic workflows, we transform static

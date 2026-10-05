@@ -44,7 +44,7 @@ export default function CaseStudiesPage() {
         <Reveal>
           <div className="flex flex-col gap-4 max-w-[640px]">
             <span className="section-label" style={{ color: "rgb(99,102,241)" }}>Results</span>
-            <h1 className="heading-1 text-white">Case Studies.</h1>
+            <h1 className="heading-1 text-white">Case Studies</h1>
             <p className="text-[rgb(160,160,160)]" style={{ fontSize: "16px", lineHeight: 1.6 }}>
               The full story behind our client results — challenge, approach, solution, and measurable outcomes.
             </p>

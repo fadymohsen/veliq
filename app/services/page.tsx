@@ -73,7 +73,7 @@ export default function ServicesPage() {
       <section className="section-padding max-w-[1200px] mx-auto flex flex-col gap-16">
 
         <div className="flex flex-col gap-4">
-          <h1 className="heading-1 text-white">Services.</h1>
+          <h1 className="heading-1 text-white">Services</h1>
           <p className="para-32 text-[rgb(201,201,201)] max-w-2xl">
             Six focused disciplines. One dedicated team. Every channel aligned to one direction: your growth.
           </p>

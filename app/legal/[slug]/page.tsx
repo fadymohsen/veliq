@@ -251,7 +251,7 @@ export default async function LegalPage({ params }: { params: Promise<{ slug: st
       <section className="section-padding max-w-[760px] mx-auto flex flex-col gap-6">
         {/* Header */}
         <div className="flex flex-col gap-3 mb-4">
-          <h1 className="heading-1 text-white">{page.title}.</h1>
+          <h1 className="heading-1 text-white">{page.title}</h1>
           <p className="para-14" style={{ color: "rgba(255,255,255,0.4)" }}>
             Last updated: {page.lastUpdated}
           </p>

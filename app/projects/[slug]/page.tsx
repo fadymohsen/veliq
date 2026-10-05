@@ -311,7 +311,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {/* ── Next project ── */}
       <section className="w-full max-w-[1200px] flex flex-col gap-20" style={{ padding: "100px 0" }}>
         <div className="flex justify-between items-end gap-6">
-          <h2 className="heading-1 text-white">Next project.</h2>
+          <h2 className="heading-1 text-white">Next project</h2>
           <Button label="All projects" href="/projects" variant="primary" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10px] gap-y-10">
