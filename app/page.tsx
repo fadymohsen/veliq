@@ -44,7 +44,7 @@ export default function Home() {
         <section className="w-full bg-black section-padding">
           <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-12">
             <div className="flex flex-col gap-4">
-              <h2 className="heading-1 text-white">Services.</h2>
+              <h2 className="heading-1 text-white">Services</h2>
               <p className="para-32 text-[var(--text-secondary)] max-w-2xl">
                 Six focused disciplines. One dedicated team.
               </p>

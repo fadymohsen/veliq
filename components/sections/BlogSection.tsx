@@ -87,7 +87,7 @@ export default function BlogSection() {
           transition={{ duration: 0.8, ease: EASE }}
         >
           <div className="flex items-start gap-3">
-            <h2 className="heading-1 text-white">Blog.</h2>
+            <h2 className="heading-1 text-white">Blog</h2>
             <span className="para-12 text-[var(--text-secondary)] mt-4">({BLOG_POST_METAS.length})</span>
           </div>
           <div className="hidden md:block">

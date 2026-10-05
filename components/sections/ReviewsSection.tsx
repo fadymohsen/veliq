@@ -46,7 +46,7 @@ export default function ReviewsSection() {
       <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-8">
         <div className="flex items-end justify-between gap-4 flex-wrap">
           <div className="flex flex-col gap-2">
-            <h2 className="heading-1 text-white">Reviews.</h2>
+            <h2 className="heading-1 text-white">Reviews</h2>
             <p className="para-32 text-[var(--text-secondary)]">
               5.0 rating on Google &middot; {HOMEPAGE_REVIEWS.length} reviews
             </p>
